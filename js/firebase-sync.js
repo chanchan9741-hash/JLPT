@@ -23,9 +23,9 @@ window.JLPT_FIREBASE = (function () {
   let isSyncingToCloud = false;
 
   function isConfigured() {
-    return firebaseConfig && 
-           firebaseConfig.apiKey && 
-           !firebaseConfig.apiKey.startsWith("YOUR_");
+    return firebaseConfig &&
+      firebaseConfig.apiKey &&
+      !firebaseConfig.apiKey.startsWith("YOUR_");
   }
 
   function init() {
@@ -40,7 +40,7 @@ window.JLPT_FIREBASE = (function () {
       if (saved) {
         firebaseConfig = JSON.parse(saved);
       }
-    } catch (e) {}
+    } catch (e) { }
 
     if (!isConfigured()) {
       console.log('[Firebase] Waiting for valid firebaseConfig from user.');
@@ -78,7 +78,7 @@ window.JLPT_FIREBASE = (function () {
     if (user) {
       console.log('[Firebase] Logged in as:', user.displayName, user.email, user.uid);
       updateSyncStatusUI('connected', '클라우드 동기화 중 (' + (user.displayName || user.email.split('@')[0]) + ')');
-      
+
       // Start realtime listening
       startRealtimeSync(user.uid);
     } else {
@@ -107,7 +107,7 @@ window.JLPT_FIREBASE = (function () {
         const cloudData = doc.data();
         console.log('[Firebase] Received cloud update:', cloudData);
         updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
-        
+
         // Merge cloud data into current app state
         if (window.app && typeof window.app.mergeExternalData === 'function') {
           window.app.mergeExternalData(cloudData);
