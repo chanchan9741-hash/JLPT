@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JLPT MASTER - 실전 문제 풀이 & 스마트 오답노트</title>
+  <meta name="description" content="JLPT N1~N5 실전 기출 문제 풀이, 자동 오답노트 수집 및 취약점 분석 스마트 학습 시스템">
+  
+    <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JLPT Master">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Global Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="m9 9.5 2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">JLPT <span class="gradient-text">MASTER</span></span>
+            <span class="logo-subtitle">스마트 실전 학습 & 오답노트</span>
+          </div>
+        </div>
+
+        <nav class="nav-tabs" role="tablist">
+          <button class="nav-tab active" data-tab="quiz" id="tab-quiz" role="tab" aria-selected="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>문제 풀기</span>
+          </button>
+          <button class="nav-tab" data-tab="mistakes" id="tab-mistakes" role="tab" aria-selected="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+            <span>오답노트</span>
+            <span class="badge mistake-count-badge" id="header-mistake-count">0</span>
+          </button>
+          <button class="nav-tab" data-tab="stats" id="tab-stats" role="tab" aria-selected="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            <span>학습 분석</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <!-- Google Drive Sync Status Badge -->
+        <div class="sync-status-badge" id="sync-status-badge" title="구글 드라이브 실시간 동기화 상태">
+          <span class="sync-dot" id="sync-dot"></span>
+          <span class="sync-text" id="sync-text">동기화 연결 중...</span>
+        </div>
+
+        <!-- Furigana Switch -->
+        <label class="toggle-pill" title="후리가나(루비) 표시 켜기/끄기 (단축키: F)">
+          <span class="toggle-label">후리가나</span>
+          <input type="checkbox" id="toggle-furigana" checked>
+          <span class="toggle-slider"></span>
+        </label>
+
+        <!-- Translation Switch -->
+        <label class="toggle-pill" title="한글 뜻 항상 표시 켜기/끄기 (단축키: T)">
+          <span class="toggle-label">한글 뜻</span>
+          <input type="checkbox" id="toggle-trans">
+          <span class="toggle-slider"></span>
+        </label>
+
+        <!-- Sound Switch -->
+        <button class="icon-button" id="btn-sound-toggle" title="효과음 켜기/끄기" aria-label="효과음">
+          <svg id="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="icon-sound-off" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+
+        <!-- Keyboard Help -->
+        <button class="icon-button" id="btn-mobile-modal" title="스마트폰/모바일로 문제 풀기 (QR 코드 안내)" aria-label="모바일 접속">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+        </button>
+        <button class="icon-button" id="btn-shortcuts" title="단축키 안내 (1~4번 키, Space)" aria-label="단축키 안내">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M6 12h.01"/><path d="M10 12h.01"/><path d="M14 12h.01"/><path d="M18 12h.01"/><path d="M8 16h8"/></svg>
+        </button>
+
+        <!-- Dark/Light Theme -->
+        <button class="icon-button" id="btn-theme-toggle" title="테마 전환" aria-label="테마 전환">
+          <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg id="icon-sun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <main class="app-main">
+      
+      <!-- ================= 1. QUIZ VIEW ================= -->
+      <section id="view-quiz" class="tab-view active">
+        <!-- Control / Filter Bar -->
+        <div class="quiz-controls-card">
+          <div class="control-row">
+            <!-- Level Selector -->
+            <div class="level-tabs" id="level-tabs-container">
+              <button class="level-btn active" data-level="N1">
+                <span class="level-name">N1</span>
+                <span class="level-count" id="count-n1">2,020</span>
+              </button>
+              <button class="level-btn" data-level="N2">
+                <span class="level-name">N2</span>
+                <span class="level-count" id="count-n2">1,742</span>
+              </button>
+              <button class="level-btn" data-level="N3">
+                <span class="level-name">N3</span>
+                <span class="level-count" id="count-n3">1,621</span>
+              </button>
+              <button class="level-btn" data-level="N4">
+                <span class="level-name">N4</span>
+                <span class="level-count" id="count-n4">1,661</span>
+              </button>
+              <button class="level-btn" data-level="N5">
+                <span class="level-name">N5</span>
+                <span class="level-count" id="count-n5">617</span>
+              </button>
+            </div>
+
+            <!-- Mode Selector & Action Buttons -->
+            <div class="mode-actions">
+              <div class="segmented-control" id="mode-segmented">
+                <button class="seg-btn active" data-mode="drill" title="1문제 풀 때마다 즉시 정답 및 상세 해설 확인">
+                  ⚡ 즉시 풀기
+                </button>
+                <button class="seg-btn" data-mode="exam" title="정해진 문항수를 타이머와 함께 풀고 나중에 채점">
+                  ⏱️ 모의시험
+                </button>
+              </div>
+
+              <button class="btn btn-secondary btn-sm" id="btn-shuffle" title="문제 순서 무작위 섞기">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></svg>
+                <span>랜덤</span>
+              </button>
+
+              <button class="btn btn-primary btn-sm hidden" id="btn-finish-exam">
+                <span>시험 종료 및 채점</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Type Filter Chips -->
+          <div class="type-filter-chips" id="type-filter-container">
+            <!-- Dynamically populated chips -->
+          </div>
+
+          <!-- Exam Timer Bar (Shown in Exam Mode) -->
+          <div class="exam-status-bar hidden" id="exam-status-bar">
+            <div class="exam-meta">
+              <span class="exam-badge">모의고사 진행 중</span>
+              <span class="exam-timer" id="exam-timer-display">⏱️ 00:00</span>
+            </div>
+            <div class="exam-progress-text" id="exam-progress-text">1 / 20 문제</div>
+          </div>
+        </div>
+
+        <!-- Question View Container -->
+        <div class="question-container">
+          <!-- Top Info Bar -->
+          <div class="question-header">
+            <div class="q-meta-left">
+              <span class="badge badge-level" id="q-badge-level">N1</span>
+              <span class="badge badge-type" id="q-badge-type">문맥 규정</span>
+              <span class="q-index-indicator" id="q-index-indicator"># 1 / 2,020</span>
+              <span class="badge badge-mistake hidden" id="q-mistake-status">⚠️ 오답 2회</span>
+            </div>
+            <div class="q-meta-right">
+              <button class="bookmark-btn" id="btn-bookmark" title="즐겨찾기 추가">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>북마크</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Instruction Text -->
+          <div class="question-instruction-bar">
+            <div class="question-instruction" id="q-instruction">
+              빈칸에 들어갈 가장 알맞은 표현을 고르세요.
+            </div>
+            <div class="question-quick-tip">
+              💡 글을 길게 누르면 한글 뜻 표시
+            </div>
+          </div>
+
+          <!-- Main Question Box -->
+          <div class="question-card">
+            <div class="question-text" id="q-text" title="지문을 길게 누르면 한글 뜻이 표시됩니다">
+              <!-- Loaded dynamically -->
+            </div>
+            <div class="question-translation hidden" id="q-translation">
+              <!-- Translation text -->
+            </div>
+          </div>
+
+          <!-- 4 Options Grid -->
+          <div class="options-grid" id="options-container">
+            <!-- 4 Option Buttons generated by JS -->
+          </div>
+
+          <!-- Explanation Box (Appears after answer in drill mode, or upon reveal) -->
+          <div class="explanation-box hidden" id="explanation-box">
+            <div class="explanation-header">
+              <div class="result-banner" id="result-banner">
+                <span class="result-icon" id="result-icon">✓</span>
+                <span class="result-text" id="result-text">정답입니다!</span>
+              </div>
+              <div class="auto-note-tag" id="auto-note-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                <span id="auto-note-text">오답노트에 자동 등록되었습니다</span>
+              </div>
+            </div>
+
+            <!-- Complete sentence & translation -->
+            <div class="completed-sentence-card" id="completed-sentence-card">
+              <div class="cs-label">정답 완성 문장</div>
+              <div class="cs-ja" id="cs-ja"></div>
+              <div class="cs-ko" id="cs-ko"></div>
+            </div>
+
+            <!-- Main Reason -->
+            <div class="expl-main-section">
+              <div class="expl-section-title">💡 핵심 출제 포인트</div>
+              <div class="expl-main-text" id="expl-main-text"></div>
+            </div>
+
+            <!-- Choice Notes Breakdown -->
+            <div class="expl-choices-section" id="expl-choices-section">
+              <div class="expl-section-title">🔍 선택지별 오답/정답 상세 분석</div>
+              <div class="choice-notes-list" id="choice-notes-list"></div>
+            </div>
+          </div>
+
+          <!-- Question Footer Navigation -->
+          <div class="question-footer">
+            <button class="btn btn-secondary" id="btn-prev-question">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+              <span>이전 (P)</span>
+            </button>
+
+            <div class="quick-keyboard-hint">
+              <span>키보드 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> 로 선택 | <kbd>Space</kbd> 다음 문제</span>
+            </div>
+
+            <button class="btn btn-primary" id="btn-next-question">
+              <span>다음 문제 (Space)</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2. MISTAKE NOTEBOOK VIEW ================= -->
+      <section id="view-mistakes" class="tab-view">
+        <div class="mistakes-container">
+          <!-- Header Banner -->
+          <div class="mistakes-hero">
+            <div class="hero-left">
+              <h2>스마트 오답노트</h2>
+              <p>틀린 문제는 즉시 이곳에 기록되며, 다시 풀어 맞히면 자동으로 마스터 상태로 승급됩니다.</p>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat-card">
+                <span class="stat-number color-rose" id="nb-total-mistakes">0</span>
+                <span class="stat-label">현재 누적 오답</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-number color-emerald" id="nb-mastered-count">0</span>
+                <span class="stat-label">완전 정복 (마스터)</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-number color-indigo" id="nb-accuracy-rate">0%</span>
+                <span class="stat-label">복습 극복률</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mistakes Action & Filter Bar -->
+          <div class="mistakes-toolbar">
+            <div class="search-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="input-mistake-search" placeholder="단어, 한자, 문제 내용 검색...">
+            </div>
+
+            <div class="filter-group">
+              <select class="select-input" id="select-mistake-level">
+                <option value="ALL">전체 급수</option>
+                <option value="N1">N1</option>
+                <option value="N2">N2</option>
+                <option value="N3">N3</option>
+                <option value="N4">N4</option>
+                <option value="N5">N5</option>
+              </select>
+
+              <select class="select-input" id="select-mistake-type">
+                <option value="ALL">전체 문제 유형</option>
+                <option value="문맥 규정">문맥 규정</option>
+                <option value="한자 읽기">한자 읽기</option>
+                <option value="표기">표기</option>
+                <option value="유의 표현">유의 표현</option>
+                <option value="용법">용법</option>
+                <option value="단어 형성">단어 형성</option>
+              </select>
+
+              <select class="select-input" id="select-mistake-status">
+                <option value="active">미완료 오답만</option>
+                <option value="all">전체 (마스터 포함)</option>
+                <option value="mastered">정복 완료만</option>
+                <option value="bookmarked">북마크만</option>
+              </select>
+            </div>
+
+            <div class="action-group">
+              <button class="btn btn-primary" id="btn-quiz-mistakes" title="현재 필터된 오답들만 모아서 바로 테스트">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>오답 집중 테스트</span>
+              </button>
+              
+              <button class="btn btn-primary" id="btn-export-pdf" title="현재 오답 목록을 깔끔한 A4 PDF로 인쇄/저장">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                <span>📄 PDF 인쇄 / 저장</span>
+              </button>
+              <button class="btn btn-secondary" id="btn-export-markdown" title="NotebookLM이나 문서 앱에 올릴 수 있는 마크다운 파일로 다운로드">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>마크다운 내보내기 (.md)</span>
+              </button>
+
+              <button class="btn btn-ghost" id="btn-clear-mastered" title="정복 완료된 오답들 목록에서 지우기">
+                정복 항목 정리
+              </button>
+            </div>
+          </div>
+
+          <!-- Mistakes Cards Grid -->
+          <div class="mistakes-cards-container" id="mistakes-list">
+            <!-- Dynamically populated mistake cards -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state hidden" id="mistakes-empty-state">
+            <div class="empty-icon">🎉</div>
+            <h3>오답노트가 비어 있습니다!</h3>
+            <p>문제를 풀다가 틀린 항목이 생기면 자동으로 이곳에 수집되어 복습을 돕습니다.</p>
+            <button class="btn btn-primary" onclick="window.app.switchTab('quiz')">지금 문제 풀러 가기</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3. ANALYTICS & STATS VIEW ================= -->
+      <section id="view-stats" class="tab-view">
+        <div class="stats-container">
+          <h2>학습 분석 대시보드</h2>
+          <p class="subtitle">나의 풀이 이력과 취약 유형을 분석하여 효과적인 학습 방향을 제시합니다.</p>
+
+          <!-- Metrics 4 Grid -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-icon color-indigo-bg">📝</div>
+              <div class="metric-info">
+                <span class="metric-value" id="stat-total-solved">0</span>
+                <span class="metric-label">총 푼 문제 수</span>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon color-emerald-bg">🎯</div>
+              <div class="metric-info">
+                <span class="metric-value" id="stat-accuracy-rate">0%</span>
+                <span class="metric-label">전체 정답률</span>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon color-rose-bg">⚠️</div>
+              <div class="metric-info">
+                <span class="metric-value" id="stat-current-mistakes">0</span>
+                <span class="metric-label">복습 대기 오답</span>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon color-amber-bg">🏆</div>
+              <div class="metric-info">
+                <span class="metric-value" id="stat-conquered-count">0</span>
+                <span class="metric-label">정복 완료 문항</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Grid -->
+          <div class="charts-grid">
+            <!-- Level Accuracy Progress -->
+            <div class="chart-card">
+              <h3>📊 급수별 정답률 & 학습 진행도</h3>
+              <div class="level-progress-list" id="level-progress-list">
+                <!-- Dynamically rendered bars -->
+              </div>
+            </div>
+
+            <!-- Type Weakness Radar/Bar -->
+            <div class="chart-card">
+              <h3>🔍 유형별 취약도 분석 (정답률 순위)</h3>
+              <div class="type-weakness-list" id="type-weakness-list">
+                <!-- Dynamically rendered type bars -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Management Box -->
+          <div class="data-management-card">
+            <div class="dm-info">
+              <h4>💾 데이터 관리 및 백업</h4>
+              <p>모든 풀이 기록과 오답노트는 브라우저 로컬 저장소에 영구 보존됩니다. 다른 PC로 옮기거나 백업할 수 있습니다.</p>
+            </div>
+            <div class="dm-actions">
+              <button class="btn btn-secondary" id="btn-export-backup">
+                <span>학습 데이터 백업 (JSON)</span>
+              </button>
+              <label class="btn btn-secondary file-upload-label">
+                <span>백업 데이터 복원</span>
+                <input type="file" id="input-import-backup" accept=".json" class="hidden">
+              </label>
+              <button class="btn btn-danger-ghost" id="btn-reset-data">
+                기록 초기화
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+
+  <!-- Shortcuts Modal -->
+  
+  <!-- Mobile Connect Modal -->
+  <div class="modal-overlay hidden" id="modal-mobile">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📱 스마트폰 / 태블릿 모바일 접속</h3>
+        <button class="modal-close-btn" id="btn-close-mobile">&times;</button>
+      </div>
+      <div class="mobile-modal-content" style="padding:1.5rem; text-align:center;">
+        <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.5;">
+          PC와 <b>동일한 Wi-Fi</b>에 연결된 스마트폰 기본 카메라로<br>아래 <b>QR 코드를 스캔</b>하시면 폰에서 바로 문제를 풀 수 있습니다.
+        </p>
+        <div style="background:#ffffff; padding:12px; border-radius:12px; display:inline-block; box-shadow:var(--shadow-md); margin-bottom:1.25rem;">
+          <img id="mobile-qr-img" src="" alt="Mobile Access QR Code" style="width:180px; height:180px; display:block;">
+        </div>
+        <div style="display:flex; gap:0.5rem; justify-content:center; max-width:380px; margin:0 auto 1.25rem auto;">
+          <input type="text" id="input-mobile-url" readonly style="flex:1; padding:0.6rem 0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:var(--bg-card); color:var(--text-primary); font-family:monospace; font-size:0.95rem; text-align:center;">
+          <button class="btn btn-secondary btn-sm" id="btn-copy-mobile-url" style="white-space:nowrap;">주소 복사</button>
+        </div>
+        <div style="font-size:0.82rem; color:var(--accent-cyan); background:rgba(6,182,212,0.1); padding:0.6rem 1rem; border-radius:8px; line-height:1.4;">
+          💡 스마트폰에서 푼 문제와 오답도 PC의 구글 드라이브에 실시간으로 자동 동기화됩니다!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="modal-shortcuts">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⌨️ 단축키 안내</h3>
+        <button class="modal-close-btn" id="btn-close-shortcuts">&times;</button>
+      </div>
+      <div class="shortcuts-list">
+        <div class="shortcut-item">
+          <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>
+          <span>보기 1~4번 선택하기</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>Space</kbd> or <kbd>Enter</kbd>
+          <span>해설 확인 / 다음 문제 이동</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>P</kbd>
+          <span>이전 문제로 이동</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>F</kbd>
+          <span>후리가나(루비) ON/OFF 토글</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>T</kbd>
+          <span>한글 뜻/해석 엿보기 및 ON/OFF 토글</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>B</kbd>
+          <span>현재 문제 북마크 토글</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam Result Modal -->
+  <div class="modal-overlay hidden" id="modal-exam-result">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3>🏁 모의고사 결과 리포트</h3>
+        <button class="modal-close-btn" id="btn-close-exam-modal">&times;</button>
+      </div>
+      <div class="exam-result-summary" id="exam-result-summary">
+        <!-- Result score, time, accuracy -->
+      </div>
+      <div class="exam-result-actions">
+        <button class="btn btn-secondary" id="btn-exam-review-mistakes">오답노트로 이동</button>
+        <button class="btn btn-primary" id="btn-exam-close">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Questions Data Bundles -->
+  <script src="data/n1.js"></script>
+  <script src="data/n2.js"></script>
+  <script src="data/n3.js"></script>
+  <script src="data/n4.js"></script>
+  <script src="data/n5.js"></script>
+
+  <!-- Main App Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
