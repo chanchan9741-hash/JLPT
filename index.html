@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=2.4">
+  <link rel="stylesheet" href="css/style.css?v=2.9">
 </head>
 <body>
   <div class="app-layout">
@@ -41,23 +41,24 @@
             <span class="logo-subtitle">스마트 실전 학습 & 오답노트</span>
           </div>
         </div>
-
-        <nav class="nav-tabs" role="tablist">
-          <button class="nav-tab active" data-tab="quiz" id="tab-quiz" role="tab" aria-selected="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            <span>문제 풀기</span>
-          </button>
-          <button class="nav-tab" data-tab="mistakes" id="tab-mistakes" role="tab" aria-selected="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-            <span>오답노트</span>
-            <span class="badge mistake-count-badge" id="header-mistake-count">0</span>
-          </button>
-          <button class="nav-tab" data-tab="stats" id="tab-stats" role="tab" aria-selected="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-            <span>학습 분석</span>
-          </button>
-        </nav>
       </div>
+
+      <!-- Desktop-Only Nav Tabs (inside Header for Desktop) -->
+      <nav class="nav-tabs desktop-only" role="tablist">
+        <button class="nav-tab active" data-tab="quiz" id="tab-quiz" role="tab" aria-selected="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>문제 풀기</span>
+        </button>
+        <button class="nav-tab" data-tab="mistakes" id="tab-mistakes" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          <span>오답노트</span>
+          <span class="badge mistake-count-badge" id="header-mistake-count">0</span>
+        </button>
+        <button class="nav-tab" data-tab="stats" id="tab-stats" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <span>학습 분석</span>
+        </button>
+      </nav>
 
       <div class="header-right">
         <!-- Google Drive / Firebase Sync Status Badge -->
@@ -74,22 +75,22 @@
           </button>
         </div>
 
-        <!-- Furigana Switch -->
-        <label class="toggle-pill" title="요미가나(후리가나) 표시 켜기/끄기 (단축키: F)">
-          <span class="toggle-label"><span class="label-desk">요미가나</span><span class="label-mob">요미가나</span></span>
+        <!-- Furigana Switch (Desktop only) -->
+        <label class="toggle-pill desktop-only" title="요미가나(후리가나) 표시 켜기/끄기 (단축키: F)">
+          <span class="toggle-label"><span class="label-desk">요미가나</span></span>
           <input type="checkbox" id="toggle-furigana" checked>
           <span class="toggle-slider"></span>
         </label>
 
-        <!-- Translation Switch -->
-        <label class="toggle-pill" title="한글 뜻 항상 표시 켜기/끄기 (단축키: T)">
-          <span class="toggle-label"><span class="label-desk">한글 뜻</span><span class="label-mob">한글</span></span>
+        <!-- Translation Switch (Desktop only) -->
+        <label class="toggle-pill desktop-only" title="한글 뜻 항상 표시 켜기/끄기 (단축키: T)">
+          <span class="toggle-label"><span class="label-desk">한글 뜻</span></span>
           <input type="checkbox" id="toggle-trans">
           <span class="toggle-slider"></span>
         </label>
 
-        <!-- Sound Switch -->
-        <button class="icon-button" id="btn-sound-toggle" title="효과음 켜기/끄기" aria-label="효과음">
+        <!-- Sound Switch (Desktop only) -->
+        <button class="icon-button desktop-only" id="btn-sound-toggle" title="효과음 켜기/끄기" aria-label="효과음">
           <svg id="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
           <svg id="icon-sound-off" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
         </button>
@@ -458,6 +459,23 @@
       </section>
 
     </main>
+
+    <!-- Mobile Native Bottom Navigation Bar -->
+    <nav class="nav-tabs mobile-bottom-nav" role="tablist">
+      <button class="nav-tab active" data-tab="quiz" role="tab" aria-selected="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>문제 풀기</span>
+      </button>
+      <button class="nav-tab" data-tab="mistakes" role="tab" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+        <span>오답노트</span>
+        <span class="badge mistake-count-badge" id="mobile-mistake-count">0</span>
+      </button>
+      <button class="nav-tab" data-tab="stats" role="tab" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        <span>학습 분석</span>
+      </button>
+    </nav>
   </div>
 
   <!-- Toast Notification Container -->

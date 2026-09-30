@@ -1147,11 +1147,13 @@
   }
 
   function updateMistakeBadge() {
-    const badge = document.getElementById('header-mistake-count');
-    if (!badge) return;
+    const badges = document.querySelectorAll('.mistake-count-badge');
+    if (!badges || badges.length === 0) return;
     const activeCount = Object.values(mistakes).filter(m => !m.isMastered).length;
-    badge.textContent = activeCount.toLocaleString();
-    badge.style.display = activeCount > 0 ? 'inline-flex' : 'none';
+    badges.forEach(badge => {
+      badge.textContent = activeCount.toLocaleString();
+      badge.style.display = activeCount > 0 ? 'inline-flex' : 'none';
+    });
   }
 
   function showToast(msg) {
