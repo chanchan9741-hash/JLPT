@@ -476,6 +476,21 @@
     const isBookmarked = bookmarks.has(q.id);
     btnBookmark.classList.toggle('active', isBookmarked);
 
+    // Quick Yomigana and Korean Translation toggle buttons
+    const btnQuickFurigana = document.getElementById('btn-quick-furigana');
+    if (btnQuickFurigana) {
+      btnQuickFurigana.classList.toggle('active', state.furigana);
+      const dot = btnQuickFurigana.querySelector('.pill-dot');
+      if (dot) dot.classList.toggle('active', state.furigana);
+    }
+
+    const btnQuickTrans = document.getElementById('btn-quick-trans');
+    if (btnQuickTrans) {
+      btnQuickTrans.classList.toggle('active', state.showTrans);
+      const dot = btnQuickTrans.querySelector('.pill-dot');
+      if (dot) dot.classList.toggle('active', state.showTrans);
+    }
+
     // Mistake badge
     const m = mistakes[q.id];
     if (m && !m.isMastered) {
@@ -1228,21 +1243,45 @@
       saveBookmarks();
     });
 
-    // Furigana toggle
+    // Furigana toggle (Header toggle & Quick button)
     const toggleFurigana = document.getElementById('toggle-furigana');
-    toggleFurigana.checked = state.furigana;
-    toggleFurigana.addEventListener('change', (e) => {
-      state.furigana = e.target.checked;
-      saveState();
-      renderCurrentQuestion();
-    });
+    if (toggleFurigana) {
+      toggleFurigana.checked = state.furigana;
+      toggleFurigana.addEventListener('change', (e) => {
+        state.furigana = e.target.checked;
+        saveState();
+        renderCurrentQuestion();
+      });
+    }
 
-    // Translation toggle
+    const btnQuickFurigana = document.getElementById('btn-quick-furigana');
+    if (btnQuickFurigana) {
+      btnQuickFurigana.addEventListener('click', () => {
+        state.furigana = !state.furigana;
+        if (toggleFurigana) toggleFurigana.checked = state.furigana;
+        saveState();
+        renderCurrentQuestion();
+        showToast(state.furigana ? 'あ 요미가나(후리가나) 표시 ON' : 'あ 요미가나(후리가나) 숨김');
+      });
+    }
+
+    // Translation toggle (Header toggle & Quick button)
     const toggleTrans = document.getElementById('toggle-trans');
     if (toggleTrans) {
       toggleTrans.checked = state.showTrans;
       toggleTrans.addEventListener('change', (e) => {
         state.showTrans = e.target.checked;
+        saveState();
+        renderCurrentQuestion();
+        showToast(state.showTrans ? '👁️ 한글 뜻 항상 표시 ON' : '🙈 한글 뜻 숨김 모드 (글 길게 눌러 확인)');
+      });
+    }
+
+    const btnQuickTrans = document.getElementById('btn-quick-trans');
+    if (btnQuickTrans) {
+      btnQuickTrans.addEventListener('click', () => {
+        state.showTrans = !state.showTrans;
+        if (toggleTrans) toggleTrans.checked = state.showTrans;
         saveState();
         renderCurrentQuestion();
         showToast(state.showTrans ? '👁️ 한글 뜻 항상 표시 ON' : '🙈 한글 뜻 숨김 모드 (글 길게 눌러 확인)');
