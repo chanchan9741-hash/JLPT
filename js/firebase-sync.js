@@ -55,6 +55,22 @@ window.JLPT_FIREBASE = (function () {
       isInitialized = true;
       console.log('[Firebase] App initialized successfully.');
 
+      // Check redirect result on load (crucial for mobile devices!)
+      firebase.auth().getRedirectResult().then((result) => {
+        if (result && result.user) {
+          console.log('[Firebase] Mobile redirect login successful:', result.user.email);
+          handleAuthStateChanged(result.user);
+          if (window.showToast) window.showToast('✅ Google 로그인 완료: ' + (result.user.displayName || result.user.email));
+        }
+      }).catch((err) => {
+        console.error('[Firebase] Redirect result error:', err);
+        if (err.code === 'auth/unauthorized-domain') {
+          alert('⚠️ [도메인 미승인 오류]\nFirebase 콘솔의 [Authentication] > [설정] > [승인된 도메인]에\nchanchan9741-hash.github.io\n를 추가해 주셔야 로그인할 수 있습니다!');
+        } else if (err.code && err.code !== 'auth/null-user') {
+          alert('로그인 오류: ' + err.message);
+        }
+      });
+
       // Listen for auth state changes
       firebase.auth().onAuthStateChanged(handleAuthStateChanged);
     } catch (err) {
@@ -168,11 +184,33 @@ window.JLPT_FIREBASE = (function () {
       return;
     }
     const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      try {
+        await firebase.auth().signInWithRedirect(provider);
+      } catch (err) {
+        if (err.code === 'auth/unauthorized-domain') {
+          alert('⚠️ [도메인 미승인 오류]\nFirebase 콘솔의 [Authentication] > [설정] > [승인된 도메인]에\nchanchan9741-hash.github.io\n를 등록해 주셔야 로그인할 수 있습니다!');
+        } else {
+          alert('구글 로그인 오류: ' + err.message);
+        }
+      }
+      return;
+    }
+
     try {
       await firebase.auth().signInWithPopup(provider);
     } catch (err) {
-      if (err.code === 'auth/popup-blocked') {
+      if (err.code === 'auth/popup-blocked' || 
+          err.code === 'auth/popup-closed-by-user' || 
+          err.code === 'auth/cancelled-popup-request') {
+        // Fallback to redirect
         await firebase.auth().signInWithRedirect(provider);
+      } else if (err.code === 'auth/unauthorized-domain') {
+        alert('⚠️ [도메인 미승인 오류]\nFirebase 콘솔의 [Authentication] > [설정] > [승인된 도메인]에\nchanchan9741-hash.github.io\n를 등록해 주셔야 로그인할 수 있습니다!');
       } else {
         alert('구글 로그인 오류: ' + err.message);
       }
