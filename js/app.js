@@ -134,6 +134,11 @@
       const syncText = document.getElementById('sync-text');
       const syncBadge = document.getElementById('sync-status-badge');
 
+      // If Firebase Auth is already active/connected, do not overwrite status badge
+      if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.getCurrentUser && window.JLPT_FIREBASE.getCurrentUser()) {
+        return;
+      }
+
       if (!this.syncUrl && window.location.protocol === 'https:') {
         this.connected = false;
         if (syncDot) syncDot.className = 'sync-dot cloud';
@@ -257,6 +262,12 @@
     renderCurrentQuestion();
     renderStats();
     syncManager.init();
+
+    // Check for pending cloud data received before app was ready
+    if (window.__PENDING_CLOUD_DATA__) {
+      console.log('[App] Applying pending cloud data received before init');
+      mergeExternalData(window.__PENDING_CLOUD_DATA__);
+    }
   }
 
   // --- Persistence Handlers ---
@@ -335,6 +346,7 @@
   function saveMistakes() {
     localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
     updateMistakeBadge();
+    renderStats();
     if (state.currentTab === 'mistakes') {
       renderMistakesList();
     }
@@ -344,9 +356,7 @@
 
   function saveHistory() {
     localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
-    if (state.currentTab === 'stats') {
-      renderStats();
-    }
+    renderStats();
     syncManager.scheduleSync();
     if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
@@ -1532,7 +1542,12 @@
         if (window.JLPT_INITIAL_SYNC) {
           mergeSyncPayload(window.JLPT_INITIAL_SYNC);
           updateSyncModalStats();
-          showToast('⚡ PC 학습 기록 (4문제 풀이)이 성공적으로 반영되었습니다!');
+          renderStats();
+          if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.scheduleCloudUpload) {
+            window.JLPT_FIREBASE.scheduleCloudUpload();
+          }
+          const count = window.JLPT_INITIAL_SYNC.history ? Object.keys(window.JLPT_INITIAL_SYNC.history).length : 4;
+          showToast(`⚡ PC 학습 기록 (${count}문제 풀이)이 성공적으로 반영되었습니다!`);
         } else {
           showToast('초기 동기화 데이터가 없습니다.');
         }
@@ -1625,13 +1640,20 @@
     if (cloudData.history) {
       for (const [id, h] of Object.entries(cloudData.history)) {
         if (!history[id]) {
-          history[id] = h;
+          history[id] = { ...h };
           changed = true;
         } else {
           const cloudSolved = h.solved || 0;
           const localSolved = history[id].solved || 0;
-          if (cloudSolved > localSolved) {
-            history[id] = h;
+          const cloudCorrect = h.correct || 0;
+          const localCorrect = history[id].correct || 0;
+          if (cloudSolved > localSolved || cloudCorrect > localCorrect || (h.lastDate || 0) > (history[id].lastDate || 0)) {
+            history[id] = {
+              solved: Math.max(localSolved, cloudSolved),
+              correct: Math.max(localCorrect, cloudCorrect),
+              lastResult: (h.lastDate || 0) >= (history[id].lastDate || 0) ? h.lastResult : history[id].lastResult,
+              lastDate: Math.max(h.lastDate || 0, history[id].lastDate || 0)
+            };
             changed = true;
           }
         }
@@ -1641,13 +1663,13 @@
     if (cloudData.mistakes) {
       for (const [id, m] of Object.entries(cloudData.mistakes)) {
         if (!mistakes[id]) {
-          mistakes[id] = m;
+          mistakes[id] = { ...m };
           changed = true;
         } else {
           const cloudCount = m.count || 1;
           const localCount = mistakes[id].count || 1;
-          if (cloudCount >= localCount) {
-            mistakes[id] = m;
+          if (cloudCount >= localCount || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0)) {
+            mistakes[id] = { ...m };
             changed = true;
           }
         }
@@ -1668,12 +1690,12 @@
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
       localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
       updateMistakeBadge();
-      renderStats();
       if (state.currentTab === 'mistakes') {
         renderMistakesList();
       }
       renderCurrentQuestion();
     }
+    renderStats();
   }
 
   // Expose global app object for inline handlers
@@ -1683,7 +1705,14 @@
     nextQuestion,
     prevQuestion,
     handleOptionSelect,
-    mergeExternalData
+    mergeExternalData,
+    getAppData: () => ({
+      mistakes,
+      history,
+      bookmarks: Array.from(bookmarks),
+      clientTimestamp: Date.now()
+    }),
+    renderStats
   };
 
   // Launch when DOM is ready

@@ -124,6 +124,9 @@ window.JLPT_FIREBASE = (function () {
         console.log('[Firebase] Received cloud update:', cloudData);
         updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
 
+        // Store pending cloud data so app can pick it up if not ready yet
+        window.__PENDING_CLOUD_DATA__ = cloudData;
+
         // Merge cloud data into current app state
         if (window.app && typeof window.app.mergeExternalData === 'function') {
           window.app.mergeExternalData(cloudData);
@@ -135,7 +138,12 @@ window.JLPT_FIREBASE = (function () {
       }
     }, (err) => {
       console.error('[Firebase] Snapshot error:', err);
-      updateSyncStatusUI('offline', '클라우드 연결 오류');
+      if (err.code === 'permission-denied') {
+        updateSyncStatusUI('offline', 'Firebase 보안 규칙 승인 필요');
+        console.warn('[Firebase] Firestore rules must allow authenticated user access to /users/{uid}/data/jlpt');
+      } else {
+        updateSyncStatusUI('offline', '클라우드 연결 오류');
+      }
     });
   }
 
@@ -145,7 +153,7 @@ window.JLPT_FIREBASE = (function () {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       uploadCurrentDataToCloud();
-    }, 1200);
+    }, 1000);
   }
 
   async function uploadCurrentDataToCloud() {
@@ -155,9 +163,32 @@ window.JLPT_FIREBASE = (function () {
       const db = firebase.firestore();
       const docRef = db.collection('users').doc(currentUser.uid).collection('data').doc('jlpt');
 
-      const mistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v2') || '{}');
-      const history = JSON.parse(localStorage.getItem('jlpt_history_v2') || '{}');
-      const bookmarks = JSON.parse(localStorage.getItem('jlpt_bookmarks_v2') || '[]');
+      let payload = null;
+      if (window.app && typeof window.app.getAppData === 'function') {
+        payload = window.app.getAppData();
+      }
+
+      let mistakes = (payload && payload.mistakes) ? payload.mistakes : null;
+      let history = (payload && payload.history) ? payload.history : null;
+      let bookmarks = (payload && payload.bookmarks) ? payload.bookmarks : null;
+
+      if (!mistakes) {
+        mistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || localStorage.getItem('jlpt_mistakes_v2') || '{}');
+      }
+      if (!history) {
+        history = JSON.parse(localStorage.getItem('jlpt_history_v1') || localStorage.getItem('jlpt_history_v2') || '{}');
+      }
+      if (!bookmarks) {
+        bookmarks = JSON.parse(localStorage.getItem('jlpt_bookmarks_v1') || localStorage.getItem('jlpt_bookmarks_v2') || '[]');
+      }
+
+      // If local data is empty, check window.JLPT_INITIAL_SYNC
+      if (Object.keys(history).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.history) {
+        history = { ...window.JLPT_INITIAL_SYNC.history };
+      }
+      if (Object.keys(mistakes).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.mistakes) {
+        mistakes = { ...window.JLPT_INITIAL_SYNC.mistakes };
+      }
 
       await docRef.set({
         mistakes,
@@ -169,12 +200,42 @@ window.JLPT_FIREBASE = (function () {
         userName: currentUser.displayName || ''
       }, { merge: true });
 
-      console.log('[Firebase] Cloud data updated successfully.');
+      console.log('[Firebase] Cloud data updated successfully. Solved count:', Object.keys(history).length);
       updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
     } finally {
       setTimeout(() => { isSyncingToCloud = false; }, 300);
+    }
+  }
+
+  async function forceCloudSync() {
+    if (!currentUser || !isInitialized) {
+      if (window.showToast) window.showToast('⚠️ Google 계정 로그인이 필요합니다.');
+      return;
+    }
+
+    try {
+      updateSyncStatusUI('connected', '동기화 진행 중...');
+      const db = firebase.firestore();
+      const docRef = db.collection('users').doc(currentUser.uid).collection('data').doc('jlpt');
+
+      const doc = await docRef.get();
+      if (doc.exists) {
+        const cloudData = doc.data();
+        if (window.app && typeof window.app.mergeExternalData === 'function') {
+          window.app.mergeExternalData(cloudData);
+        }
+        await uploadCurrentDataToCloud();
+        if (window.showToast) window.showToast('✅ 클라우드 대시보드 동기화 완료!');
+      } else {
+        await uploadCurrentDataToCloud();
+        if (window.showToast) window.showToast('✅ 로컬 기록을 클라우드에 새로 등록했습니다!');
+      }
+      updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
+    } catch (err) {
+      console.error('[Firebase] Force sync failed:', err);
+      alert('동기화 오류: ' + err.message);
     }
   }
 
@@ -265,13 +326,20 @@ window.JLPT_FIREBASE = (function () {
 
       if (modalArea) {
         modalArea.innerHTML = `
-          <div style="display:inline-flex; align-items:center; gap:0.6rem; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.25); padding:0.4rem 0.75rem; border-radius:8px;">
-            <span style="color:var(--success); font-weight:700; font-size:0.88rem;">✅ ${user.email} (실시간 동기화 중)</span>
-            <button class="btn btn-secondary btn-sm" id="btn-modal-logout" style="font-size:0.75rem; padding:0.2rem 0.5rem;">로그아웃</button>
+          <div style="display:flex; flex-direction:column; gap:0.6rem;">
+            <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.25); padding:0.5rem 0.75rem; border-radius:8px;">
+              <span style="color:var(--success); font-weight:700; font-size:0.86rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">✅ ${user.email} (연동 완료)</span>
+              <button class="btn btn-secondary btn-sm" id="btn-modal-logout" style="font-size:0.75rem; padding:0.2rem 0.5rem; flex-shrink:0;">로그아웃</button>
+            </div>
+            <button class="btn btn-primary btn-sm" id="btn-force-cloud-sync" style="font-weight:700; display:inline-flex; align-items:center; justify-content:center; gap:0.4rem; padding:0.5rem; width:100%;">
+              <span>🔄 클라우드 실시간 데이터 즉시 동기화</span>
+            </button>
           </div>
         `;
         const modalLogoutBtn = document.getElementById('btn-modal-logout');
         if (modalLogoutBtn) modalLogoutBtn.onclick = logout;
+        const forceSyncBtn = document.getElementById('btn-force-cloud-sync');
+        if (forceSyncBtn) forceSyncBtn.onclick = forceCloudSync;
       }
     } else {
       if (container) {
@@ -368,6 +436,7 @@ window.JLPT_FIREBASE = (function () {
     loginWithGoogle,
     logout,
     scheduleCloudUpload,
+    forceCloudSync,
     showConfigModal
   };
 })();
