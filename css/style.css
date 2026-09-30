@@ -2035,3 +2035,37 @@ kbd {
 .sync-status-badge.clickable:active {
   transform: translateY(0);
 }
+
+/* Google Login Button & Profile Badge */
+.btn-google-login {
+  background: #4285F4 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-full) !important;
+  padding: 0.32rem 0.75rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.35);
+  transition: all var(--transition-fast);
+}
+.btn-google-login:hover {
+  background: #3367D6 !important;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.5);
+  transform: translateY(-1px);
+}
+.btn-google-login:active {
+  transform: translateY(0);
+}
+@media (max-width: 540px) {
+  .google-login-text {
+    font-size: 0.76rem;
+  }
+  .btn-google-login {
+    padding: 0.25rem 0.55rem !important;
+  }
+}
