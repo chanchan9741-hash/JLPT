@@ -75,7 +75,7 @@
 
   // --- Global Application State ---
   let state = {
-    theme: 'dark',
+    theme: 'light',
     furigana: true,
     showTrans: false, // false: hidden by default (peek on click/press), true: always visible
     sound: true,
@@ -84,6 +84,7 @@
     type: 'ALL',
     mode: 'drill', // 'drill' (instant feedback) | 'exam' (mock test) | 'mistake-drill'
     currentIndex: 0,
+    levelIndices: {},
     isShuffled: false,
     answered: false,
     selectedOption: null,
@@ -274,14 +275,25 @@
   function loadPersistentData() {
     try {
       const savedState = localStorage.getItem(STORAGE_KEYS.STATE);
+      const themeVersion = localStorage.getItem('jlpt_theme_v3');
       if (savedState) {
         const parsed = JSON.parse(savedState);
-        state.theme = parsed.theme || 'dark';
+        // Default to 'light' as requested. If theme version 3 hasn't been set, apply light default
+        if (!themeVersion) {
+          state.theme = 'light';
+          localStorage.setItem('jlpt_theme_v3', 'applied');
+        } else {
+          state.theme = parsed.theme || 'light';
+        }
         state.furigana = parsed.furigana !== undefined ? parsed.furigana : true;
         state.showTrans = parsed.showTrans !== undefined ? parsed.showTrans : false;
         state.sound = parsed.sound !== undefined ? parsed.sound : true;
         state.level = parsed.level || 'N1';
         state.type = parsed.type || 'ALL';
+        state.levelIndices = parsed.levelIndices || {};
+      } else {
+        state.theme = 'light';
+        localStorage.setItem('jlpt_theme_v3', 'applied');
       }
 
       const savedMistakes = localStorage.getItem(STORAGE_KEYS.MISTAKES);
@@ -339,7 +351,9 @@
       sound: state.sound,
       level: state.level,
       type: state.type,
-      mode: state.mode
+      mode: state.mode,
+      currentIndex: state.currentIndex,
+      levelIndices: state.levelIndices || {}
     }));
   }
 
@@ -367,10 +381,58 @@
     if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
+  // Resume from the user's last solved question or next question in line
+  function getResumeIndex(level, questions) {
+    if (!questions || questions.length === 0) return 0;
+
+    // 1. Check if user was previously viewing a specific question in this level
+    if (state.levelIndices && state.levelIndices[level] !== undefined) {
+      const idx = state.levelIndices[level];
+      if (idx >= 0 && idx < questions.length) {
+        const qAtIdx = questions[idx];
+        // If this question is NOT yet solved, resume right here (user was reading this question)
+        if (!history[qAtIdx.id] || (history[qAtIdx.id].solved || 0) === 0) {
+          return idx;
+        }
+        // If this question WAS already solved, advance to next question
+        if (idx + 1 < questions.length) {
+          return idx + 1;
+        }
+      }
+    }
+
+    // 2. Find the question right after the most recently solved question in this level
+    let mostRecentId = null;
+    let maxDate = 0;
+    for (const q of questions) {
+      if (history[q.id] && (history[q.id].lastDate || 0) > maxDate) {
+        maxDate = history[q.id].lastDate;
+        mostRecentId = q.id;
+      }
+    }
+
+    if (mostRecentId) {
+      const solvedIdx = questions.findIndex(q => q.id === mostRecentId);
+      if (solvedIdx !== -1) {
+        if (solvedIdx + 1 < questions.length) {
+          return solvedIdx + 1;
+        }
+        return solvedIdx;
+      }
+    }
+
+    // 3. Otherwise find the first unsolved question
+    const firstUnsolved = questions.findIndex(q => !history[q.id] || (history[q.id].solved || 0) === 0);
+    if (firstUnsolved !== -1) {
+      return firstUnsolved;
+    }
+
+    return 0;
+  }
+
   // --- Level & Questions Management ---
-  function loadLevelQuestions(level) {
+  function loadLevelQuestions(level, preserveIndex = false) {
     state.level = level;
-    saveState();
 
     const rawQuestions = (window.JLPT_DATA && window.JLPT_DATA[level]) || [];
     
@@ -389,10 +451,14 @@
       shuffleArray(currentQuestions);
     }
 
-    state.currentIndex = 0;
+    if (!preserveIndex) {
+      state.currentIndex = getResumeIndex(level, currentQuestions);
+    }
+
     state.answered = false;
     state.selectedOption = null;
 
+    saveState();
     updateLevelTabsUI();
     renderTypeFilterChips();
   }
@@ -471,6 +537,8 @@
     // Bounds checking
     if (state.currentIndex >= currentQuestions.length) state.currentIndex = 0;
     if (state.currentIndex < 0) state.currentIndex = currentQuestions.length - 1;
+
+    state.levelIndices[state.level] = state.currentIndex;
 
     const q = currentQuestions[state.currentIndex];
     state.answered = false;
@@ -740,6 +808,9 @@
       }
     }
 
+    state.levelIndices[state.level] = state.currentIndex;
+    saveState();
+
     // Reveal Explanation Drawer in drill mode
     if (state.mode === 'drill' || state.mode === 'mistake-drill') {
       revealExplanation(q, isCorrect);
@@ -814,6 +885,8 @@
       state.currentIndex = 0;
       showToast('한 바퀴를 모두 풀었습니다! 처음 문제로 돌아갑니다.');
     }
+    state.levelIndices[state.level] = state.currentIndex;
+    saveState();
     renderCurrentQuestion();
   }
 
@@ -823,6 +896,8 @@
     } else {
       state.currentIndex = currentQuestions.length - 1;
     }
+    state.levelIndices[state.level] = state.currentIndex;
+    saveState();
     renderCurrentQuestion();
   }
 
