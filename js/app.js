@@ -339,6 +339,7 @@
       renderMistakesList();
     }
     syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
   function saveHistory() {
@@ -347,11 +348,13 @@
       renderStats();
     }
     syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
   function saveBookmarks() {
     localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
     syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
   // --- Level & Questions Management ---
@@ -1574,13 +1577,72 @@
     });
   }
 
+  function mergeExternalData(cloudData) {
+    if (!cloudData) return;
+    let changed = false;
+
+    if (cloudData.history) {
+      for (const [id, h] of Object.entries(cloudData.history)) {
+        if (!history[id]) {
+          history[id] = h;
+          changed = true;
+        } else {
+          const cloudSolved = h.solved || 0;
+          const localSolved = history[id].solved || 0;
+          if (cloudSolved > localSolved) {
+            history[id] = h;
+            changed = true;
+          }
+        }
+      }
+    }
+
+    if (cloudData.mistakes) {
+      for (const [id, m] of Object.entries(cloudData.mistakes)) {
+        if (!mistakes[id]) {
+          mistakes[id] = m;
+          changed = true;
+        } else {
+          const cloudCount = m.count || 1;
+          const localCount = mistakes[id].count || 1;
+          if (cloudCount >= localCount) {
+            mistakes[id] = m;
+            changed = true;
+          }
+        }
+      }
+    }
+
+    if (cloudData.bookmarks && Array.isArray(cloudData.bookmarks)) {
+      cloudData.bookmarks.forEach(b => {
+        if (!bookmarks.has(b)) {
+          bookmarks.add(b);
+          changed = true;
+        }
+      });
+    }
+
+    if (changed) {
+      localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
+      localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
+      localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
+      updateMistakeBadge();
+      renderStats();
+      if (state.currentTab === 'mistakes') {
+        renderMistakesList();
+      }
+      renderCurrentQuestion();
+    }
+  }
+
   // Expose global app object for inline handlers
   window.app = {
     init,
     switchTab,
     nextQuestion,
     prevQuestion,
-    handleOptionSelect
+    handleOptionSelect,
+    mergeExternalData
   };
 
   // Launch when DOM is ready

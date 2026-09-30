@@ -60,11 +60,14 @@
       </div>
 
       <div class="header-right">
-        <!-- Google Drive Sync Status Badge -->
-        <div class="sync-status-badge clickable" id="sync-status-badge" title="클릭하여 구글 드라이브 동기화 및 풀이 기록 가져오기/저장하기">
+        <!-- Google Drive / Firebase Sync Status Badge -->
+        <div class="sync-status-badge clickable" id="sync-status-badge" title="클릭하여 구글 드라이브/클라우드 동기화 확인">
           <span class="sync-dot" id="sync-dot"></span>
           <span class="sync-text" id="sync-text">동기화 연결 중...</span>
         </div>
+
+        <!-- Firebase Auth Profile / Login Button Container -->
+        <div id="auth-user-container" style="display:inline-flex; align-items:center;"></div>
 
         <!-- Furigana Switch -->
         <label class="toggle-pill" title="후리가나(루비) 표시 켜기/끄기 (단축키: F)">
@@ -594,9 +597,15 @@
   <script src="data/n4.js?v=2.4"></script>
   <script src="data/n5.js?v=2.4"></script>
 
+  <!-- Firebase Cloud Sync SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-sync.js?v=2.5"></script>
+
   <!-- Main App Script -->
-  <script src="data/sync_init.js?v=2.4"></script>
-  <script src="js/app.js?v=2.4"></script>
+  <script src="data/sync_init.js?v=2.5"></script>
+  <script src="js/app.js?v=2.5"></script>
 
   
   </div>
