@@ -108,47 +108,76 @@
   // --- Google Drive Sync Manager ---
   const syncManager = {
     connected: false,
-    syncUrl: window.location.origin.includes('localhost:3000') ? '' : 'http://localhost:3000',
+    syncUrl: '',
     debounceTimer: null,
 
+    getComputedSyncUrl() {
+      if (window.location.protocol.startsWith('http')) {
+        if (window.location.port === '3000' || 
+            window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1' ||
+            window.location.hostname.startsWith('192.168.')) {
+          return ''; // Same origin (localhost:3000 or 192.168.8.152:3000)
+        }
+        if (window.location.protocol === 'http:') {
+          return 'http://192.168.8.152:3000';
+        }
+      } else if (window.location.protocol === 'file:') {
+        return 'http://localhost:3000';
+      }
+      return '';
+    },
+
     async init() {
+      this.syncUrl = this.getComputedSyncUrl();
       const syncDot = document.getElementById('sync-dot');
       const syncText = document.getElementById('sync-text');
       const syncBadge = document.getElementById('sync-status-badge');
 
+      if (!this.syncUrl && window.location.protocol === 'https:') {
+        this.connected = false;
+        if (syncDot) syncDot.className = 'sync-dot cloud';
+        if (syncText) syncText.textContent = '드라이브 동기화';
+        if (syncBadge) syncBadge.title = '클릭하여 구글 드라이브 파일 백업 및 복원을 진행하세요.';
+        return;
+      }
+
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
         const res = await fetch(`${this.syncUrl}/api/sync-data`, {
           method: 'GET',
-          cache: 'no-cache'
+          cache: 'no-cache',
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
 
         if (res.ok) {
           const driveData = await res.json();
           this.connected = true;
           if (syncDot) syncDot.className = 'sync-dot connected';
-          if (syncText) syncText.textContent = '구글 드라이브 실시간 동기화';
-          if (syncBadge) syncBadge.title = '구글 드라이브 "일취" 폴더와 실시간 자동 동기화 중입니다.';
+          if (syncText) syncText.textContent = '구글 드라이브 실시간 연동 중';
+          if (syncBadge) syncBadge.title = 'PC 구글 드라이브와 실시간으로 오답노트가 자동 연동됩니다.';
 
-          // Merge drive data with local data
           this.mergeDriveData(driveData);
           console.log('[Sync] Connected to Google Drive sync server!');
           return;
         }
       } catch (err) {
-        // Server not running, running in offline/file mode
+        // Server offline
       }
 
       this.connected = false;
       if (syncDot) syncDot.className = 'sync-dot offline';
-      if (syncText) syncText.textContent = '로컬 브라우저 저장 모드';
-      if (syncBadge) syncBadge.title = '로컬 저장소에 저장 중입니다. "동기화_학습기_실행.bat"을 실행하면 구글 드라이브와 실시간 동기화됩니다.';
+      if (syncText) syncText.textContent = '드라이브 동기화';
+      if (syncBadge) syncBadge.title = '클릭하여 구글 드라이브 동기화 및 백업을 진행하세요.';
     },
 
     mergeDriveData(driveData) {
       let updated = false;
       if (driveData.mistakes) {
         for (const [id, m] of Object.entries(driveData.mistakes)) {
-          if (!mistakes[id] || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0)) {
+          if (!mistakes[id] || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.count || 1) >= (mistakes[id].count || 1)) {
             mistakes[id] = m;
             updated = true;
           }
@@ -156,15 +185,19 @@
       }
       if (driveData.history) {
         for (const [id, h] of Object.entries(driveData.history)) {
-          if (!history[id] || (h.lastDate || 0) > (history[id].lastDate || 0)) {
+          if (!history[id] || (h.lastDate || 0) > (history[id].lastDate || 0) || (h.solved || 0) > (history[id].solved || 0)) {
             history[id] = h;
             updated = true;
           }
         }
       }
       if (driveData.bookmarks && Array.isArray(driveData.bookmarks)) {
-        driveData.bookmarks.forEach(bId => bookmarks.add(bId));
-        updated = true;
+        driveData.bookmarks.forEach(bId => {
+          if (!bookmarks.has(bId)) {
+            bookmarks.add(bId);
+            updated = true;
+          }
+        });
       }
 
       if (updated) {
@@ -172,6 +205,7 @@
         localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
         localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
         updateMistakeBadge();
+        renderStats();
       }
     },
 
@@ -202,7 +236,7 @@
           if (syncText) {
             syncText.textContent = '구글 드라이브 동기화됨 ✓';
             setTimeout(() => {
-              if (syncText) syncText.textContent = '구글 드라이브 실시간 동기화';
+              if (syncText) syncText.textContent = '구글 드라이브 실시간 연동 중';
             }, 1500);
           }
         }
@@ -237,8 +271,54 @@
         state.sound = parsed.sound !== undefined ? parsed.sound : true;
         state.level = parsed.level || 'N1';
         state.type = parsed.type || 'ALL';
-        state.mode = parsed.mode || 'drill';
       }
+
+      const savedMistakes = localStorage.getItem(STORAGE_KEYS.MISTAKES);
+      if (savedMistakes) mistakes = JSON.parse(savedMistakes);
+
+      const savedHistory = localStorage.getItem(STORAGE_KEYS.HISTORY);
+      if (savedHistory) history = JSON.parse(savedHistory);
+
+      const savedBookmarks = localStorage.getItem(STORAGE_KEYS.BOOKMARKS);
+      if (savedBookmarks) bookmarks = new Set(JSON.parse(savedBookmarks));
+
+      // Always merge preloaded initial sync data (from PC / sync_init.js)
+      if (window.JLPT_INITIAL_SYNC) {
+        let changed = false;
+        if (window.JLPT_INITIAL_SYNC.history) {
+          for (const [id, h] of Object.entries(window.JLPT_INITIAL_SYNC.history)) {
+            if (!history[id] || (h.solved || 0) > (history[id].solved || 0)) {
+              history[id] = { ...h };
+              changed = true;
+            }
+          }
+        }
+        if (window.JLPT_INITIAL_SYNC.mistakes) {
+          for (const [id, m] of Object.entries(window.JLPT_INITIAL_SYNC.mistakes)) {
+            if (!mistakes[id] || (m.count || 1) >= (mistakes[id].count || 1)) {
+              mistakes[id] = { ...m };
+              changed = true;
+            }
+          }
+        }
+        if (window.JLPT_INITIAL_SYNC.bookmarks && Array.isArray(window.JLPT_INITIAL_SYNC.bookmarks)) {
+          window.JLPT_INITIAL_SYNC.bookmarks.forEach(bId => {
+            if (!bookmarks.has(bId)) {
+              bookmarks.add(bId);
+              changed = true;
+            }
+          });
+        }
+        if (changed) {
+          localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
+          localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
+          localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to parse saved state from localStorage:', e);
+    }
+  }
 
       const savedMistakes = localStorage.getItem(STORAGE_KEYS.MISTAKES);
       if (savedMistakes) mistakes = JSON.parse(savedMistakes);
@@ -1392,14 +1472,23 @@
       }
     }
 
+    function updateSyncModalStats() {
+      const statSolvedEl = document.getElementById('sync-stat-solved');
+      const statMistakesEl = document.getElementById('sync-stat-mistakes');
+      if (statSolvedEl) statSolvedEl.textContent = Object.keys(history).length + '문제';
+      if (statMistakesEl) statMistakesEl.textContent = Object.keys(mistakes).length + '문항';
+    }
+
     const badgeSync = document.getElementById('sync-status-badge');
     const modalDriveSync = document.getElementById('modal-drive-sync');
     const btnCloseSyncModal = document.getElementById('btn-close-sync-modal');
     const inputDriveImport = document.getElementById('input-drive-import');
     const btnDriveExport = document.getElementById('btn-drive-export');
+    const btnForceInitialSync = document.getElementById('btn-force-initial-sync');
 
     if (badgeSync && modalDriveSync) {
       badgeSync.addEventListener('click', () => {
+        updateSyncModalStats();
         modalDriveSync.classList.remove('hidden');
       });
     }
@@ -1407,6 +1496,18 @@
     if (btnCloseSyncModal && modalDriveSync) {
       btnCloseSyncModal.addEventListener('click', () => {
         modalDriveSync.classList.add('hidden');
+      });
+    }
+
+    if (btnForceInitialSync) {
+      btnForceInitialSync.addEventListener('click', () => {
+        if (window.JLPT_INITIAL_SYNC) {
+          mergeSyncPayload(window.JLPT_INITIAL_SYNC);
+          updateSyncModalStats();
+          showToast('⚡ PC 학습 기록 (4문제 풀이)이 성공적으로 반영되었습니다!');
+        } else {
+          showToast('초기 동기화 데이터가 없습니다.');
+        }
       });
     }
 
@@ -1419,6 +1520,7 @@
           try {
             const parsed = JSON.parse(event.target.result);
             mergeSyncPayload(parsed);
+            updateSyncModalStats();
             if (modalDriveSync) modalDriveSync.classList.add('hidden');
           } catch (err) {
             alert('올바른 jlpt_sync_data.json 파일이 아닙니다.');
@@ -1498,5 +1600,9 @@
   };
 
   // Launch when DOM is ready
-  document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

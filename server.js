@@ -48,14 +48,32 @@ const MIME_TYPES = {
 };
 
 
-function generateMistakesHtml(mistakes) {
+function generateMistakesHtml(mistakes, history) {
   const list = Object.values(mistakes || {});
   const activeMistakes = list.filter(m => !m.isMastered);
   const masteredMistakes = list.filter(m => m.isMastered);
 
+  // Stats calculation
+  const histEntries = Object.entries(history || {});
+  const totalSolvedQuestions = histEntries.length;
+  let totalAttempts = 0;
+  let totalCorrect = 0;
+  const levelStats = {};
+
+  histEntries.forEach(([qId, h]) => {
+    totalAttempts += (h.solved || 1);
+    totalCorrect += (h.correct || 0);
+    const lvl = qId.split('-')[0] || '기타';
+    if (!levelStats[lvl]) levelStats[lvl] = { questions: 0, solved: 0, correct: 0 };
+    levelStats[lvl].questions += 1;
+    levelStats[lvl].solved += (h.solved || 1);
+    levelStats[lvl].correct += (h.correct || 0);
+  });
+  const accuracyRate = totalAttempts > 0 ? ((totalCorrect / totalAttempts) * 100).toFixed(1) : '0.0';
+
   let cardsHtml = '';
   if (activeMistakes.length === 0) {
-    cardsHtml = '<div style="text-align:center; padding:3rem; color:#64748b; font-size:1.1rem;">🎉 현재 복습할 미완료 오답이 없습니다! 문제를 풀다 틀린 문제가 생기면 자동으로 이곳에 정리됩니다.</div>';
+    cardsHtml = '<div style="text-align:center; padding:3rem; color:#64748b; font-size:1.1rem; background:#fff; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.5rem;">🎉 현재 복습할 미완료 오답이 없습니다! 문제를 풀다 틀린 문제가 생기면 자동으로 이곳에 정리됩니다.</div>';
   } else {
     activeMistakes.forEach((m, idx) => {
       const correctOpt = m.options ? m.options.find(o => o.isCorrect) : null;
@@ -115,7 +133,7 @@ function generateMistakesHtml(mistakes) {
 
   let masteredRows = '';
   if (masteredMistakes.length > 0) {
-    masteredRows = '<div style="margin-top:2.5rem;"><h2 style="font-size:1.25rem; font-weight:700; color:#15803d; margin-bottom:1rem;">✨ 완전 정복(마스터) 목록 (' + masteredMistakes.length + '문항)</h2><ul style="padding-left:1.5rem; color:#334155; line-height:1.8;">';
+    masteredRows = '<div style="margin-top:2.5rem; background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.5rem;"><h2 style="font-size:1.15rem; font-weight:700; color:#15803d; margin-bottom:1rem;">✨ 완전 정복(마스터) 목록 (' + masteredMistakes.length + '문항)</h2><ul style="padding-left:1.5rem; color:#334155; line-height:1.8;">';
     masteredMistakes.forEach((m, idx) => {
       const correctOpt = m.options ? m.options.find(o => o.isCorrect) : null;
       masteredRows += `<li><b>[${m.level} ${m.typeName}]</b> ${m.qPlain} ➔ 정답: <b style="color:#15803d;">${correctOpt ? correctOpt.copy : ''}</b></li>`;
@@ -123,11 +141,24 @@ function generateMistakesHtml(mistakes) {
     masteredRows += '</ul></div>';
   }
 
+  let levelRows = '';
+  Object.keys(levelStats).sort().forEach(lvl => {
+    const s = levelStats[lvl];
+    const rate = s.solved > 0 ? ((s.correct / s.solved) * 100).toFixed(0) : '0';
+    levelRows += `<tr>
+      <td style="font-weight:700; text-align:center;">${lvl}</td>
+      <td style="text-align:center;"><b>${s.questions}문제</b></td>
+      <td style="text-align:center;">${s.solved}회</td>
+      <td style="text-align:center;">${s.correct}회</td>
+      <td style="text-align:center; font-weight:700; color:#4f46e5;">${rate}%</td>
+    </tr>`;
+  });
+
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>JLPT 실시간 스마트 오답노트 (PDF 출력 및 독스 리포트)</title>
+  <title>JLPT 실시간 스마트 오답노트 & 학습 보고서</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
@@ -169,17 +200,19 @@ function generateMistakesHtml(mistakes) {
     }
     .summary-pills {
       display: flex;
-      gap: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
       margin-top: 0.75rem;
     }
     .pill {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      padding: 0.3rem 0.85rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 9999px;
     }
+    .pill-blue { background: #e0e7ff; color: #4338ca; }
+    .pill-green { background: #dcfce7; color: #15803d; }
     .pill-wrong { background: #fee2e2; color: #dc2626; }
-    .pill-master { background: #dcfce7; color: #16a34a; }
     
     .actions-bar {
       display: flex;
@@ -201,6 +234,27 @@ function generateMistakesHtml(mistakes) {
       transition: all 0.2s;
     }
     .btn-action:hover { background: #4338ca; }
+
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background: #f8fafc;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    .stats-table th, .stats-table td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.92rem;
+    }
+    .stats-table th {
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 700;
+      text-align: center;
+    }
 
     .mistake-card {
       background: #ffffff;
@@ -314,11 +368,13 @@ function generateMistakesHtml(mistakes) {
   <div class="container">
     <div class="header-bar">
       <div class="title-area">
-        <h1>📓 JLPT 실시간 오답노트 보고서</h1>
+        <h1>📓 JLPT 실시간 스마트 오답노트 & 학습 보고서</h1>
         <div class="meta-date">최근 동기화: ${new Date().toLocaleString('ko-KR')}</div>
         <div class="summary-pills">
-          <span class="pill pill-wrong">⚠️ 복습 필요: ${activeMistakes.length}문항</span>
-          <span class="pill pill-master">✨ 정복 완료: ${masteredMistakes.length}문항</span>
+          <span class="pill pill-blue">풀이 완료: ${totalSolvedQuestions}문제 (${totalAttempts}회 시도)</span>
+          <span class="pill pill-green">정답률: ${accuracyRate}%</span>
+          <span class="pill pill-wrong">⚠️ 복습 대기: ${activeMistakes.length}문항</span>
+          <span class="pill pill-green">✨ 정복 완료: ${masteredMistakes.length}문항</span>
         </div>
       </div>
       <div class="actions-bar">
@@ -328,6 +384,25 @@ function generateMistakesHtml(mistakes) {
         </button>
       </div>
     </div>
+
+    <!-- Stats Table -->
+    <h2 style="font-size:1.15rem; font-weight:700; color:#0f172a; margin-bottom:0.75rem;">📊 급수별 문제 풀이 현황</h2>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>급수</th>
+          <th>푼 문제 수</th>
+          <th>풀이 시도</th>
+          <th>정답 횟수</th>
+          <th>정답률</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${levelRows}
+      </tbody>
+    </table>
+
+    <h2 style="font-size:1.15rem; font-weight:700; color:#0f172a; margin-bottom:0.75rem;">⚠️ 취약 파트 및 오답 상세 분석</h2>
     ${cardsHtml}
     ${masteredRows}
   </div>
@@ -341,10 +416,9 @@ function generateMistakesHtml(mistakes) {
 </html>`;
 }
 
-function generateMistakesMarkdown(mistakes) {
+function generateMistakesMarkdown(mistakes, history) {
   const list = Object.values(mistakes || {});
   
-  // 1. Sort active mistakes by: 1) Most mistakes first (count desc), 2) Most recent date
   const activeMistakes = list.filter(m => !m.isMastered).sort((a, b) => {
     return (b.count || 1) - (a.count || 1) || (b.lastWrongDate || 0) - (a.lastWrongDate || 0);
   });
@@ -353,7 +427,26 @@ function generateMistakesMarkdown(mistakes) {
     return (b.lastWrongDate || 0) - (a.lastWrongDate || 0);
   });
 
-  // Calculate statistics by Type (동일 유형/파트별 오답 집중도 집계)
+  // Calculate statistics from history
+  const histEntries = Object.entries(history || {});
+  const totalSolvedQuestions = histEntries.length;
+  let totalAttempts = 0;
+  let totalCorrect = 0;
+  const levelStats = {};
+
+  histEntries.forEach(([qId, h]) => {
+    totalAttempts += (h.solved || 1);
+    totalCorrect += (h.correct || 0);
+    const lvl = qId.split('-')[0] || '기타';
+    if (!levelStats[lvl]) levelStats[lvl] = { questions: 0, solved: 0, correct: 0 };
+    levelStats[lvl].questions += 1;
+    levelStats[lvl].solved += (h.solved || 1);
+    levelStats[lvl].correct += (h.correct || 0);
+  });
+
+  const accuracyRate = totalAttempts > 0 ? ((totalCorrect / totalAttempts) * 100).toFixed(1) : '0.0';
+
+  // Calculate statistics by Type
   const typeStats = {};
   activeMistakes.forEach(m => {
     const key = `[${m.level}] ${m.typeName}`;
@@ -361,16 +454,29 @@ function generateMistakesMarkdown(mistakes) {
   });
   const sortedTypes = Object.entries(typeStats).sort((a, b) => b[1] - a[1]);
 
-  let md = `# 📓 구글 드라이브 실시간 연동 JLPT 오답노트 (구글 독스 열람용)\n\n`;
+  let md = `# 📓 구글 드라이브 실시간 연동 JLPT 학습기 & 오답노트 (구글 독스 열람용)\n\n`;
   md += `> **마지막 동기화**: ${new Date().toLocaleString('ko-KR')}\n`;
-  md += `> **복습 대기 오답**: ${activeMistakes.length}문항 | **정복 완료**: ${masteredMistakes.length}문항\n`;
+  md += `> **풀이 완료 문제**: **총 ${totalSolvedQuestions}문제** (누적 ${totalAttempts}회 시도) | **전체 정답률**: **${accuracyRate}%**\n`;
+  md += `> **오답 상태**: 복습 대기 **${activeMistakes.length}문항** | 완전 정복 **${masteredMistakes.length}문항**\n`;
   md += `> **정렬 방식**: **다빈도 오답 우선 정렬 (많이 틀린 문제가 가장 위에 올라옵니다)**\n\n`;
+  md += `---\n\n`;
+
+  // 1. 학습 진행 현황 표 (급수별 푼 문제 수)
+  md += `## 📈 급수별 문제 풀이 현황 (총 ${totalSolvedQuestions}문제 완료)\n\n`;
+  md += `| 급수 | 푼 문제 수 | 총 풀이 시도 | 정답 횟수 | 정답률 |\n`;
+  md += `| :---: | :---: | :---: | :---: | :---: |\n`;
+  Object.keys(levelStats).sort().forEach(lvl => {
+    const s = levelStats[lvl];
+    const rate = s.solved > 0 ? ((s.correct / s.solved) * 100).toFixed(0) : '0';
+    md += `| **${lvl}** | **${s.questions}문제** | ${s.solved}회 | ${s.correct}회 | **${rate}%** |\n`;
+  });
+  md += `| **합계** | **${totalSolvedQuestions}문제** | **${totalAttempts}회** | **${totalCorrect}회** | **${accuracyRate}%** |\n\n`;
   md += `---\n\n`;
 
   if (activeMistakes.length === 0) {
     md += `## 🎉 현재 복습할 미완료 오답이 없습니다!\n\n문제를 풀다 틀린 문제가 생기면 이곳에 자동으로 추가됩니다.\n\n`;
   } else {
-    // 1. 파트별 오답 누적 순위 요약표 (구글 독스 서식 최적화)
+    // 2. 파트별 취약도 분석 표
     if (sortedTypes.length > 0) {
       md += `## 📊 파트별 취약도 집중 분석 표\n\n`;
       md += `오답이 자주 발생하는 취약 파트 순서대로 정렬된 요약표입니다.\n\n`;
@@ -384,7 +490,7 @@ function generateMistakesMarkdown(mistakes) {
       md += `\n---\n\n`;
     }
 
-    // 2. 많이 틀린 순서대로 상세 오답 카드 목록
+    // 3. 다빈도 오답 집중 분석 목록
     md += `## ⚠️ 다빈도 오답 집중 분석 목록 (많이 틀린 순 정렬)\n\n`;
     activeMistakes.forEach((m, idx) => {
       const correctOpt = m.options ? m.options.find(o => o.isCorrect) : null;
@@ -493,8 +599,8 @@ const server = http.createServer((req, res) => {
         fs.writeFileSync(SYNC_DATA_FILE, JSON.stringify(payload, null, 2), 'utf-8');
 
         // 2. Automatically generate & write human-readable Markdown file for Google Drive
-        const mdContent = generateMistakesMarkdown(payload.mistakes || {});
-        const reportHtml = generateMistakesHtml(payload.mistakes || {});
+        const mdContent = generateMistakesMarkdown(payload.mistakes || {}, payload.history || {});
+        const reportHtml = generateMistakesHtml(payload.mistakes || {}, payload.history || {});
 
         // Save HTML report for clean web & 1-click PDF viewing
         const REPORT_HTML_FILE = path.join(BASE_DIR, '오답노트_보고서.html');
