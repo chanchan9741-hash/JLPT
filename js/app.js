@@ -246,6 +246,13 @@
       const savedHistory = localStorage.getItem(STORAGE_KEYS.HISTORY);
       if (savedHistory) history = JSON.parse(savedHistory);
 
+      // Preload initial progress if this device is brand new
+      if ((!savedHistory || Object.keys(history).length === 0) && window.JLPT_INITIAL_SYNC) {
+        if (window.JLPT_INITIAL_SYNC.history) history = { ...window.JLPT_INITIAL_SYNC.history };
+        if (window.JLPT_INITIAL_SYNC.mistakes) mistakes = { ...window.JLPT_INITIAL_SYNC.mistakes };
+        if (window.JLPT_INITIAL_SYNC.bookmarks) bookmarks = new Set(window.JLPT_INITIAL_SYNC.bookmarks);
+      }
+
       const savedBookmarks = localStorage.getItem(STORAGE_KEYS.BOOKMARKS);
       if (savedBookmarks) bookmarks = new Set(JSON.parse(savedBookmarks));
     } catch (e) {
@@ -1327,6 +1334,119 @@
         showToast('데이터가 초기화되었습니다.');
       }
     });
+
+    
+    // --- Google Drive Sync Modal & Data Merge ---
+    function mergeSyncPayload(payload) {
+      let updated = false;
+
+      if (payload.history) {
+        for (const [id, h] of Object.entries(payload.history)) {
+          if (!history[id]) {
+            history[id] = h;
+            updated = true;
+          } else {
+            history[id].solved = Math.max(history[id].solved || 0, h.solved || 0);
+            history[id].correct = Math.max(history[id].correct || 0, h.correct || 0);
+            if ((h.lastDate || 0) > (history[id].lastDate || 0)) {
+              history[id].lastResult = h.lastResult;
+              history[id].lastDate = h.lastDate;
+            }
+            updated = true;
+          }
+        }
+      }
+
+      if (payload.mistakes) {
+        for (const [id, m] of Object.entries(payload.mistakes)) {
+          if (!mistakes[id]) {
+            mistakes[id] = m;
+            updated = true;
+          } else {
+            mistakes[id].count = Math.max(mistakes[id].count || 1, m.count || 1);
+            if (m.isMastered && !mistakes[id].isMastered) mistakes[id].isMastered = true;
+            if ((m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0)) {
+              mistakes[id].wrongChoice = m.wrongChoice;
+              mistakes[id].lastWrongDate = m.lastWrongDate;
+            }
+            updated = true;
+          }
+        }
+      }
+
+      if (payload.bookmarks && Array.isArray(payload.bookmarks)) {
+        payload.bookmarks.forEach(b => bookmarks.add(b));
+        updated = true;
+      }
+
+      if (updated) {
+        saveState();
+        saveHistory();
+        saveMistakes();
+        saveBookmarks();
+        renderStats();
+        updateMistakeBadge();
+        renderCurrentQuestion();
+        const totalSolved = Object.keys(history).length;
+        showToast(`✅ 구글 드라이브 동기화 완료! (총 ${totalSolved}문제 푼 기록 반영됨)`);
+      }
+    }
+
+    const badgeSync = document.getElementById('sync-status-badge');
+    const modalDriveSync = document.getElementById('modal-drive-sync');
+    const btnCloseSyncModal = document.getElementById('btn-close-sync-modal');
+    const inputDriveImport = document.getElementById('input-drive-import');
+    const btnDriveExport = document.getElementById('btn-drive-export');
+
+    if (badgeSync && modalDriveSync) {
+      badgeSync.addEventListener('click', () => {
+        modalDriveSync.classList.remove('hidden');
+      });
+    }
+
+    if (btnCloseSyncModal && modalDriveSync) {
+      btnCloseSyncModal.addEventListener('click', () => {
+        modalDriveSync.classList.add('hidden');
+      });
+    }
+
+    if (inputDriveImport) {
+      inputDriveImport.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const parsed = JSON.parse(event.target.result);
+            mergeSyncPayload(parsed);
+            if (modalDriveSync) modalDriveSync.classList.add('hidden');
+          } catch (err) {
+            alert('올바른 jlpt_sync_data.json 파일이 아닙니다.');
+          }
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    if (btnDriveExport) {
+      btnDriveExport.addEventListener('click', () => {
+        const payload = {
+          lastSyncTime: Date.now(),
+          lastSyncDate: new Date().toISOString(),
+          history,
+          mistakes,
+          bookmarks: Array.from(bookmarks)
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'jlpt_sync_data.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('💾 jlpt_sync_data.json 저장 완료! 구글 드라이브에 넣어주세요.');
+      });
+    }
 
     // Global Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
