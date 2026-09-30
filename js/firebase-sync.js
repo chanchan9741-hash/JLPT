@@ -239,41 +239,68 @@ window.JLPT_FIREBASE = (function () {
     }
   }
 
+  function checkInAppBrowser() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    return /KAKAOTALK|NAVER|Instagram|Line|FBAN|FBAV/i.test(ua);
+  }
+
+  function handleAuthError(err) {
+    if (!err) return;
+    console.error('[Firebase Auth Error]', err);
+    if (err.code === 'auth/unauthorized-domain') {
+      alert('⚠️ [승인되지 않은 도메인 오류]\n\nFirebase 콘솔 > Authentication > 설정(Settings) > [승인된 도메인]에\n\n👉 chanchan9741-hash.github.io\n\n를 등록해 주셔야 로그인할 수 있습니다!');
+    } else if (err.code === 'auth/operation-not-allowed') {
+      alert('⚠️ [Google 로그인 공급자 비활성화]\n\nFirebase 콘솔 > Authentication > [Sign-in method] 탭에서 [Google]을 클릭하여 [사용 설정]을 켜주세요!');
+    } else if (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') {
+      // User cancelled
+    } else if (err.code === 'auth/network-request-failed') {
+      alert('⚠️ 네트워크 연결이 불안정합니다. 인터넷 연결을 확인해 주세요.');
+    } else {
+      alert(`⚠️ 로그인 오류 (${err.code || 'UNKNOWN'}):\n${err.message}`);
+    }
+  }
+
   async function loginWithGoogle() {
     if (!isConfigured()) {
       showConfigModal();
       return;
     }
+
+    // 1. Check In-App Browser (KakaoTalk, Naver, etc.)
+    if (checkInAppBrowser()) {
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      if (isAndroid) {
+        // Auto-open in Chrome for Android KakaoTalk
+        location.href = 'intent://' + location.href.replace(/https?:\/\//i, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+        return;
+      } else {
+        alert('⚠️ [외부 브라우저 필요]\n\n카카오톡/네이버 등 인앱 브라우저에서는 Google의 보안 정책상 로그인이 제한됩니다.\n\n화면 우측 상단/하단의 [⋮] 버튼을 눌러 [Safari 또는 Chrome으로 열기]를 선택해 주세요!');
+        return;
+      }
+    }
+
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      try {
-        await firebase.auth().signInWithRedirect(provider);
-      } catch (err) {
-        if (err.code === 'auth/unauthorized-domain') {
-          alert('⚠️ [도메인 미승인 오류]\nFirebase 콘솔의 [Authentication] > [설정] > [승인된 도메인]에\nchanchan9741-hash.github.io\n를 등록해 주셔야 로그인할 수 있습니다!');
-        } else {
-          alert('구글 로그인 오류: ' + err.message);
-        }
-      }
-      return;
-    }
-
+    // 2. Try signInWithPopup first (Works reliably on mobile Chrome/Safari without ITP redirect loss!)
     try {
-      await firebase.auth().signInWithPopup(provider);
+      const result = await firebase.auth().signInWithPopup(provider);
+      if (result && result.user) {
+        console.log('[Firebase] Popup login successful:', result.user.email);
+        handleAuthStateChanged(result.user);
+        if (window.showToast) window.showToast('✅ Google 로그인 완료: ' + (result.user.displayName || result.user.email));
+      }
     } catch (err) {
-      if (err.code === 'auth/popup-blocked' || 
-          err.code === 'auth/popup-closed-by-user' || 
-          err.code === 'auth/cancelled-popup-request') {
-        // Fallback to redirect
-        await firebase.auth().signInWithRedirect(provider);
-      } else if (err.code === 'auth/unauthorized-domain') {
-        alert('⚠️ [도메인 미승인 오류]\nFirebase 콘솔의 [Authentication] > [설정] > [승인된 도메인]에\nchanchan9741-hash.github.io\n를 등록해 주셔야 로그인할 수 있습니다!');
+      if (err.code === 'auth/popup-blocked') {
+        // Fallback to redirect only if popup is strictly blocked by browser
+        console.warn('[Firebase] Popup blocked, attempting redirect fallback...');
+        try {
+          await firebase.auth().signInWithRedirect(provider);
+        } catch (redirectErr) {
+          handleAuthError(redirectErr);
+        }
       } else {
-        alert('구글 로그인 오류: ' + err.message);
+        handleAuthError(err);
       }
     }
   }
