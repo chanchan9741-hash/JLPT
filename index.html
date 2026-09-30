@@ -10,8 +10,10 @@
   <meta name="description" content="JLPT N1~N5 실전 기출 문제 풀이, 자동 오답노트 수집 및 취약점 분석 스마트 학습 시스템">
   
     <!-- PWA & Mobile Web App Meta -->
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="manifest.json?v=3.3">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=3.3">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon.png?v=3.3">
+  <link rel="apple-touch-icon" href="icon.png?v=3.3">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="JLPT Master">
@@ -22,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=3.2">
+  <link rel="stylesheet" href="css/style.css?v=3.3">
 </head>
 <body>
   <div class="app-layout">
@@ -30,12 +32,7 @@
     <header class="app-header">
       <div class="header-left">
         <div class="logo">
-          <div class="logo-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-              <path d="m9 9.5 2 2 4-4"/>
-            </svg>
-          </div>
+          <img src="icon.png?v=3.3" alt="JLPT Master Logo" class="logo-app-icon" width="36" height="36">
           <div class="logo-text">
             <span class="logo-title">JLPT <span class="gradient-text">MASTER</span></span>
             <span class="logo-subtitle">스마트 실전 학습 & 오답노트</span>
@@ -662,7 +659,7 @@
 
   <!-- Main App Script -->
   <script src="data/sync_init.js?v=3.0"></script>
-  <script src="js/app.js?v=3.2"></script>
+  <script src="js/app.js?v=3.3"></script>
 
   
   </div>

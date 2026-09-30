@@ -185,6 +185,22 @@ kbd {
   cursor: pointer;
 }
 
+.logo-app-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  transition: transform var(--transition-bounce), box-shadow var(--transition-normal);
+}
+
+.logo:hover .logo-app-icon {
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(200, 16, 46, 0.2);
+}
+
 .logo-icon {
   display: flex;
   align-items: center;
