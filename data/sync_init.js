@@ -74,10 +74,10 @@ window.JLPT_INITIAL_SYNC = {
   },
   "history": {
     "N1-0001": {
-      "solved": 3,
-      "correct": 2,
+      "solved": 4,
+      "correct": 3,
       "lastResult": true,
-      "lastDate": 1790755998808
+      "lastDate": 1790764920475
     },
     "N1-0002": {
       "solved": 1,
@@ -99,7 +99,7 @@ window.JLPT_INITIAL_SYNC = {
     }
   },
   "bookmarks": [],
-  "clientTimestamp": 1790757080799,
-  "lastSyncTime": 1790757080801,
-  "lastSyncDate": "2026-09-30T08:31:20.801Z"
+  "clientTimestamp": 1790764920879,
+  "lastSyncTime": 1790764920880,
+  "lastSyncDate": "2026-09-30T10:42:00.880Z"
 };

@@ -320,26 +320,6 @@
     }
   }
 
-      const savedMistakes = localStorage.getItem(STORAGE_KEYS.MISTAKES);
-      if (savedMistakes) mistakes = JSON.parse(savedMistakes);
-
-      const savedHistory = localStorage.getItem(STORAGE_KEYS.HISTORY);
-      if (savedHistory) history = JSON.parse(savedHistory);
-
-      // Preload initial progress if this device is brand new
-      if ((!savedHistory || Object.keys(history).length === 0) && window.JLPT_INITIAL_SYNC) {
-        if (window.JLPT_INITIAL_SYNC.history) history = { ...window.JLPT_INITIAL_SYNC.history };
-        if (window.JLPT_INITIAL_SYNC.mistakes) mistakes = { ...window.JLPT_INITIAL_SYNC.mistakes };
-        if (window.JLPT_INITIAL_SYNC.bookmarks) bookmarks = new Set(window.JLPT_INITIAL_SYNC.bookmarks);
-      }
-
-      const savedBookmarks = localStorage.getItem(STORAGE_KEYS.BOOKMARKS);
-      if (savedBookmarks) bookmarks = new Set(JSON.parse(savedBookmarks));
-    } catch (e) {
-      console.warn('Failed to parse saved state from localStorage:', e);
-    }
-  }
-
   function saveState() {
     localStorage.setItem(STORAGE_KEYS.STATE, JSON.stringify({
       theme: state.theme,
@@ -381,7 +361,11 @@
 
     const rawQuestions = (window.JLPT_DATA && window.JLPT_DATA[level]) || [];
     
-    // Filter by type
+    // Filter by type (fallback to ALL if current type doesn't exist in this level)
+    if (state.type !== 'ALL' && !rawQuestions.some(q => q.typeName === state.type)) {
+      state.type = 'ALL';
+    }
+
     if (state.type === 'ALL') {
       currentQuestions = [...rawQuestions];
     } else {
