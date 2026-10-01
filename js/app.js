@@ -70,7 +70,8 @@
     STATE: 'jlpt_state_v1',
     MISTAKES: 'jlpt_mistakes_v1',
     HISTORY: 'jlpt_history_v1',
-    BOOKMARKS: 'jlpt_bookmarks_v1'
+    BOOKMARKS: 'jlpt_bookmarks_v1',
+    SRS: 'jlpt_srs_v1'
   };
 
   // --- Global Application State ---
@@ -98,10 +99,22 @@
     }
   };
 
+  // Anki Spaced Repetition (SRS) State
+  let ankiState = {
+    level: 'ALL',
+    source: 'due', // 'due' | 'mistakes' | 'all_srs' | 'history' | 'bookmarks'
+    mode: 'flashcard', // 'flashcard' | 'quiz'
+    currentQueue: [],
+    queueIndex: 0,
+    isFlipped: false,
+    sessionSolvedCount: 0
+  };
+
   // User persistent data
   let mistakes = {}; // id -> mistake object
   let history = {};  // id -> { solved: 0, correct: 0, lastResult: true/false }
   let bookmarks = new Set();
+  let srs = {};      // id -> { id, level, repetitions, interval, easeFactor, dueDate, lastReviewed, state, lapses }
 
   // Active question set based on level & filters
   let currentQuestions = [];
@@ -257,7 +270,11 @@
     loadPersistentData();
     applyTheme(state.theme);
     setupEventListeners();
+    document.querySelectorAll('#mode-segmented .seg-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === state.mode);
+    });
     updateMistakeBadge();
+    updateAnkiBadge();
     loadLevelQuestions(state.level);
     renderTypeFilterChips();
     renderCurrentQuestion();
@@ -304,6 +321,29 @@
 
       const savedBookmarks = localStorage.getItem(STORAGE_KEYS.BOOKMARKS);
       if (savedBookmarks) bookmarks = new Set(JSON.parse(savedBookmarks));
+
+      const savedSrs = localStorage.getItem(STORAGE_KEYS.SRS);
+      if (savedSrs) {
+        srs = JSON.parse(savedSrs);
+      }
+
+      // Auto-migration & seeding of SRS from mistakes if SRS is empty
+      if (Object.keys(srs).length === 0 && Object.keys(mistakes).length > 0) {
+        for (const [id, m] of Object.entries(mistakes)) {
+          srs[id] = {
+            id: m.id || id,
+            level: m.level || id.split('-')[0] || 'N1',
+            repetitions: m.isMastered ? 3 : 0,
+            interval: m.isMastered ? 21 : 1,
+            easeFactor: 2.5,
+            dueDate: m.isMastered ? Date.now() + 21 * 86400000 : Date.now(),
+            lastReviewed: m.lastWrongDate || Date.now(),
+            state: m.isMastered ? 'mastered' : 'learning',
+            lapses: m.count || 1
+          };
+        }
+        localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
+      }
 
       // Always merge preloaded initial sync data (from PC / sync_init.js)
       if (window.JLPT_INITIAL_SYNC) {
@@ -381,6 +421,14 @@
     if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
+  function saveSrs() {
+    localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
+    updateAnkiBadge();
+    renderStats();
+    syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
+  }
+
   // Resume from the user's last solved question or next question in line
   function getResumeIndex(level, questions) {
     if (!questions || questions.length === 0) return 0;
@@ -430,6 +478,99 @@
     return 0;
   }
 
+  // --- Anki-style Weighted Repetition Queue Builder ---
+  function buildSrsDrillQueue(questions) {
+    if (!questions || questions.length === 0) return [];
+
+    const now = Date.now();
+    const highMistakes = [];
+    const regularMistakes = [];
+    const dueQuestions = [];
+    const unseenQuestions = [];
+    const solvedQuestions = [];
+
+    questions.forEach(q => {
+      const m = mistakes[q.id];
+      const s = srs[q.id];
+      const h = history[q.id];
+
+      if (m && !m.isMastered) {
+        if (m.count >= 2) {
+          highMistakes.push(q);
+        } else {
+          regularMistakes.push(q);
+        }
+      } else if (s && (s.dueDate || 0) <= now + 60000) {
+        dueQuestions.push(q);
+      } else if (!h || h.solved === 0) {
+        unseenQuestions.push(q);
+      } else {
+        solvedQuestions.push(q);
+      }
+    });
+
+    // Sort high-frequency mistakes by highest wrong count descending
+    highMistakes.sort((a, b) => (mistakes[b.id].count || 1) - (mistakes[a.id].count || 1));
+    shuffleArray(regularMistakes);
+    shuffleArray(dueQuestions);
+    shuffleArray(unseenQuestions);
+    shuffleArray(solvedQuestions);
+
+    const queue = [];
+
+    // 1. High-frequency mistakes appear multiple times (up to 3 times) throughout the queue
+    highMistakes.forEach(q => {
+      const count = mistakes[q.id].count || 2;
+      const repeats = Math.min(3, count);
+      for (let r = 0; r < repeats; r++) {
+        queue.push({ ...q, isWeightedRepeat: true });
+      }
+    });
+
+    // 2. Regular mistakes (1~2 times)
+    regularMistakes.forEach(q => {
+      queue.push({ ...q, isWeightedRepeat: true });
+    });
+
+    // 3. Due spaced repetition cards
+    dueQuestions.forEach(q => {
+      queue.push({ ...q, isDueReview: true });
+    });
+
+    // 4. Mix in fresh unseen questions
+    unseenQuestions.forEach(q => {
+      queue.push({ ...q });
+    });
+
+    // 5. Already solved questions
+    solvedQuestions.forEach(q => {
+      queue.push({ ...q });
+    });
+
+    return interleaveQueue(queue);
+  }
+
+  function interleaveQueue(items) {
+    if (items.length <= 3) return items;
+    const result = [];
+    const pool = [...items];
+
+    while (pool.length > 0) {
+      let foundIdx = -1;
+      for (let i = 0; i < pool.length; i++) {
+        const id = pool[i].id;
+        const recent = result.slice(-3).map(x => x.id);
+        if (!recent.includes(id)) {
+          foundIdx = i;
+          break;
+        }
+      }
+      if (foundIdx === -1) foundIdx = 0;
+      result.push(pool.splice(foundIdx, 1)[0]);
+    }
+    return result;
+  }
+
   // --- Level & Questions Management ---
   function loadLevelQuestions(level, preserveIndex = false) {
     state.level = level;
@@ -447,7 +588,9 @@
       currentQuestions = rawQuestions.filter(q => q.typeName === state.type);
     }
 
-    if (state.isShuffled) {
+    if (state.mode === 'srs-drill') {
+      currentQuestions = buildSrsDrillQueue(currentQuestions);
+    } else if (state.isShuffled) {
       shuffleArray(currentQuestions);
     }
 
@@ -569,17 +712,39 @@
       if (dot) dot.classList.toggle('active', state.showTrans);
     }
 
-    // Mistake badge
+    // Mistake badge & Anki frequency indicators
     const m = mistakes[q.id];
-    if (m && !m.isMastered) {
+    mistakeBadge.style.color = '';
+    mistakeBadge.style.borderColor = '';
+    mistakeBadge.style.background = '';
+    if (q.isRequeued) {
       mistakeBadge.classList.remove('hidden');
-      mistakeBadge.textContent = `⚠️ 오답 ${m.count}회`;
+      mistakeBadge.style.color = '#ef4444';
+      mistakeBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+      mistakeBadge.style.background = 'rgba(239, 68, 68, 0.12)';
+      mistakeBadge.textContent = '🔄 방금 틀린 문제 재도전 (안키 반복)';
+    } else if (m && !m.isMastered) {
+      mistakeBadge.classList.remove('hidden');
+      if (m.count >= 2) {
+        mistakeBadge.style.color = '#dc2626';
+        mistakeBadge.style.borderColor = 'rgba(220, 38, 38, 0.4)';
+        mistakeBadge.style.background = 'rgba(220, 38, 38, 0.15)';
+        mistakeBadge.textContent = `🔥 누적 오답 ${m.count}회 (빈도 집중)`;
+      } else {
+        mistakeBadge.textContent = `⚠️ 오답 ${m.count}회`;
+      }
     } else if (m && m.isMastered) {
       mistakeBadge.classList.remove('hidden');
       mistakeBadge.style.color = 'var(--success)';
       mistakeBadge.style.borderColor = 'var(--success-border)';
       mistakeBadge.style.background = 'var(--success-bg)';
       mistakeBadge.textContent = '✨ 정복 완료';
+    } else if (state.mode === 'srs-drill') {
+      mistakeBadge.classList.remove('hidden');
+      mistakeBadge.style.color = 'var(--primary)';
+      mistakeBadge.style.borderColor = 'var(--border-subtle)';
+      mistakeBadge.style.background = 'var(--bg-elevated)';
+      mistakeBadge.textContent = '🔁 안키 빈도 반복 모드';
     } else {
       mistakeBadge.classList.add('hidden');
     }
@@ -738,7 +903,7 @@
   }
 
   function handleOptionSelect(optIndex) {
-    if (state.answered && state.mode === 'drill') return;
+    if (state.answered && (state.mode === 'drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill')) return;
 
     const q = currentQuestions[state.currentIndex];
     const selectedOpt = q.options[optIndex];
@@ -776,7 +941,7 @@
     history[q.id].lastDate = Date.now();
     saveHistory();
 
-    // Auto-update Mistake Notebook
+    // Auto-update Mistake Notebook & Anki SRS
     if (!isCorrect) {
       sound.playWrong();
       if (!mistakes[q.id]) {
@@ -796,7 +961,28 @@
         mistakes[q.id].isMastered = false;
       }
       saveMistakes();
-      showToast('⚠️ 오답노트에 자동 등록되었습니다.');
+
+      // Automatically enroll or update in Anki SRS with 'again' (1 day interval)
+      const curSrs = srs[q.id] || {
+        id: q.id,
+        level: q.level || state.level,
+        repetitions: 0,
+        interval: 1,
+        easeFactor: 2.5,
+        state: 'learning',
+        lapses: 0
+      };
+      srs[q.id] = calculateNextSrs(curSrs, 'again');
+      saveSrs();
+
+      if (state.mode === 'srs-drill') {
+        const offset = Math.min(3, Math.max(2, currentQuestions.length - state.currentIndex - 1));
+        const targetIndex = state.currentIndex + offset + 1;
+        currentQuestions.splice(targetIndex, 0, { ...q, isRequeued: true });
+        showToast(`🔁 [안키 빈도 반복] ${offset + 1}문제 뒤에 다시 출제됩니다! (누적 오답 ${mistakes[q.id].count}회)`);
+      } else {
+        showToast('⚠️ 오답노트 & 안키 복습 덱에 자동 등록되었습니다.');
+      }
     } else {
       sound.playCorrect();
       // If this was an existing mistake, celebrate mastery!
@@ -804,7 +990,17 @@
         mistakes[q.id].isMastered = true;
         mistakes[q.id].masteredDate = Date.now();
         saveMistakes();
-        showToast('🎉 오답노트 문제 정복(마스터) 완료!');
+        if (state.mode === 'srs-drill' && q.isRequeued) {
+          showToast('🎉 재도전 성공! 오답을 완전히 극복했습니다.');
+        } else {
+          showToast('🎉 오답노트 문제 정복(마스터) 완료!');
+        }
+      }
+
+      // If card was in Anki SRS deck, reward with 'good'
+      if (srs[q.id]) {
+        srs[q.id] = calculateNextSrs(srs[q.id], 'good');
+        saveSrs();
       }
     }
 
@@ -812,7 +1008,7 @@
     saveState();
 
     // Reveal Explanation Drawer in drill mode
-    if (state.mode === 'drill' || state.mode === 'mistake-drill') {
+    if (state.mode === 'drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill') {
       revealExplanation(q, isCorrect);
     }
   }
@@ -843,6 +1039,42 @@
       resultText.textContent = '아쉽습니다. 오답입니다.';
       autoNoteTag.classList.remove('hidden');
       autoNoteText.textContent = `오답노트에 기록됨 (총 ${mistakes[q.id] ? mistakes[q.id].count : 1}회 오답)`;
+    }
+
+    // Update Quiz Anki SRS Bar
+    const quizAnkiStatusTag = document.getElementById('quiz-anki-status-tag');
+    if (quizAnkiStatusTag) {
+      const card = srs[q.id];
+      if (card) {
+        const stateName = card.state === 'mastered' ? '✨ 마스터' : (card.state === 'review' ? '복습' : '학습중');
+        const dueText = getCardDueDateText(card);
+        quizAnkiStatusTag.textContent = `${stateName} (${card.interval}일 간격 · ${dueText})`;
+      } else {
+        quizAnkiStatusTag.textContent = '새 카드 (클릭하여 안키 복습 주기 지정)';
+      }
+
+      ['again', 'hard', 'good', 'easy'].forEach(grade => {
+        const btn = document.getElementById(`quiz-btn-anki-${grade}`);
+        if (btn) {
+          btn.onclick = () => {
+            const currentCard = srs[q.id] || {
+              id: q.id,
+              level: q.level || state.level,
+              repetitions: 0,
+              interval: 1,
+              easeFactor: 2.5,
+              state: 'learning',
+              lapses: 0
+            };
+            const next = calculateNextSrs(currentCard, grade);
+            srs[q.id] = next;
+            saveSrs();
+            showToast(`🔁 안키: ${next.interval}일 후 복습으로 저장되었습니다.`);
+            const stateName = next.state === 'mastered' ? '✨ 마스터' : (next.state === 'review' ? '복습' : '학습중');
+            quizAnkiStatusTag.textContent = `${stateName} (${next.interval}일 간격 · ${getCardDueDateText(next)})`;
+          };
+        }
+      });
     }
 
     // Complete sentence display
@@ -1092,6 +1324,360 @@
     showToast('📥 오답노트 마크다운 파일이 다운로드되었습니다.');
   }
 
+  // --- Export Mistakes to CSV (Excel compatible with UTF-8 BOM) ---
+  function exportMistakesToCsv() {
+    const allMistakes = Object.values(mistakes);
+    if (allMistakes.length === 0) {
+      showToast('내보낼 오답노트가 비어 있습니다.');
+      return;
+    }
+
+    const headers = [
+      '번호', '급수', '문제유형', '오답횟수', '정복여부', '지시사항',
+      '문제(일본어)', '문제해석',
+      '보기1', '보기2', '보기3', '보기4',
+      '정답', '정답해석', '정답완성문장', '완성문장해석', '해설'
+    ];
+
+    function escapeCsv(cell) {
+      if (cell === null || cell === undefined) return '""';
+      const str = String(cell).replace(/"/g, '""').replace(/\r?\n/g, ' ');
+      return `"${str}"`;
+    }
+
+    const rows = [headers.join(',')];
+
+    allMistakes.forEach((m, idx) => {
+      const correctOpt = m.options ? m.options.find(o => o.isCorrect) : null;
+      const optTexts = (m.options || []).map(o => {
+        let t = `${o.marker || ''} ${o.copy || ''}`;
+        if (o.trans) t += ` (${o.trans})`;
+        if (o.isCorrect) t += ' [정답]';
+        return t;
+      });
+      while (optTexts.length < 4) optTexts.push('');
+
+      let explText = '';
+      if (m.expl && m.expl.main) {
+        explText = m.expl.main;
+        if (m.expl.choices && m.expl.choices.length > 0) {
+          explText += ' | ' + m.expl.choices.map(c => `${c.marker}: ${c.note}`).join('; ');
+        }
+      }
+
+      const row = [
+        idx + 1,
+        escapeCsv(m.level || ''),
+        escapeCsv(m.typeName || ''),
+        m.count || 1,
+        escapeCsv(m.isMastered ? '정복완료' : '복습대기'),
+        escapeCsv(m.instruction || ''),
+        escapeCsv(m.qPlain || ''),
+        escapeCsv(m.qTrans || ''),
+        escapeCsv(optTexts[0]),
+        escapeCsv(optTexts[1]),
+        escapeCsv(optTexts[2]),
+        escapeCsv(optTexts[3]),
+        escapeCsv(correctOpt ? `${correctOpt.marker || ''} ${correctOpt.copy || ''}` : ''),
+        escapeCsv(correctOpt && correctOpt.trans ? correctOpt.trans : ''),
+        escapeCsv(m.ansJa || ''),
+        escapeCsv(m.ansKo || ''),
+        escapeCsv(explText)
+      ];
+      rows.push(row.join(','));
+    });
+
+    const csvContent = '\uFEFF' + rows.join('\r\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `JLPT_오답노트_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showToast('📊 오답노트 엑셀/CSV 파일이 다운로드되었습니다.');
+  }
+
+  // --- Export Mistakes to Clean Printable PDF Report ---
+  function exportMistakesToPdf() {
+    const allMistakes = Object.values(mistakes);
+    if (allMistakes.length === 0) {
+      showToast('인쇄/저장할 오답노트가 비어 있습니다.');
+      return;
+    }
+
+    const activeCount = allMistakes.filter(m => !m.isMastered).length;
+    const masteredCount = allMistakes.filter(m => m.isMastered).length;
+
+    const reportHtml = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>JLPT 스마트 오답노트 & 학습 보고서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2.5rem 1.5rem;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .title-area h1 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .meta-date {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+    .summary-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+    .pill {
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+    }
+    .pill-blue { background: #e0e7ff; color: #4338ca; }
+    .pill-green { background: #dcfce7; color: #15803d; }
+    .pill-wrong { background: #fee2e2; color: #dc2626; }
+    
+    .actions-bar {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #4f46e5;
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-action:hover { background: #4338ca; }
+
+    .mistake-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .card-badges {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .badge-level { background: #e0e7ff; color: #4338ca; }
+    .badge-type { background: #f1f5f9; color: #475569; }
+    .badge-count { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; }
+
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.6;
+      margin-bottom: 0.35rem;
+    }
+    .q-trans {
+      font-size: 0.92rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .options-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.93rem;
+    }
+    .options-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #edf2f7;
+    }
+    .opt-correct {
+      background: #f0fdf4;
+      font-weight: 700;
+      color: #15803d;
+    }
+    .tag-correct {
+      background: #16a34a;
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      margin-left: 0.4rem;
+    }
+
+    .cs-box {
+      background: #f8fafc;
+      border-left: 4px solid #4f46e5;
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0.85rem;
+    }
+    .cs-label { font-size: 0.75rem; font-weight: 700; color: #4f46e5; margin-bottom: 0.2rem; }
+    .cs-ja { font-size: 0.98rem; font-weight: 700; color: #1e293b; }
+    .cs-ko { font-size: 0.88rem; color: #64748b; }
+
+    .expl-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.92rem;
+      color: #92400e;
+    }
+    .expl-label { font-weight: 700; margin-bottom: 0.2rem; }
+
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .container { max-width: 100%; box-shadow: none; padding: 0; }
+      .actions-bar { display: none !important; }
+      .mistake-card { border: 1px solid #cbd5e1; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <div class="title-area">
+        <h1>📓 JLPT 실시간 스마트 오답노트 & 학습 보고서</h1>
+        <div class="meta-date">생성 일시: ${new Date().toLocaleString('ko-KR')}</div>
+        <div class="summary-pills">
+          <span class="pill pill-blue">총 오답 문항: ${allMistakes.length}개</span>
+          <span class="pill pill-wrong">⚠️ 복습 대기: ${activeCount}문항</span>
+          <span class="pill pill-green">✨ 정복 완료: ${masteredCount}문항</span>
+        </div>
+      </div>
+      <div class="actions-bar">
+        <button class="btn-action" onclick="window.print()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span>PDF 인쇄 / 저장</span>
+        </button>
+      </div>
+    </div>
+
+    <h2 style="font-size:1.15rem; font-weight:700; color:#0f172a; margin-bottom:1rem;">⚠️ 오답 상세 분석 및 복습 노트 (${allMistakes.length}문항)</h2>
+    
+    ${allMistakes.map((m, idx) => {
+      const correctOpt = (m.options || []).find(o => o.isCorrect);
+      return `
+      <div class="mistake-card">
+        <div class="card-top">
+          <div class="card-badges">
+            <span class="badge badge-level">${m.level}</span>
+            <span class="badge badge-type">${m.typeName}</span>
+            <span class="badge badge-count">${m.count || 1}회 오답</span>
+            ${m.isMastered ? '<span class="badge" style="background:#dcfce7; color:#15803d;">✨ 마스터</span>' : ''}
+          </div>
+          <span style="font-size:0.85rem; color:#64748b; font-weight:700;">#${idx + 1}</span>
+        </div>
+
+        <div class="q-text">${m.qRuby || m.qPlain}</div>
+        ${m.qTrans ? `<div class="q-trans">${m.qTrans}</div>` : ''}
+
+        <table class="options-table">
+          ${(m.options || []).map(o => {
+            const isCorr = o.isCorrect;
+            return `
+            <tr class="${isCorr ? 'opt-correct' : ''}">
+              <td style="width:30px; text-align:center; font-weight:700;">${o.marker}</td>
+              <td>${o.copy} ${o.trans ? `<span style="color:#64748b; font-size:0.88rem;">(${o.trans})</span>` : ''}</td>
+              <td style="width:70px; text-align:right;">
+                ${isCorr ? '<span class="tag-correct">정답</span>' : ''}
+              </td>
+            </tr>
+            `;
+          }).join('')}
+        </table>
+
+        ${m.ansJa ? `
+        <div class="cs-box">
+          <div class="cs-label">정답 완성 문장</div>
+          <div class="cs-ja">${m.ansJa}</div>
+          ${m.ansKo ? `<div class="cs-ko">${m.ansKo}</div>` : ''}
+        </div>
+        ` : ''}
+
+        ${m.expl && m.expl.main ? `
+        <div class="expl-box">
+          <div class="expl-label">💡 핵심 해설</div>
+          <div>${m.expl.main}</div>
+          ${m.expl.choices && m.expl.choices.length > 0 ? `
+            <div style="margin-top:0.4rem; font-size:0.88rem; line-height:1.5;">
+              ${m.expl.choices.map(c => `<div><b>${c.marker}</b>: ${c.note}</div>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+        ` : ''}
+      </div>
+      `;
+    }).join('')}
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => window.print(), 350);
+    });
+  <\/script>
+</body>
+</html>`;
+
+    const blob = new Blob([reportHtml], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+  }
+
   // --- Start Quiz with Mistakes Only ---
   function startMistakesQuiz() {
     const allMistakes = Object.values(mistakes).filter(m => !m.isMastered);
@@ -1203,6 +1789,770 @@
     }
   }
 
+  // ==========================================================================
+  // Anki Spaced Repetition (SRS) Engine
+  // ==========================================================================
+
+  // Helper: Find Question by ID across datasets
+  function getQuestionById(id) {
+    if (!id) return null;
+    if (mistakes[id]) return mistakes[id];
+    const lvl = id.split('-')[0];
+    if (window.JLPT_DATA && window.JLPT_DATA[lvl]) {
+      const found = window.JLPT_DATA[lvl].find(q => q.id === id);
+      if (found) return found;
+    }
+    for (const l of ['N1', 'N2', 'N3', 'N4', 'N5']) {
+      if (window.JLPT_DATA && window.JLPT_DATA[l]) {
+        const found = window.JLPT_DATA[l].find(q => q.id === id);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
+  // Helper: Format Due Date for cards
+  function getCardDueDateText(card) {
+    if (!card || !card.dueDate) return '오늘 복습';
+    const now = Date.now();
+    const diffDays = Math.ceil((card.dueDate - now) / (1000 * 60 * 60 * 24));
+    if (diffDays <= 0) return '🚨 오늘 복습 대기';
+    if (diffDays === 1) return '내일 복습';
+    return `${diffDays}일 후 복습`;
+  }
+
+  // SM-2 Spaced Repetition Algorithm
+  function calculateNextSrs(card, grade) {
+    let repetitions = card.repetitions || 0;
+    let interval = card.interval || 1;
+    let easeFactor = card.easeFactor || 2.5;
+    let lapses = card.lapses || 0;
+    let state = card.state || 'learning';
+
+    if (grade === 'again') {
+      repetitions = 0;
+      interval = 1;
+      easeFactor = Math.max(1.3, easeFactor - 0.2);
+      lapses++;
+      state = 'learning';
+    } else if (grade === 'hard') {
+      if (repetitions === 0) interval = 1;
+      else if (repetitions === 1) interval = 2;
+      else interval = Math.max(interval + 1, Math.round(interval * 1.2));
+      easeFactor = Math.max(1.3, easeFactor - 0.15);
+      state = interval >= 21 ? 'mastered' : (interval >= 4 ? 'review' : 'learning');
+    } else if (grade === 'good') {
+      if (repetitions === 0) interval = 1;
+      else if (repetitions === 1) interval = 3;
+      else interval = Math.max(interval + 1, Math.round(interval * easeFactor));
+      repetitions++;
+      easeFactor = Math.min(2.8, easeFactor);
+      state = interval >= 21 ? 'mastered' : (interval >= 4 ? 'review' : 'learning');
+    } else if (grade === 'easy') {
+      if (repetitions === 0) interval = 4;
+      else if (repetitions === 1) interval = 7;
+      else interval = Math.max(interval + 3, Math.round(interval * easeFactor * 1.35));
+      repetitions++;
+      easeFactor = Math.min(2.8, easeFactor + 0.15);
+      state = interval >= 14 ? 'mastered' : 'review';
+    }
+
+    const now = Date.now();
+    const targetDate = new Date(now + interval * 24 * 60 * 60 * 1000);
+    targetDate.setHours(4, 0, 0, 0); // 4 AM reset
+    const dueDate = targetDate.getTime();
+
+    return {
+      ...card,
+      repetitions,
+      interval,
+      easeFactor: Number(easeFactor.toFixed(2)),
+      lapses,
+      state,
+      lastReviewed: now,
+      dueDate
+    };
+  }
+
+  // Native Speech Synthesis Helper
+  function speakJapanese(text) {
+    if (!window.speechSynthesis) return;
+    try {
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/<[^>]*>/g, '').replace(/[（()）]/g, '');
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = 'ja-JP';
+      u.rate = 0.95;
+      window.speechSynthesis.speak(u);
+    } catch (e) {
+      console.warn('TTS error:', e);
+    }
+  }
+
+  function toggleBookmarkById(id) {
+    if (!id) return;
+    if (bookmarks.has(id)) {
+      bookmarks.delete(id);
+      showToast('북마크가 해제되었습니다.');
+    } else {
+      bookmarks.add(id);
+      showToast('★ 북마크에 추가되었습니다.');
+    }
+    saveBookmarks();
+    if (state.currentTab === 'anki') {
+      renderAnkiCard(ankiState.currentQueue[ankiState.queueIndex]);
+    }
+  }
+
+  // Anki Badges & Counters
+  function updateAnkiBadge() {
+    const dueCountBadgeHeader = document.getElementById('header-anki-due-count');
+    const dueCountBadgeMobile = document.getElementById('mobile-anki-due-count');
+
+    const now = Date.now();
+    const dueCards = Object.values(srs).filter(c => (c.dueDate || 0) <= now + 60000);
+    const dueCount = dueCards.length;
+
+    if (dueCountBadgeHeader) {
+      dueCountBadgeHeader.textContent = dueCount.toLocaleString();
+      dueCountBadgeHeader.style.display = dueCount > 0 ? 'inline-flex' : 'none';
+    }
+    if (dueCountBadgeMobile) {
+      dueCountBadgeMobile.textContent = dueCount.toLocaleString();
+      dueCountBadgeMobile.style.display = dueCount > 0 ? 'inline-flex' : 'none';
+    }
+
+    // Hero stat numbers
+    const statDue = document.getElementById('anki-stat-due');
+    const statLearning = document.getElementById('anki-stat-learning');
+    const statReview = document.getElementById('anki-stat-review');
+    const statMastered = document.getElementById('anki-stat-mastered');
+
+    const allSrs = Object.values(srs);
+    const learningCount = allSrs.filter(c => c.state === 'learning').length;
+    const reviewCount = allSrs.filter(c => c.state === 'review').length;
+    const masteredCount = allSrs.filter(c => c.state === 'mastered').length;
+
+    if (statDue) statDue.textContent = dueCount.toLocaleString();
+    if (statLearning) statLearning.textContent = learningCount.toLocaleString();
+    if (statReview) statReview.textContent = reviewCount.toLocaleString();
+    if (statMastered) statMastered.textContent = masteredCount.toLocaleString();
+  }
+
+  // Anki Queue Builder
+  function buildAnkiQueue(forceEarly = false) {
+    const now = Date.now();
+    let cardIds = [];
+
+    if (ankiState.source === 'due') {
+      cardIds = Object.values(srs)
+        .filter(c => {
+          if (forceEarly) {
+            return (c.dueDate || 0) <= now + 3 * 86400000;
+          }
+          return (c.dueDate || 0) <= now + 60000;
+        })
+        .map(c => c.id);
+    } else if (ankiState.source === 'frequent') {
+      const mistakeList = Object.values(mistakes).filter(m => !m.isMastered || (m.count && m.count > 1));
+      mistakeList.sort((a, b) => (b.count || 1) - (a.count || 1));
+      const frequentIds = [];
+      mistakeList.forEach(m => {
+        const repeats = Math.min(3, Math.max(1, m.count || 1));
+        for (let r = 0; r < repeats; r++) {
+          frequentIds.push(m.id);
+        }
+      });
+      cardIds = interleaveQueue(frequentIds.map(id => ({ id }))).map(x => x.id);
+    } else if (ankiState.source === 'mistakes') {
+      cardIds = Object.keys(mistakes);
+    } else if (ankiState.source === 'all_srs') {
+      cardIds = Object.keys(srs);
+    } else if (ankiState.source === 'history') {
+      cardIds = Object.keys(history);
+    } else if (ankiState.source === 'bookmarks') {
+      cardIds = Array.from(bookmarks);
+    }
+
+    // Filter by level
+    if (ankiState.level !== 'ALL') {
+      cardIds = cardIds.filter(id => id.startsWith(ankiState.level));
+    }
+
+    // If still empty and in 'due' mode, automatically offer un-reviewed mistakes if available
+    if (cardIds.length === 0 && ankiState.source === 'due' && Object.keys(mistakes).length > 0 && !forceEarly) {
+      cardIds = Object.keys(mistakes).filter(id => ankiState.level === 'ALL' || id.startsWith(ankiState.level));
+    }
+
+    return cardIds;
+  }
+
+  let ankiInitialized = false;
+
+  function initAnkiTab() {
+    updateAnkiBadge();
+
+    if (ankiInitialized) {
+      ankiState.currentQueue = buildAnkiQueue();
+      ankiState.queueIndex = 0;
+      return;
+    }
+    ankiInitialized = true;
+
+    // Filter level
+    const selectLevel = document.getElementById('select-anki-level');
+    if (selectLevel) {
+      selectLevel.value = ankiState.level;
+      selectLevel.addEventListener('change', (e) => {
+        ankiState.level = e.target.value;
+        ankiState.currentQueue = buildAnkiQueue();
+        ankiState.queueIndex = 0;
+        renderAnkiSession();
+      });
+    }
+
+    // Filter source
+    const selectSource = document.getElementById('select-anki-source');
+    if (selectSource) {
+      selectSource.value = ankiState.source;
+      selectSource.addEventListener('change', (e) => {
+        ankiState.source = e.target.value;
+        ankiState.currentQueue = buildAnkiQueue();
+        ankiState.queueIndex = 0;
+        renderAnkiSession();
+      });
+    }
+
+    // Mode segmented control
+    document.querySelectorAll('#anki-mode-segmented .seg-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#anki-mode-segmented .seg-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ankiState.mode = btn.dataset.ankiMode;
+        renderAnkiSession();
+      });
+    });
+
+    // Flip card button
+    const btnFlipCard = document.getElementById('btn-flip-card');
+    if (btnFlipCard) {
+      btnFlipCard.addEventListener('click', () => flipAnkiCard(true));
+    }
+
+    const btnFlipBack = document.getElementById('btn-flip-back');
+    if (btnFlipBack) {
+      btnFlipBack.addEventListener('click', () => flipAnkiCard(false));
+    }
+
+    // 4 Evaluation Buttons
+    ['again', 'hard', 'good', 'easy'].forEach(grade => {
+      const btn = document.getElementById(`btn-eval-${grade}`);
+      if (btn) {
+        btn.addEventListener('click', () => rateAnkiCard(grade));
+      }
+    });
+
+    // Audio & Bookmark buttons
+    const btnAudio = document.getElementById('btn-anki-audio');
+    if (btnAudio) {
+      btnAudio.addEventListener('click', () => {
+        const cardId = ankiState.currentQueue[ankiState.queueIndex];
+        const q = getQuestionById(cardId);
+        if (q) speakJapanese(q.ansJa || q.qPlain);
+      });
+    }
+
+    const btnBookmark = document.getElementById('btn-anki-bookmark');
+    if (btnBookmark) {
+      btnBookmark.addEventListener('click', () => {
+        const cardId = ankiState.currentQueue[ankiState.queueIndex];
+        if (cardId) toggleBookmarkById(cardId);
+      });
+    }
+
+    // Early Review Button
+    const btnEarly = document.getElementById('btn-anki-early-review');
+    if (btnEarly) {
+      btnEarly.addEventListener('click', () => {
+        ankiState.currentQueue = buildAnkiQueue(true);
+        ankiState.queueIndex = 0;
+        renderAnkiSession();
+        showToast('⚡ 내일 이후 복습 카드를 미리 당겨왔습니다!');
+      });
+    }
+
+    const btnCompletedEarly = document.getElementById('btn-completed-early');
+    if (btnCompletedEarly) {
+      btnCompletedEarly.addEventListener('click', () => {
+        ankiState.currentQueue = buildAnkiQueue(true);
+        ankiState.queueIndex = 0;
+        renderAnkiSession();
+        showToast('⚡ 내일 이후 복습 카드를 미리 당겨왔습니다!');
+      });
+    }
+
+    // Schedule section toggle
+    const btnToggleSchedule = document.getElementById('btn-toggle-anki-schedule');
+    const scheduleSection = document.getElementById('anki-schedule-section');
+    if (btnToggleSchedule && scheduleSection) {
+      btnToggleSchedule.addEventListener('click', () => {
+        scheduleSection.classList.toggle('hidden');
+        if (!scheduleSection.classList.contains('hidden')) {
+          renderAnkiSchedule();
+          scheduleSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    const btnCompletedSchedule = document.getElementById('btn-completed-view-schedule');
+    if (btnCompletedSchedule && scheduleSection) {
+      btnCompletedSchedule.addEventListener('click', () => {
+        scheduleSection.classList.remove('hidden');
+        renderAnkiSchedule();
+        scheduleSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // Schedule search
+    const inputSearch = document.getElementById('input-anki-search');
+    if (inputSearch) {
+      inputSearch.addEventListener('input', () => renderAnkiSchedule());
+    }
+
+    // Add cards modal triggers
+    setupAddAnkiModal();
+
+    // Initial queue build
+    ankiState.currentQueue = buildAnkiQueue();
+    ankiState.queueIndex = 0;
+  }
+
+  function setupAddAnkiModal() {
+    const btnAddDeck = document.getElementById('btn-anki-add-deck');
+    const modalAddAnki = document.getElementById('modal-add-anki');
+    const btnClose = document.getElementById('btn-close-add-anki');
+    const btnCancel = document.getElementById('btn-cancel-add-anki');
+    const btnConfirm = document.getElementById('btn-confirm-add-anki');
+    let selectedCount = 10;
+
+    if (btnAddDeck && modalAddAnki) {
+      btnAddDeck.addEventListener('click', () => {
+        modalAddAnki.classList.remove('hidden');
+      });
+    }
+
+    if (btnClose && modalAddAnki) {
+      btnClose.addEventListener('click', () => modalAddAnki.classList.add('hidden'));
+    }
+    if (btnCancel && modalAddAnki) {
+      btnCancel.addEventListener('click', () => modalAddAnki.classList.add('hidden'));
+    }
+
+    // Count selector buttons
+    document.querySelectorAll('#modal-add-anki-count-group .modal-count-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#modal-add-anki-count-group .modal-count-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedCount = parseInt(btn.dataset.count, 10);
+      });
+    });
+
+    if (btnConfirm && modalAddAnki) {
+      btnConfirm.addEventListener('click', () => {
+        const lvl = document.getElementById('modal-add-anki-level').value;
+        const type = document.getElementById('modal-add-anki-type').value;
+        const pool = document.getElementById('modal-add-anki-pool').value;
+
+        const rawQuestions = (window.JLPT_DATA && window.JLPT_DATA[lvl]) || [];
+        let candidates = [];
+
+        if (pool === 'mistakes') {
+          candidates = Object.keys(mistakes).map(id => getQuestionById(id)).filter(q => q && q.level === lvl);
+        } else if (pool === 'bookmarks') {
+          candidates = Array.from(bookmarks).map(id => getQuestionById(id)).filter(q => q && q.level === lvl);
+        } else if (pool === 'new') {
+          candidates = rawQuestions.filter(q => !history[q.id] && !srs[q.id]);
+        } else {
+          candidates = rawQuestions.slice();
+        }
+
+        if (type !== 'ALL') {
+          candidates = candidates.filter(q => q.typeName === type);
+        }
+
+        if (candidates.length === 0) {
+          showToast('선택한 조건에 해당하는 문제가 없습니다.');
+          return;
+        }
+
+        // Shuffle candidates and pick selectedCount
+        candidates.sort(() => Math.random() - 0.5);
+        const picked = candidates.slice(0, selectedCount);
+
+        let addedCount = 0;
+        picked.forEach(q => {
+          if (!srs[q.id]) {
+            srs[q.id] = {
+              id: q.id,
+              level: q.level,
+              repetitions: 0,
+              interval: 1,
+              easeFactor: 2.5,
+              dueDate: Date.now(),
+              lastReviewed: Date.now(),
+              state: 'learning',
+              lapses: 0
+            };
+            addedCount++;
+          }
+        });
+
+        saveSrs();
+        modalAddAnki.classList.add('hidden');
+        showToast(`✅ ${picked.length}문제가 안키 복습 덱에 추가되었습니다!`);
+
+        ankiState.level = lvl;
+        ankiState.source = 'due';
+        const selectLevel = document.getElementById('select-anki-level');
+        if (selectLevel) selectLevel.value = lvl;
+        const selectSource = document.getElementById('select-anki-source');
+        if (selectSource) selectSource.value = 'due';
+
+        ankiState.currentQueue = buildAnkiQueue();
+        ankiState.queueIndex = 0;
+        renderAnkiSession();
+      });
+    }
+  }
+
+  function renderAnkiSession() {
+    const arena = document.getElementById('anki-arena');
+    const cardWrapper = document.getElementById('anki-card-wrapper');
+    const sessionHeader = document.getElementById('anki-session-header');
+    const completedState = document.getElementById('anki-completed-state');
+
+    if (!arena) return;
+
+    if (!ankiState.currentQueue || ankiState.currentQueue.length === 0 || ankiState.queueIndex >= ankiState.currentQueue.length) {
+      // Completed state
+      if (cardWrapper) cardWrapper.classList.add('hidden');
+      if (sessionHeader) sessionHeader.classList.add('hidden');
+      if (completedState) {
+        completedState.classList.remove('hidden');
+
+        // Summary pills
+        const summaryContainer = document.getElementById('anki-completed-summary');
+        if (summaryContainer) {
+          const totalSrs = Object.keys(srs).length;
+          const masteredCount = Object.values(srs).filter(c => c.state === 'mastered').length;
+          summaryContainer.innerHTML = `
+            <div class="completed-stat-item">
+              <span class="completed-stat-num color-indigo">${ankiState.sessionSolvedCount}</span>
+              <span class="completed-stat-lbl">이번 세션 복습 완료</span>
+            </div>
+            <div class="completed-stat-item">
+              <span class="completed-stat-num color-amber">${totalSrs}</span>
+              <span class="completed-stat-lbl">현재 보존 덱 총 카드</span>
+            </div>
+            <div class="completed-stat-item">
+              <span class="completed-stat-num color-emerald">${masteredCount}</span>
+              <span class="completed-stat-lbl">망각곡선 정복 완료</span>
+            </div>
+          `;
+        }
+      }
+      return;
+    }
+
+    // Active session
+    if (completedState) completedState.classList.add('hidden');
+    if (cardWrapper) cardWrapper.classList.remove('hidden');
+    if (sessionHeader) sessionHeader.classList.remove('hidden');
+
+    const total = ankiState.currentQueue.length;
+    const current = ankiState.queueIndex + 1;
+    const progressPercent = Math.round((current / total) * 100);
+
+    const counterEl = document.getElementById('anki-session-counter');
+    if (counterEl) counterEl.textContent = `복습 진행: ${current} / ${total} (${progressPercent}%)`;
+
+    const fillEl = document.getElementById('anki-progress-fill');
+    if (fillEl) fillEl.style.width = `${progressPercent}%`;
+
+    const cardId = ankiState.currentQueue[ankiState.queueIndex];
+    renderAnkiCard(cardId);
+  }
+
+  function renderAnkiCard(cardId) {
+    const q = getQuestionById(cardId);
+    if (!q) {
+      ankiState.queueIndex++;
+      renderAnkiSession();
+      return;
+    }
+
+    const card = srs[cardId] || {
+      id: cardId,
+      level: q.level || 'N1',
+      repetitions: 0,
+      interval: 1,
+      easeFactor: 2.5,
+      state: 'learning'
+    };
+
+    // Header Badges
+    const badgeLevel = document.getElementById('anki-card-level');
+    if (badgeLevel) badgeLevel.textContent = q.level;
+
+    const badgeType = document.getElementById('anki-card-type');
+    if (badgeType) badgeType.textContent = q.typeName || '문제';
+
+    const badgeSrs = document.getElementById('anki-card-srs-status');
+    if (badgeSrs) {
+      const stateName = card.state === 'mastered' ? '✨ 마스터' : (card.state === 'review' ? '복습 안정권' : '학습 중');
+      badgeSrs.textContent = `${stateName} · 간격: ${card.interval || 1}일 (${card.repetitions || 0}회 연속 정답)`;
+    }
+
+    const btnBookmark = document.getElementById('btn-anki-bookmark');
+    if (btnBookmark) {
+      btnBookmark.classList.toggle('active', bookmarks.has(cardId));
+    }
+
+    // Instruction & Question
+    const instEl = document.getElementById('anki-instruction');
+    if (instEl) instEl.textContent = q.instruction || '빈칸에 들어갈 가장 알맞은 표현을 고르세요.';
+
+    const qTextEl = document.getElementById('anki-question-text');
+    if (qTextEl) {
+      qTextEl.innerHTML = state.furigana ? (q.qRuby || q.qPlain) : q.qPlain;
+    }
+
+    const qTransEl = document.getElementById('anki-question-trans');
+    if (qTransEl) {
+      qTransEl.textContent = q.qTrans || '';
+      qTransEl.classList.toggle('hidden', !state.showTrans);
+    }
+
+    // Render options
+    const optionsGrid = document.getElementById('anki-options-grid');
+    if (optionsGrid) {
+      optionsGrid.innerHTML = '';
+      (q.options || []).forEach((opt, idx) => {
+        const item = document.createElement('div');
+        item.className = 'anki-option-item';
+        item.dataset.index = idx;
+
+        const copyText = state.furigana ? (opt.copy || '') : (opt.copyNoRuby || opt.copy || '');
+        item.innerHTML = `
+          <span class="anki-option-marker">${opt.marker || `(${idx + 1})`}</span>
+          <span class="anki-option-copy">${copyText}</span>
+          ${opt.trans && state.showTrans ? `<span style="font-size:0.85rem; color:var(--text-muted); margin-left:auto;">${opt.trans}</span>` : ''}
+        `;
+
+        item.addEventListener('click', () => {
+          if (ankiState.mode === 'quiz' && !ankiState.isFlipped) {
+            handleAnkiQuizSelect(idx);
+          } else {
+            flipAnkiCard(true);
+          }
+        });
+
+        optionsGrid.appendChild(item);
+      });
+    }
+
+    // Back card content
+    const csJa = document.getElementById('anki-cs-ja');
+    if (csJa) csJa.textContent = q.ansJa || q.qPlain;
+
+    const csKo = document.getElementById('anki-cs-ko');
+    if (csKo) csKo.textContent = q.ansKo || q.qTrans || '';
+
+    const explMain = document.getElementById('anki-expl-main');
+    if (explMain) explMain.textContent = q.expl?.main || '정답과 해설을 확인하세요.';
+
+    const choiceNotes = document.getElementById('anki-choice-notes');
+    if (choiceNotes) {
+      if (q.expl && q.expl.choices && q.expl.choices.length > 0) {
+        choiceNotes.innerHTML = q.expl.choices.map(c => `
+          <div class="choice-note-item">
+            <span class="choice-note-marker">${c.marker}</span>
+            <span>${escapeHtml(c.note)}</span>
+          </div>
+        `).join('');
+        choiceNotes.classList.remove('hidden');
+      } else {
+        choiceNotes.innerHTML = '';
+        choiceNotes.classList.add('hidden');
+      }
+    }
+
+    // Preview intervals for the 4 buttons
+    const prevAgain = calculateNextSrs(card, 'again');
+    const prevHard = calculateNextSrs(card, 'hard');
+    const prevGood = calculateNextSrs(card, 'good');
+    const prevEasy = calculateNextSrs(card, 'easy');
+
+    const intAgain = document.getElementById('eval-interval-again');
+    if (intAgain) intAgain.textContent = `${prevAgain.interval}일`;
+
+    const intHard = document.getElementById('eval-interval-hard');
+    if (intHard) intHard.textContent = `${prevHard.interval}일`;
+
+    const intGood = document.getElementById('eval-interval-good');
+    if (intGood) intGood.textContent = `${prevGood.interval}일`;
+
+    const intEasy = document.getElementById('eval-interval-easy');
+    if (intEasy) intEasy.textContent = `${prevEasy.interval}일`;
+
+    // Reset flip state to front
+    flipAnkiCard(false);
+  }
+
+  function flipAnkiCard(toBack = true) {
+    ankiState.isFlipped = toBack;
+    const cardFront = document.getElementById('anki-card-front');
+    const cardBack = document.getElementById('anki-card-back');
+
+    if (toBack) {
+      if (cardFront) cardFront.classList.add('hidden');
+      if (cardBack) cardBack.classList.remove('hidden');
+
+      // Reveal translations on back
+      const qTransEl = document.getElementById('anki-question-trans');
+      if (qTransEl) qTransEl.classList.remove('hidden');
+    } else {
+      if (cardFront) cardFront.classList.remove('hidden');
+      if (cardBack) cardBack.classList.add('hidden');
+    }
+  }
+
+  function handleAnkiQuizSelect(optIdx) {
+    const cardId = ankiState.currentQueue[ankiState.queueIndex];
+    const q = getQuestionById(cardId);
+    if (!q || !q.options) return;
+
+    const selectedOpt = q.options[optIdx];
+    const isCorrect = selectedOpt && selectedOpt.isCorrect;
+
+    // Visual highlights
+    const items = document.querySelectorAll('#anki-options-grid .anki-option-item');
+    items.forEach((item, idx) => {
+      if (q.options[idx].isCorrect) {
+        item.classList.add('selected-correct');
+      }
+      if (idx === optIdx && !isCorrect) {
+        item.classList.add('selected-wrong');
+      }
+    });
+
+    if (isCorrect) {
+      sound.playCorrect();
+    } else {
+      sound.playWrong();
+    }
+
+    setTimeout(() => {
+      flipAnkiCard(true);
+    }, 280);
+  }
+
+  function rateAnkiCard(grade) {
+    const cardId = ankiState.currentQueue[ankiState.queueIndex];
+    if (!cardId) return;
+
+    const q = getQuestionById(cardId);
+    const existing = srs[cardId] || {
+      id: cardId,
+      level: q ? q.level : 'N1',
+      repetitions: 0,
+      interval: 1,
+      easeFactor: 2.5,
+      state: 'learning',
+      lapses: 0
+    };
+
+    const next = calculateNextSrs(existing, grade);
+    srs[cardId] = next;
+    saveSrs();
+
+    if (grade === 'again') {
+      sound.playWrong();
+      showToast('🔴 [다시] 3문제 뒤에 다시 출제됩니다.');
+      // Re-queue card 3~4 positions ahead for immediate retention loop!
+      const targetPos = Math.min(ankiState.currentQueue.length, ankiState.queueIndex + 4);
+      ankiState.currentQueue.splice(targetPos, 0, cardId);
+    } else if (grade === 'hard') {
+      showToast(`🟠 [어려움] ${next.interval}일 후 복습으로 예약되었습니다.`);
+    } else if (grade === 'good') {
+      sound.playCorrect();
+      showToast(`🟢 [알맞음] ${next.interval}일 후 복습으로 예약되었습니다.`);
+    } else if (grade === 'easy') {
+      sound.playCorrect();
+      showToast(`🔵 [쉬움] ${next.interval}일 후 복습으로 예약되었습니다.`);
+    }
+
+    ankiState.sessionSolvedCount++;
+    ankiState.queueIndex++;
+    renderAnkiSession();
+  }
+
+  function renderAnkiSchedule() {
+    const container = document.getElementById('anki-schedule-list');
+    const totalCountEl = document.getElementById('anki-total-deck-count');
+    const searchInput = document.getElementById('input-anki-search');
+    if (!container) return;
+
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const now = Date.now();
+    const allCards = Object.values(srs);
+
+    if (totalCountEl) totalCountEl.textContent = allCards.length.toLocaleString();
+
+    let filtered = allCards.filter(c => {
+      if (!query) return true;
+      const q = getQuestionById(c.id);
+      if (!q) return c.id.toLowerCase().includes(query);
+      return c.id.toLowerCase().includes(query) ||
+             (q.qPlain && q.qPlain.toLowerCase().includes(query)) ||
+             (q.ansJa && q.ansJa.toLowerCase().includes(query)) ||
+             (q.ansKo && q.ansKo.toLowerCase().includes(query));
+    });
+
+    // Sort: due cards first, then by next due date
+    filtered.sort((a, b) => (a.dueDate || 0) - (b.dueDate || 0));
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:1.5rem;">검색된 카드가 없습니다.</div>';
+      return;
+    }
+
+    let html = '';
+    filtered.forEach(c => {
+      const q = getQuestionById(c.id);
+      const isDue = (c.dueDate || 0) <= now + 60000;
+      const dueText = getCardDueDateText(c);
+      const questionSnippet = q ? q.qPlain : c.id;
+
+      html += `
+        <div class="schedule-card-row">
+          <div class="sched-left">
+            <span class="badge badge-level" style="font-size:0.72rem;">${c.level || (q ? q.level : 'N1')}</span>
+            <span class="sched-text" title="${escapeHtml(questionSnippet)}">${escapeHtml(questionSnippet)}</span>
+          </div>
+          <div class="sched-right">
+            <span class="sched-due-pill ${isDue ? 'is-due' : 'is-future'}">${dueText}</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">간격 ${c.interval || 1}일</span>
+            <button class="btn btn-secondary btn-sm" onclick="window.app.startAnkiSingleCard('${c.id}')" style="padding:0.25rem 0.5rem; font-size:0.75rem;">복습</button>
+            <button class="btn btn-ghost btn-sm" onclick="window.app.resetAnkiCard('${c.id}')" title="간격 1일로 초기화" style="padding:0.25rem 0.4rem; font-size:0.75rem;">↺</button>
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+  }
+
   // --- Tab Navigation ---
   function switchTab(tabName) {
     state.currentTab = tabName;
@@ -1215,7 +2565,10 @@
       view.classList.toggle('active', view.id === `view-${tabName}`);
     });
 
-    if (tabName === 'mistakes') {
+    if (tabName === 'anki') {
+      initAnkiTab();
+      renderAnkiSession();
+    } else if (tabName === 'mistakes') {
       renderMistakesList();
     } else if (tabName === 'stats') {
       renderStats();
@@ -1282,10 +2635,10 @@
       });
     });
 
-    // Mode buttons
-    document.querySelectorAll('.seg-btn').forEach(btn => {
+    // Quiz Mode buttons (#mode-segmented)
+    document.querySelectorAll('#mode-segmented .seg-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#mode-segmented .seg-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         state.mode = btn.dataset.mode;
         saveState();
@@ -1293,9 +2646,18 @@
           showToast('⏱️ 모의고사 모드가 켜졌습니다. 문제를 풀고 "시험 종료 및 채점"을 누르세요.');
           document.getElementById('btn-finish-exam').classList.remove('hidden');
           document.getElementById('exam-status-bar').classList.remove('hidden');
+        } else if (state.mode === 'srs-drill') {
+          document.getElementById('btn-finish-exam').classList.add('hidden');
+          document.getElementById('exam-status-bar').classList.add('hidden');
+          loadLevelQuestions(state.level, false);
+          renderCurrentQuestion();
+          showToast('🔁 [안키 빈도 반복] 자주 틀리는 문제가 더 자주, 맞힐 때까지 집중 반복 출제됩니다!');
         } else {
           document.getElementById('btn-finish-exam').classList.add('hidden');
           document.getElementById('exam-status-bar').classList.add('hidden');
+          loadLevelQuestions(state.level, false);
+          renderCurrentQuestion();
+          showToast('⚡ 즉시 풀기 모드로 전환되었습니다.');
         }
       });
     });
@@ -1453,11 +2815,13 @@
     document.getElementById('select-mistake-status').addEventListener('change', renderMistakesList);
 
     document.getElementById('btn-export-markdown').addEventListener('click', exportMistakesToMarkdown);
+    const btnCsv = document.getElementById('btn-export-csv');
+    if (btnCsv) {
+      btnCsv.addEventListener('click', exportMistakesToCsv);
+    }
     const btnPdf = document.getElementById('btn-export-pdf');
     if (btnPdf) {
-      btnPdf.addEventListener('click', () => {
-        window.open('오답노트_보고서.html?print=true', '_blank');
-      });
+      btnPdf.addEventListener('click', exportMistakesToPdf);
     }
     document.getElementById('btn-quiz-mistakes').addEventListener('click', startMistakesQuiz);
 
@@ -1479,7 +2843,8 @@
         timestamp: Date.now(),
         history,
         mistakes,
-        bookmarks: Array.from(bookmarks)
+        bookmarks: Array.from(bookmarks),
+        srs
       };
       const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -1501,10 +2866,12 @@
           if (parsed.mistakes) mistakes = parsed.mistakes;
           if (parsed.history) history = parsed.history;
           if (parsed.bookmarks) bookmarks = new Set(parsed.bookmarks);
+          if (parsed.srs) srs = parsed.srs;
 
           saveMistakes();
           saveHistory();
           saveBookmarks();
+          saveSrs();
           renderStats();
           showToast('✅ 백업 데이터가 성공적으로 복원되었습니다.');
         } catch (err) {
@@ -1515,13 +2882,15 @@
     });
 
     document.getElementById('btn-reset-data').addEventListener('click', () => {
-      if (confirm('모든 풀이 이력, 정답률, 오답노트가 완전히 초기화됩니다. 계속하시겠습니까?')) {
+      if (confirm('모든 풀이 이력, 정답률, 오답노트, 안키 복습 기록이 완전히 초기화됩니다. 계속하시겠습니까?')) {
         mistakes = {};
         history = {};
         bookmarks = new Set();
+        srs = {};
         saveMistakes();
         saveHistory();
         saveBookmarks();
+        saveSrs();
         renderStats();
         renderCurrentQuestion();
         showToast('데이터가 초기화되었습니다.');
@@ -1572,13 +2941,24 @@
         updated = true;
       }
 
+      if (payload.srs) {
+        for (const [id, s] of Object.entries(payload.srs)) {
+          if (!srs[id] || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+            srs[id] = { ...s };
+            updated = true;
+          }
+        }
+      }
+
       if (updated) {
         saveState();
         saveHistory();
         saveMistakes();
         saveBookmarks();
+        saveSrs();
         renderStats();
         updateMistakeBadge();
+        updateAnkiBadge();
         renderCurrentQuestion();
         const totalSolved = Object.keys(history).length;
         showToast(`✅ 구글 드라이브 동기화 완료! (총 ${totalSolved}문제 푼 기록 반영됨)`);
@@ -1655,7 +3035,8 @@
           lastSyncDate: new Date().toISOString(),
           history,
           mistakes,
-          bookmarks: Array.from(bookmarks)
+          bookmarks: Array.from(bookmarks),
+          srs
         };
         const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -1703,6 +3084,43 @@
           }
         } else if (e.key === 'b' || e.key === 'B') {
           document.getElementById('btn-bookmark').click();
+        }
+      } else if (state.currentTab === 'anki') {
+        if (!ankiState.isFlipped) {
+          if (ankiState.mode === 'quiz' && (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4')) {
+            const optIdx = parseInt(e.key, 10) - 1;
+            handleAnkiQuizSelect(optIdx);
+          } else if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            flipAnkiCard(true);
+          }
+        } else {
+          // Card is flipped: 1 Again, 2 Hard, 3 Good, 4 Easy
+          if (e.key === '1') {
+            rateAnkiCard('again');
+          } else if (e.key === '2') {
+            rateAnkiCard('hard');
+          } else if (e.key === '3') {
+            rateAnkiCard('good');
+          } else if (e.key === '4') {
+            rateAnkiCard('easy');
+          } else if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            rateAnkiCard('good');
+          }
+        }
+
+        if (e.key === 'f' || e.key === 'F') {
+          state.furigana = !state.furigana;
+          saveState();
+          renderAnkiSession();
+          showToast(state.furigana ? 'あ 요미가나 ON' : 'あ 요미가나 숨김');
+        } else if (e.key === 't' || e.key === 'T') {
+          const transEl = document.getElementById('anki-question-trans');
+          if (transEl) transEl.classList.toggle('hidden');
+        } else if (e.key === 'b' || e.key === 'B') {
+          const cardId = ankiState.currentQueue[ankiState.queueIndex];
+          if (cardId) toggleBookmarkById(cardId);
         }
       }
     });
@@ -1760,13 +3178,27 @@
       });
     }
 
+    if (cloudData.srs) {
+      for (const [id, s] of Object.entries(cloudData.srs)) {
+        if (!srs[id] || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+          srs[id] = { ...s };
+          changed = true;
+        }
+      }
+    }
+
     if (changed) {
       localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
       localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
+      localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
       updateMistakeBadge();
+      updateAnkiBadge();
       if (state.currentTab === 'mistakes') {
         renderMistakesList();
+      }
+      if (state.currentTab === 'anki') {
+        renderAnkiSession();
       }
       renderCurrentQuestion();
     }
@@ -1781,10 +3213,27 @@
     prevQuestion,
     handleOptionSelect,
     mergeExternalData,
+    startAnkiSingleCard: (id) => {
+      ankiState.currentQueue = [id];
+      ankiState.queueIndex = 0;
+      switchTab('anki');
+    },
+    resetAnkiCard: (id) => {
+      if (srs[id]) {
+        srs[id].repetitions = 0;
+        srs[id].interval = 1;
+        srs[id].dueDate = Date.now();
+        srs[id].state = 'learning';
+        saveSrs();
+        renderAnkiSchedule();
+        showToast('간격이 1일(내일 복습)로 초기화되었습니다.');
+      }
+    },
     getAppData: () => ({
       mistakes,
       history,
       bookmarks: Array.from(bookmarks),
+      srs,
       clientTimestamp: Date.now()
     }),
     renderStats

@@ -10,10 +10,10 @@
   <meta name="description" content="JLPT N1~N5 실전 기출 문제 풀이, 자동 오답노트 수집 및 취약점 분석 스마트 학습 시스템">
   
     <!-- PWA & Mobile Web App Meta -->
-  <link rel="manifest" href="manifest.json?v=3.3">
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=3.3">
-  <link rel="icon" type="image/png" sizes="512x512" href="icon.png?v=3.3">
-  <link rel="apple-touch-icon" href="icon.png?v=3.3">
+  <link rel="manifest" href="manifest.json?v=3.4">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=3.4">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon.png?v=3.4">
+  <link rel="apple-touch-icon" href="icon.png?v=3.4">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="JLPT Master">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=3.3">
+  <link rel="stylesheet" href="css/style.css?v=3.4">
 </head>
 <body>
   <div class="app-layout">
@@ -45,6 +45,11 @@
         <button class="nav-tab active" data-tab="quiz" id="tab-quiz" role="tab" aria-selected="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           <span>문제 풀기</span>
+        </button>
+        <button class="nav-tab" data-tab="anki" id="tab-anki" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span>안키 복습</span>
+          <span class="badge anki-due-badge" id="header-anki-due-count" style="display:none;">0</span>
         </button>
         <button class="nav-tab" data-tab="mistakes" id="tab-mistakes" role="tab" aria-selected="false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
@@ -146,6 +151,9 @@
                 <button class="seg-btn active" data-mode="drill" title="1문제 풀 때마다 즉시 정답 및 상세 해설 확인">
                   ⚡ 즉시 풀기
                 </button>
+                <button class="seg-btn" data-mode="srs-drill" title="자주 틀리는 문제가 더 자주, 맞힐 때까지 반복 출제되는 안키식 스마트 반복">
+                  🔁 안키 빈도 반복
+                </button>
                 <button class="seg-btn" data-mode="exam" title="정해진 문항수를 타이머와 함께 풀고 나중에 채점">
                   ⏱️ 모의시험
                 </button>
@@ -241,6 +249,20 @@
               </div>
             </div>
 
+            <!-- Anki SRS Quick Rating Bar -->
+            <div class="quiz-anki-bar" id="quiz-anki-bar">
+              <div class="quiz-anki-info">
+                <span class="quiz-anki-badge-title">🔁 안키 망각곡선 복습 주기:</span>
+                <span class="quiz-anki-status" id="quiz-anki-status-tag">오늘 등록됨</span>
+              </div>
+              <div class="quiz-anki-actions" id="quiz-anki-actions">
+                <button class="anki-btn anki-btn-again" data-grade="again" id="quiz-btn-anki-again" title="다시 복습 (1일 후)">🔴 다시 (1일)</button>
+                <button class="anki-btn anki-btn-hard" data-grade="hard" id="quiz-btn-anki-hard" title="어려움 (2일 후)">🟠 어려움 (2일)</button>
+                <button class="anki-btn anki-btn-good" data-grade="good" id="quiz-btn-anki-good" title="알맞음 (4일 후)">🟢 알맞음 (4일)</button>
+                <button class="anki-btn anki-btn-easy" data-grade="easy" id="quiz-btn-anki-easy" title="쉬움 (7일+ 후)">🔵 쉬움 (7일+)</button>
+              </div>
+            </div>
+
             <!-- Complete sentence & translation -->
             <div class="completed-sentence-card" id="completed-sentence-card">
               <div class="cs-label">정답 완성 문장</div>
@@ -280,7 +302,248 @@
         </div>
       </section>
 
-      <!-- ================= 2. MISTAKE NOTEBOOK VIEW ================= -->
+      <!-- ================= 2. ANKI SPACED REPETITION VIEW ================= -->
+      <section id="view-anki" class="tab-view">
+        <div class="anki-container">
+          <!-- Anki Hero Header -->
+          <div class="anki-hero">
+            <div class="hero-left">
+              <div class="anki-title-row">
+                <h2>🔁 안키 스마트 복습 (Anki SRS)</h2>
+                <span class="anki-tag-pill">망각곡선 분산반복</span>
+              </div>
+              <p>문제를 1번만 풀고 끝내지 않고, 잊어버릴 최적의 타이밍(1일→3일→7일→21일)에 맞춰 복습 카드를 배달합니다.</p>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat-card anki-stat-due">
+                <span class="stat-number color-rose" id="anki-stat-due">0</span>
+                <span class="stat-label">🚨 오늘 복습 대기</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-number color-amber" id="anki-stat-learning">0</span>
+                <span class="stat-label">🔄 학습 중 (1~3일)</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-number color-indigo" id="anki-stat-review">0</span>
+                <span class="stat-label">📈 복습 중 (4~20일)</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-number color-emerald" id="anki-stat-mastered">0</span>
+                <span class="stat-label">🌟 완전 정복 (21일+)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anki Controls & Mode Toolbar -->
+          <div class="anki-toolbar">
+            <div class="filter-group">
+              <select class="select-input" id="select-anki-level">
+                <option value="ALL">전체 급수</option>
+                <option value="N1">N1</option>
+                <option value="N2">N2</option>
+                <option value="N3">N3</option>
+                <option value="N4">N4</option>
+                <option value="N5">N5</option>
+              </select>
+
+              <select class="select-input" id="select-anki-source">
+                <option value="due">🔥 오늘 복습할 문제 (Due)</option>
+                <option value="frequent">🎯 자주 틀린 순 반복 (오답 빈도 가중치)</option>
+                <option value="mistakes">⚠️ 오답노트 전체 문제</option>
+                <option value="all_srs">📚 복습 덱 전체 카드</option>
+                <option value="history">📝 지금까지 푼 모든 문제</option>
+                <option value="bookmarks">⭐ 북마크 문제</option>
+              </select>
+
+              <div class="segmented-control" id="anki-mode-segmented">
+                <button class="seg-btn active" data-anki-mode="flashcard" title="앞면 문제 확인 후 카드를 뒤집어 정답 및 해설 복습">
+                  🃏 플래시카드 모드
+                </button>
+                <button class="seg-btn" data-anki-mode="quiz" title="보기 1~4번을 직접 다시 풀어보고 난이도 평가">
+                  ⚡ 실전 풀이 모드
+                </button>
+              </div>
+            </div>
+
+            <div class="action-group">
+              <button class="btn btn-secondary" id="btn-anki-early-review" title="내일 또는 이후 복습할 카드를 오늘 미리 당겨서 복습">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>미리 당겨서 복습</span>
+              </button>
+              <button class="btn btn-primary" id="btn-anki-add-deck" title="새로운 문제를 안키 복습 덱에 추가">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>새 문제 덱에 추가</span>
+              </button>
+              <button class="btn btn-ghost" id="btn-toggle-anki-schedule" title="전체 카드 복습 스케줄 표 보기">
+                📋 스케줄 목록
+              </button>
+            </div>
+          </div>
+
+          <!-- Study Arena Container -->
+          <div class="anki-arena" id="anki-arena">
+            <!-- Progress Bar -->
+            <div class="anki-session-header" id="anki-session-header">
+              <div class="anki-session-info">
+                <span class="session-progress-text" id="anki-session-counter">복습 진행: 1 / 10</span>
+                <span class="session-due-pill" id="anki-session-due-pill">오늘 복습 대상</span>
+              </div>
+              <div class="anki-progress-bar-bg">
+                <div class="anki-progress-bar-fill" id="anki-progress-fill" style="width: 10%;"></div>
+              </div>
+            </div>
+
+            <!-- Flashcard Frame (with 3D Flip capability) -->
+            <div class="anki-card-wrapper" id="anki-card-wrapper">
+              <div class="anki-card" id="anki-card">
+                
+                <!-- Card Front -->
+                <div class="anki-card-face anki-card-front" id="anki-card-front">
+                  <div class="card-face-header">
+                    <div class="card-badges">
+                      <span class="badge badge-level" id="anki-card-level">N1</span>
+                      <span class="badge badge-type" id="anki-card-type">문맥 규정</span>
+                      <span class="badge badge-srs" id="anki-card-srs-status">학습 1회차 · 간격 1일</span>
+                    </div>
+                    <div class="card-actions-quick">
+                      <button class="icon-button-sm" id="btn-anki-audio" title="발음 듣기">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                      </button>
+                      <button class="icon-button-sm" id="btn-anki-bookmark" title="북마크 토글 (B)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="anki-question-body">
+                    <div class="anki-instruction" id="anki-instruction">빈칸에 들어갈 가장 알맞은 표현을 고르세요.</div>
+                    <div class="anki-question-text" id="anki-question-text">
+                      <!-- Japanese question sentence with ruby -->
+                    </div>
+                    <div class="anki-question-trans hidden" id="anki-question-trans">
+                      <!-- Korean translation -->
+                    </div>
+                  </div>
+
+                  <!-- Options list for solving or preview -->
+                  <div class="anki-options-grid" id="anki-options-grid">
+                    <!-- Option buttons -->
+                  </div>
+
+                  <!-- Front Bottom Flip CTA -->
+                  <div class="anki-flip-cta-area" id="anki-flip-cta-area">
+                    <button class="btn btn-primary btn-lg btn-flip-card" id="btn-flip-card">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                      <span>정답 및 해설 뒤집어 확인 (Space / Enter)</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Card Back (Revealed after flip) -->
+                <div class="anki-card-face anki-card-back hidden" id="anki-card-back">
+                  <div class="card-face-header">
+                    <div class="card-badges">
+                      <span class="badge badge-success">✓ 정답 공개</span>
+                      <span class="badge badge-srs" id="anki-card-back-srs-status">간격 예정: +4일</span>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" id="btn-flip-back" title="앞면으로 다시 돌리기">
+                      ↺ 앞면 보기
+                    </button>
+                  </div>
+
+                  <!-- Complete Sentence with Answer Highlight -->
+                  <div class="anki-answer-highlight-card">
+                    <div class="cs-label">정답 완성 문장</div>
+                    <div class="cs-ja" id="anki-cs-ja"></div>
+                    <div class="cs-ko" id="anki-cs-ko"></div>
+                  </div>
+
+                  <!-- Explanation & Choices Breakdown -->
+                  <div class="anki-back-expl-content">
+                    <div class="expl-section-title">💡 핵심 출제 포인트 및 해설</div>
+                    <div class="expl-main-text" id="anki-expl-main"></div>
+                    <div class="choice-notes-list" id="anki-choice-notes"></div>
+                  </div>
+
+                  <!-- Anki SM-2 4 Rating Buttons -->
+                  <div class="anki-rating-container">
+                    <div class="anki-rating-title">
+                      <span>🧠 기억 난이도를 평가해 주세요 (단축키 1, 2, 3, 4)</span>
+                    </div>
+                    <div class="anki-rating-buttons">
+                      <button class="anki-eval-btn btn-eval-again" data-eval="again" id="btn-eval-again">
+                        <div class="eval-shortcut">1</div>
+                        <div class="eval-name">🔴 다시 (Again)</div>
+                        <div class="eval-interval" id="eval-interval-again">1일</div>
+                        <div class="eval-subtext">완전 잊어버림 / 오답</div>
+                      </button>
+                      <button class="anki-eval-btn btn-eval-hard" data-eval="hard" id="btn-eval-hard">
+                        <div class="eval-shortcut">2</div>
+                        <div class="eval-name">🟠 어려움 (Hard)</div>
+                        <div class="eval-interval" id="eval-interval-hard">2일</div>
+                        <div class="eval-subtext">간신히 떠올림</div>
+                      </button>
+                      <button class="anki-eval-btn btn-eval-good" data-eval="good" id="btn-eval-good">
+                        <div class="eval-shortcut">3</div>
+                        <div class="eval-name">🟢 알맞음 (Good)</div>
+                        <div class="eval-interval" id="eval-interval-good">4일</div>
+                        <div class="eval-subtext">적절히 기억남</div>
+                      </button>
+                      <button class="anki-eval-btn btn-eval-easy" data-eval="easy" id="btn-eval-easy">
+                        <div class="eval-shortcut">4</div>
+                        <div class="eval-name">🔵 쉬움 (Easy)</div>
+                        <div class="eval-interval" id="eval-interval-easy">7일+</div>
+                        <div class="eval-subtext">완벽히 숙지함</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Empty / Completed State -->
+            <div class="anki-empty-state hidden" id="anki-completed-state">
+              <div class="completed-icon">🎉</div>
+              <h3 id="anki-completed-title">오늘의 안키 복습을 모두 완료했습니다!</h3>
+              <p id="anki-completed-desc">
+                훌륭합니다! 오늘의 망각곡선 복습 대기 카드를 모두 소화했습니다.<br>
+                에빙하우스 망각곡선 알고리즘에 따라 내일 최적의 타이밍에 다음 복습 카드가 찾아옵니다.
+              </p>
+              <div class="completed-stats-summary" id="anki-completed-summary">
+                <!-- Summary pills -->
+              </div>
+              <div class="completed-actions">
+                <button class="btn btn-secondary" id="btn-completed-early">
+                  <span>⚡ 내일 복습 미리 당겨서 풀기</span>
+                </button>
+                <button class="btn btn-primary" onclick="window.app.switchTab('quiz')">
+                  <span>📝 새로운 실전 문제 풀러 가기</span>
+                </button>
+                <button class="btn btn-ghost" id="btn-completed-view-schedule">
+                  <span>📋 덱 스케줄 확인하기</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anki Deck Schedule List Section (Collapsible) -->
+          <div class="anki-schedule-section hidden" id="anki-schedule-section">
+            <div class="schedule-header">
+              <h3>📋 안키 덱 전체 복습 스케줄 (<span id="anki-total-deck-count">0</span>개)</h3>
+              <div class="schedule-search-box">
+                <input type="text" id="input-anki-search" placeholder="단어, 문장, 문제 번호 검색...">
+              </div>
+            </div>
+            <div class="schedule-cards-list" id="anki-schedule-list">
+              <!-- Rendered list of cards with next review date & intervals -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= 3. MISTAKE NOTEBOOK VIEW ================= -->
       <section id="view-mistakes" class="tab-view">
         <div class="mistakes-container">
           <!-- Header Banner -->
@@ -349,6 +612,10 @@
               <button class="btn btn-primary" id="btn-export-pdf" title="현재 오답 목록을 깔끔한 A4 PDF로 인쇄/저장">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
                 <span>📄 PDF 인쇄 / 저장</span>
+              </button>
+              <button class="btn btn-secondary" id="btn-export-csv" title="엑셀이나 스프레드시트에서 열 수 있는 CSV 파일로 다운로드">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <span>📊 엑셀/CSV (.csv)</span>
               </button>
               <button class="btn btn-secondary" id="btn-export-markdown" title="NotebookLM이나 문서 앱에 올릴 수 있는 마크다운 파일로 다운로드">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -463,6 +730,11 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         <span>문제 풀기</span>
       </button>
+      <button class="nav-tab" data-tab="anki" role="tab" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>안키 복습</span>
+        <span class="badge anki-due-badge" id="mobile-anki-due-count" style="display:none;">0</span>
+      </button>
       <button class="nav-tab" data-tab="mistakes" role="tab" aria-selected="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
         <span>오답노트</span>
@@ -506,6 +778,74 @@
     </div>
   </div>
 
+  <!-- Add Cards to Anki Modal -->
+  <div class="modal-overlay hidden" id="modal-add-anki">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>➕ 안키 복습 덱에 문제 추가</h3>
+        <button class="modal-close-btn" id="btn-close-add-anki">&times;</button>
+      </div>
+      <div class="modal-body" style="padding:1.5rem;">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+          원하는 조건의 문제를 선택하여 안키 망각곡선 복습 덱에 추가하고 바로 학습을 시작하세요.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem;">
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-secondary); display:block; margin-bottom:0.35rem;">급수 선택</label>
+            <select class="select-input" id="modal-add-anki-level" style="width:100%;">
+              <option value="N1">N1 (2,020문항)</option>
+              <option value="N2">N2 (1,742문항)</option>
+              <option value="N3">N3 (1,621문항)</option>
+              <option value="N4">N4 (1,661문항)</option>
+              <option value="N5">N5 (617문항)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-secondary); display:block; margin-bottom:0.35rem;">문제 유형</label>
+            <select class="select-input" id="modal-add-anki-type" style="width:100%;">
+              <option value="ALL">전체 유형</option>
+              <option value="문맥 규정">문맥 규정</option>
+              <option value="한자 읽기">한자 읽기</option>
+              <option value="표기">표기</option>
+              <option value="유의 표현">유의 표현</option>
+              <option value="용법">용법</option>
+              <option value="단어 형성">단어 형성</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-secondary); display:block; margin-bottom:0.35rem;">출처 대상</label>
+            <select class="select-input" id="modal-add-anki-pool" style="width:100%;">
+              <option value="new">🆕 아직 안 푼 새로운 문제</option>
+              <option value="mistakes">⚠️ 지금까지 틀렸던 오답 전체</option>
+              <option value="bookmarks">⭐ 중요 북마크 문제</option>
+              <option value="all">🎲 전체 문제 중 랜덤</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-secondary); display:block; margin-bottom:0.35rem;">추가할 카드 수</label>
+            <div style="display:flex; gap:0.5rem;" id="modal-add-anki-count-group">
+              <button type="button" class="btn btn-secondary btn-sm modal-count-btn active" data-count="10">10개</button>
+              <button type="button" class="btn btn-secondary btn-sm modal-count-btn" data-count="20">20개</button>
+              <button type="button" class="btn btn-secondary btn-sm modal-count-btn" data-count="30">30개</button>
+              <button type="button" class="btn btn-secondary btn-sm modal-count-btn" data-count="50">50개</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+          <button class="btn btn-ghost" id="btn-cancel-add-anki">취소</button>
+          <button class="btn btn-primary" id="btn-confirm-add-anki">
+            <span>덱에 추가하고 복습 시작</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-overlay hidden" id="modal-shortcuts">
     <div class="modal-card">
       <div class="modal-header">
@@ -513,6 +853,9 @@
         <button class="modal-close-btn" id="btn-close-shortcuts">&times;</button>
       </div>
       <div class="shortcuts-list">
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">
+          📝 일반 퀴즈 풀이 단축키
+        </div>
         <div class="shortcut-item">
           <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>
           <span>보기 1~4번 선택하기</span>
@@ -536,6 +879,17 @@
         <div class="shortcut-item">
           <kbd>B</kbd>
           <span>현재 문제 북마크 토글</span>
+        </div>
+        <div style="margin: 0.85rem 0 0.35rem; font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan); border-top: 1px solid var(--border-subtle); padding-top: 0.65rem;">
+          🔁 안키 스마트 복습 단축키
+        </div>
+        <div class="shortcut-item">
+          <kbd>Space</kbd> or <kbd>Enter</kbd>
+          <span>정답 및 해설 카드 뒤집어 확인</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd>
+          <span>1:다시(1일) · 2:어려움(2일) · 3:알맞음(4일) · 4:쉬움(7일+)</span>
         </div>
       </div>
     </div>
@@ -659,7 +1013,7 @@
 
   <!-- Main App Script -->
   <script src="data/sync_init.js?v=3.0"></script>
-  <script src="js/app.js?v=3.3"></script>
+  <script src="js/app.js?v=3.4"></script>
 
   
   </div>

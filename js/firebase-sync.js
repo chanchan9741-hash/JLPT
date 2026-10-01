@@ -171,6 +171,7 @@ window.JLPT_FIREBASE = (function () {
       let mistakes = (payload && payload.mistakes) ? payload.mistakes : null;
       let history = (payload && payload.history) ? payload.history : null;
       let bookmarks = (payload && payload.bookmarks) ? payload.bookmarks : null;
+      let srs = (payload && payload.srs) ? payload.srs : null;
 
       if (!mistakes) {
         mistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || localStorage.getItem('jlpt_mistakes_v2') || '{}');
@@ -180,6 +181,9 @@ window.JLPT_FIREBASE = (function () {
       }
       if (!bookmarks) {
         bookmarks = JSON.parse(localStorage.getItem('jlpt_bookmarks_v1') || localStorage.getItem('jlpt_bookmarks_v2') || '[]');
+      }
+      if (!srs) {
+        srs = JSON.parse(localStorage.getItem('jlpt_srs_v1') || '{}');
       }
 
       // If local data is empty, check window.JLPT_INITIAL_SYNC
@@ -194,6 +198,7 @@ window.JLPT_FIREBASE = (function () {
         mistakes,
         history,
         bookmarks,
+        srs,
         lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
         lastUpdatedClient: Date.now(),
         userEmail: currentUser.email || '',
