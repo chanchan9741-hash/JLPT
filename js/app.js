@@ -308,6 +308,7 @@
         state.level = parsed.level || 'N1';
         state.type = parsed.type || 'ALL';
         state.levelIndices = parsed.levelIndices || {};
+        state.mode = (parsed.mode === 'srs-drill' || parsed.mode === 'new-drill') ? 'new-drill' : (parsed.mode || 'drill');
       } else {
         state.theme = 'light';
         localStorage.setItem('jlpt_theme_v3', 'applied');
@@ -588,14 +589,23 @@
       currentQuestions = rawQuestions.filter(q => q.typeName === state.type);
     }
 
-    if (state.mode === 'srs-drill') {
-      currentQuestions = buildSrsDrillQueue(currentQuestions);
-    } else if (state.isShuffled) {
-      shuffleArray(currentQuestions);
-    }
-
-    if (!preserveIndex) {
-      state.currentIndex = getResumeIndex(level, currentQuestions);
+    if (state.mode === 'new-drill' || state.mode === 'srs-drill') {
+      // 새로운 문제 풀기: 아직 풀지 않은(미풀이) 문제만 추출
+      const unseen = currentQuestions.filter(q => !history[q.id] || (history[q.id].solved || 0) === 0);
+      currentQuestions = unseen;
+      if (state.isShuffled) {
+        shuffleArray(currentQuestions);
+      }
+      if (!preserveIndex) {
+        state.currentIndex = 0;
+      }
+    } else {
+      if (state.isShuffled) {
+        shuffleArray(currentQuestions);
+      }
+      if (!preserveIndex) {
+        state.currentIndex = getResumeIndex(level, currentQuestions);
+      }
     }
 
     state.answered = false;
@@ -670,10 +680,26 @@
     const optionsContainer = document.getElementById('options-container');
 
     if (!currentQuestions || currentQuestions.length === 0) {
-      qTextEl.innerHTML = '<div style="color:var(--text-muted); font-size:1.1rem;">해당 조건에 맞는 문제가 없습니다. 다른 필터를 선택해 주세요.</div>';
+      if (state.mode === 'new-drill' || state.mode === 'srs-drill') {
+        qTextEl.innerHTML = `
+          <div style="text-align:center; padding:2.5rem 1rem;">
+            <div style="font-size:2.5rem; margin-bottom:0.75rem;">🎉</div>
+            <div style="font-size:1.2rem; font-weight:700; color:var(--text-primary); margin-bottom:0.5rem;">
+              새로운 문제를 모두 풀었습니다!
+            </div>
+            <div style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">
+              해당 레벨(${state.level}) 및 유형(${state.type})의 미풀이 문제를 전부 완주하셨습니다.<br>
+              <strong>[⚡ 즉시 풀기]</strong>로 복습하거나 다른 레벨/유형을 선택해 보세요.
+            </div>
+          </div>
+        `;
+      } else {
+        qTextEl.innerHTML = '<div style="color:var(--text-muted); font-size:1.1rem;">해당 조건에 맞는 문제가 없습니다. 다른 필터를 선택해 주세요.</div>';
+      }
       qTransEl.textContent = '';
       optionsContainer.innerHTML = '';
       explBox.classList.add('hidden');
+      if (indicator) indicator.textContent = '0 / 0';
       return;
     }
 
@@ -739,12 +765,12 @@
       mistakeBadge.style.borderColor = 'var(--success-border)';
       mistakeBadge.style.background = 'var(--success-bg)';
       mistakeBadge.textContent = '✨ 정복 완료';
-    } else if (state.mode === 'srs-drill') {
+    } else if (state.mode === 'new-drill' || state.mode === 'srs-drill') {
       mistakeBadge.classList.remove('hidden');
-      mistakeBadge.style.color = 'var(--primary)';
-      mistakeBadge.style.borderColor = 'var(--border-subtle)';
-      mistakeBadge.style.background = 'var(--bg-elevated)';
-      mistakeBadge.textContent = '🔁 안키 빈도 반복 모드';
+      mistakeBadge.style.color = '#3b82f6';
+      mistakeBadge.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+      mistakeBadge.style.background = 'rgba(59, 130, 246, 0.1)';
+      mistakeBadge.textContent = '✨ 새로운 문제 풀기';
     } else {
       mistakeBadge.classList.add('hidden');
     }
@@ -903,7 +929,7 @@
   }
 
   function handleOptionSelect(optIndex) {
-    if (state.answered && (state.mode === 'drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill')) return;
+    if (state.answered && (state.mode === 'drill' || state.mode === 'new-drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill')) return;
 
     const q = currentQuestions[state.currentIndex];
     const selectedOpt = q.options[optIndex];
@@ -1008,7 +1034,7 @@
     saveState();
 
     // Reveal Explanation Drawer in drill mode
-    if (state.mode === 'drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill') {
+    if (state.mode === 'drill' || state.mode === 'new-drill' || state.mode === 'srs-drill' || state.mode === 'mistake-drill') {
       revealExplanation(q, isCorrect);
     }
   }
@@ -2646,12 +2672,16 @@
           showToast('⏱️ 모의고사 모드가 켜졌습니다. 문제를 풀고 "시험 종료 및 채점"을 누르세요.');
           document.getElementById('btn-finish-exam').classList.remove('hidden');
           document.getElementById('exam-status-bar').classList.remove('hidden');
-        } else if (state.mode === 'srs-drill') {
+        } else if (state.mode === 'new-drill' || state.mode === 'srs-drill') {
           document.getElementById('btn-finish-exam').classList.add('hidden');
           document.getElementById('exam-status-bar').classList.add('hidden');
           loadLevelQuestions(state.level, false);
           renderCurrentQuestion();
-          showToast('🔁 [안키 빈도 반복] 자주 틀리는 문제가 더 자주, 맞힐 때까지 집중 반복 출제됩니다!');
+          if (currentQuestions.length > 0) {
+            showToast(`✨ [새로운 문제 풀기] 아직 풀지 않은 ${currentQuestions.length.toLocaleString()}개의 새로운 문제를 시작합니다!`);
+          } else {
+            showToast('🎉 [새로운 문제 풀기] 해당 조건의 모든 문제를 이미 풀었습니다!');
+          }
         } else {
           document.getElementById('btn-finish-exam').classList.add('hidden');
           document.getElementById('exam-status-bar').classList.add('hidden');
