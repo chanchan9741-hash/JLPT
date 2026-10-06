@@ -3086,8 +3086,20 @@
         return;
       }
 
+      // Escape key closes Question Picker if open
+      if (e.key === 'Escape') {
+        const pickerModal = document.getElementById('modal-question-picker');
+        if (pickerModal && !pickerModal.classList.contains('hidden')) {
+          closeQuestionPicker();
+          return;
+        }
+      }
+
       if (state.currentTab === 'quiz') {
-        if (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4') {
+        if (e.key === 'g' || e.key === 'G') {
+          openQuestionPicker();
+          return;
+        } else if (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4') {
           const optIdx = parseInt(e.key, 10) - 1;
           handleOptionSelect(optIdx);
         } else if (e.key === ' ' || e.key === 'Enter') {
@@ -3154,6 +3166,371 @@
         }
       }
     });
+
+    // Initialize Question Picker Events
+    setupQuestionPickerEvents();
+  }
+
+  // --- Question Picker (문제 바로가기 및 선택 창) Logic ---
+  const pickerState = {
+    statusFilter: 'all', // 'all' | 'unsolved' | 'correct' | 'wrong' | 'bookmarked'
+    searchQuery: '',
+    rangeIndex: 0,
+    viewMode: 'grid', // 'grid' | 'list'
+    chunkSize: 50
+  };
+
+  function openQuestionPicker() {
+    if (!currentQuestions || currentQuestions.length === 0) {
+      showToast('⚠️ 선택할 수 있는 문제가 없습니다.');
+      return;
+    }
+
+    const modal = document.getElementById('modal-question-picker');
+    if (!modal) return;
+
+    // Set level badge
+    const badge = document.getElementById('picker-level-badge');
+    if (badge) {
+      badge.textContent = `${state.level} (${state.type === 'ALL' ? '전체' : state.type}) 총 ${currentQuestions.length.toLocaleString()}문항`;
+    }
+
+    // Determine current range
+    pickerState.rangeIndex = Math.floor(state.currentIndex / pickerState.chunkSize);
+    pickerState.searchQuery = '';
+    pickerState.statusFilter = 'all';
+
+    const searchInput = document.getElementById('picker-search-input');
+    if (searchInput) searchInput.value = '';
+
+    const jumpInput = document.getElementById('picker-jump-input');
+    if (jumpInput) {
+      jumpInput.value = state.currentIndex + 1;
+      jumpInput.max = currentQuestions.length;
+    }
+
+    // Populate Range Select Dropdown
+    updatePickerRangeSelect();
+
+    // Update Counts on Filter Chips
+    updatePickerFilterCounts();
+
+    // Reset status filter chips active UI
+    document.querySelectorAll('#picker-status-chips .chip-sm').forEach(c => {
+      c.classList.toggle('active', c.dataset.filter === 'all');
+    });
+
+    renderPickerItems();
+
+    modal.classList.remove('hidden');
+
+    // Focus jump input for instant typing
+    setTimeout(() => {
+      if (jumpInput) {
+        jumpInput.focus();
+        jumpInput.select();
+      }
+    }, 100);
+  }
+
+  function closeQuestionPicker() {
+    const modal = document.getElementById('modal-question-picker');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function updatePickerRangeSelect() {
+    const select = document.getElementById('picker-range-select');
+    if (!select) return;
+
+    const total = currentQuestions.length;
+    const chunk = pickerState.chunkSize;
+    const numChunks = Math.ceil(total / chunk);
+
+    let html = '';
+    for (let i = 0; i < numChunks; i++) {
+      const start = i * chunk + 1;
+      const end = Math.min((i + 1) * chunk, total);
+      html += `<option value="${i}">#${start} ~ #${end}번 (${end - start + 1}문항)</option>`;
+    }
+    select.innerHTML = html;
+    select.value = pickerState.rangeIndex;
+  }
+
+  function updatePickerFilterCounts() {
+    let countUnsolved = 0;
+    let countCorrect = 0;
+    let countWrong = 0;
+    let countBookmarked = 0;
+
+    currentQuestions.forEach(q => {
+      const h = history[q.id];
+      const m = mistakes[q.id];
+      const isSolved = h && (h.solved || 0) > 0;
+      if (!isSolved) countUnsolved++;
+      if (h && (h.correct || 0) > 0) countCorrect++;
+      if ((m && !m.isMastered) || (h && (h.wrong || 0) > 0)) countWrong++;
+      if (bookmarks.has(q.id)) countBookmarked++;
+    });
+
+    const elAll = document.getElementById('cnt-picker-all');
+    const elUnsolved = document.getElementById('cnt-picker-unsolved');
+    const elCorrect = document.getElementById('cnt-picker-correct');
+    const elWrong = document.getElementById('cnt-picker-wrong');
+    const elBm = document.getElementById('cnt-picker-bookmarked');
+
+    if (elAll) elAll.textContent = currentQuestions.length.toLocaleString();
+    if (elUnsolved) elUnsolved.textContent = countUnsolved.toLocaleString();
+    if (elCorrect) elCorrect.textContent = countCorrect.toLocaleString();
+    if (elWrong) elWrong.textContent = countWrong.toLocaleString();
+    if (elBm) elBm.textContent = countBookmarked.toLocaleString();
+  }
+
+  function renderPickerItems() {
+    const gridContainer = document.getElementById('picker-grid');
+    const listContainer = document.getElementById('picker-list');
+    const emptyState = document.getElementById('picker-empty-state');
+    if (!gridContainer || !listContainer) return;
+
+    const query = pickerState.searchQuery.trim().toLowerCase();
+    const filter = pickerState.statusFilter;
+    const chunk = pickerState.chunkSize;
+    const rangeStart = pickerState.rangeIndex * chunk;
+    const rangeEnd = (pickerState.rangeIndex + 1) * chunk;
+
+    // Filter questions
+    const filtered = [];
+    currentQuestions.forEach((q, idx) => {
+      // 1. Status Filter Check
+      const h = history[q.id];
+      const m = mistakes[q.id];
+      const isSolved = h && (h.solved || 0) > 0;
+      const isCorrect = h && (h.correct || 0) > 0;
+      const isWrong = (m && !m.isMastered) || (h && (h.wrong || 0) > 0);
+      const isBm = bookmarks.has(q.id);
+
+      if (filter === 'unsolved' && isSolved) return;
+      if (filter === 'correct' && !isCorrect) return;
+      if (filter === 'wrong' && !isWrong) return;
+      if (filter === 'bookmarked' && !isBm) return;
+
+      // 2. Search Query Check
+      if (query) {
+        const plain = (q.qPlain || '').toLowerCase();
+        const type = (q.typeName || '').toLowerCase();
+        const trans = (q.qTrans || '').toLowerCase();
+        const numMatch = (idx + 1).toString() === query || ('#' + (idx + 1)) === query;
+        if (!plain.includes(query) && !type.includes(query) && !trans.includes(query) && !numMatch) {
+          return;
+        }
+      } else {
+        // If no search query and status is 'all', restrict to selected range chunk
+        if (filter === 'all' && (idx < rangeStart || idx >= rangeEnd)) {
+          return;
+        }
+      }
+
+      filtered.push({
+        q,
+        originalIndex: idx,
+        isCurrent: idx === state.currentIndex,
+        isCorrect,
+        isWrong,
+        isBm
+      });
+    });
+
+    if (filtered.length === 0) {
+      gridContainer.innerHTML = '';
+      listContainer.innerHTML = '';
+      gridContainer.classList.add('hidden');
+      listContainer.classList.add('hidden');
+      if (emptyState) emptyState.classList.remove('hidden');
+      return;
+    }
+
+    if (emptyState) emptyState.classList.add('hidden');
+
+    if (pickerState.viewMode === 'grid') {
+      gridContainer.classList.remove('hidden');
+      listContainer.classList.add('hidden');
+
+      let gridHtml = '';
+      filtered.forEach(item => {
+        let cls = 'picker-num-btn';
+        if (item.isCurrent) cls += ' current';
+        else if (item.isWrong) cls += ' wrong';
+        else if (item.isCorrect) cls += ' correct';
+
+        const star = item.isBm ? '<span class="star-mark">★</span>' : '';
+        gridHtml += `
+          <button class="${cls}" data-idx="${item.originalIndex}" title="#${item.originalIndex + 1}번 문제로 이동">
+            ${star}
+            <span>${item.originalIndex + 1}</span>
+          </button>
+        `;
+      });
+      gridContainer.innerHTML = gridHtml;
+
+      gridContainer.querySelectorAll('.picker-num-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.idx, 10);
+          selectQuestionFromPicker(idx);
+        });
+      });
+    } else {
+      gridContainer.classList.add('hidden');
+      listContainer.classList.remove('hidden');
+
+      let listHtml = '';
+      filtered.forEach(item => {
+        let statusTag = '';
+        if (item.isCurrent) statusTag = '<span style="color:#2563eb; font-weight:800;">현재 문제</span>';
+        else if (item.isWrong) statusTag = '<span style="color:#dc2626; font-weight:700;">오답</span>';
+        else if (item.isCorrect) statusTag = '<span style="color:#059669; font-weight:700;">정답 ✓</span>';
+        else statusTag = '<span style="color:var(--text-muted);">미풀이</span>';
+
+        const star = item.isBm ? '<span style="color:#f59e0b; margin-right:4px;">★</span>' : '';
+        const preview = (item.q.qPlain || '').replace(/[\r\n]+/g, ' ');
+
+        listHtml += `
+          <div class="picker-list-item ${item.isCurrent ? 'current' : ''}" data-idx="${item.originalIndex}">
+            <div class="picker-list-left">
+              <span class="picker-list-num">#${item.originalIndex + 1}</span>
+              <span class="picker-list-type">${item.q.typeName || '문제'}</span>
+              <span class="picker-list-text">${star}${preview}</span>
+            </div>
+            <div class="picker-list-status">
+              ${statusTag}
+            </div>
+          </div>
+        `;
+      });
+      listContainer.innerHTML = listHtml;
+
+      listContainer.querySelectorAll('.picker-list-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.dataset.idx, 10);
+          selectQuestionFromPicker(idx);
+        });
+      });
+    }
+  }
+
+  function selectQuestionFromPicker(index) {
+    if (index < 0 || index >= currentQuestions.length) return;
+
+    state.currentIndex = index;
+    state.levelIndices[state.level] = index;
+    state.answered = false;
+    state.selectedOption = null;
+
+    saveState();
+    renderCurrentQuestion();
+    closeQuestionPicker();
+
+    showToast(`📌 #${index + 1}번 문제로 이동했습니다.`);
+  }
+
+  function setupQuestionPickerEvents() {
+    // Open Trigger 1: #btn-open-picker
+    const btnOpen = document.getElementById('btn-open-picker');
+    if (btnOpen) {
+      btnOpen.addEventListener('click', openQuestionPicker);
+    }
+
+    // Open Trigger 2: #q-index-indicator click
+    const indicator = document.getElementById('q-index-indicator');
+    if (indicator) {
+      indicator.addEventListener('click', openQuestionPicker);
+    }
+
+    // Close buttons
+    const btnClose = document.getElementById('btn-close-picker');
+    if (btnClose) btnClose.addEventListener('click', closeQuestionPicker);
+
+    const btnCloseFooter = document.getElementById('btn-close-picker-footer');
+    if (btnCloseFooter) btnCloseFooter.addEventListener('click', closeQuestionPicker);
+
+    // Overlay click to close
+    const modal = document.getElementById('modal-question-picker');
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeQuestionPicker();
+      });
+    }
+
+    // Jump by number form
+    const jumpInput = document.getElementById('picker-jump-input');
+    const btnJump = document.getElementById('btn-picker-jump');
+    const handleJump = () => {
+      const val = parseInt(jumpInput.value, 10);
+      if (isNaN(val) || val < 1 || val > currentQuestions.length) {
+        showToast(`⚠️ 1부터 ${currentQuestions.length.toLocaleString()} 사이의 번호를 입력해주세요.`);
+        if (jumpInput) jumpInput.focus();
+        return;
+      }
+      selectQuestionFromPicker(val - 1);
+    };
+
+    if (btnJump) btnJump.addEventListener('click', handleJump);
+    if (jumpInput) {
+      jumpInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleJump();
+        }
+      });
+    }
+
+    // Search input
+    const searchInput = document.getElementById('picker-search-input');
+    if (searchInput) {
+      let debounceTimer = null;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          pickerState.searchQuery = e.target.value;
+          renderPickerItems();
+        }, 150);
+      });
+    }
+
+    // Status filter chips
+    document.querySelectorAll('#picker-status-chips .chip-sm').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#picker-status-chips .chip-sm').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        pickerState.statusFilter = chip.dataset.filter;
+        renderPickerItems();
+      });
+    });
+
+    // Range selector change
+    const rangeSelect = document.getElementById('picker-range-select');
+    if (rangeSelect) {
+      rangeSelect.addEventListener('change', (e) => {
+        pickerState.rangeIndex = parseInt(e.target.value, 10);
+        renderPickerItems();
+      });
+    }
+
+    // View toggle buttons (Grid / List)
+    const btnGrid = document.getElementById('btn-picker-view-grid');
+    const btnList = document.getElementById('btn-picker-view-list');
+    if (btnGrid && btnList) {
+      btnGrid.addEventListener('click', () => {
+        pickerState.viewMode = 'grid';
+        btnGrid.classList.add('active');
+        btnList.classList.remove('active');
+        renderPickerItems();
+      });
+      btnList.addEventListener('click', () => {
+        pickerState.viewMode = 'list';
+        btnList.classList.add('active');
+        btnGrid.classList.remove('active');
+        renderPickerItems();
+      });
+    }
   }
 
   function mergeExternalData(cloudData) {
