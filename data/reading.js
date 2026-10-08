@@ -10,7 +10,7 @@
 window.JLPT_READING_DATA = [
   {
     "id": "SN-N2-S01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "만화와 문학의 세계 (マンガと文学の世界)",
@@ -137,7 +137,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-S02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "돼지와 멧돼지 (豚と猪 - 夢野久作)",
@@ -264,7 +264,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-S03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "비즈니스 서한 - 거래조건 완화 부탁 (取引条件緩和のお願い)",
@@ -401,7 +401,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-S04",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "아날로그 지향과 디지털 지향 (アナログ志向とデジタル志向)",
@@ -524,7 +524,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-S05",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "버추얼의 본래 의미 (バーチャルの本来の意味)",
@@ -656,7 +656,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-M01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "medium",
     "typeName": "중문 독해",
     "title": "책을 읽는다는 것 (書物を読むということ - 倉田百三)",
@@ -909,7 +909,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-M02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "medium",
     "typeName": "중문 독해",
     "title": "배우의 소질 (俳優の素質 - 岸田國士)",
@@ -1158,7 +1158,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-M03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "medium",
     "typeName": "중문 독해",
     "title": "과학의 정신 (科学の精神 - 宮本百合子)",
@@ -1407,7 +1407,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-L01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "long",
     "typeName": "장문 독해",
     "title": "유학생의 아이 (留学生の子 - 朱鍾官)",
@@ -1716,7 +1716,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-L02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "long",
     "typeName": "장문 독해",
     "title": "외국어 교육에 대한 고찰 (外国語教育 - 岸田國士)",
@@ -2011,7 +2011,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-L03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "long",
     "typeName": "장문 독해",
     "title": "‘하이칼라’라는 말의 의미 (「ハイカラ」ということ - 岸田國士)",
@@ -2306,7 +2306,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-C01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "comparison",
     "typeName": "통합이해 (비교)",
     "title": "주입식 교육에 대한 두 가지 시선 (詰め込み教育についての二つの視点)",
@@ -2545,7 +2545,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-C02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "comparison",
     "typeName": "통합이해 (비교독해)",
     "title": "유아기 영어 조기교육에 대한 두 시선 (幼児期の英語教育についての二つの視点)",
@@ -2779,7 +2779,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-C03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "comparison",
     "typeName": "통합이해 (비교독해)",
     "title": "재판원 제도에 대한 두 가지 논의 (裁判員制度についての二つの議論)",
@@ -3013,7 +3013,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-A01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "assertion",
     "typeName": "주장이해 (논설 독해)",
     "title": "번역의 본질과 문학적 창조 (翻訳について - 岸田國士)",
@@ -3303,7 +3303,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-A02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "assertion",
     "typeName": "주장이해 (논설 독해)",
     "title": "탐정취미와 엽기취미의 심리 (ナンセンス - 夢野久作)",
@@ -3593,7 +3593,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-A03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "assertion",
     "typeName": "주장이해 (논설 독해)",
     "title": "행위의 가치와 예술가의 정신 (行為の価値 - 宮本百合子)",
@@ -3888,7 +3888,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-I01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "info_retrieval",
     "typeName": "정보 검색",
     "title": "도요대학 11월제 구보타 히로노부 강연회 안내 (東洋大学 第52回11月祭)",
@@ -4052,7 +4052,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-I02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "info_retrieval",
     "typeName": "정보 검색",
     "title": "외국인 등록 절차 안내 (外国人登録の手続き案内)",
@@ -4226,7 +4226,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-G01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "grammar_text",
     "typeName": "글의 문법 (文法)",
     "title": "거짓말의 효용 (嘘の効用 - 末弘厳太郎)",
@@ -4567,7 +4567,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-G02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "grammar_text",
     "typeName": "글의 문법 (文法)",
     "title": "디지털과 아날로그의 언어적 수용 (デジタルとアナログの言語)",
@@ -4903,7 +4903,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-G03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "grammar_text",
     "typeName": "글의 문법 (文法)",
     "title": "영화와 계절감 (映画と季感 - 中井正一)",
@@ -5239,7 +5239,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-G04",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "grammar_text",
     "typeName": "글의 문법 (文法)",
     "title": "과학자와 머리 (科学者とあたま - 寺田寅彦)",
@@ -5575,7 +5575,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-G05",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "grammar_text",
     "typeName": "글의 문법 (文法)",
     "title": "새로운 예절과 훈육 (新しい躾 - 宮本百合子)",
@@ -5911,7 +5911,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX01",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "연극과 오락의 경계 (演劇と娯楽)",
@@ -6024,7 +6024,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX02",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "medium",
     "typeName": "중문 독해",
     "title": "영상과 언어의 본질 (映像と言語)",
@@ -6239,7 +6239,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX03",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "long",
     "typeName": "장문 독해",
     "title": "시골의 한적함과 도시의 인간사막 (田舎の閑静と都会の人間砂漠)",
@@ -6519,7 +6519,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX04",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "comparison",
     "typeName": "통합이해 (비교독해)",
     "title": "부부별성 제도에 대한 논의 (夫婦別姓制度についての議論)",
@@ -6748,7 +6748,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX05",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "assertion",
     "typeName": "주장이해 (논설 독해)",
     "title": "방언의 본질과 매력 (方言の魅力)",
@@ -7023,7 +7023,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "SN-N2-EX06",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "info_retrieval",
     "typeName": "정보검색 (案内・文書)",
     "title": "현역 대학·단기대학 진학 상황 (「現役」の大学・短大進学状況)",
@@ -7534,7 +7534,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "RD-N2-001",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "비즈니스에서의 스마트한 '거절'의 기술",
@@ -7650,7 +7650,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "RD-N2-002",
-    "level": "N2",
+    "level": "N1",
     "typeCode": "info_retrieval",
     "typeName": "정보 검색",
     "title": "미도리시 국제교류센터 일본어 교실 수강생 모집 안내",
@@ -7817,7 +7817,7 @@ window.JLPT_READING_DATA = [
   },
   {
     "id": "RD-N3-001",
-    "level": "N3",
+    "level": "N1",
     "typeCode": "short",
     "typeName": "단문 독해",
     "title": "새로운 습관 형성과 '작은 한 걸음'의 원칙",

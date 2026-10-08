@@ -624,7 +624,7 @@
   }
 
   function updateLevelTabsUI() {
-    document.querySelectorAll('.level-btn').forEach(btn => {
+    document.querySelectorAll('#level-tabs-container .level-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.level === state.level);
     });
 
@@ -1146,6 +1146,9 @@
     state.levelIndices[state.level] = state.currentIndex;
     saveState();
     renderCurrentQuestion();
+    if (window.innerWidth <= 820) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   function prevQuestion() {
@@ -1157,6 +1160,9 @@
     state.levelIndices[state.level] = state.currentIndex;
     saveState();
     renderCurrentQuestion();
+    if (window.innerWidth <= 820) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   // --- Mistakes Notebook Tab Rendering ---
@@ -2657,8 +2663,8 @@
       btn.addEventListener('click', () => switchTab(btn.dataset.tab));
     });
 
-    // Level buttons
-    document.querySelectorAll('.level-btn').forEach(btn => {
+    // Level buttons (Quiz view)
+    document.querySelectorAll('#level-tabs-container .level-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         loadLevelQuestions(btn.dataset.level);
         renderCurrentQuestion();

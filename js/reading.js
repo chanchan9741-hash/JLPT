@@ -22,7 +22,7 @@
     showVocab: false,
     currentPassageIndex: 0,
     currentSubQIndex: 0,
-    mobileView: 'passage' // 'passage' | 'questions'
+    mobileView: 'both' // 'both' | 'passage' | 'questions'
   };
 
   // User answers per question ID: { [qId]: { selectedIndex, isCorrect, answeredAt } }
@@ -91,7 +91,6 @@
   function applyFilters() {
     const all = getAllPassages();
     filteredPassages = all.filter(p => {
-      const matchLevel = rState.level === 'ALL' || p.level === rState.level;
       let matchType = rState.type === 'ALL';
       if (!matchType) {
         if (rState.type === p.typeCode) {
@@ -104,7 +103,7 @@
           matchType = true;
         }
       }
-      return matchLevel && matchType;
+      return matchType;
     });
 
     if (rState.currentPassageIndex >= filteredPassages.length) {
@@ -119,25 +118,6 @@
   function updateHeaderBadges() {
     const all = getAllPassages();
     const countAll = all.length;
-    const countN1 = all.filter(p => p.level === 'N1').length;
-    const countN2 = all.filter(p => p.level === 'N2').length;
-    const countN3 = all.filter(p => p.level === 'N3').length;
-    const countN4 = all.filter(p => p.level === 'N4').length;
-    const countN5 = all.filter(p => p.level === 'N5').length;
-
-    const elAll = document.getElementById('count-reading-all');
-    const elN1 = document.getElementById('count-reading-n1');
-    const elN2 = document.getElementById('count-reading-n2');
-    const elN3 = document.getElementById('count-reading-n3');
-    const elN4 = document.getElementById('count-reading-n4');
-    const elN5 = document.getElementById('count-reading-n5');
-
-    if (elAll) elAll.textContent = countAll;
-    if (elN1) elN1.textContent = countN1;
-    if (elN2) elN2.textContent = countN2;
-    if (elN3) elN3.textContent = countN3;
-    if (elN4) elN4.textContent = countN4;
-    if (elN5) elN5.textContent = countN5;
 
     // Header nav badge count
     const headerBadge = document.getElementById('header-reading-count');
@@ -162,7 +142,7 @@
     filteredPassages.forEach((p, idx) => {
       const opt = document.createElement('option');
       opt.value = idx;
-      opt.textContent = `[${p.level} ${p.typeName}] ${p.title} (${p.questions.length}문항)`;
+      opt.textContent = `[${p.typeName}] ${p.title} (${p.questions.length}문항)`;
       if (idx === rState.currentPassageIndex) opt.selected = true;
       select.appendChild(opt);
     });
@@ -207,7 +187,7 @@
     const badgeTime = document.getElementById('r-badge-time');
     const titleEl = document.getElementById('r-passage-title');
 
-    if (badgeLevel) badgeLevel.textContent = passage.level;
+    if (badgeLevel) badgeLevel.textContent = 'N1';
     if (badgeType) badgeType.textContent = passage.typeName;
     if (badgeTime) {
       badgeTime.textContent = `약 ${passage.wordCount || 300}자 · 예상 ${passage.estimatedMinutes || 4}분`;
@@ -503,7 +483,9 @@
 
     // Scroll to passage panel on mobile
     if (window.innerWidth <= 1024) {
-      switchMobileView('passage');
+      if (rState.mobileView === 'questions') {
+        switchMobileView('both');
+      }
     }
 
     // Find snippet and wrap in highlight span
@@ -526,19 +508,58 @@
     }
   }
 
+  // --- Mobile Floating Quick Passage Drawer ---
+  function openPassageDrawer() {
+    const overlay = document.getElementById('mobile-passage-drawer-overlay');
+    const drawerTitle = document.getElementById('drawer-title');
+    const drawerLevel = document.getElementById('drawer-badge-level');
+    const drawerBody = document.getElementById('drawer-passage-body');
+    const passage = filteredPassages[rState.currentPassageIndex];
+
+    if (!overlay || !drawerBody || !passage) return;
+
+    if (drawerTitle) drawerTitle.textContent = passage.title;
+    if (drawerLevel) drawerLevel.textContent = 'N1';
+    drawerBody.innerHTML = formatRuby(passage.passageRuby || passage.passagePlain);
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePassageDrawer() {
+    const overlay = document.getElementById('mobile-passage-drawer-overlay');
+    if (overlay) overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
   // --- Mobile View Switcher ---
   function switchMobileView(view) {
-    rState.mobileView = view;
+    rState.mobileView = view || 'both';
     const btnPassage = document.getElementById('btn-mobile-view-passage');
+    const btnSplit = document.getElementById('btn-mobile-view-split');
     const btnQuestions = document.getElementById('btn-mobile-view-questions');
     const panelPassage = document.getElementById('reading-passage-panel');
     const panelQuiz = document.getElementById('reading-quiz-panel');
+    const floatPeekBtn = document.getElementById('btn-float-peek-passage');
 
-    if (btnPassage) btnPassage.classList.toggle('active', view === 'passage');
-    if (btnQuestions) btnQuestions.classList.toggle('active', view === 'questions');
+    if (btnPassage) btnPassage.classList.toggle('active', rState.mobileView === 'passage');
+    if (btnSplit) btnSplit.classList.toggle('active', rState.mobileView === 'both');
+    if (btnQuestions) btnQuestions.classList.toggle('active', rState.mobileView === 'questions');
 
-    if (panelPassage) panelPassage.classList.toggle('mobile-hidden', view === 'questions');
-    if (panelQuiz) panelQuiz.classList.toggle('mobile-hidden', view === 'passage');
+    if (rState.mobileView === 'both') {
+      if (panelPassage) panelPassage.classList.remove('mobile-hidden');
+      if (panelQuiz) panelQuiz.classList.remove('mobile-hidden');
+      if (floatPeekBtn) floatPeekBtn.classList.add('hidden');
+    } else if (rState.mobileView === 'passage') {
+      if (panelPassage) panelPassage.classList.remove('mobile-hidden');
+      if (panelQuiz) panelQuiz.classList.add('mobile-hidden');
+      if (floatPeekBtn) floatPeekBtn.classList.add('hidden');
+    } else if (rState.mobileView === 'questions') {
+      if (panelPassage) panelPassage.classList.add('mobile-hidden');
+      if (panelQuiz) panelQuiz.classList.remove('mobile-hidden');
+      if (floatPeekBtn && window.innerWidth <= 1024) {
+        floatPeekBtn.classList.remove('hidden');
+      }
+    }
   }
 
   // --- Add Reading Passage Modal ---
@@ -672,19 +693,6 @@
 
   // --- Keyboard Shortcuts & Event Listeners ---
   function setupEventListeners() {
-    // Level Tabs
-    document.querySelectorAll('#reading-level-tabs .level-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#reading-level-tabs .level-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        rState.level = btn.dataset.rLevel;
-        rState.currentPassageIndex = 0;
-        applyFilters();
-        renderCurrentPassage();
-        saveState();
-      });
-    });
-
     // Type Filter Chips
     document.querySelectorAll('#reading-type-filter .chip-sm').forEach(chip => {
       chip.addEventListener('click', () => {
@@ -823,8 +831,25 @@
       btnPrevSubQ.addEventListener('click', () => {
         const passage = filteredPassages[rState.currentPassageIndex];
         if (!passage || !passage.questions) return;
-        rState.currentSubQIndex = (rState.currentSubQIndex - 1 + passage.questions.length) % passage.questions.length;
-        renderCurrentPassage();
+        if (rState.currentSubQIndex > 0) {
+          rState.currentSubQIndex--;
+          renderCurrentPassage();
+        } else {
+          // If on first question, move to previous passage!
+          if (filteredPassages.length > 1) {
+            rState.currentPassageIndex = (rState.currentPassageIndex - 1 + filteredPassages.length) % filteredPassages.length;
+            const prevPassage = filteredPassages[rState.currentPassageIndex];
+            rState.currentSubQIndex = (prevPassage && prevPassage.questions && prevPassage.questions.length > 0) ? prevPassage.questions.length - 1 : 0;
+            populatePassageSelect();
+            renderCurrentPassage();
+            if (window.app && window.app.showToast) {
+              window.app.showToast('⬅️ 이전 독해 지문으로 이동했습니다.');
+            }
+          }
+        }
+        if (window.innerWidth <= 820) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
     }
 
@@ -847,18 +872,39 @@
             }
           }
         }
+        if (window.innerWidth <= 820) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
     }
 
     // Mobile View Switcher Buttons
     const btnMobilePassage = document.getElementById('btn-mobile-view-passage');
+    const btnMobileSplit = document.getElementById('btn-mobile-view-split');
     const btnMobileQuestions = document.getElementById('btn-mobile-view-questions');
+    const btnFloatPeek = document.getElementById('btn-float-peek-passage');
+    const btnCloseDrawer = document.getElementById('btn-close-drawer');
+    const drawerOverlay = document.getElementById('mobile-passage-drawer-overlay');
 
     if (btnMobilePassage) {
       btnMobilePassage.addEventListener('click', () => switchMobileView('passage'));
     }
+    if (btnMobileSplit) {
+      btnMobileSplit.addEventListener('click', () => switchMobileView('both'));
+    }
     if (btnMobileQuestions) {
       btnMobileQuestions.addEventListener('click', () => switchMobileView('questions'));
+    }
+    if (btnFloatPeek) {
+      btnFloatPeek.addEventListener('click', openPassageDrawer);
+    }
+    if (btnCloseDrawer) {
+      btnCloseDrawer.addEventListener('click', closePassageDrawer);
+    }
+    if (drawerOverlay) {
+      drawerOverlay.addEventListener('click', (e) => {
+        if (e.target === drawerOverlay) closePassageDrawer();
+      });
     }
 
     // Keyboard Shortcuts (1~4 to select option when Reading Tab is active)
@@ -912,6 +958,7 @@
     setupEventListeners();
     applyFilters();
     renderCurrentPassage();
+    switchMobileView(rState.mobileView || 'both');
   }
 
   // Public API
@@ -920,6 +967,7 @@
     render: () => {
       applyFilters();
       renderCurrentPassage();
+      switchMobileView(rState.mobileView || 'both');
     },
     addNewPassages: (passages) => {
       const customs = [];

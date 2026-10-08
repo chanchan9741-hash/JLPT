@@ -420,7 +420,7 @@ kbd {
 .tab-view.active {
   display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* ==========================================================================
@@ -1877,7 +1877,7 @@ kbd {
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    height: 60px !important;
+    height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     background: var(--bg-surface) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
@@ -1887,7 +1887,7 @@ kbd {
     border-right: none !important;
     border-bottom: none !important;
     padding: 0.25rem 0.5rem !important;
-    padding-bottom: max(0.25rem, env(safe-area-inset-bottom)) !important;
+    padding-bottom: max(0.25rem, env(safe-area-inset-bottom, 0px)) !important;
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
@@ -1944,8 +1944,9 @@ kbd {
   }
 
   /* 6. Mobile Content Area & Cards */
-  .main-content {
-    padding: 0.75rem 0.85rem 1.5rem;
+  .main-content,
+  .app-main {
+    padding: 0.75rem 0.85rem 140px !important;
   }
 
   .quiz-controls-card {
@@ -2048,6 +2049,79 @@ kbd {
     max-width: 480px !important;
     margin: 1rem !important;
     padding: 0 !important;
+  }
+
+  .modal-overlay {
+    z-index: 10000 !important;
+  }
+
+  /* 7. Mobile Docked Question Footer Navigation (Screen Bottom) */
+  .question-footer {
+    position: fixed !important;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 56px !important;
+    background: var(--bg-surface) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid var(--border-subtle) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    padding: 0.4rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+    z-index: 990 !important;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.28) !important;
+    margin: 0 !important;
+  }
+
+  .quick-keyboard-hint,
+  .desktop-only-inline {
+    display: none !important;
+  }
+
+  .question-footer #btn-prev-question {
+    flex: 0 0 auto !important;
+    min-width: 88px !important;
+    height: 40px !important;
+    padding: 0 0.95rem !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-full) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    cursor: pointer;
+  }
+
+  .question-footer #btn-next-question {
+    flex: 1 !important;
+    height: 40px !important;
+    padding: 0 1.25rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-full) !important;
+    background: var(--primary-gradient) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+    cursor: pointer;
+  }
+
+  .question-container {
+    padding-bottom: 20px !important;
   }
 }
 
