@@ -2598,6 +2598,10 @@
       renderMistakesList();
     } else if (tabName === 'stats') {
       renderStats();
+    } else if (tabName === 'reading') {
+      if (window.readingApp && window.readingApp.render) {
+        window.readingApp.render();
+      }
     }
   }
 
@@ -3643,7 +3647,41 @@
       srs,
       clientTimestamp: Date.now()
     }),
-    renderStats
+    renderStats,
+    playCorrectSound: () => sound.playCorrect(),
+    playWrongSound: () => sound.playWrong(),
+    showToast,
+    recordReadingMistake: (item) => {
+      if (!mistakes[item.id]) {
+        mistakes[item.id] = {
+          ...item,
+          count: 1,
+          firstWrongDate: Date.now(),
+          lastWrongDate: Date.now(),
+          isMastered: false,
+          isBookmarked: false
+        };
+      } else {
+        mistakes[item.id].count++;
+        mistakes[item.id].lastWrongDate = Date.now();
+        mistakes[item.id].isMastered = false;
+      }
+      saveMistakes();
+
+      const curSrs = srs[item.id] || {
+        id: item.id,
+        level: item.level || 'N1',
+        repetitions: 0,
+        interval: 1,
+        easeFactor: 2.5,
+        state: 'learning',
+        lapses: 0
+      };
+      srs[item.id] = calculateNextSrs(curSrs, 'again');
+      saveSrs();
+
+      showToast('⚠️ 독해 오답노트 & 안키 복습 덱에 자동 등록되었습니다.');
+    }
   };
 
   // Launch when DOM is ready
