@@ -847,7 +847,7 @@
             }
           }
         }
-        if (window.innerWidth <= 820) {
+        if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
@@ -872,7 +872,7 @@
             }
           }
         }
-        if (window.innerWidth <= 820) {
+        if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });

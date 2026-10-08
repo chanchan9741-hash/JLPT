@@ -6,6 +6,23 @@
 (function () {
   'use strict';
 
+  // --- Device & Viewport Adaptation ---
+  (function initDeviceMode() {
+    function updateDeviceMode() {
+      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isNarrow = window.innerWidth <= 900;
+      if (isMobileUA || (isTouch && window.innerWidth <= 1024) || isNarrow) {
+        document.documentElement.classList.add('is-mobile-device');
+      } else {
+        document.documentElement.classList.remove('is-mobile-device');
+      }
+    }
+    updateDeviceMode();
+    window.addEventListener('resize', updateDeviceMode, { passive: true });
+    window.addEventListener('orientationchange', updateDeviceMode, { passive: true });
+  })();
+
   // --- Sound Effects using Web Audio API (Offline & Zero-dependency) ---
   class SoundFX {
     constructor() {
@@ -1146,7 +1163,7 @@
     state.levelIndices[state.level] = state.currentIndex;
     saveState();
     renderCurrentQuestion();
-    if (window.innerWidth <= 820) {
+    if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
@@ -1160,7 +1177,7 @@
     state.levelIndices[state.level] = state.currentIndex;
     saveState();
     renderCurrentQuestion();
-    if (window.innerWidth <= 820) {
+    if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }

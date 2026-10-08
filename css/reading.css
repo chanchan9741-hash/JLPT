@@ -803,7 +803,8 @@ rt {
   }
 }
 
-@media (max-width: 820px) {
+/* Tablet & Mobile Screens (<= 900px, or touch devices <= 1024px) */
+@media (max-width: 900px), (max-width: 1024px) and (pointer: coarse), (hover: none) and (max-width: 1024px) {
   .reading-container {
     padding-bottom: 140px !important;
     gap: 0.85rem;
@@ -951,6 +952,7 @@ rt {
   /* Mobile Docked Sub-Question Footer Navigation (Screen Bottom) */
   .reading-q-footer {
     position: fixed !important;
+    bottom: 60px !important;
     bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     left: 0 !important;
     right: 0 !important;
@@ -970,6 +972,8 @@ rt {
     z-index: 990 !important;
     box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.28) !important;
     margin: 0 !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .reading-q-footer #btn-prev-sub-q {
@@ -1022,6 +1026,7 @@ rt {
 
   /* Floating Quick Passage Peek Button - raised to float above the docked nav bar */
   .btn-float-passage {
+    bottom: 126px !important;
     bottom: calc(126px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }

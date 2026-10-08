@@ -1771,8 +1771,8 @@ kbd {
   display: flex;
 }
 
-/* Tablet & Mobile Screens (<= 820px) */
-@media (max-width: 820px) {
+/* Tablet & Mobile Screens (<= 900px, or touch devices <= 1024px) */
+@media (max-width: 900px), (max-width: 1024px) and (pointer: coarse), (hover: none) and (max-width: 1024px) {
   /* 1. App Layout with Fixed Bottom Bar Space */
   .app-layout {
     padding-bottom: 74px !important;
@@ -1877,6 +1877,7 @@ kbd {
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    height: 60px !important;
     height: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     background: var(--bg-surface) !important;
     backdrop-filter: blur(20px) !important;
@@ -1887,12 +1888,15 @@ kbd {
     border-right: none !important;
     border-bottom: none !important;
     padding: 0.25rem 0.5rem !important;
+    padding-bottom: 0.25rem !important;
     padding-bottom: max(0.25rem, env(safe-area-inset-bottom, 0px)) !important;
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
     z-index: 9999 !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25) !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .mobile-bottom-nav .nav-tab {
@@ -2058,6 +2062,7 @@ kbd {
   /* 7. Mobile Docked Question Footer Navigation (Screen Bottom) */
   .question-footer {
     position: fixed !important;
+    bottom: 60px !important;
     bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     left: 0 !important;
     right: 0 !important;
@@ -2077,6 +2082,8 @@ kbd {
     z-index: 990 !important;
     box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.28) !important;
     margin: 0 !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .quick-keyboard-hint,
@@ -2123,6 +2130,35 @@ kbd {
   .question-container {
     padding-bottom: 20px !important;
   }
+}
+
+/* Explicit Mobile Device Overrides (When JS detects mobile/tablet UA or touch) */
+html.is-mobile-device .desktop-only,
+html.is-mobile-device .app-header .nav-tabs {
+  display: none !important;
+}
+
+html.is-mobile-device .mobile-bottom-nav {
+  display: flex !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+html.is-mobile-device .main-content,
+html.is-mobile-device .app-main {
+  padding-bottom: 140px !important;
+}
+
+html.is-mobile-device .question-footer {
+  position: fixed !important;
+  bottom: 60px !important;
+  bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 990 !important;
 }
 
 /* Extra Small Phones (<= 400px, e.g. iPhone SE, Galaxy Z Flip outer) */
