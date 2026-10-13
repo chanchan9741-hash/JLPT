@@ -2625,6 +2625,10 @@
       if (window.readingApp && window.readingApp.render) {
         window.readingApp.render();
       }
+    } else if (tabName === 'grammar') {
+      if (window.grammarApp && window.grammarApp.render) {
+        window.grammarApp.render();
+      }
     }
   }
 

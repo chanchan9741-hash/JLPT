@@ -26,6 +26,7 @@
   
   <link rel="stylesheet" href="css/style.css?v=3.5">
   <link rel="stylesheet" href="css/reading.css?v=3.5">
+  <link rel="stylesheet" href="css/grammar.css?v=3.5">
 </head>
 <body>
   <div class="app-layout">
@@ -46,6 +47,11 @@
         <button class="nav-tab active" data-tab="quiz" id="tab-quiz" role="tab" aria-selected="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           <span>문제 풀기</span>
+        </button>
+        <button class="nav-tab" data-tab="grammar" id="tab-grammar" role="tab" aria-selected="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="m9 9.5 2 2 4-4"/></svg>
+          <span>문법 (文法)</span>
+          <span class="badge grammar-count-badge" id="header-grammar-count">5,016</span>
         </button>
         <button class="nav-tab" data-tab="reading" id="tab-reading" role="tab" aria-selected="false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
@@ -311,6 +317,79 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </button>
           </div>
+        </div>
+      </section>
+
+      <!-- ================= 1.2. GRAMMAR VIEW (文法 4지선다형) ================= -->
+      <section id="view-grammar" class="tab-view">
+        <div class="grammar-container">
+          <!-- Grammar Top Control Bar -->
+          <div class="grammar-controls-card">
+            <div class="grammar-control-row">
+              <!-- Level Tabs -->
+              <div class="grammar-level-tabs">
+                <button class="g-level-btn active" data-level="ALL">
+                  <span>전체</span>
+                  <span class="count-badge" id="g-count-all">5,016</span>
+                </button>
+                <button class="g-level-btn" data-level="N1">
+                  <span>N1</span>
+                  <span class="count-badge" id="g-count-n1">675</span>
+                </button>
+                <button class="g-level-btn" data-level="N2">
+                  <span>N2</span>
+                  <span class="count-badge" id="g-count-n2">976</span>
+                </button>
+                <button class="g-level-btn" data-level="N3">
+                  <span>N3</span>
+                  <span class="count-badge" id="g-count-n3">1,207</span>
+                </button>
+                <button class="g-level-btn" data-level="N4">
+                  <span>N4</span>
+                  <span class="count-badge" id="g-count-n4">1,590</span>
+                </button>
+                <button class="g-level-btn" data-level="N5">
+                  <span>N5</span>
+                  <span class="count-badge" id="g-count-n5">568</span>
+                </button>
+              </div>
+
+              <!-- Top Actions: Yomigana & Trans Switch -->
+              <div class="grammar-top-actions">
+                <button class="quick-pill-btn active" id="btn-g-furigana" title="후리가나(요미가나) 켜기/끄기 (단축키: F)">
+                  <span class="pill-dot active"></span>
+                  <span>요미가나</span>
+                </button>
+
+                <button class="quick-pill-btn" id="btn-g-trans" title="한국어 번역 펼치기/접기 (단축키: T)">
+                  <span class="pill-dot"></span>
+                  <span>한글 번역</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="grammar-control-row">
+              <!-- Quick Filter Chips -->
+              <div class="grammar-filter-chips">
+                <button class="grammar-filter-chip active" data-filter="all">전체 문제</button>
+                <button class="grammar-filter-chip chip-special" data-filter="gangdok5" title="강독5 문법(91~173) 집중 대비">
+                  ⭐ 강독5 핵심 문법 (91~173)
+                </button>
+                <button class="grammar-filter-chip" data-filter="wrong">❌ 오답만 풀기</button>
+                <button class="grammar-filter-chip" data-filter="bookmarked">⭐ 북마크 문제</button>
+              </div>
+
+              <!-- Search Input -->
+              <div class="grammar-search-wrapper">
+                <svg class="grammar-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" class="grammar-search-input" id="grammar-search-input" placeholder="문법 표현 검색 (예: みたい, わけ, 皮切り)..." autocomplete="off">
+                <button class="grammar-search-clear" id="grammar-search-clear" title="검색어 지우기">&times;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Grammar Workspace -->
+          <div id="grammar-workspace"></div>
         </div>
       </section>
 
@@ -933,6 +1012,10 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         <span>문제 풀기</span>
       </button>
+      <button class="nav-tab" data-tab="grammar" role="tab" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="m9 9.5 2 2 4-4"/></svg>
+        <span>문법</span>
+      </button>
       <button class="nav-tab" data-tab="reading" role="tab" aria-selected="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
         <span>독해</span>
@@ -1201,6 +1284,7 @@
   <script src="data/n4.js?v=2.4"></script>
   <script src="data/n5.js?v=2.4"></script>
   <script src="data/reading.js?v=3.5"></script>
+  <script src="data/grammar.js?v=3.5"></script>
 
   <!-- Firebase Credentials & Cloud Sync SDK -->
   <script>
@@ -1223,6 +1307,7 @@
   <script src="data/sync_init.js?v=3.5"></script>
   <script src="js/app.js?v=3.5"></script>
   <script src="js/reading.js?v=3.5"></script>
+  <script src="js/grammar.js?v=3.5"></script>
 
   
   </div>
