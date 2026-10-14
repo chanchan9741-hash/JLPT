@@ -88,7 +88,8 @@
     MISTAKES: 'jlpt_mistakes_v1',
     HISTORY: 'jlpt_history_v1',
     BOOKMARKS: 'jlpt_bookmarks_v1',
-    SRS: 'jlpt_srs_v1'
+    SRS: 'jlpt_srs_v1',
+    DAILY_STATS: 'jlpt_daily_stats_v1'
   };
 
   // --- Global Application State ---
@@ -132,6 +133,8 @@
   let history = {};  // id -> { solved: 0, correct: 0, lastResult: true/false }
   let bookmarks = new Set();
   let srs = {};      // id -> { id, level, repetitions, interval, easeFactor, dueDate, lastReviewed, state, lapses }
+  let dailyStats = {}; // 'YYYY-MM-DD' -> { date, solved, correct, quizSolved, grammarSolved, readingSolved, ankiSolved, lastUpdated }
+  let dailyChartRange = 7; // 7 | 14 | 30 days
 
   // Active question set based on level & filters
   let currentQuestions = [];
@@ -235,11 +238,36 @@
           }
         });
       }
+      if (driveData.dailyStats) {
+        for (const [dt, ds] of Object.entries(driveData.dailyStats)) {
+          if (!dailyStats[dt]) {
+            dailyStats[dt] = { ...ds };
+            updated = true;
+          } else {
+            const localSolved = dailyStats[dt].solved || 0;
+            const remoteSolved = ds.solved || 0;
+            if (remoteSolved > localSolved || (ds.lastUpdated || 0) > (dailyStats[dt].lastUpdated || 0)) {
+              dailyStats[dt] = {
+                date: dt,
+                solved: Math.max(localSolved, remoteSolved),
+                correct: Math.max(dailyStats[dt].correct || 0, ds.correct || 0),
+                quizSolved: Math.max(dailyStats[dt].quizSolved || 0, ds.quizSolved || 0),
+                grammarSolved: Math.max(dailyStats[dt].grammarSolved || 0, ds.grammarSolved || 0),
+                readingSolved: Math.max(dailyStats[dt].readingSolved || 0, ds.readingSolved || 0),
+                ankiSolved: Math.max(dailyStats[dt].ankiSolved || 0, ds.ankiSolved || 0),
+                lastUpdated: Math.max(dailyStats[dt].lastUpdated || 0, ds.lastUpdated || 0)
+              };
+              updated = true;
+            }
+          }
+        }
+      }
 
       if (updated) {
         localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
         localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
         localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
+        localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
         updateMistakeBadge();
         renderStats();
       }
@@ -258,6 +286,7 @@
           mistakes,
           history,
           bookmarks: Array.from(bookmarks),
+          dailyStats,
           clientTimestamp: Date.now()
         };
 
@@ -345,6 +374,16 @@
         srs = JSON.parse(savedSrs);
       }
 
+      const savedDaily = localStorage.getItem(STORAGE_KEYS.DAILY_STATS);
+      if (savedDaily) {
+        dailyStats = JSON.parse(savedDaily);
+      } else {
+        dailyStats = {};
+      }
+      if (Object.keys(dailyStats).length === 0) {
+        initDailyStatsMigration();
+      }
+
       // Auto-migration & seeding of SRS from mistakes if SRS is empty
       if (Object.keys(srs).length === 0 && Object.keys(mistakes).length > 0) {
         for (const [id, m] of Object.entries(mistakes)) {
@@ -390,14 +429,113 @@
             }
           });
         }
+        if (window.JLPT_INITIAL_SYNC.dailyStats) {
+          for (const [dt, ds] of Object.entries(window.JLPT_INITIAL_SYNC.dailyStats)) {
+            if (!dailyStats[dt] || (ds.solved || 0) > (dailyStats[dt].solved || 0)) {
+              dailyStats[dt] = { ...ds };
+              changed = true;
+            }
+          }
+        }
         if (changed) {
           localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
           localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
           localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
+          localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
         }
       }
     } catch (e) {
       console.warn('Failed to parse saved state from localStorage:', e);
+    }
+  }
+
+  function getLocalDateString(ts = Date.now()) {
+    const d = new Date(ts);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function initDailyStatsMigration() {
+    let migrated = false;
+    for (const [id, h] of Object.entries(history)) {
+      if (h.lastDate && h.solved) {
+        const dt = getLocalDateString(h.lastDate);
+        if (!dailyStats[dt]) {
+          dailyStats[dt] = {
+            date: dt,
+            solved: 0,
+            correct: 0,
+            quizSolved: 0,
+            grammarSolved: 0,
+            readingSolved: 0,
+            ankiSolved: 0,
+            lastUpdated: h.lastDate
+          };
+        }
+        dailyStats[dt].solved += (h.solved || 1);
+        dailyStats[dt].correct += (h.correct || 0);
+        dailyStats[dt].quizSolved += (h.solved || 1);
+        dailyStats[dt].lastUpdated = Math.max(dailyStats[dt].lastUpdated || 0, h.lastDate);
+        migrated = true;
+      }
+    }
+
+    try {
+      const gHist = JSON.parse(localStorage.getItem('jlpt_grammar_history_v1') || '{}');
+      for (const [id, gh] of Object.entries(gHist)) {
+        if (gh.answeredAt) {
+          const dt = getLocalDateString(gh.answeredAt);
+          if (!dailyStats[dt]) {
+            dailyStats[dt] = {
+              date: dt,
+              solved: 0,
+              correct: 0,
+              quizSolved: 0,
+              grammarSolved: 0,
+              readingSolved: 0,
+              ankiSolved: 0,
+              lastUpdated: gh.answeredAt
+            };
+          }
+          dailyStats[dt].solved++;
+          if (gh.isCorrect) dailyStats[dt].correct++;
+          dailyStats[dt].grammarSolved = (dailyStats[dt].grammarSolved || 0) + 1;
+          dailyStats[dt].lastUpdated = Math.max(dailyStats[dt].lastUpdated || 0, gh.answeredAt);
+          migrated = true;
+        }
+      }
+    } catch (e) {}
+
+    try {
+      const rHist = JSON.parse(localStorage.getItem('jlpt_reading_answers_v1') || '{}');
+      for (const [id, rh] of Object.entries(rHist)) {
+        if (rh.answeredAt) {
+          const dt = getLocalDateString(rh.answeredAt);
+          if (!dailyStats[dt]) {
+            dailyStats[dt] = {
+              date: dt,
+              solved: 0,
+              correct: 0,
+              quizSolved: 0,
+              grammarSolved: 0,
+              readingSolved: 0,
+              ankiSolved: 0,
+              lastUpdated: rh.answeredAt
+            };
+          }
+          dailyStats[dt].solved++;
+          if (rh.isCorrect) dailyStats[dt].correct++;
+          dailyStats[dt].readingSolved = (dailyStats[dt].readingSolved || 0) + 1;
+          dailyStats[dt].lastUpdated = Math.max(dailyStats[dt].lastUpdated || 0, rh.answeredAt);
+          migrated = true;
+        }
+      }
+    } catch (e) {}
+
+    if (migrated) {
+      localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
     }
   }
 
@@ -445,6 +583,69 @@
     renderStats();
     syncManager.scheduleSync();
     if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
+  }
+
+  function saveDailyStats() {
+    localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
+    renderStats();
+    syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
+  }
+
+  function recordDailyActivity({ category = 'quiz', isCorrect = false, count = 1 }) {
+    const today = getLocalDateString();
+    if (!dailyStats[today]) {
+      dailyStats[today] = {
+        date: today,
+        solved: 0,
+        correct: 0,
+        quizSolved: 0,
+        grammarSolved: 0,
+        readingSolved: 0,
+        ankiSolved: 0,
+        lastUpdated: Date.now()
+      };
+    }
+    dailyStats[today].solved += count;
+    if (isCorrect) dailyStats[today].correct += count;
+    if (category === 'grammar') dailyStats[today].grammarSolved = (dailyStats[today].grammarSolved || 0) + count;
+    else if (category === 'reading') dailyStats[today].readingSolved = (dailyStats[today].readingSolved || 0) + count;
+    else if (category === 'anki') dailyStats[today].ankiSolved = (dailyStats[today].ankiSolved || 0) + count;
+    else dailyStats[today].quizSolved = (dailyStats[today].quizSolved || 0) + count;
+    dailyStats[today].lastUpdated = Date.now();
+
+    saveDailyStats();
+  }
+  window.recordDailyActivity = recordDailyActivity;
+
+  function calculateStreak() {
+    const dates = Object.keys(dailyStats).filter(d => (dailyStats[d].solved || 0) > 0).sort();
+    if (dates.length === 0) return 0;
+
+    const today = getLocalDateString();
+    const yesterday = getLocalDateString(Date.now() - 86400000);
+
+    const lastStudied = dates[dates.length - 1];
+    if (lastStudied !== today && lastStudied !== yesterday) {
+      return 0;
+    }
+
+    let streak = 0;
+    let checkDate = new Date();
+    if (lastStudied !== today) {
+      checkDate.setDate(checkDate.getDate() - 1);
+    }
+
+    while (true) {
+      const dStr = getLocalDateString(checkDate.getTime());
+      if (dailyStats[dStr] && dailyStats[dStr].solved > 0) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+    return streak;
   }
 
   // Resume from the user's last solved question or next question in line
@@ -983,6 +1184,7 @@
     history[q.id].lastResult = isCorrect;
     history[q.id].lastDate = Date.now();
     saveHistory();
+    recordDailyActivity({ category: 'quiz', isCorrect: isCorrect, count: 1 });
 
     // Auto-update Mistake Notebook & Anki SRS
     if (!isCorrect) {
@@ -1748,6 +1950,10 @@
 
   // --- Analytics & Stats Rendering ---
   function renderStats() {
+    renderDailySummary();
+    renderDailyBarChart(dailyChartRange);
+    renderDailyLogList();
+
     const totalSolvedEl = document.getElementById('stat-total-solved');
     const accuracyRateEl = document.getElementById('stat-accuracy-rate');
     const currentMistakesEl = document.getElementById('stat-current-mistakes');
@@ -1766,10 +1972,10 @@
     const activeMistakes = Object.values(mistakes).filter(m => !m.isMastered).length;
     const masteredMistakes = Object.values(mistakes).filter(m => m.isMastered).length;
 
-    totalSolvedEl.textContent = totalSolved.toLocaleString();
-    accuracyRateEl.textContent = `${accuracy}%`;
-    currentMistakesEl.textContent = activeMistakes.toLocaleString();
-    conqueredEl.textContent = masteredMistakes.toLocaleString();
+    if (totalSolvedEl) totalSolvedEl.textContent = totalSolved.toLocaleString();
+    if (accuracyRateEl) accuracyRateEl.textContent = `${accuracy}%`;
+    if (currentMistakesEl) currentMistakesEl.textContent = activeMistakes.toLocaleString();
+    if (conqueredEl) conqueredEl.textContent = masteredMistakes.toLocaleString();
 
     // Level breakdown
     const levelStats = { N1: { s: 0, c: 0 }, N2: { s: 0, c: 0 }, N3: { s: 0, c: 0 }, N4: { s: 0, c: 0 }, N5: { s: 0, c: 0 } };
@@ -1811,31 +2017,238 @@
         </div>
       `;
     });
-    levelProgressList.innerHTML = levelHtml;
+    if (levelProgressList) levelProgressList.innerHTML = levelHtml;
 
     // Render type weakness ranking
     const typeEntries = Object.entries(typeStats).sort((a, b) => b[1].wrongCount - a[1].wrongCount);
-    if (typeEntries.length === 0) {
-      typeWeaknessList.innerHTML = '<div style="color:var(--text-muted); font-size:0.9rem;">아직 오답 데이터가 충분하지 않습니다. 문제를 풀면 취약 유형 순위가 표시됩니다.</div>';
-    } else {
-      let typeHtml = '';
-      const maxWrong = Math.max(...typeEntries.map(e => e[1].wrongCount), 1);
-      typeEntries.forEach(([tName, data]) => {
-        const percent = Math.round((data.wrongCount / maxWrong) * 100);
-        typeHtml += `
-          <div class="progress-item">
-            <div class="pi-header">
-              <span>${tName}</span>
-              <span style="color:var(--danger); font-weight:700;">오답 ${data.wrongCount}회</span>
+    if (typeWeaknessList) {
+      if (typeEntries.length === 0) {
+        typeWeaknessList.innerHTML = '<div style="color:var(--text-muted); font-size:0.9rem;">아직 오답 데이터가 충분하지 않습니다. 문제를 풀면 취약 유형 순위가 표시됩니다.</div>';
+      } else {
+        let typeHtml = '';
+        const maxWrong = Math.max(...typeEntries.map(e => e[1].wrongCount), 1);
+        typeEntries.forEach(([tName, data]) => {
+          const percent = Math.round((data.wrongCount / maxWrong) * 100);
+          typeHtml += `
+            <div class="progress-item">
+              <div class="pi-header">
+                <span>${tName}</span>
+                <span style="color:var(--danger); font-weight:700;">오답 ${data.wrongCount}회</span>
+              </div>
+              <div class="pi-bar-bg">
+                <div class="pi-bar-fill" style="width: ${percent}%; background: var(--danger);"></div>
+              </div>
             </div>
-            <div class="pi-bar-bg">
-              <div class="pi-bar-fill" style="width: ${percent}%; background: var(--danger);"></div>
+          `;
+        });
+        typeWeaknessList.innerHTML = typeHtml;
+      }
+    }
+  }
+
+  function renderDailySummary() {
+    const todayStr = getLocalDateString();
+    const todayData = dailyStats[todayStr] || {
+      solved: 0,
+      correct: 0,
+      quizSolved: 0,
+      grammarSolved: 0,
+      readingSolved: 0,
+      ankiSolved: 0
+    };
+
+    const solved = todayData.solved || 0;
+    const correct = todayData.correct || 0;
+    const rate = solved > 0 ? Math.round((correct / solved) * 100) : 0;
+    const streak = calculateStreak();
+
+    const d = new Date();
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dateFormatted = `${d.getFullYear()}. ${d.getMonth() + 1}. ${d.getDate()} (${dayNames[d.getDay()]})`;
+
+    const elDate = document.getElementById('daily-stat-today-date');
+    if (elDate) elDate.textContent = dateFormatted;
+
+    const elStreak = document.getElementById('daily-stat-streak');
+    if (elStreak) {
+      elStreak.textContent = streak > 0 ? `연속 ${streak}일 달성!` : '오늘 첫 학습 시작!';
+    }
+
+    const elSolved = document.getElementById('daily-today-solved');
+    if (elSolved) elSolved.textContent = solved.toLocaleString();
+
+    const elRate = document.getElementById('daily-today-rate');
+    if (elRate) elRate.textContent = `${rate}%`;
+
+    const elQuiz = document.getElementById('daily-today-quiz');
+    if (elQuiz) elQuiz.textContent = (todayData.quizSolved || 0).toLocaleString();
+
+    const elGrammar = document.getElementById('daily-today-grammar');
+    if (elGrammar) elGrammar.textContent = (todayData.grammarSolved || 0).toLocaleString();
+
+    const elReading = document.getElementById('daily-today-reading');
+    if (elReading) elReading.textContent = (todayData.readingSolved || 0).toLocaleString();
+
+    const elAnki = document.getElementById('daily-today-anki');
+    if (elAnki) elAnki.textContent = (todayData.ankiSolved || 0).toLocaleString();
+
+    // Goal Progress (30 questions goal)
+    const GOAL_QUESTIONS = 30;
+    const goalPct = Math.min(100, Math.round((solved / GOAL_QUESTIONS) * 100));
+    const elGoalPct = document.getElementById('daily-today-goal-pct');
+    if (elGoalPct) {
+      elGoalPct.textContent = `${solved} / ${GOAL_QUESTIONS}문제 (${goalPct}% 달성)`;
+    }
+    const elGoalFill = document.getElementById('daily-today-goal-fill');
+    if (elGoalFill) {
+      elGoalFill.style.width = `${goalPct}%`;
+      if (goalPct >= 100) {
+        elGoalFill.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+      } else {
+        elGoalFill.style.background = 'linear-gradient(90deg, var(--primary), #8b5cf6)';
+      }
+    }
+  }
+
+  function renderDailyBarChart(days = 7) {
+    const chartContainer = document.getElementById('daily-bar-chart');
+    if (!chartContainer) return;
+
+    // Generate date array from (days-1) ago to today
+    const dates = [];
+    const todayTs = Date.now();
+    for (let i = days - 1; i >= 0; i--) {
+      const ts = todayTs - (i * 86400000);
+      dates.push(getLocalDateString(ts));
+    }
+
+    const todayStr = getLocalDateString();
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+    // Find max solved in this range
+    let maxSolved = 10;
+    dates.forEach(dt => {
+      const data = dailyStats[dt];
+      if (data && data.solved > maxSolved) {
+        maxSolved = data.solved;
+      }
+    });
+
+    let chartHtml = '';
+    dates.forEach(dt => {
+      const data = dailyStats[dt] || { solved: 0, correct: 0, quizSolved: 0, grammarSolved: 0, readingSolved: 0, ankiSolved: 0 };
+      const solved = data.solved || 0;
+      const isToday = dt === todayStr;
+      const dtParts = dt.split('-');
+      const monthDay = `${parseInt(dtParts[1], 10)}.${parseInt(dtParts[2], 10)}`;
+      const dateObj = new Date(parseInt(dtParts[0], 10), parseInt(dtParts[1], 10) - 1, parseInt(dtParts[2], 10));
+      const weekday = dayNames[dateObj.getDay()];
+
+      // Height % calculation (min 8%, max 100%)
+      const heightPercent = solved > 0 ? Math.max(8, Math.round((solved / maxSolved) * 100)) : 0;
+      const rate = solved > 0 ? Math.round((data.correct / solved) * 100) : 0;
+
+      const tooltipText = `[${dt} (${weekday})]\n총 ${solved}문제 풀이 (정답률 ${rate}%)\n• 실전: ${data.quizSolved || 0}문제\n• 문법: ${data.grammarSolved || 0}문제\n• 독해: ${data.readingSolved || 0}문제\n• 안키: ${data.ankiSolved || 0}문제`;
+
+      chartHtml += `
+        <div class="daily-bar-col ${isToday ? 'is-today' : ''} ${solved === 0 ? 'empty' : ''}" title="${tooltipText}">
+          <span class="daily-bar-val">${solved > 0 ? solved : ''}</span>
+          <div class="daily-bar-track">
+            <div class="daily-bar-fill" style="height: ${heightPercent}%;"></div>
+          </div>
+          <div class="daily-bar-axis-label">
+            <span class="daily-bar-date">${isToday ? '오늘' : monthDay}</span>
+            <span class="daily-bar-weekday">${weekday}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    chartContainer.innerHTML = chartHtml;
+  }
+
+  function renderDailyLogList() {
+    const listContainer = document.getElementById('daily-log-list');
+    const totalDaysEl = document.getElementById('daily-log-total-days');
+    if (!listContainer) return;
+
+    // Filter dates with actual solved count > 0, sorted reverse chronological
+    const activeDates = Object.keys(dailyStats)
+      .filter(dt => (dailyStats[dt].solved || 0) > 0)
+      .sort()
+      .reverse();
+
+    if (totalDaysEl) {
+      totalDaysEl.textContent = `총 ${activeDates.length}일 기록`;
+    }
+
+    if (activeDates.length === 0) {
+      listContainer.innerHTML = `
+        <div class="empty-daily-state">
+          <span>🌱 아직 일일 풀이 기록이 없습니다. 문제를 풀면 오늘부터 날짜별 학습량이 자동 누적됩니다!</span>
+        </div>
+      `;
+      return;
+    }
+
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const todayStr = getLocalDateString();
+
+    let logsHtml = '';
+    activeDates.slice(0, 30).forEach(dt => {
+      const data = dailyStats[dt];
+      const solved = data.solved || 0;
+      const correct = data.correct || 0;
+      const rate = solved > 0 ? Math.round((correct / solved) * 100) : 0;
+      const dtParts = dt.split('-');
+      const dateObj = new Date(parseInt(dtParts[0], 10), parseInt(dtParts[1], 10) - 1, parseInt(dtParts[2], 10));
+      const weekday = dayNames[dateObj.getDay()];
+      const isToday = dt === todayStr;
+
+      // Achievement badge
+      let badgeHtml = '';
+      if (solved >= 50) {
+        badgeHtml = '<span class="daily-log-badge" style="background:rgba(239,68,68,0.12); color:#ef4444;">🔥 열공 마스터</span>';
+      } else if (solved >= 30) {
+        badgeHtml = '<span class="daily-log-badge" style="background:rgba(16,185,129,0.12); color:#10b981;">🎯 목표 달성</span>';
+      } else if (solved >= 10) {
+        badgeHtml = '<span class="daily-log-badge">✨ 꾸준한 실천</span>';
+      } else {
+        badgeHtml = '<span class="daily-log-badge" style="background:rgba(148,163,184,0.15); color:var(--text-muted);">🌱 학습 시작</span>';
+      }
+
+      // Breakdown tags
+      let tagsHtml = '';
+      if (data.quizSolved > 0) tagsHtml += `<span class="badge-tag tag-quiz">실전 ${data.quizSolved}</span>`;
+      if (data.grammarSolved > 0) tagsHtml += `<span class="badge-tag tag-grammar">문법 ${data.grammarSolved}</span>`;
+      if (data.readingSolved > 0) tagsHtml += `<span class="badge-tag tag-reading">독해 ${data.readingSolved}</span>`;
+      if (data.ankiSolved > 0) tagsHtml += `<span class="badge-tag tag-anki">안키 ${data.ankiSolved}</span>`;
+
+      logsHtml += `
+        <div class="daily-log-card">
+          <div class="daily-log-left">
+            <div class="daily-log-date-badge">
+              <span class="daily-log-date-num">${dtParts[1]}.${dtParts[2]}</span>
+              <span class="daily-log-date-day">${isToday ? '오늘' : weekday}</span>
+            </div>
+            <div class="daily-log-summary">
+              <div class="daily-log-solved-text">
+                총 ${solved.toLocaleString()}문제 풀이 (${correct}정답)
+              </div>
+              <div class="daily-log-tags">
+                ${tagsHtml}
+              </div>
             </div>
           </div>
-        `;
-      });
-      typeWeaknessList.innerHTML = typeHtml;
-    }
+          <div class="daily-log-right">
+            <span class="daily-log-rate-pill">정답률 ${rate}%</span>
+            ${badgeHtml}
+          </div>
+        </div>
+      `;
+    });
+
+    listContainer.innerHTML = logsHtml;
   }
 
   // ==========================================================================
@@ -2524,6 +2937,7 @@
     const next = calculateNextSrs(existing, grade);
     srs[cardId] = next;
     saveSrs();
+    recordDailyActivity({ category: 'anki', isCorrect: grade !== 'again', count: 1 });
 
     if (grade === 'again') {
       sound.playWrong();
@@ -2897,15 +3311,26 @@
       }
     });
 
+    // Daily Stats Range Selector
+    document.querySelectorAll('#daily-range-selector .daily-range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#daily-range-selector .daily-range-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        dailyChartRange = parseInt(btn.dataset.days, 10) || 7;
+        renderDailyBarChart(dailyChartRange);
+      });
+    });
+
     // Backup & Restore
     document.getElementById('btn-export-backup').addEventListener('click', () => {
       const backupData = {
-        version: '1.0',
+        version: '1.1',
         timestamp: Date.now(),
         history,
         mistakes,
         bookmarks: Array.from(bookmarks),
-        srs
+        srs,
+        dailyStats
       };
       const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -2928,11 +3353,13 @@
           if (parsed.history) history = parsed.history;
           if (parsed.bookmarks) bookmarks = new Set(parsed.bookmarks);
           if (parsed.srs) srs = parsed.srs;
+          if (parsed.dailyStats) dailyStats = parsed.dailyStats;
 
           saveMistakes();
           saveHistory();
           saveBookmarks();
           saveSrs();
+          saveDailyStats();
           renderStats();
           showToast('✅ 백업 데이터가 성공적으로 복원되었습니다.');
         } catch (err) {
@@ -2943,15 +3370,17 @@
     });
 
     document.getElementById('btn-reset-data').addEventListener('click', () => {
-      if (confirm('모든 풀이 이력, 정답률, 오답노트, 안키 복습 기록이 완전히 초기화됩니다. 계속하시겠습니까?')) {
+      if (confirm('모든 풀이 이력, 일별 학습 기록, 정답률, 오답노트, 안키 복습 기록이 완전히 초기화됩니다. 계속하시겠습니까?')) {
         mistakes = {};
         history = {};
         bookmarks = new Set();
         srs = {};
+        dailyStats = {};
         saveMistakes();
         saveHistory();
         saveBookmarks();
         saveSrs();
+        saveDailyStats();
         renderStats();
         renderCurrentQuestion();
         showToast('데이터가 초기화되었습니다.');
@@ -3011,12 +3440,38 @@
         }
       }
 
+      if (payload.dailyStats) {
+        for (const [dt, ds] of Object.entries(payload.dailyStats)) {
+          if (!dailyStats[dt]) {
+            dailyStats[dt] = { ...ds };
+            updated = true;
+          } else {
+            const localSolved = dailyStats[dt].solved || 0;
+            const remoteSolved = ds.solved || 0;
+            if (remoteSolved > localSolved || (ds.lastUpdated || 0) > (dailyStats[dt].lastUpdated || 0)) {
+              dailyStats[dt] = {
+                date: dt,
+                solved: Math.max(localSolved, remoteSolved),
+                correct: Math.max(dailyStats[dt].correct || 0, ds.correct || 0),
+                quizSolved: Math.max(dailyStats[dt].quizSolved || 0, ds.quizSolved || 0),
+                grammarSolved: Math.max(dailyStats[dt].grammarSolved || 0, ds.grammarSolved || 0),
+                readingSolved: Math.max(dailyStats[dt].readingSolved || 0, ds.readingSolved || 0),
+                ankiSolved: Math.max(dailyStats[dt].ankiSolved || 0, ds.ankiSolved || 0),
+                lastUpdated: Math.max(dailyStats[dt].lastUpdated || 0, ds.lastUpdated || 0)
+              };
+              updated = true;
+            }
+          }
+        }
+      }
+
       if (updated) {
         saveState();
         saveHistory();
         saveMistakes();
         saveBookmarks();
         saveSrs();
+        saveDailyStats();
         renderStats();
         updateMistakeBadge();
         updateAnkiBadge();
@@ -3625,11 +4080,37 @@
       }
     }
 
+    if (cloudData.dailyStats) {
+      for (const [dt, ds] of Object.entries(cloudData.dailyStats)) {
+        if (!dailyStats[dt]) {
+          dailyStats[dt] = { ...ds };
+          changed = true;
+        } else {
+          const localSolved = dailyStats[dt].solved || 0;
+          const remoteSolved = ds.solved || 0;
+          if (remoteSolved > localSolved || (ds.lastUpdated || 0) > (dailyStats[dt].lastUpdated || 0)) {
+            dailyStats[dt] = {
+              date: dt,
+              solved: Math.max(localSolved, remoteSolved),
+              correct: Math.max(dailyStats[dt].correct || 0, ds.correct || 0),
+              quizSolved: Math.max(dailyStats[dt].quizSolved || 0, ds.quizSolved || 0),
+              grammarSolved: Math.max(dailyStats[dt].grammarSolved || 0, ds.grammarSolved || 0),
+              readingSolved: Math.max(dailyStats[dt].readingSolved || 0, ds.readingSolved || 0),
+              ankiSolved: Math.max(dailyStats[dt].ankiSolved || 0, ds.ankiSolved || 0),
+              lastUpdated: Math.max(dailyStats[dt].lastUpdated || 0, ds.lastUpdated || 0)
+            };
+            changed = true;
+          }
+        }
+      }
+    }
+
     if (changed) {
       localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
       localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
       localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
+      localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
       updateMistakeBadge();
       updateAnkiBadge();
       if (state.currentTab === 'mistakes') {
@@ -3672,6 +4153,7 @@
       history,
       bookmarks: Array.from(bookmarks),
       srs,
+      dailyStats,
       clientTimestamp: Date.now()
     }),
     renderStats,

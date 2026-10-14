@@ -374,6 +374,11 @@
     };
     saveState();
 
+    // Record daily activity tracking
+    if (typeof window.recordDailyActivity === 'function') {
+      window.recordDailyActivity({ category: 'reading', isCorrect: isCorrect, count: 1 });
+    }
+
     // Sound effect
     if (window.app) {
       if (isCorrect && window.app.playCorrectSound) window.app.playCorrectSound();

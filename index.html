@@ -372,6 +372,9 @@
               <!-- Quick Filter Chips -->
               <div class="grammar-filter-chips">
                 <button class="grammar-filter-chip active" data-filter="all">전체 문제</button>
+                <button class="grammar-filter-chip chip-new" data-filter="new" title="아직 풀지 않은 새로운(미풀이) 문법 문제만 모아서 풀기">
+                  ✨ 새로운 문제만 풀기
+                </button>
                 <button class="grammar-filter-chip chip-special" data-filter="gangdok5" title="강독5 문법(91~173) 집중 대비">
                   ⭐ 강독5 핵심 문법 (91~173)
                 </button>
@@ -931,6 +934,56 @@
           <h2>학습 분석 대시보드</h2>
           <p class="subtitle">나의 풀이 이력과 취약 유형을 분석하여 효과적인 학습 방향을 제시합니다.</p>
 
+          <!-- 1. Today's Learning Activity Banner -->
+          <div class="today-activity-card">
+            <div class="today-act-header">
+              <div class="today-act-title-wrap">
+                <span class="today-act-tag">TODAY</span>
+                <h3>오늘의 데일리 학습 현황</h3>
+                <span class="today-date-text" id="daily-stat-today-date">2026. 10. 14</span>
+              </div>
+              <div class="today-streak-badge" id="daily-stat-streak-wrap" title="매일 꾸준히 학습하면 연속 학습일이 올라갑니다!">
+                <span class="streak-fire">🔥</span>
+                <span class="streak-text" id="daily-stat-streak">연속 1일째</span>
+              </div>
+            </div>
+
+            <div class="today-act-metrics">
+              <div class="today-act-metric">
+                <span class="today-val" id="daily-today-solved">0</span>
+                <span class="today-lbl">오늘 푼 문제</span>
+              </div>
+              <div class="today-act-divider"></div>
+              <div class="today-act-metric">
+                <span class="today-val color-emerald" id="daily-today-rate">0%</span>
+                <span class="today-lbl">오늘 정답률</span>
+              </div>
+              <div class="today-act-divider"></div>
+              <div class="today-act-metric breakdown">
+                <div class="today-breakdown-row">
+                  <span class="badge-tag tag-quiz">실전 <b id="daily-today-quiz">0</b></span>
+                  <span class="badge-tag tag-grammar">문법 <b id="daily-today-grammar">0</b></span>
+                </div>
+                <div class="today-breakdown-row">
+                  <span class="badge-tag tag-reading">독해 <b id="daily-today-reading">0</b></span>
+                  <span class="badge-tag tag-anki">안키 <b id="daily-today-anki">0</b></span>
+                </div>
+                <span class="today-lbl">오늘 학습 분포</span>
+              </div>
+            </div>
+
+            <!-- Goal progress bar -->
+            <div class="today-goal-bar-wrap">
+              <div class="today-goal-label">
+                <span>🎯 일일 권장 학습 목표 (30문제)</span>
+                <span class="goal-pct" id="daily-today-goal-pct">0% 달성</span>
+              </div>
+              <div class="today-goal-track">
+                <div class="today-goal-fill" id="daily-today-goal-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
           <!-- Metrics 4 Grid -->
           <div class="metrics-grid">
             <div class="metric-card">
@@ -959,6 +1012,37 @@
               <div class="metric-info">
                 <span class="metric-value" id="stat-conquered-count">0</span>
                 <span class="metric-label">정복 완료 문항</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Activity History Chart Card -->
+          <div class="daily-chart-card">
+            <div class="daily-chart-header">
+              <div class="daily-chart-title">
+                <h3>📅 일별 학습량 추이 및 통계</h3>
+                <span class="chart-subtitle">매일 하루에 얼마나 풀었는지 자동으로 기록하고 시각화합니다.</span>
+              </div>
+              <div class="daily-range-selector" id="daily-range-selector">
+                <button class="daily-range-btn active" data-days="7">최근 7일</button>
+                <button class="daily-range-btn" data-days="14">최근 14일</button>
+                <button class="daily-range-btn" data-days="30">최근 30일</button>
+              </div>
+            </div>
+
+            <!-- CSS Bar Chart Container -->
+            <div class="daily-bar-chart" id="daily-bar-chart">
+              <!-- Dynamically populated bars -->
+            </div>
+
+            <!-- Daily Log Table / List -->
+            <div class="daily-log-section">
+              <div class="daily-log-header">
+                <h4>📝 최근 일자별 상세 학습 기록</h4>
+                <span class="daily-log-count" id="daily-log-total-days">기록 확인 중...</span>
+              </div>
+              <div class="daily-log-list" id="daily-log-list">
+                <!-- Dynamically populated daily logs -->
               </div>
             </div>
           </div>

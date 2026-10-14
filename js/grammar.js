@@ -157,7 +157,10 @@
       }
 
       // 2. Filter Type
-      if (gState.filterType === 'gangdok5') {
+      if (gState.filterType === 'new') {
+        const ans = userAnswers[q.id];
+        if (ans) return false; // 아직 풀지 않은 새로운 문제만
+      } else if (gState.filterType === 'gangdok5') {
         const isGangdok = GANGDOK5_PATTERNS.some(p => q.pattern.includes(p) || p.includes(q.pattern));
         if (!isGangdok) return false;
       } else if (gState.filterType === 'wrong') {
@@ -198,6 +201,11 @@
       answeredAt: Date.now()
     };
     saveHistory();
+
+    // Record daily activity tracking
+    if (typeof window.recordDailyActivity === 'function') {
+      window.recordDailyActivity({ category: 'grammar', isCorrect: isCorrect, count: 1 });
+    }
 
     // Sound
     if (isCorrect) {
@@ -293,22 +301,37 @@
     if (!container) return;
 
     if (filteredList.length === 0) {
+      const isNewFilter = gState.filterType === 'new';
       container.innerHTML = `
         <div class="empty-state-card" style="padding:4rem 2rem; text-align:center; background:var(--bg-card); border-radius:var(--radius-lg); border:1px dashed var(--border-subtle);">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--text-tertiary); margin-bottom:1rem;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <h3 style="font-size:1.15rem; font-weight:700; color:var(--text-primary); margin-bottom:0.5rem;">선택한 조건의 문법 문제가 없습니다</h3>
-          <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.25rem;">검색어나 급수 필터를 변경해 보세요.</p>
-          <button class="btn btn-secondary btn-sm" id="btn-reset-grammar-filters">필터 초기화</button>
+          <div style="font-size:3rem; margin-bottom:1rem;">${isNewFilter ? '🎉' : '🔍'}</div>
+          <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-primary); margin-bottom:0.5rem;">
+            ${isNewFilter ? '새로운 문법 문제를 모두 풀었습니다!' : '선택한 조건의 문법 문제가 없습니다'}
+          </h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.5rem; max-width:440px; margin-left:auto; margin-right:auto;">
+            ${isNewFilter ? '선택한 조건의 아직 풀지 않은 문제를 모두 완료했습니다. 전체 문제를 다시 복습하거나 오답 노트를 풀어보세요.' : '검색어나 급수 필터를 변경해 보세요.'}
+          </p>
+          <div style="display:flex; justify-content:center; gap:0.75rem; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" id="btn-reset-grammar-filters">${isNewFilter ? '전체 문제 보기' : '필터 초기화'}</button>
+            ${isNewFilter ? '<button class="btn btn-secondary btn-sm" id="btn-grammar-goto-wrong">❌ 오답만 모아 풀기</button>' : ''}
+          </div>
         </div>
       `;
       const btnReset = document.getElementById('btn-reset-grammar-filters');
       if (btnReset) {
         btnReset.addEventListener('click', () => {
-          gState.level = 'ALL';
           gState.filterType = 'all';
           gState.searchKeyword = '';
           const searchInput = document.getElementById('grammar-search-input');
           if (searchInput) searchInput.value = '';
+          applyFilters();
+          render();
+        });
+      }
+      const btnWrong = document.getElementById('btn-grammar-goto-wrong');
+      if (btnWrong) {
+        btnWrong.addEventListener('click', () => {
+          gState.filterType = 'wrong';
           applyFilters();
           render();
         });
@@ -412,6 +435,7 @@
         <div class="grammar-card-header">
           <div class="g-header-left">
             <span class="g-level-badge ${cur.level}">${cur.level} 문법</span>
+            ${gState.filterType === 'new' ? '<span class="badge" style="background:linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; font-size:0.75rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:999px;">✨ 새로운 문제</span>' : ''}
             <span class="g-pattern-badge" id="btn-view-pattern" title="문법 항목: ${cur.pattern}">
               ${cur.pattern} (${cur.patternMeaning})
             </span>
@@ -498,12 +522,26 @@
     const btnNext = document.getElementById('btn-g-next');
     if (btnNext) {
       btnNext.addEventListener('click', () => {
-        if (gState.currentIndex < filteredList.length - 1) {
-          gState.currentIndex++;
+        if (gState.filterType === 'new') {
+          // 새로운 문제 풀기 모드에서는 이미 푼 문제를 제외하고 다음 새 문제로 진행
+          applyFilters();
+          if (filteredList.length === 0) {
+            renderCard();
+            return;
+          }
+          if (gState.currentIndex >= filteredList.length) {
+            gState.currentIndex = 0;
+          }
           saveState();
           renderCard();
         } else {
-          showToast('마지막 문제입니다!');
+          if (gState.currentIndex < filteredList.length - 1) {
+            gState.currentIndex++;
+            saveState();
+            renderCard();
+          } else {
+            showToast('마지막 문제입니다!');
+          }
         }
       });
     }

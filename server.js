@@ -416,7 +416,7 @@ function generateMistakesHtml(mistakes, history) {
 </html>`;
 }
 
-function generateMistakesMarkdown(mistakes, history) {
+function generateMistakesMarkdown(mistakes, history, dailyStats = {}) {
   const list = Object.values(mistakes || {});
   
   const activeMistakes = list.filter(m => !m.isMastered).sort((a, b) => {
@@ -472,6 +472,24 @@ function generateMistakesMarkdown(mistakes, history) {
   });
   md += `| **합계** | **${totalSolvedQuestions}문제** | **${totalAttempts}회** | **${totalCorrect}회** | **${accuracyRate}%** |\n\n`;
   md += `---\n\n`;
+
+  // 1.5. 일자별 학습량 기록 표
+  const activeDaily = Object.entries(dailyStats || {}).filter(([d, v]) => (v.solved || 0) > 0).sort().reverse();
+  if (activeDaily.length > 0) {
+    md += `## 📅 최근 일자별 학습량 기록\n\n`;
+    md += `| 학습 날짜 | 푼 문제 수 | 정답 수 | 정답률 | 영역별 풀이 (실전/문법/독해/안키) |\n`;
+    md += `| :---: | :---: | :---: | :---: | :--- |\n`;
+    activeDaily.slice(0, 14).forEach(([dt, data]) => {
+      const rate = data.solved > 0 ? Math.round((data.correct / data.solved) * 100) : 0;
+      const parts = [];
+      if (data.quizSolved > 0) parts.push(`실전 ${data.quizSolved}`);
+      if (data.grammarSolved > 0) parts.push(`문법 ${data.grammarSolved}`);
+      if (data.readingSolved > 0) parts.push(`독해 ${data.readingSolved}`);
+      if (data.ankiSolved > 0) parts.push(`안키 ${data.ankiSolved}`);
+      md += `| **${dt}** | **${data.solved}문제** | ${data.correct}개 | **${rate}%** | ${parts.join(', ') || '-'} |\n`;
+    });
+    md += `\n---\n\n`;
+  }
 
   if (activeMistakes.length === 0) {
     md += `## 🎉 현재 복습할 미완료 오답이 없습니다!\n\n문제를 풀다 틀린 문제가 생기면 이곳에 자동으로 추가됩니다.\n\n`;
@@ -599,8 +617,8 @@ const server = http.createServer((req, res) => {
         fs.writeFileSync(SYNC_DATA_FILE, JSON.stringify(payload, null, 2), 'utf-8');
 
         // 2. Automatically generate & write human-readable Markdown file for Google Drive
-        const mdContent = generateMistakesMarkdown(payload.mistakes || {}, payload.history || {});
-        const reportHtml = generateMistakesHtml(payload.mistakes || {}, payload.history || {});
+        const mdContent = generateMistakesMarkdown(payload.mistakes || {}, payload.history || {}, payload.dailyStats || {});
+        const reportHtml = generateMistakesHtml(payload.mistakes || {}, payload.history || {}, payload.dailyStats || {});
 
         // Save HTML report for clean web & 1-click PDF viewing
         const REPORT_HTML_FILE = path.join(BASE_DIR, '오답노트_보고서.html');
