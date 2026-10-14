@@ -832,6 +832,7 @@ body.hide-furigana .g-option-card rt {
   .grammar-card {
     padding: 1.25rem 1rem;
     gap: 1.15rem;
+    margin-bottom: 75px !important;
   }
   
   .grammar-sentence {
@@ -851,4 +852,200 @@ body.hide-furigana .g-option-card rt {
   .g-option-kbd {
     display: none;
   }
+
+  /* Docked Mobile Bottom Navigation Bar */
+  .grammar-footer-nav {
+    position: fixed !important;
+    bottom: 60px !important;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 56px !important;
+    background: var(--bg-surface) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid var(--border-subtle) !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    padding: 0.4rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.65rem !important;
+    z-index: 990 !important;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.28) !important;
+    margin: 0 !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  .grammar-footer-nav .g-footer-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    flex: 0 0 auto !important;
+  }
+
+  .grammar-footer-nav #btn-g-prev {
+    flex: 0 0 auto !important;
+    min-width: 82px !important;
+    height: 40px !important;
+    padding: 0 0.85rem !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-full) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    cursor: pointer;
+  }
+
+  .grammar-footer-nav #btn-g-random {
+    flex: 0 0 auto !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    min-width: 40px !important;
+    border-radius: var(--radius-full) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-secondary) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+  }
+
+  .grammar-footer-nav #btn-g-random span {
+    display: none !important;
+  }
+
+  .grammar-footer-nav .g-footer-right {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  .grammar-footer-nav #btn-g-next {
+    width: 100% !important;
+    height: 40px !important;
+    padding: 0 1.25rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-full) !important;
+    background: var(--primary-gradient) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+    cursor: pointer;
+  }
+}
+
+/* Explicit Mobile Device Overrides (JS Touch Detection) */
+html.is-mobile-device .grammar-card {
+  margin-bottom: 75px !important;
+}
+
+html.is-mobile-device .grammar-footer-nav {
+  position: fixed !important;
+  bottom: 60px !important;
+  bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 56px !important;
+  background: var(--bg-surface) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  padding: 0.4rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.65rem !important;
+  z-index: 990 !important;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.28) !important;
+  margin: 0 !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+html.is-mobile-device .grammar-footer-nav .g-footer-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  flex: 0 0 auto !important;
+}
+
+html.is-mobile-device .grammar-footer-nav #btn-g-prev {
+  flex: 0 0 auto !important;
+  min-width: 82px !important;
+  height: 40px !important;
+  padding: 0 0.85rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-full) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-card) !important;
+  color: var(--text-primary) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.35rem !important;
+  cursor: pointer;
+}
+
+html.is-mobile-device .grammar-footer-nav #btn-g-random {
+  flex: 0 0 auto !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  min-width: 40px !important;
+  border-radius: var(--radius-full) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-card) !important;
+  color: var(--text-secondary) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+}
+
+html.is-mobile-device .grammar-footer-nav #btn-g-random span {
+  display: none !important;
+}
+
+html.is-mobile-device .grammar-footer-nav .g-footer-right {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+html.is-mobile-device .grammar-footer-nav #btn-g-next {
+  width: 100% !important;
+  height: 40px !important;
+  padding: 0 1.25rem !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-full) !important;
+  background: var(--primary-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.45rem !important;
+  cursor: pointer;
 }

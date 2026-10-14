@@ -568,7 +568,7 @@
           <div class="g-footer-left">
             <button class="btn btn-secondary btn-sm" id="btn-g-prev" ${gState.currentIndex === 0 ? 'disabled' : ''}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-              <span>이전 문제</span>
+              <span>이전<span class="desktop-only-inline"> 문제</span></span>
             </button>
             <button class="btn btn-secondary btn-sm" id="btn-g-random" title="무작위 문제 풀기">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/><path d="M2 6h1.973a4 4 0 0 1 3.3 1.7l5.454 8.6a4 4 0 0 0 3.3 1.7H22"/></svg>
@@ -578,7 +578,7 @@
 
           <div class="g-footer-right">
             <button class="btn btn-primary btn-sm" id="btn-g-next">
-              <span>다음 문제</span>
+              <span>다음<span class="desktop-only-inline"> 문제</span></span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </button>
           </div>
@@ -603,6 +603,9 @@
           gState.currentIndex--;
           saveState();
           renderCard();
+          if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         }
       });
     }
@@ -630,6 +633,9 @@
           } else {
             showToast('마지막 문제입니다!');
           }
+        }
+        if (window.innerWidth <= 900 || document.documentElement.classList.contains('is-mobile-device')) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
     }
