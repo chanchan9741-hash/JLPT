@@ -767,7 +767,18 @@ body.hide-furigana .g-option-card rt {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
-  padding-top: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl, 1.25rem);
+  box-shadow: var(--shadow-sm);
+  margin-top: 1rem;
+}
+
+#view-grammar:not(.active) .grammar-footer-nav {
+  display: none !important;
 }
 
 .g-footer-left,
@@ -828,11 +839,16 @@ body.hide-furigana .g-option-card rt {
 }
 
 /* Responsive Tweaks */
+/* Responsive Tweaks */
 @media (max-width: 768px) {
+  .grammar-container {
+    padding-bottom: 160px !important;
+  }
+
   .grammar-card {
     padding: 1.25rem 1rem;
     gap: 1.15rem;
-    margin-bottom: 75px !important;
+    margin-bottom: 1rem !important;
   }
   
   .grammar-sentence {
@@ -853,7 +869,7 @@ body.hide-furigana .g-option-card rt {
     display: none;
   }
 
-  /* Docked Mobile Bottom Navigation Bar */
+  /* Docked Mobile Bottom Navigation Bar (Screen Bottom) */
   .grammar-footer-nav {
     position: fixed !important;
     bottom: 60px !important;
@@ -868,6 +884,7 @@ body.hide-furigana .g-option-card rt {
     border-left: none !important;
     border-right: none !important;
     border-bottom: none !important;
+    border-radius: 0 !important;
     padding: 0.4rem 1rem !important;
     display: flex !important;
     align-items: center !important;
@@ -951,8 +968,12 @@ body.hide-furigana .g-option-card rt {
 }
 
 /* Explicit Mobile Device Overrides (JS Touch Detection) */
+html.is-mobile-device .grammar-container {
+  padding-bottom: 160px !important;
+}
+
 html.is-mobile-device .grammar-card {
-  margin-bottom: 75px !important;
+  margin-bottom: 1rem !important;
 }
 
 html.is-mobile-device .grammar-footer-nav {
@@ -969,6 +990,7 @@ html.is-mobile-device .grammar-footer-nav {
   border-left: none !important;
   border-right: none !important;
   border-bottom: none !important;
+  border-radius: 0 !important;
   padding: 0.4rem 1rem !important;
   display: flex !important;
   align-items: center !important;
