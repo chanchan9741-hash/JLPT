@@ -4147,6 +4147,12 @@
     renderStats();
   }
 
+  function recordGrammarMistake(mistakeObj) {
+    if (!mistakeObj || !mistakeObj.id) return;
+    mistakes[mistakeObj.id] = mistakeObj;
+    saveMistakes();
+  }
+
   // Expose global app object for inline handlers
   window.app = {
     init,
@@ -4155,6 +4161,7 @@
     prevQuestion,
     handleOptionSelect,
     mergeExternalData,
+    recordGrammarMistake,
     startAnkiSingleCard: (id) => {
       ankiState.currentQueue = [id];
       ankiState.queueIndex = 0;

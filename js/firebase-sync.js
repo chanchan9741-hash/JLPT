@@ -151,12 +151,12 @@ window.JLPT_FIREBASE = (function () {
   }
 
   let debounceTimer = null;
-  function scheduleCloudUpload() {
+  function scheduleCloudUpload(delay = 300) {
     if (!currentUser || !isInitialized) return;
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       uploadCurrentDataToCloud();
-    }, 1000);
+    }, delay);
   }
 
   async function uploadCurrentDataToCloud() {
@@ -224,7 +224,10 @@ window.JLPT_FIREBASE = (function () {
       }, { merge: true });
 
       console.log('[Firebase] Cloud data updated successfully. Solved count:', Object.keys(history).length, 'Grammar count:', Object.keys(grammarHistory).length);
-      updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
+      updateSyncStatusUI('connected', '클라우드 실시간 동기화됨 ✓');
+      setTimeout(() => {
+        updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
+      }, 1500);
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
     } finally {
@@ -481,6 +484,20 @@ window.JLPT_FIREBASE = (function () {
     init();
   }
 
+  // Lifecycle listeners to flush unsaved sync on mobile app switch or screen lock
+  if (typeof document !== 'undefined' && typeof window !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden' && currentUser && isInitialized) {
+        uploadCurrentDataToCloud();
+      }
+    });
+    window.addEventListener('pagehide', () => {
+      if (currentUser && isInitialized) {
+        uploadCurrentDataToCloud();
+      }
+    });
+  }
+
   return {
     init,
     setConfig,
@@ -489,6 +506,7 @@ window.JLPT_FIREBASE = (function () {
     loginWithGoogle,
     logout,
     scheduleCloudUpload,
+    uploadCurrentDataToCloud,
     forceCloudSync,
     showConfigModal
   };

@@ -246,7 +246,7 @@
   function triggerSync() {
     try {
       if (window.JLPT_FIREBASE && typeof window.JLPT_FIREBASE.scheduleCloudUpload === 'function') {
-        window.JLPT_FIREBASE.scheduleCloudUpload();
+        window.JLPT_FIREBASE.scheduleCloudUpload(300);
       }
       if (window.syncManager && typeof window.syncManager.scheduleSync === 'function') {
         window.syncManager.scheduleSync();
@@ -327,6 +327,11 @@
       }
 
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
+
+      // Also sync to window.app mistakes
+      if (window.app && typeof window.app.recordGrammarMistake === 'function') {
+        window.app.recordGrammarMistake(mistakes[q.id]);
+      }
 
       // Update badge if available
       if (window.updateMistakeBadge) window.updateMistakeBadge();
