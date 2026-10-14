@@ -263,6 +263,10 @@
         }
       }
 
+      if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
+        window.grammarApp.mergeGrammarData(driveData);
+      }
+
       if (updated) {
         localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
         localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
@@ -282,11 +286,26 @@
     async pushToDrive() {
       if (!this.connected) return;
       try {
+        let grammarHistory = {};
+        let grammarBookmarks = [];
+        if (window.grammarApp && typeof window.grammarApp.getGrammarData === 'function') {
+          const gData = window.grammarApp.getGrammarData();
+          grammarHistory = gData.grammarHistory;
+          grammarBookmarks = gData.grammarBookmarks;
+        } else {
+          try {
+            grammarHistory = JSON.parse(localStorage.getItem('jlpt_grammar_history_v1') || '{}');
+            grammarBookmarks = JSON.parse(localStorage.getItem('jlpt_grammar_bookmarks_v1') || '[]');
+          } catch (e) {}
+        }
+
         const payload = {
           mistakes,
           history,
           bookmarks: Array.from(bookmarks),
           dailyStats,
+          grammarHistory,
+          grammarBookmarks,
           clientTimestamp: Date.now()
         };
 
@@ -4105,6 +4124,10 @@
       }
     }
 
+    if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
+      window.grammarApp.mergeGrammarData(cloudData);
+    }
+
     if (changed) {
       localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
@@ -4148,14 +4171,30 @@
         showToast('간격이 1일(내일 복습)로 초기화되었습니다.');
       }
     },
-    getAppData: () => ({
-      mistakes,
-      history,
-      bookmarks: Array.from(bookmarks),
-      srs,
-      dailyStats,
-      clientTimestamp: Date.now()
-    }),
+    getAppData: () => {
+      let grammarHistory = {};
+      let grammarBookmarks = [];
+      if (window.grammarApp && typeof window.grammarApp.getGrammarData === 'function') {
+        const gData = window.grammarApp.getGrammarData();
+        grammarHistory = gData.grammarHistory;
+        grammarBookmarks = gData.grammarBookmarks;
+      } else {
+        try {
+          grammarHistory = JSON.parse(localStorage.getItem('jlpt_grammar_history_v1') || '{}');
+          grammarBookmarks = JSON.parse(localStorage.getItem('jlpt_grammar_bookmarks_v1') || '[]');
+        } catch (e) {}
+      }
+      return {
+        mistakes,
+        history,
+        bookmarks: Array.from(bookmarks),
+        srs,
+        dailyStats,
+        grammarHistory,
+        grammarBookmarks,
+        clientTimestamp: Date.now()
+      };
+    },
     renderStats,
     playCorrectSound: () => sound.playCorrect(),
     playWrongSound: () => sound.playWrong(),

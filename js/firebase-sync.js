@@ -131,6 +131,9 @@ window.JLPT_FIREBASE = (function () {
         if (window.app && typeof window.app.mergeExternalData === 'function') {
           window.app.mergeExternalData(cloudData);
         }
+        if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
+          window.grammarApp.mergeGrammarData(cloudData);
+        }
       } else {
         // Document does not exist yet for this user: upload current local data
         console.log('[Firebase] First time login, pushing initial local data to cloud.');
@@ -173,6 +176,8 @@ window.JLPT_FIREBASE = (function () {
       let bookmarks = (payload && payload.bookmarks) ? payload.bookmarks : null;
       let srs = (payload && payload.srs) ? payload.srs : null;
       let dailyStats = (payload && payload.dailyStats) ? payload.dailyStats : null;
+      let grammarHistory = (payload && payload.grammarHistory) ? payload.grammarHistory : null;
+      let grammarBookmarks = (payload && payload.grammarBookmarks) ? payload.grammarBookmarks : null;
 
       if (!mistakes) {
         mistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || localStorage.getItem('jlpt_mistakes_v2') || '{}');
@@ -189,6 +194,12 @@ window.JLPT_FIREBASE = (function () {
       if (!dailyStats) {
         dailyStats = JSON.parse(localStorage.getItem('jlpt_daily_stats_v1') || '{}');
       }
+      if (!grammarHistory) {
+        grammarHistory = JSON.parse(localStorage.getItem('jlpt_grammar_history_v1') || '{}');
+      }
+      if (!grammarBookmarks) {
+        grammarBookmarks = JSON.parse(localStorage.getItem('jlpt_grammar_bookmarks_v1') || '[]');
+      }
 
       // If local data is empty, check window.JLPT_INITIAL_SYNC
       if (Object.keys(history).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.history) {
@@ -204,13 +215,15 @@ window.JLPT_FIREBASE = (function () {
         bookmarks,
         srs,
         dailyStats,
+        grammarHistory,
+        grammarBookmarks,
         lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
         lastUpdatedClient: Date.now(),
         userEmail: currentUser.email || '',
         userName: currentUser.displayName || ''
       }, { merge: true });
 
-      console.log('[Firebase] Cloud data updated successfully. Solved count:', Object.keys(history).length);
+      console.log('[Firebase] Cloud data updated successfully. Solved count:', Object.keys(history).length, 'Grammar count:', Object.keys(grammarHistory).length);
       updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
@@ -235,6 +248,9 @@ window.JLPT_FIREBASE = (function () {
         const cloudData = doc.data();
         if (window.app && typeof window.app.mergeExternalData === 'function') {
           window.app.mergeExternalData(cloudData);
+        }
+        if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
+          window.grammarApp.mergeGrammarData(cloudData);
         }
         await uploadCurrentDataToCloud();
         if (window.showToast) window.showToast('✅ 클라우드 대시보드 동기화 완료!');

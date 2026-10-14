@@ -242,6 +242,20 @@
     }
   }
 
+  // Trigger real-time sync with Firebase and Google Drive
+  function triggerSync() {
+    try {
+      if (window.JLPT_FIREBASE && typeof window.JLPT_FIREBASE.scheduleCloudUpload === 'function') {
+        window.JLPT_FIREBASE.scheduleCloudUpload();
+      }
+      if (window.syncManager && typeof window.syncManager.scheduleSync === 'function') {
+        window.syncManager.scheduleSync();
+      }
+    } catch (e) {
+      console.warn('[Grammar] Sync trigger error:', e);
+    }
+  }
+
   // Record Answer & sync with Mistakes Notebook
   function recordAnswer(question, selectedOptIndex) {
     const opt = question.options[selectedOptIndex];
@@ -259,6 +273,9 @@
       window.recordDailyActivity({ category: 'grammar', isCorrect: isCorrect, count: 1 });
     }
 
+    // Trigger Cloud & Google Drive auto-sync
+    triggerSync();
+
     // Sound
     if (isCorrect) {
       playSound('correct');
@@ -271,6 +288,7 @@
       recordMistake(question, opt.copy);
     }
 
+    updateLevelCounts();
     renderCard();
   }
 
@@ -327,16 +345,72 @@
       showToast('⭐ 문법 문제가 북마크에 저장되었습니다.');
     }
     saveBookmarks();
+    triggerSync();
+    updateLevelCounts();
     renderCard();
   }
 
   // --- Render Functions ---
 
+  function updateFilterChipCounts() {
+    const all = window.JLPT_GRAMMAR_DATA || [];
+    const lvl = gState.level;
+    const questions = lvl === 'ALL' ? all : all.filter(q => q.level === lvl);
+
+    let newCount = 0;
+    let gangdok5Count = 0;
+    let wrongCount = 0;
+    let bookmarkedCount = 0;
+
+    questions.forEach(q => {
+      const ans = userAnswers[q.id];
+      if (!ans) newCount++;
+      else if (!ans.isCorrect) wrongCount++;
+
+      if (GANGDOK5_PATTERNS.some(p => q.pattern.includes(p) || p.includes(q.pattern))) {
+        gangdok5Count++;
+      }
+      if (bookmarks.has(q.id)) {
+        bookmarkedCount++;
+      }
+    });
+
+    const elAll = document.getElementById('g-filter-cnt-all');
+    if (elAll) elAll.textContent = questions.length.toLocaleString();
+
+    const elNew = document.getElementById('g-filter-cnt-new');
+    if (elNew) elNew.textContent = newCount.toLocaleString();
+
+    const elGangdok5 = document.getElementById('g-filter-cnt-gangdok5');
+    if (elGangdok5) elGangdok5.textContent = gangdok5Count.toLocaleString();
+
+    const elWrong = document.getElementById('g-filter-cnt-wrong');
+    if (elWrong) elWrong.textContent = wrongCount.toLocaleString();
+
+    const elBookmarked = document.getElementById('g-filter-cnt-bookmarked');
+    if (elBookmarked) elBookmarked.textContent = bookmarkedCount.toLocaleString();
+  }
+
   function updateLevelCounts() {
     const all = window.JLPT_GRAMMAR_DATA || [];
-    const counts = { ALL: all.length, N1: 0, N2: 0, N3: 0, N4: 0, N5: 0 };
+    const counts = { ALL: 0, N1: 0, N2: 0, N3: 0, N4: 0, N5: 0 };
     all.forEach(q => {
-      if (counts[q.level] !== undefined) counts[q.level]++;
+      let matchesFilter = true;
+      if (gState.filterType === 'new') {
+        if (userAnswers[q.id]) matchesFilter = false;
+      } else if (gState.filterType === 'gangdok5') {
+        matchesFilter = GANGDOK5_PATTERNS.some(p => q.pattern.includes(p) || p.includes(q.pattern));
+      } else if (gState.filterType === 'wrong') {
+        const ans = userAnswers[q.id];
+        matchesFilter = !!(ans && !ans.isCorrect);
+      } else if (gState.filterType === 'bookmarked') {
+        matchesFilter = bookmarks.has(q.id);
+      }
+
+      if (matchesFilter) {
+        counts.ALL++;
+        if (counts[q.level] !== undefined) counts[q.level]++;
+      }
     });
 
     Object.keys(counts).forEach(lvl => {
@@ -346,6 +420,8 @@
 
     const headerCount = document.getElementById('header-grammar-count');
     if (headerCount) headerCount.textContent = all.length.toLocaleString();
+
+    updateFilterChipCounts();
   }
 
   function renderCard() {
@@ -511,7 +587,7 @@
     container.innerHTML = `
       <!-- Progress Bar -->
       <div class="grammar-progress-card">
-        <span class="g-progress-stat">진행 문항: ${gState.currentIndex + 1} / ${filteredList.length}</span>
+        <span class="g-progress-stat">진행 문항: ${gState.currentIndex + 1} / ${filteredList.length.toLocaleString()}${gState.filterType === 'new' ? ' (미풀이 새 문제)' : ''}</span>
         <div class="g-progress-bar-wrap">
           <div class="g-progress-bar-fill" style="width: ${progressPct}%;"></div>
         </div>
@@ -616,6 +692,7 @@
         if (gState.filterType === 'new') {
           // 새로운 문제 풀기 모드에서는 이미 푼 문제를 제외하고 다음 새 문제로 진행
           applyFilters();
+          updateLevelCounts();
           if (filteredList.length === 0) {
             renderCard();
             return;
@@ -946,7 +1023,53 @@
   window.grammarApp = {
     init: init,
     render: render,
-    applyFilters: applyFilters
+    applyFilters: applyFilters,
+    updateLevelCounts: updateLevelCounts,
+    updateFilterChipCounts: updateFilterChipCounts,
+    getGrammarData: function () {
+      return {
+        grammarHistory: userAnswers,
+        grammarBookmarks: Array.from(bookmarks)
+      };
+    },
+    mergeGrammarData: function (incoming) {
+      if (!incoming) return;
+      let changed = false;
+
+      if (incoming.grammarHistory && typeof incoming.grammarHistory === 'object') {
+        for (const [id, ans] of Object.entries(incoming.grammarHistory)) {
+          if (!userAnswers[id]) {
+            userAnswers[id] = ans;
+            changed = true;
+          } else if ((ans.answeredAt || 0) > (userAnswers[id].answeredAt || 0)) {
+            userAnswers[id] = ans;
+            changed = true;
+          }
+        }
+      }
+
+      if (incoming.grammarBookmarks && Array.isArray(incoming.grammarBookmarks)) {
+        incoming.grammarBookmarks.forEach(id => {
+          if (!bookmarks.has(id)) {
+            bookmarks.add(id);
+            changed = true;
+          }
+        });
+      }
+
+      if (changed) {
+        saveHistory();
+        saveBookmarks();
+        applyFilters();
+        render();
+        console.log('[Grammar] External grammar data merged successfully. Answered count:', Object.keys(userAnswers).length);
+      }
+    },
+    reloadStorage: function () {
+      loadStorage();
+      applyFilters();
+      render();
+    }
   };
 
   // Run on DOM ready

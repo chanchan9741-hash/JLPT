@@ -599,7 +599,7 @@ const server = http.createServer((req, res) => {
     }
     // Default empty
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-    res.end(JSON.stringify({ mistakes: {}, history: {}, bookmarks: [] }));
+    res.end(JSON.stringify({ mistakes: {}, history: {}, bookmarks: [], grammarHistory: {}, grammarBookmarks: [] }));
     return;
   }
 
