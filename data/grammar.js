@@ -198,8 +198,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       }
@@ -233,7 +233,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"괜찮지 않다면 무리하지 않아도 됩니다.\")과 맞지 않습니다."
@@ -1297,8 +1297,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -1332,7 +1332,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"매일, 음악을 들으면서 운동합니다.\")과 맞지 않습니다."
@@ -1369,8 +1369,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -1404,7 +1404,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"물이 귀에 들어가지 않도록 조심합시다.\")과 맞지 않습니다."
@@ -2403,8 +2403,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -2438,7 +2438,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 집에 돌아가서 책을 읽었습니다.\")과 맞지 않습니다."
@@ -2719,8 +2719,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -2754,7 +2754,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제는 하루 종일 회사에서 일을 했다.\")과 맞지 않습니다."
@@ -3502,8 +3502,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -3537,7 +3537,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"우리집 개는 1년 전 병으로 죽었다.\")과 맞지 않습니다."
@@ -4206,8 +4206,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -4241,7 +4241,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이름을 한자로 적지 않는다.\")과 맞지 않습니다."
@@ -5570,8 +5570,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -5605,7 +5605,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"A：지금 화제의 그 영화 벌써 봤습니까?<br><br>B：아니오, 아직 안 봤습니다.\")과 맞지 않습니다."
@@ -5728,8 +5728,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -5763,7 +5763,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"A：벌써 잤습니까?<br><br>B：아니오, 아직 안 잤습니다.\")과 맞지 않습니다."
@@ -6123,8 +6123,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -6158,7 +6158,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨는 이 학교 학생이다.\")과 맞지 않습니다."
@@ -6489,11 +6489,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "명사+ではない",
     "patternMeaning": "~가 아니다, ~가 아니라",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これはコーヒー(   )",
-    "qPlain": "これはコーヒー(   )",
+    "qRuby": "これはコーヒー(   )。",
+    "qPlain": "これはコーヒー(   )。",
     "qTrans": "이것은 커피가 아니다.",
-    "target": "ではない。",
-    "targetNoRuby": "ではない。",
+    "target": "ではない",
+    "targetNoRuby": "ではない",
     "options": [
       {
         "marker": "①",
@@ -6511,8 +6511,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ではない。",
-        "copyNoRuby": "ではない。",
+        "copy": "ではない",
+        "copyNoRuby": "ではない",
         "isCorrect": true,
         "trans": "~가 아니다, ~가 아니라"
       },
@@ -6546,7 +6546,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ではない。",
+          "text": "ではない",
           "trans": "~가 아니다, ~가 아니라",
           "isCorrect": true,
           "note": "「ではない。」는 '~가 아니다, ~가 아니라'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이것은 커피가 아니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -6669,8 +6669,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -6704,7 +6704,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제는 화요일이었다.\")과 맞지 않습니다."
@@ -7940,8 +7940,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       }
@@ -7975,7 +7975,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그것은 책이 아닙니다.\")과 맞지 않습니다."
@@ -8464,16 +8464,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "명사+でした",
     "patternMeaning": "~였습니다, ~이었습니다 (공손한 과거 긍정 표현)",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ゴールはあそこ(   )",
-    "qPlain": "ゴールはあそこ(   )",
+    "qRuby": "ゴールはあそこ(   )。",
+    "qPlain": "ゴールはあそこ(   )。",
     "qTrans": "골은 저기였습니다.",
-    "target": "でした。",
-    "targetNoRuby": "でした。",
+    "target": "でした",
+    "targetNoRuby": "でした",
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -8493,8 +8493,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "でした。",
-        "copyNoRuby": "でした。",
+        "copy": "でした",
+        "copyNoRuby": "でした",
         "isCorrect": true,
         "trans": "~였습니다, ~이었습니다 (공손한 과거 긍정 표현)"
       }
@@ -8507,7 +8507,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"골은 저기였습니다.\")과 맞지 않습니다."
@@ -8528,7 +8528,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "でした。",
+          "text": "でした",
           "trans": "~였습니다, ~이었습니다 (공손한 과거 긍정 표현)",
           "isCorrect": true,
           "note": "「でした。」는 '~였습니다, ~이었습니다 (공손한 과거 긍정 표현)'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"골은 저기였습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -8565,8 +8565,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -8600,7 +8600,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그것은 영어책이었습니다.\")과 맞지 않습니다."
@@ -9039,8 +9039,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -9074,7 +9074,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김상은 밝다.\")과 맞지 않습니다."
@@ -9362,8 +9362,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -9397,7 +9397,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 산은 높지 않다.\")과 맞지 않습니다."
@@ -11395,8 +11395,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -11430,7 +11430,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 마을은 교통이 조금 불편하다.\")과 맞지 않습니다."
@@ -11567,8 +11567,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -11602,7 +11602,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 매운 음식을 별로 좋아하지 않는다.\")과 맞지 않습니다."
@@ -11732,8 +11732,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -11767,7 +11767,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 과제는 쉬웠다.\")과 맞지 않습니다."
@@ -11811,8 +11811,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -11846,7 +11846,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일년 전, 나는 그를 좋아했다.\")과 맞지 않습니다."
@@ -12903,8 +12903,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -12938,7 +12938,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본의 벚꽃은 매우 예쁩니다.\")과 맞지 않습니다."
@@ -14634,8 +14634,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -14669,7 +14669,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"처음 뵙겠습니다. 서울에서 온 박입니다.\")과 맞지 않습니다."
@@ -15122,8 +15122,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -15157,7 +15157,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어서 오세요. 지금이라면 이쪽 상품 3팩에 1000엔입니다.\")과 맞지 않습니다."
@@ -15740,8 +15740,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -15775,7 +15775,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"형(오빠)는 서울에 있는 대학에 원서를 넣기로 했다고 합니다.\")과 맞지 않습니다."
@@ -15977,8 +15977,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -16012,7 +16012,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘 친구와 7시에 만나기로 했습니다.\")과 맞지 않습니다."
@@ -16788,8 +16788,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -16823,7 +16823,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"처음 뵙겠습니다. 서울에서 온 박입니다.\")과 맞지 않습니다."
@@ -16853,15 +16853,15 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
       {
         "marker": "③",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -16888,14 +16888,14 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아까 아이들이 학교에서 돌아왔습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "から、もっと",
+          "text": "のに",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아까 아이들이 학교에서 돌아왔습니다.\")과 맞지 않습니다."
@@ -17183,8 +17183,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -17218,7 +17218,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"와인은 포도로 만들어집니다.\")과 맞지 않습니다."
@@ -17707,11 +17707,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "원인, 이유 + から",
     "patternMeaning": "~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "あのドラマはとてもおもしろいです(   )毎週必(まいしゅうかなら)ず見(み)ます。",
-    "qPlain": "あのドラマはとてもおもしろいです(   )毎週必ず見ます。",
+    "qRuby": "あのドラマはとてもおもしろいです(   )、毎週必(まいしゅうかなら)ず見(み)ます。",
+    "qPlain": "あのドラマはとてもおもしろいです(   )、毎週必ず見ます。",
     "qTrans": "저 드라마는 매우 재미있으니 매주 꼭 볼 겁니다.",
-    "target": "から、",
-    "targetNoRuby": "から、",
+    "target": "から",
+    "targetNoRuby": "から",
     "options": [
       {
         "marker": "①",
@@ -17729,8 +17729,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": true,
         "trans": "~때문에, ~라서"
       },
@@ -17764,7 +17764,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": true,
           "note": "「から、」는 '~때문에, ~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"저 드라마는 매우 재미있으니 매주 꼭 볼 겁니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -17786,11 +17786,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "원인, 이유 + から",
     "patternMeaning": "~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "このスープはちょっとしょっぱい(   )水(みず)を入(い)れたほうがいいですよ。",
-    "qPlain": "このスープはちょっとしょっぱい(   )水を入れたほうがいいですよ。",
+    "qRuby": "このスープはちょっとしょっぱい(   )、水(みず)を入(い)れたほうがいいですよ。",
+    "qPlain": "このスープはちょっとしょっぱい(   )、水を入れたほうがいいですよ。",
     "qTrans": "이 스프는 조금 짜니까 물을 넣는 편이 좋겠네요.",
-    "target": "から、",
-    "targetNoRuby": "から、",
+    "target": "から",
+    "targetNoRuby": "から",
     "options": [
       {
         "marker": "①",
@@ -17815,8 +17815,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": true,
         "trans": "~때문에, ~라서"
       }
@@ -17850,7 +17850,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": true,
           "note": "「から、」는 '~때문에, ~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 스프는 조금 짜니까 물을 넣는 편이 좋겠네요.\")에 자연스럽게 들어맞는 정답입니다."
@@ -18023,39 +18023,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "원인, 이유 + から",
     "patternMeaning": "~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "スーパーがセールだった(   )菓子(かし)をいっぱい買(か)った。",
-    "qPlain": "スーパーがセールだった(   )菓子をいっぱい買った。",
+    "qRuby": "スーパーがセールだった(   )、お菓子(かし)をいっぱい買(か)った。",
+    "qPlain": "スーパーがセールだった(   )、お菓子をいっぱい買った。",
     "qTrans": "슈퍼가 세일이었기 때문에 과자를 많이 샀다.",
-    "target": "から、お",
-    "targetNoRuby": "から、お",
+    "target": "から",
+    "targetNoRuby": "から",
     "options": [
       {
         "marker": "①",
         "copy": "から",
         "copyNoRuby": "から",
-        "isCorrect": false,
-        "trans": "~때문에 / ~부터"
+        "isCorrect": true,
+        "trans": "~때문에, ~라서 (원인·이유)"
       },
       {
         "marker": "②",
-        "copy": "高(たか)くない",
-        "copyNoRuby": "高くない",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
-        "trans": "~지 않다, ~지 않아요 (부정형)"
+        "trans": "~이므로, ~라서"
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
-        "isCorrect": true,
-        "trans": "~때문에, ~라서"
+        "copy": "のに",
+        "copyNoRuby": "のに",
+        "isCorrect": false,
+        "trans": "~인데도 (역접)"
       },
       {
         "marker": "④",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "ても",
+        "copyNoRuby": "ても",
         "isCorrect": false,
-        "trans": "~때문에, ~라서"
+        "trans": "~하더라도 (양보)"
       }
     ],
     "ansJa": "スーパーがセールだったから、お菓子(かし)をいっぱい買(か)った。",
@@ -18067,30 +18067,30 @@ window.JLPT_GRAMMAR_DATA = [
         {
           "marker": "①",
           "text": "から",
-          "trans": "~때문에 / ~부터",
-          "isCorrect": false,
-          "note": "「から」: '~때문에 / ~부터'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"슈퍼가 세일이었기 때문에 과자를 많이 샀다.\")과 맞지 않습니다."
+          "trans": "~때문에, ~라서",
+          "isCorrect": true,
+          "note": "「から」는 원인·이유를 나타내는 접속조사로, '슈퍼가 세일이었기 때문에 과자를 샀다'는 문맥에 가장 자연스럽습니다."
         },
         {
           "marker": "②",
-          "text": "高くない",
-          "trans": "~지 않다, ~지 않아요 (부정형)",
+          "text": "ので",
+          "trans": "~이므로",
           "isCorrect": false,
-          "note": "「高くない」: '~지 않다, ~지 않아요 (부정형)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"슈퍼가 세일이었기 때문에 과자를 많이 샀다.\")과 맞지 않습니다."
+          "note": "「ので」는 정중하거나 객관적 이유에 주로 쓰이며, 앞 구문(だった)과 결합 시 보통 회화체에서는 から가 자연스럽습니다."
         },
         {
           "marker": "③",
-          "text": "から、お",
-          "trans": "~때문에, ~라서",
-          "isCorrect": true,
-          "note": "「から、お」는 '~때문에, ~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"슈퍼가 세일이었기 때문에 과자를 많이 샀다.\")에 자연스럽게 들어맞는 정답입니다."
+          "text": "のに",
+          "trans": "~인데도",
+          "isCorrect": false,
+          "note": "「のに」는 앞뒤가 상반되는 역접 관계를 나타내므로 어울리지 않습니다."
         },
         {
           "marker": "④",
-          "text": "から、もっと",
-          "trans": "~때문에, ~라서",
+          "text": "ても",
+          "trans": "~하더라도",
           "isCorrect": false,
-          "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"슈퍼가 세일이었기 때문에 과자를 많이 샀다.\")과 맞지 않습니다."
+          "note": "「ても」는 양보를 나타내므로 인과 관계 문맥에 맞지 않습니다."
         }
       ]
     }
@@ -18181,39 +18181,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "원인, 이유 + から",
     "patternMeaning": "~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これ、おいしい(   )食(た)べたい。",
-    "qPlain": "これ、おいしい(   )食べたい。",
+    "qRuby": "これ、おいしい(   )、もっと食(た)べたい。",
+    "qPlain": "これ、おいしい(   )、もっと食べたい。",
     "qTrans": "이거 맛있으니까 좀 더 먹고 싶어.",
-    "target": "から、もっと",
-    "targetNoRuby": "から、もっと",
+    "target": "から",
+    "targetNoRuby": "から",
     "options": [
       {
         "marker": "①",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": true,
         "trans": "~때문에, ~라서"
       },
       {
         "marker": "②",
-        "copy": "んじゃないか",
-        "copyNoRuby": "んじゃないか",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
-        "trans": "~아냐? ~아닐까?"
+        "trans": "~인데도"
       },
       {
         "marker": "③",
-        "copy": "ませんでした",
-        "copyNoRuby": "ませんでした",
+        "copy": "ても",
+        "copyNoRuby": "ても",
         "isCorrect": false,
-        "trans": "~지 않았습니다"
+        "trans": "~하더라도"
       },
       {
         "marker": "④",
-        "copy": "べからざる",
-        "copyNoRuby": "べからざる",
+        "copy": "たら",
+        "copyNoRuby": "たら",
         "isCorrect": false,
-        "trans": "~해서는 안 될+명사"
+        "trans": "~하면"
       }
     ],
     "ansJa": "これ、おいしいから、もっと食(た)べたい。",
@@ -18224,28 +18224,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": true,
           "note": "「から、もっと」는 '~때문에, ~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이거 맛있으니까 좀 더 먹고 싶어.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "んじゃないか",
+          "text": "のに",
           "trans": "~아냐? ~아닐까?",
           "isCorrect": false,
           "note": "「んじゃないか」: '~아냐? ~아닐까?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이거 맛있으니까 좀 더 먹고 싶어.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ませんでした",
+          "text": "ても",
           "trans": "~지 않았습니다",
           "isCorrect": false,
           "note": "「ませんでした」: '~지 않았습니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이거 맛있으니까 좀 더 먹고 싶어.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "べからざる",
+          "text": "たら",
           "trans": "~해서는 안 될+명사",
           "isCorrect": false,
           "note": "「べからざる」: '~해서는 안 될+명사'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이거 맛있으니까 좀 더 먹고 싶어.\")과 맞지 않습니다."
@@ -18447,8 +18447,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -18482,7 +18482,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "のに",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 호텔은 공항과 가깝지 않기 때문에 조금 불편합니다.\")과 맞지 않습니다."
@@ -18497,23 +18497,23 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "조사 ので",
     "patternMeaning": "(원인, 이유) ~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "このドレスがきれいな(   )結婚式(けっこんしき)ではこのドレスを着(き)たいです。",
-    "qPlain": "このドレスがきれいな(   )結婚式ではこのドレスを着たいです。",
+    "qRuby": "このドレスがきれいな(   )、結婚式(けっこんしき)ではこのドレスを着(き)たいです。",
+    "qPlain": "このドレスがきれいな(   )、結婚式ではこのドレスを着たいです。",
     "qTrans": "이 드레스가 예쁘니까 결혼식에서는 이 드레스를 입고 싶습니다.",
-    "target": "ので、",
-    "targetNoRuby": "ので、",
+    "target": "ので",
+    "targetNoRuby": "ので",
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": true,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -18526,8 +18526,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -18540,14 +18540,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 드레스가 예쁘니까 결혼식에서는 이 드레스를 입고 싶습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": true,
           "note": "「ので、」는 '(원인, 이유) ~때문에'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 드레스가 예쁘니까 결혼식에서는 이 드레스를 입고 싶습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -18561,7 +18561,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、もっと",
+          "text": "のに",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 드레스가 예쁘니까 결혼식에서는 이 드레스를 입고 싶습니다.\")과 맞지 않습니다."
@@ -19208,11 +19208,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "조사 ので",
     "patternMeaning": "(원인, 이유) ~때문에, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "エアコンをつけた(   )部屋(へや)の中(なか)が涼(すず)しくなりました。",
-    "qPlain": "エアコンをつけた(   )部屋の中が涼しくなりました。",
+    "qRuby": "エアコンをつけた(   )、部屋(へや)の中(なか)が涼(すず)しくなりました。",
+    "qPlain": "エアコンをつけた(   )、部屋の中が涼しくなりました。",
     "qTrans": "에어컨을 켰기 때문에 방 안이 시원해졌습니다.",
-    "target": "ので、",
-    "targetNoRuby": "ので、",
+    "target": "ので",
+    "targetNoRuby": "ので",
     "options": [
       {
         "marker": "①",
@@ -19230,8 +19230,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": true,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -19265,7 +19265,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": true,
           "note": "「ので、」는 '(원인, 이유) ~때문에'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"에어컨을 켰기 때문에 방 안이 시원해졌습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -19467,15 +19467,15 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
       {
         "marker": "④",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       }
@@ -19502,14 +19502,14 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 귀여운데 성격이 좋지 않다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 귀여운데 성격이 좋지 않다.\")과 맞지 않습니다."
@@ -20322,8 +20322,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -20357,7 +20357,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오랜기간 가족과 만나지 않았기 때문에 잘 지내는지 어떤지 걱정됩니다.\")과 맞지 않습니다."
@@ -20961,8 +20961,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -20996,7 +20996,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본인 친구를 만들려면 교류회에 참가해 본다거나 일본어 서클 같은 거에 가입하는 건 어떻습니까?\")과 맞지 않습니다."
@@ -22002,8 +22002,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -22037,7 +22037,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"텔레비전 리모콘은 테이블 위에 있습니다.\")과 맞지 않습니다."
@@ -22921,39 +22921,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "위치 명사",
     "patternMeaning": "側（そば）옆, 곁",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "いつもあなたの(   )",
-    "qPlain": "いつもあなたの(   )",
+    "qRuby": "いつもあなたの(   )にいたいです。",
+    "qPlain": "いつもあなたの(   )にいたいです。",
     "qTrans": "항상 당신 옆에 있고 싶습니다.",
-    "target": "そばにいたいです。",
-    "targetNoRuby": "そばにいたいです。",
+    "target": "そば",
+    "targetNoRuby": "そば",
     "options": [
       {
         "marker": "①",
-        "copy": "そばにいたいです。",
-        "copyNoRuby": "そばにいたいです。",
+        "copy": "そば",
+        "copyNoRuby": "そば",
         "isCorrect": true,
-        "trans": "側（そば）옆, 곁"
+        "trans": "옆, 곁 (側)"
       },
       {
         "marker": "②",
-        "copy": "くありませんでした",
-        "copyNoRuby": "くありませんでした",
+        "copy": "前(まえ)",
+        "copyNoRuby": "前",
         "isCorrect": false,
-        "trans": "~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)"
+        "trans": "앞"
       },
       {
         "marker": "③",
-        "copy": "ないほうがいいです",
-        "copyNoRuby": "ないほうがいいです",
+        "copy": "後(うし)ろ",
+        "copyNoRuby": "後ろ",
         "isCorrect": false,
-        "trans": "~하지 않는 편이 좋다, ~하지 않는 것이 좋다"
+        "trans": "뒤"
       },
       {
         "marker": "④",
-        "copy": "使(つか)わなかった食器",
-        "copyNoRuby": "使わなかった食器",
+        "copy": "隣(となり)",
+        "copyNoRuby": "隣",
         "isCorrect": false,
-        "trans": "동사의 기본형을 사용하여 명사를 수식합니다."
+        "trans": "옆 (이웃)"
       }
     ],
     "ansJa": "いつもあなたのそばにいたいです。",
@@ -22964,28 +22964,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "そばにいたいです。",
+          "text": "そば",
           "trans": "側（そば）옆, 곁",
           "isCorrect": true,
           "note": "「そばにいたいです。」는 '側（そば）옆, 곁'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"항상 당신 옆에 있고 싶습니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "くありませんでした",
+          "text": "前",
           "trans": "~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)",
           "isCorrect": false,
           "note": "「くありませんでした」: '~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"항상 당신 옆에 있고 싶습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ないほうがいいです",
+          "text": "後ろ",
           "trans": "~하지 않는 편이 좋다, ~하지 않는 것이 좋다",
           "isCorrect": false,
           "note": "「ないほうがいいです」: '~하지 않는 편이 좋다, ~하지 않는 것이 좋다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"항상 당신 옆에 있고 싶습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "使わなかった食器",
+          "text": "隣",
           "trans": "동사의 기본형을 사용하여 명사를 수식합니다.",
           "isCorrect": false,
           "note": "「使わなかった食器」: '동사의 기본형을 사용하여 명사를 수식합니다.'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"항상 당신 옆에 있고 싶습니다.\")과 맞지 않습니다."
@@ -24681,8 +24681,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -24716,7 +24716,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아빠는 매일 아침, 신문을 읽으면서 아침밥을 먹습니다.\")과 맞지 않습니다."
@@ -24918,8 +24918,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -24953,7 +24953,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"학생들은 선생님 이야기를 들으면서 메모를 했습니다.\")과 맞지 않습니다."
@@ -24997,8 +24997,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -25032,7 +25032,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인터넷에서 조사하면서 레포트를 썼습니다.\")과 맞지 않습니다."
@@ -26268,8 +26268,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -26303,7 +26303,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"기무라씨는 말투가 상냥합니다.\")과 맞지 않습니다."
@@ -27281,8 +27281,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -27316,7 +27316,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 문은 열기 쉽습니다.\")과 맞지 않습니다."
@@ -29342,8 +29342,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -29377,7 +29377,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"금요일 밤에 같이 영화를 봅시다.\")과 맞지 않습니다."
@@ -29888,8 +29888,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -29923,7 +29923,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일 오후, 같이 쇼핑하지 않을래요?\")과 맞지 않습니다."
@@ -30139,8 +30139,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -30174,7 +30174,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 술을 한잔 마시지 않겠습니까?\")과 맞지 않습니다."
@@ -33120,8 +33120,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -33141,8 +33141,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので",
-        "copyNoRuby": "ので",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
         "trans": "~때문에"
       }
@@ -33155,7 +33155,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 술을 많이 마셔서 오늘은 숙취에요.\")과 맞지 않습니다."
@@ -33176,7 +33176,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので",
+          "text": "のに",
           "trans": "~때문에",
           "isCorrect": false,
           "note": "「ので」: '~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 술을 많이 마셔서 오늘은 숙취에요.\")과 맞지 않습니다."
@@ -33292,8 +33292,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -33327,7 +33327,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 아침에 학교에 가고 밤에는 아르바이트를 하러 갔습니다.\")과 맞지 않습니다."
@@ -33594,8 +33594,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -33615,8 +33615,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので",
-        "copyNoRuby": "ので",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
         "trans": "~때문에"
       }
@@ -33629,7 +33629,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"밤에는 비가 내리니까 우산을 갖고 갑니다.\")과 맞지 않습니다."
@@ -33650,7 +33650,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので",
+          "text": "のに",
           "trans": "~때문에",
           "isCorrect": false,
           "note": "「ので」: '~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"밤에는 비가 내리니까 우산을 갖고 갑니다.\")과 맞지 않습니다."
@@ -34714,8 +34714,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -34749,7 +34749,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"지금 무엇을 하고 있습니까?\")과 맞지 않습니다."
@@ -35576,8 +35576,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -35611,7 +35611,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 지금 혼자서 피아노를 치고 있습니다.\")과 맞지 않습니다."
@@ -36509,16 +36509,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～てください",
     "patternMeaning": "~해 주세요, ~하세요",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "すみませんが、そのレポートをコピーし(   )",
-    "qPlain": "すみませんが、そのレポートをコピーし(   )",
+    "qRuby": "すみませんが、そのレポートをコピーし(   )。",
+    "qPlain": "すみませんが、そのレポートをコピーし(   )。",
     "qTrans": "실례지만, 그 리포트를 복사해주세요.",
-    "target": "てください。",
-    "targetNoRuby": "てください。",
+    "target": "てください",
+    "targetNoRuby": "てください",
     "options": [
       {
         "marker": "①",
-        "copy": "てください。",
-        "copyNoRuby": "てください。",
+        "copy": "てください",
+        "copyNoRuby": "てください",
         "isCorrect": true,
         "trans": "~해 주세요, ~하세요"
       },
@@ -36552,7 +36552,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "てください。",
+          "text": "てください",
           "trans": "~해 주세요, ~하세요",
           "isCorrect": true,
           "note": "「てください。」는 '~해 주세요, ~하세요'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"실례지만, 그 리포트를 복사해주세요.\")에 자연스럽게 들어맞는 정답입니다."
@@ -37012,8 +37012,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       }
@@ -37047,7 +37047,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시간이 있으니까 잠시 봐 볼게요.\")과 맞지 않습니다."
@@ -38887,8 +38887,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -38922,7 +38922,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아빠는 언제나 이 시계를 하고(차고)있습니다.\")과 맞지 않습니다."
@@ -40467,8 +40467,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -40502,7 +40502,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"늦게 일어났기 때문에 학교에 지각해버렸습니다.\")과 맞지 않습니다."
@@ -40632,8 +40632,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -40667,7 +40667,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀여운 가방을 발견하고 나도 모르게 사버렸습니다.\")과 맞지 않습니다."
@@ -40783,8 +40783,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -40818,7 +40818,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 나는 남동생의 책을 찢어 버렸습니다.\")과 맞지 않습니다."
@@ -41580,8 +41580,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -41615,7 +41615,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"밤에 양치를 하고 나서 잡니다.\")과 맞지 않습니다."
@@ -41659,8 +41659,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -41694,7 +41694,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"손을 씻고 나서 밥을 먹습니다.\")과 맞지 않습니다."
@@ -41738,8 +41738,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -41773,7 +41773,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신발을 벗고 나서 방에 들어가 주세요.\")과 맞지 않습니다."
@@ -42291,8 +42291,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -42326,7 +42326,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、もっと",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여러분, 이 음식을 만드는 법을 듣고 나서 요리해주세요.\")과 맞지 않습니다."
@@ -43246,8 +43246,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -43281,7 +43281,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 옷 잠깐 입어봐도 될까요?\")과 맞지 않습니다."
@@ -44891,8 +44891,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -44926,7 +44926,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남동생은 감기에 걸려서 근처 병원에 갔다.\")과 맞지 않습니다."
@@ -45070,8 +45070,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -45105,7 +45105,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 나는 스포츠센터 수영장에서 2시간 수영했다.\")과 맞지 않습니다."
@@ -45300,8 +45300,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -45335,7 +45335,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 먼저 가서 택시를 불렀다.\")과 맞지 않습니다."
@@ -45365,15 +45365,15 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -45400,14 +45400,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 아침부터 애플파이를 많이 만들었다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 아침부터 애플파이를 많이 만들었다.\")과 맞지 않습니다."
@@ -45781,8 +45781,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -45816,7 +45816,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 점심, 우리집에 손님이 3명이나 왔다.\")과 맞지 않습니다."
@@ -45846,8 +45846,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -45881,7 +45881,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"좋아하는 것만 먹지말고 균형있게 먹는 편이 좋아.\")과 맞지 않습니다."
@@ -47742,8 +47742,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -47777,7 +47777,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"호텔에서 먹은 조식은 엄청 맛있었습니다.\")과 맞지 않습니다."
@@ -48223,8 +48223,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "でした。",
-        "copyNoRuby": "でした。",
+        "copy": "でした",
+        "copyNoRuby": "でした",
         "isCorrect": false,
         "trans": "~였습니다"
       },
@@ -48258,7 +48258,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "でした。",
+          "text": "でした",
           "trans": "~였습니다",
           "isCorrect": false,
           "note": "「でした。」: '~였습니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"친구와 함께 여행한 추억을 계속 기억하고 있다.\")과 맞지 않습니다."
@@ -48611,8 +48611,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": false,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       },
@@ -48646,7 +48646,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"슈퍼에서 달걀 가격은 비싸거나 싸거나 합니다.\")과 맞지 않습니다."
@@ -48762,8 +48762,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -48797,7 +48797,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘은 덥기도 춥기도 해서 옷 고르기 곤란합니다.\")과 맞지 않습니다."
@@ -49178,8 +49178,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       }
@@ -49213,7 +49213,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 그림책에는 빨갛거나 파랗거나 다양한 색이 있어서 아이들에게 인기였습니다.\")과 맞지 않습니다."
@@ -49243,8 +49243,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "褒(ほ)めさせられました。",
-        "copyNoRuby": "褒めさせられました。",
+        "copy": "褒めさせられました",
+        "copyNoRuby": "褒めさせられました",
         "isCorrect": false,
         "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어"
       },
@@ -49278,7 +49278,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "褒めさせられました。",
+          "text": "褒めさせられました",
           "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어",
           "isCorrect": false,
           "note": "「褒めさせられました。」: '수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본의 약국은 약이나 음식이나 여러가지 물건이 있습니다.\")과 맞지 않습니다."
@@ -49315,8 +49315,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -49350,7 +49350,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 하루 종일 비가 오다가 멈추다가 하고 있다.\")과 맞지 않습니다."
@@ -50600,8 +50600,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -50635,7 +50635,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여기에 안타는 쓰레기를 버리지 않는다.\")과 맞지 않습니다."
@@ -52949,8 +52949,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -52984,7 +52984,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일은 휴일이기 때문에 학교에 가지 않아도 됩니다.\")과 맞지 않습니다."
@@ -53595,8 +53595,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -53630,7 +53630,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 내일 오전 중에 병원에 가지 않으면 안된다.\")과 맞지 않습니다."
@@ -53918,8 +53918,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       }
@@ -53953,7 +53953,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"학교에서는 교복을 입어야 한다.\")과 맞지 않습니다."
@@ -53997,8 +53997,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       }
@@ -54032,7 +54032,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본어 수업 중에는 일본어로 말하지 않으면 안됩니다.\")과 맞지 않습니다."
@@ -55254,8 +55254,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
+        "copy": "ば",
+        "copyNoRuby": "ば",
         "isCorrect": false,
         "trans": "~면"
       },
@@ -55289,7 +55289,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ば、いつでも",
+          "text": "ば",
           "trans": "~면",
           "isCorrect": false,
           "note": "「ば、いつでも」: '~면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"결혼식을 하니까 돈을 모아야 합니다.\")과 맞지 않습니다."
@@ -56446,8 +56446,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       }
@@ -56481,7 +56481,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모델 일은 체중조절을 하지 않으면 안됩니다.\")과 맞지 않습니다."
@@ -58888,8 +58888,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -58923,7 +58923,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 카레는 매우 매워 보입니다.\")과 맞지 않습니다."
@@ -59498,39 +59498,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～そうだ (양태)",
     "patternMeaning": "~인 것 같다, ~처럼 보인다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "すみませんが、もうすぐガソリンがなくなり(   )寄(よ)ります。",
-    "qPlain": "すみませんが、もうすぐガソリンがなくなり(   )寄ります。",
+    "qRuby": "すみませんが、もうすぐガソリンがなくなり(   )、そこのガソリンスタンドに寄(よ)ります。",
+    "qPlain": "すみませんが、もうすぐガソリンがなくなり(   )、そこのガソリンスタンドに寄ります。",
     "qTrans": "죄송한데, 곧 기름이 떨어질 거 같아서 저기 주유소에 들리겠습니다.",
-    "target": "そうなので、そこのガソリンスタンドに",
-    "targetNoRuby": "そうなので、そこのガソリンスタンドに",
+    "target": "そうなので",
+    "targetNoRuby": "そうなので",
     "options": [
       {
         "marker": "①",
-        "copy": "なくてもかまいませんので",
-        "copyNoRuby": "なくてもかまいませんので",
-        "isCorrect": false,
-        "trans": "~하지 않아도 상관없다, ~하지 않아도 괜찮다"
+        "copy": "そうなので",
+        "copyNoRuby": "そうなので",
+        "isCorrect": true,
+        "trans": "~일 것 같아서"
       },
       {
         "marker": "②",
-        "copy": "みたいなしょっぱいものをたくさんかけて",
-        "copyNoRuby": "みたいなしょっぱいものをたくさんかけて",
+        "copy": "そうなら",
+        "copyNoRuby": "そうなら",
         "isCorrect": false,
-        "trans": "~것 같은"
+        "trans": "~일 것 같다면"
       },
       {
         "marker": "③",
-        "copy": "わけではないけど、なにかちょっと",
-        "copyNoRuby": "わけではないけど、なにかちょっと",
+        "copy": "そうでも",
+        "copyNoRuby": "そうでも",
         "isCorrect": false,
-        "trans": "~인 것은 아니다"
+        "trans": "~일 것 같아도"
       },
       {
         "marker": "④",
-        "copy": "そうなので、そこのガソリンスタンドに",
-        "copyNoRuby": "そうなので、そこのガソリンスタンドに",
-        "isCorrect": true,
-        "trans": "~인 것 같다, ~처럼 보인다"
+        "copy": "そうだから",
+        "copyNoRuby": "そうだから",
+        "isCorrect": false,
+        "trans": "~일 것 같으니까"
       }
     ],
     "ansJa": "すみませんが、もうすぐガソリンがなくなりそうなので、そこのガソリンスタンドに寄(よ)ります。",
@@ -59541,30 +59541,30 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "なくてもかまいませんので",
+          "text": "そうなので",
           "trans": "~하지 않아도 상관없다, ~하지 않아도 괜찮다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「なくてもかまいませんので」: '~하지 않아도 상관없다, ~하지 않아도 괜찮다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"죄송한데, 곧 기름이 떨어질 거 같아서 저기 주유소에 들리겠습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "みたいなしょっぱいものをたくさんかけて",
+          "text": "そうなら",
           "trans": "~것 같은",
           "isCorrect": false,
           "note": "「みたいなしょっぱいものをたくさんかけて」: '~것 같은'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"죄송한데, 곧 기름이 떨어질 거 같아서 저기 주유소에 들리겠습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "わけではないけど、なにかちょっと",
+          "text": "そうでも",
           "trans": "~인 것은 아니다",
           "isCorrect": false,
           "note": "「わけではないけど、なにかちょっと」: '~인 것은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"죄송한데, 곧 기름이 떨어질 거 같아서 저기 주유소에 들리겠습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "そうなので、そこのガソリンスタンドに",
+          "text": "そうだから",
           "trans": "~인 것 같다, ~처럼 보인다",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「そうなので、そこのガソリンスタンドに」는 '~인 것 같다, ~처럼 보인다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"죄송한데, 곧 기름이 떨어질 거 같아서 저기 주유소에 들리겠습니다.\")에 자연스럽게 들어맞는 정답입니다."
         }
       ]
@@ -60317,8 +60317,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -60352,7 +60352,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그는 안색이 나쁘니까 아직 괜찮지 않은 것 같습니다.\")과 맞지 않습니다."
@@ -60777,8 +60777,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -60812,7 +60812,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"형(오빠)는 오늘 심한 숙취이다. 아무래도 어제 친구와 술을 많이 마신 거 같다.\")과 맞지 않습니다."
@@ -62594,8 +62594,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -62629,7 +62629,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"학교 축제에 연예인이 온 거 같아서 사람이 많이 모여 있다.\")과 맞지 않습니다."
@@ -66156,8 +66156,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -66191,7 +66191,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"박씨는 바쁜 거 같으니까, 오늘 밤 술 모임에는 오지 않겠지.\")과 맞지 않습니다."
@@ -66781,8 +66781,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -66816,7 +66816,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"지금 그 나라에 가는 것은 위험할지도 모릅니다.\")과 맞지 않습니다."
@@ -67255,8 +67255,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -67290,7 +67290,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"연락도 없고, 무슨 일이 있었을지도 모릅니다.\")과 맞지 않습니다."
@@ -68196,8 +68196,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -68231,7 +68231,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"봄이 되면 벚꽃이 핍니다.\")과 맞지 않습니다."
@@ -68691,8 +68691,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -68726,7 +68726,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인간은 춥거나 무서우면 닭살이 돋습니다.\")과 맞지 않습니다."
@@ -68907,8 +68907,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -68942,7 +68942,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"맛있는 밥을 먹으면 기운이 납니다.\")과 맞지 않습니다."
@@ -70882,8 +70882,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -70917,7 +70917,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"얼음이 녹으면 물이 된다.\")과 맞지 않습니다."
@@ -70953,39 +70953,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ば",
     "patternMeaning": "~면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "わからなけれ(   )聞(き)いてください。",
-    "qPlain": "わからなけれ(   )聞いてください。",
+    "qRuby": "わからなけれ(   )、いつでも聞(き)いてください。",
+    "qPlain": "わからなけれ(   )、いつでも聞いてください。",
     "qTrans": "모르겠으면 언제든지 질문해 주세요.",
-    "target": "ば、いつでも",
-    "targetNoRuby": "ば、いつでも",
+    "target": "ば",
+    "targetNoRuby": "ば",
     "options": [
       {
         "marker": "①",
-        "copy": "だ後(あと)で",
-        "copyNoRuby": "だ後で",
-        "isCorrect": false,
-        "trans": "~한 후에"
+        "copy": "ば",
+        "copyNoRuby": "ば",
+        "isCorrect": true,
+        "trans": "~면 (가정형)"
       },
       {
         "marker": "②",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
-        "isCorrect": true,
-        "trans": "~면"
+        "copy": "たら",
+        "copyNoRuby": "たら",
+        "isCorrect": false,
+        "trans": "~했다면"
       },
       {
         "marker": "③",
-        "copy": "そうですから",
-        "copyNoRuby": "そうですから",
+        "copy": "なら",
+        "copyNoRuby": "なら",
         "isCorrect": false,
-        "trans": "~인 것 같다, ~처럼 보인다"
+        "trans": "~라면"
       },
       {
         "marker": "④",
-        "copy": "とすれば",
-        "copyNoRuby": "とすれば",
+        "copy": "ても",
+        "copyNoRuby": "ても",
         "isCorrect": false,
-        "trans": "~라고 하면, ~라고 가정하면"
+        "trans": "~하더라도"
       }
     ],
     "ansJa": "わからなければ、いつでも聞(き)いてください。",
@@ -70996,28 +70996,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "だ後で",
+          "text": "ば",
           "trans": "~한 후에",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「だ後で」: '~한 후에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모르겠으면 언제든지 질문해 주세요.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ば、いつでも",
+          "text": "たら",
           "trans": "~면",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「ば、いつでも」는 '~면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"모르겠으면 언제든지 질문해 주세요.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "そうですから",
+          "text": "なら",
           "trans": "~인 것 같다, ~처럼 보인다",
           "isCorrect": false,
           "note": "「そうですから」: '~인 것 같다, ~처럼 보인다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모르겠으면 언제든지 질문해 주세요.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "とすれば",
+          "text": "ても",
           "trans": "~라고 하면, ~라고 가정하면",
           "isCorrect": false,
           "note": "「とすれば」: '~라고 하면, ~라고 가정하면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모르겠으면 언제든지 질문해 주세요.\")과 맞지 않습니다."
@@ -71348,39 +71348,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～なら",
     "patternMeaning": "~라면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "めんどくさい(   )",
-    "qPlain": "めんどくさい(   )",
+    "qRuby": "めんどくさい(   )、もうやらなくていい。",
+    "qPlain": "めんどくさい(   )、もうやらなくていい。",
     "qTrans": "귀찮다면 하지 않아도 돼.",
-    "target": "なら、もうやらなくていい。",
-    "targetNoRuby": "なら、もうやらなくていい。",
+    "target": "なら",
+    "targetNoRuby": "なら",
     "options": [
       {
         "marker": "①",
-        "copy": "なら、もうやらなくていい。",
-        "copyNoRuby": "なら、もうやらなくていい。",
+        "copy": "なら",
+        "copyNoRuby": "なら",
         "isCorrect": true,
         "trans": "~라면"
       },
       {
         "marker": "②",
-        "copy": "たとえハンサムでも",
-        "copyNoRuby": "たとえハンサムでも",
+        "copy": "たら",
+        "copyNoRuby": "たら",
         "isCorrect": false,
-        "trans": "가령~해도, 설사~해도"
+        "trans": "~했다면"
       },
       {
         "marker": "③",
-        "copy": "なくてもかまいませんので",
-        "copyNoRuby": "なくてもかまいませんので",
+        "copy": "ても",
+        "copyNoRuby": "ても",
         "isCorrect": false,
-        "trans": "~하지 않아도 상관없다, ~하지 않아도 괜찮다"
+        "trans": "~하더라도"
       },
       {
         "marker": "④",
-        "copy": "たことがありますが",
-        "copyNoRuby": "たことがありますが",
+        "copy": "のに",
+        "copyNoRuby": "のに",
         "isCorrect": false,
-        "trans": "~한 적이 있다"
+        "trans": "~인데도"
       }
     ],
     "ansJa": "めんどくさいなら、もうやらなくていい。",
@@ -71391,28 +71391,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "なら、もうやらなくていい。",
+          "text": "なら",
           "trans": "~라면",
           "isCorrect": true,
           "note": "「なら、もうやらなくていい。」는 '~라면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"귀찮다면 하지 않아도 돼.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "たとえハンサムでも",
+          "text": "たら",
           "trans": "가령~해도, 설사~해도",
           "isCorrect": false,
           "note": "「たとえハンサムでも」: '가령~해도, 설사~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀찮다면 하지 않아도 돼.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "なくてもかまいませんので",
+          "text": "ても",
           "trans": "~하지 않아도 상관없다, ~하지 않아도 괜찮다",
           "isCorrect": false,
           "note": "「なくてもかまいませんので」: '~하지 않아도 상관없다, ~하지 않아도 괜찮다'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "④",
-          "text": "たことがありますが",
+          "text": "のに",
           "trans": "~한 적이 있다",
           "isCorrect": false,
           "note": "「たことがありますが」: '~한 적이 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀찮다면 하지 않아도 돼.\")과 맞지 않습니다."
@@ -72555,8 +72555,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -72590,7 +72590,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"바다에 갔더니 하얀 모래사장이 펼쳐져 있었습니다.\")과 맞지 않습니다."
@@ -73740,8 +73740,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -73775,7 +73775,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"감기가 낫지 않으니까 내일 병원에 가서 선생님에게 진찰받아야지.\")과 맞지 않습니다."
@@ -73819,8 +73819,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -73854,7 +73854,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘 점심은 이 가게에서 먹을까?\")과 맞지 않습니다."
@@ -73970,8 +73970,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -74005,7 +74005,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"좀 더우니까 에어컨을 켜야지.\")과 맞지 않습니다."
@@ -74444,8 +74444,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -74479,7 +74479,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일은 평소 보다 30분 일찍 일어나려고 한다.\")과 맞지 않습니다."
@@ -75083,8 +75083,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -75118,7 +75118,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일은 시험이기 때문에 오늘은 열심히 공부하려고 한다.\")과 맞지 않습니다."
@@ -75406,8 +75406,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       }
@@ -75441,7 +75441,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"도서관에서 공부하려고 준비해서 외출했는데 휴관일이었습니다.\")과 맞지 않습니다."
@@ -75959,8 +75959,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "っぱなしじゃないか。やり",
-        "copyNoRuby": "っぱなしじゃないか。やり",
+        "copy": "っぱなし",
+        "copyNoRuby": "っぱなし",
         "isCorrect": false,
         "trans": "~한 채로"
       }
@@ -75994,7 +75994,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "っぱなしじゃないか。やり",
+          "text": "っぱなし",
           "trans": "~한 채로",
           "isCorrect": false,
           "note": "「っぱなしじゃないか。やり」: '~한 채로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"딱 지금 나도 연락하려고 했었어.\")과 맞지 않습니다."
@@ -76182,8 +76182,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -76217,7 +76217,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"먼저 밥을 먹으려고 했더니 아빠가 돌아왔다.\")과 맞지 않습니다."
@@ -76505,8 +76505,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -76540,7 +76540,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"가게를 나가려고 하자 비가 내리기 시작했다.\")과 맞지 않습니다."
@@ -77137,8 +77137,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -77172,7 +77172,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여기는 교실이 아니다.\")과 맞지 않습니다."
@@ -77209,8 +77209,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -77244,7 +77244,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나카무라씨는 영어 선생님이 아니다.\")과 맞지 않습니다."
@@ -77273,11 +77273,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "보통형 (ない형)",
     "patternMeaning": "~하지 않는다, 안 ~한다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これはコーヒー(   )",
-    "qPlain": "これはコーヒー(   )",
+    "qRuby": "これはコーヒー(   )。",
+    "qPlain": "これはコーヒー(   )。",
     "qTrans": "이것은 커피가 아니다.",
-    "target": "ではない。",
-    "targetNoRuby": "ではない。",
+    "target": "ではない",
+    "targetNoRuby": "ではない",
     "options": [
       {
         "marker": "①",
@@ -77288,8 +77288,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ではない。",
-        "copyNoRuby": "ではない。",
+        "copy": "ではない",
+        "copyNoRuby": "ではない",
         "isCorrect": true,
         "trans": "~하지 않는다, 안 ~한다"
       },
@@ -77323,7 +77323,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ではない。",
+          "text": "ではない",
           "trans": "~하지 않는다, 안 ~한다",
           "isCorrect": true,
           "note": "「ではない。」는 '~하지 않는다, 안 ~한다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이것은 커피가 아니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -78071,8 +78071,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -78106,7 +78106,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일년 전, 나는 그를 좋아했다.\")과 맞지 않습니다."
@@ -78315,8 +78315,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -78350,7 +78350,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 사건은, 내가 초등학생 때였다.\")과 맞지 않습니다."
@@ -78552,8 +78552,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -78587,7 +78587,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"도쿄는 비였다.\")과 맞지 않습니다."
@@ -78638,8 +78638,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -78673,7 +78673,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남동생은 감기에 걸려서 근처 병원에 갔다.\")과 맞지 않습니다."
@@ -79177,8 +79177,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではなかった",
-        "copyNoRuby": "ではなかった",
+        "copy": "くなかった",
+        "copyNoRuby": "くなかった",
         "isCorrect": false,
         "trans": "~가 아니었다, ~가 아니었었다"
       },
@@ -79212,7 +79212,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではなかった",
+          "text": "くなかった",
           "trans": "~가 아니었다, ~가 아니었었다",
           "isCorrect": false,
           "note": "「ではなかった」: '~가 아니었다, ~가 아니었었다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제, 이상은 기운이 없었다.\")과 맞지 않습니다."
@@ -79256,8 +79256,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではなかった",
-        "copyNoRuby": "ではなかった",
+        "copy": "くなかった",
+        "copyNoRuby": "くなかった",
         "isCorrect": false,
         "trans": "~가 아니었다, ~가 아니었었다"
       },
@@ -79291,7 +79291,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではなかった",
+          "text": "くなかった",
           "trans": "~가 아니었다, ~가 아니었었다",
           "isCorrect": false,
           "note": "「ではなかった」: '~가 아니었다, ~가 아니었었다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"영어 수업은 간단하지 않았다.\")과 맞지 않습니다."
@@ -80139,8 +80139,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -80174,7 +80174,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"왜어제 같이 안 간 거예요? 어제는 일이 힘들었습니다.\")과 맞지 않습니다."
@@ -80225,8 +80225,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       }
@@ -80260,7 +80260,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"벌써 새로운 휴대폰으로 바꾼 거예요? 네, 전의 것은 편리하지 않았어요.\")과 맞지 않습니다."
@@ -80828,42 +80828,42 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～んです",
     "patternMeaning": "~어요",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "どうしたんですか。たべない(   )今日(きょう)はちょっと食欲(しょくよく)がないんです。",
-    "qPlain": "どうしたんですか。たべない(   )今日はちょっと食欲がないんです。",
+    "qRuby": "どうしたんですか。食(た)べない(   )？ええ、今日(きょう)はちょっと食欲(しょくよく)がないんです。",
+    "qPlain": "どうしたんですか。食べない(   )？ええ、今日はちょっと食欲がないんです。",
     "qTrans": "무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.",
-    "target": "んですか。ええ、",
-    "targetNoRuby": "んですか。ええ、",
+    "target": "んですか",
+    "targetNoRuby": "んですか",
     "options": [
       {
         "marker": "①",
-        "copy": "なくてもいいです",
-        "copyNoRuby": "なくてもいいです",
-        "isCorrect": false,
-        "trans": "~하지 않아도 됩니다"
+        "copy": "んですか",
+        "copyNoRuby": "んですか",
+        "isCorrect": true,
+        "trans": "~는 건가요?"
       },
       {
         "marker": "②",
-        "copy": "づらくなりました",
-        "copyNoRuby": "づらくなりました",
+        "copy": "のですか",
+        "copyNoRuby": "のですか",
         "isCorrect": false,
-        "trans": "~하기 힘들어졌습니다"
+        "trans": "~는 것입니까?"
       },
       {
         "marker": "③",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "のでしょうか",
+        "copyNoRuby": "のでしょうか",
         "isCorrect": false,
-        "trans": "~해도"
+        "trans": "~인 걸까요?"
       },
       {
         "marker": "④",
-        "copy": "んですか。ええ、",
-        "copyNoRuby": "んですか。ええ、",
-        "isCorrect": true,
-        "trans": "~어요"
+        "copy": "ませんか",
+        "copyNoRuby": "ませんか",
+        "isCorrect": false,
+        "trans": "~지 않겠습니까?"
       }
     ],
-    "ansJa": "どうしたんですか。たべないんですか。ええ、今日(きょう)はちょっと食欲(しょくよく)がないんです。",
+    "ansJa": "どうしたんですか。食(た)べないんですか？ええ、今日(きょう)はちょっと食欲(しょくよく)がないんです。",
     "ansKo": "무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.",
     "expl": {
       "main": "「～んです」 표현은 한국어로 \"~어요\"을(를) 의미하며, N4 시험 빈출 핵심 문형입니다.",
@@ -80871,30 +80871,30 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "なくてもいいです",
+          "text": "んですか",
           "trans": "~하지 않아도 됩니다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「なくてもいいです」: '~하지 않아도 됩니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "づらくなりました",
+          "text": "のですか",
           "trans": "~하기 힘들어졌습니다",
           "isCorrect": false,
           "note": "「づらくなりました」: '~하기 힘들어졌습니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "たって、こんなに",
+          "text": "のでしょうか",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "んですか。ええ、",
+          "text": "ませんか",
           "trans": "~어요",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「んですか。ええ、」는 '~어요'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"무슨 일이에요? 안 드세요?예, 오늘은 좀 식욕이 없네요.\")에 자연스럽게 들어맞는 정답입니다."
         }
       ]
@@ -81252,8 +81252,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "てください。",
-        "copyNoRuby": "てください。",
+        "copy": "てください",
+        "copyNoRuby": "てください",
         "isCorrect": false,
         "trans": "~해 주세요, ~하세요"
       }
@@ -81287,7 +81287,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "てください。",
+          "text": "てください",
           "trans": "~해 주세요, ~하세요",
           "isCorrect": false,
           "note": "「てください。」: '~해 주세요, ~하세요'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘 짧았던 연필을 버렸습니다.\")과 맞지 않습니다."
@@ -81618,39 +81618,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "명사 접속 (な형용사)",
     "patternMeaning": "\"형용사 어간에 &#x27;な&#x27;를 붙여 명사를 수식합니다.\"",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "昔(むかし)は納豆(なっとう)は(   )(もの)でしたが、今(いま)は大好(だいす)きです。",
-    "qPlain": "昔は納豆は(   )でしたが、今は大好きです。",
+    "qRuby": "昔(むかし)は納豆(なっとう)は(   )食(た)べ物(もの)でしたが、今(いま)は大好(だいす)きです。",
+    "qPlain": "昔は納豆は(   )食べ物でしたが、今は大好きです。",
     "qTrans": "예전에 낫토는 좋아하지 않는 음식이었지만 지금은 매우 좋아합니다.",
-    "target": "好(す)きじゃなかった食(た)べ物",
-    "targetNoRuby": "好きじゃなかった食べ物",
+    "target": "好きじゃなかった",
+    "targetNoRuby": "好きじゃなかった",
     "options": [
       {
         "marker": "①",
-        "copy": "とかケーキとか",
-        "copyNoRuby": "とかケーキとか",
-        "isCorrect": false,
-        "trans": "~든지, ~라든가"
+        "copy": "好(す)きじゃなかった",
+        "copyNoRuby": "好きじゃなかった",
+        "isCorrect": true,
+        "trans": "좋아하지 않았던 (과거부정)"
       },
       {
         "marker": "②",
-        "copy": "くありませんでした",
-        "copyNoRuby": "くありませんでした",
+        "copy": "好(す)きじゃない",
+        "copyNoRuby": "好きじゃない",
         "isCorrect": false,
-        "trans": "~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)"
+        "trans": "좋아하지 않는다 (현재부정)"
       },
       {
         "marker": "③",
-        "copy": "好(す)きじゃなかった食(た)べ物",
-        "copyNoRuby": "好きじゃなかった食べ物",
-        "isCorrect": true,
-        "trans": "\"형용사 어간에 &#x27;な&#x27;를 붙여 명사를 수식합니다.\""
+        "copy": "好(す)きだった",
+        "copyNoRuby": "好きだった",
+        "isCorrect": false,
+        "trans": "좋아했던 (과거긍정)"
       },
       {
         "marker": "④",
-        "copy": "ませんでしたか",
-        "copyNoRuby": "ませんでしたか",
+        "copy": "好(す)きでした",
+        "copyNoRuby": "好きでした",
         "isCorrect": false,
-        "trans": "~하지 않았습니까"
+        "trans": "좋아했습니다 (정중형 - 명사수식불가)"
       }
     ],
     "ansJa": "昔(むかし)は納豆(なっとう)は好(す)きじゃなかった食(た)べ物(もの)でしたが、今(いま)は大好(だいす)きです。",
@@ -81661,28 +81661,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とかケーキとか",
+          "text": "好きじゃなかった",
           "trans": "~든지, ~라든가",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「とかケーキとか」: '~든지, ~라든가'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"예전에 낫토는 좋아하지 않는 음식이었지만 지금은 매우 좋아합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "くありませんでした",
+          "text": "好きじゃない",
           "trans": "~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)",
           "isCorrect": false,
           "note": "「くありませんでした」: '~지 않았습니다, ~지 않았어요 (공손한 과거 부정 표현)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"예전에 낫토는 좋아하지 않는 음식이었지만 지금은 매우 좋아합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "好きじゃなかった食べ物",
+          "text": "好きだった",
           "trans": "\"형용사 어간에 &#x27;な&#x27;를 붙여 명사를 수식합니다.\"",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「好きじゃなかった食べ物」는 '\"형용사 어간에 &#x27;な&#x27;를 붙여 명사를 수식합니다.\"'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"예전에 낫토는 좋아하지 않는 음식이었지만 지금은 매우 좋아합니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "ませんでしたか",
+          "text": "好きでした",
           "trans": "~하지 않았습니까",
           "isCorrect": false,
           "note": "「ませんでしたか」: '~하지 않았습니까'(이)라는 뜻으로, 평서문 종결 자리에 의문형은 어울리지 않습니다."
@@ -82416,8 +82416,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -82451,7 +82451,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일이 편했을 때는 밤에 스포츠센터에 다녔었습니다.\")과 맞지 않습니다."
@@ -83608,8 +83608,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "については、",
-        "copyNoRuby": "については、",
+        "copy": "については",
+        "copyNoRuby": "については",
         "isCorrect": false,
         "trans": "~에 관해서"
       },
@@ -83643,7 +83643,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "については、",
+          "text": "については",
           "trans": "~에 관해서",
           "isCorrect": false,
           "note": "「については、」: '~에 관해서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"잠시 후 이쪽에서 전화 드리겠습니다.\")과 맞지 않습니다."
@@ -84879,8 +84879,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -84914,7 +84914,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 매월 엄마에게 용돈으로 1000엔을 받고 있습니다.\")과 맞지 않습니다."
@@ -86373,8 +86373,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -86408,7 +86408,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"톰씨는 젓가락을 능숙하게 사용할 수 있습니다.\")과 맞지 않습니다."
@@ -86854,8 +86854,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -86889,7 +86889,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"달걀 알레르기가 있기 때문에 나는 이 음식은 먹을 수 없습니다.\")과 맞지 않습니다."
@@ -88836,8 +88836,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       }
@@ -88871,7 +88871,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 싫어하는 아이에게 약을 먹게 했습니다.\")과 맞지 않습니다."
@@ -90474,8 +90474,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -90509,7 +90509,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시험이 다가오기 때문에 어제는 선생님이 밤 늦게까지 공부를 하라고 해서 어쩔 수 없이 했습니다.\")과 맞지 않습니다."
@@ -90861,16 +90861,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "수동형 VS 사역수동형",
     "patternMeaning": "수동형 : 행동의 영향을 받는 사람이 주어<br>사역수동형 : 행동을 하는 사람이 주어",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "パクさんはキムさんに(   )",
-    "qPlain": "パクさんはキムさんに(   )",
+    "qRuby": "パクさんはキムさんに(   )。",
+    "qPlain": "パクさんはキムさんに(   )。",
     "qTrans": "박씨는 김씨가 시켜서 칭찬했습니다.",
-    "target": "褒(ほ)めさせられました。",
-    "targetNoRuby": "褒めさせられました。",
+    "target": "褒(ほ)めさせられました",
+    "targetNoRuby": "褒めさせられました",
     "options": [
       {
         "marker": "①",
-        "copy": "褒(ほ)めさせられました。",
-        "copyNoRuby": "褒めさせられました。",
+        "copy": "褒めさせられました",
+        "copyNoRuby": "褒めさせられました",
         "isCorrect": true,
         "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어"
       },
@@ -90904,7 +90904,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "褒めさせられました。",
+          "text": "褒めさせられました",
           "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어",
           "isCorrect": true,
           "note": "「褒めさせられました。」는 '수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"박씨는 김씨가 시켜서 칭찬했습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -92599,11 +92599,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "특수경어",
     "patternMeaning": "겸양어 : 나를 낮춤으로써 상대를 높임",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "こちらにフォークとナイフが(   )",
-    "qPlain": "こちらにフォークとナイフが(   )",
+    "qRuby": "こちらにフォークとナイフが(   )。",
+    "qPlain": "こちらにフォークとナイフが(   )。",
     "qTrans": "이쪽에 포크와 나이프가 있습니다.",
-    "target": "ございます。",
-    "targetNoRuby": "ございます。",
+    "target": "ございます",
+    "targetNoRuby": "ございます",
     "options": [
       {
         "marker": "①",
@@ -92621,8 +92621,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ございます。",
-        "copyNoRuby": "ございます。",
+        "copy": "ございます",
+        "copyNoRuby": "ございます",
         "isCorrect": true,
         "trans": "겸양어 : 나를 낮춤으로써 상대를 높임"
       },
@@ -92656,7 +92656,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ございます。",
+          "text": "ございます",
           "trans": "겸양어 : 나를 낮춤으로써 상대를 높임",
           "isCorrect": true,
           "note": "「ございます。」는 '겸양어 : 나를 낮춤으로써 상대를 높임'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이쪽에 포크와 나이프가 있습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -93634,8 +93634,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": true,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       },
@@ -93648,8 +93648,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -93669,7 +93669,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": true,
           "note": "「お手伝いいたしますので」는 '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"여기서 도와드릴테니 부담없이 말씀해 주세요.\")에 자연스럽게 들어맞는 정답입니다."
@@ -93683,7 +93683,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여기서 도와드릴테니 부담없이 말씀해 주세요.\")과 맞지 않습니다."
@@ -93799,8 +93799,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -93834,7 +93834,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"제가 전화 드리겠습니다.\")과 맞지 않습니다."
@@ -95551,8 +95551,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       }
@@ -95586,7 +95586,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"걱정이니까 도착하면 전화해.\")과 맞지 않습니다."
@@ -96025,8 +96025,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -96060,7 +96060,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 아직 일본 식사 매너에 대해서 잘 모르기 때문에, 가르쳐 주실 수 있습니까?\")과 맞지 않습니다."
@@ -97591,8 +97591,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -97626,7 +97626,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 서류는 후일이어도 됩니다.\")과 맞지 않습니다."
@@ -97986,8 +97986,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -98021,7 +98021,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 지진에 따른 피해는 헤아릴 수 없다.\")과 맞지 않습니다."
@@ -100428,8 +100428,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -100463,7 +100463,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아무리 미성년이라도 훔치는 건 안됩니다.\")과 맞지 않습니다."
@@ -100916,8 +100916,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -100951,7 +100951,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그건 아무리 농담이라도 용서받을 수 없어요.\")과 맞지 않습니다."
@@ -101139,8 +101139,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -101174,7 +101174,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아무리 그래도 그 말투는 너무하잖아요.\")과 맞지 않습니다."
@@ -103128,8 +103128,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "んじゃないか",
-        "copyNoRuby": "んじゃないか",
+        "copy": "わけがないか",
+        "copyNoRuby": "わけがないか",
         "isCorrect": false,
         "trans": "~아냐? ~아닐까?"
       },
@@ -103163,7 +103163,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "んじゃないか",
+          "text": "わけがないか",
           "trans": "~아냐? ~아닐까?",
           "isCorrect": false,
           "note": "「んじゃないか」: '~아냐? ~아닐까?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"휴대전화 덕분에 언제나 연락을 할 수 있게 되었습니다.\")과 맞지 않습니다."
@@ -103279,8 +103279,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -103314,7 +103314,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"몸이 건강한 덕분에 지금도 이렇게 일 할 수 있습니다.\")과 맞지 않습니다."
@@ -103451,8 +103451,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -103486,7 +103486,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 시험성적이 좋았기 때문에 나는 내년도 대학 수업료가 반액 면제되었습니다.\")과 맞지 않습니다."
@@ -103588,8 +103588,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -103602,8 +103602,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -103623,7 +103623,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어렸을 때 엄마가 책을 읽어준 덕분에 책이 좋아졌습니다.\")과 맞지 않습니다."
@@ -103637,7 +103637,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어렸을 때 엄마가 책을 읽어준 덕분에 책이 좋아졌습니다.\")과 맞지 않습니다."
@@ -103667,8 +103667,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -103702,7 +103702,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"보험에 가입되어 있는 덕에 아무런 걱정도 없이 병을 치료하는 게 가능했습니다.\")과 맞지 않습니다."
@@ -103904,8 +103904,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではないか。",
-        "copyNoRuby": "ではないか。",
+        "copy": "ではないか",
+        "copyNoRuby": "ではないか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -103939,7 +103939,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではないか。",
+          "text": "ではないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「ではないか。」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"덕분에 저희 회사는 올해 30주년을 맞이했습니다.\")과 맞지 않습니다."
@@ -104062,8 +104062,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "じゃないか。",
-        "copyNoRuby": "じゃないか。",
+        "copy": "じゃないか",
+        "copyNoRuby": "じゃないか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -104097,7 +104097,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "じゃないか。",
+          "text": "じゃないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「じゃないか。」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이대로 적자가 계속되면 도산의 우려가 있으므로 지금 어떻게든 하지 않으면 안돼.\")과 맞지 않습니다."
@@ -106051,8 +106051,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -106086,7 +106086,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 휴일에 어딘가 갈까요? 바다도 좋지만 산도 버리기 아깝네요.\")과 맞지 않습니다."
@@ -106841,8 +106841,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -106876,7 +106876,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신용카드를 너무 사용하면 빚더미에 오를 수 있다.\")과 맞지 않습니다."
@@ -107782,8 +107782,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -107817,7 +107817,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"세일 상품의 환불과 교환은 어렵습니다.\")과 맞지 않습니다."
@@ -108881,8 +108881,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -108916,7 +108916,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"연말부터 연시에 걸쳐 나는 본가에 돌아가려고 합니다.\")과 맞지 않습니다."
@@ -108967,8 +108967,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -109002,7 +109002,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"당시 이 게임은 초등학생부터 고등학생에 걸쳐 폭넓은 인기가 있었다.\")과 맞지 않습니다."
@@ -109534,8 +109534,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -109569,7 +109569,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번달부터 다음달에 걸쳐 60세에서 64세까지의 분은 예방접종 대상입니다.\")과 맞지 않습니다."
@@ -109606,8 +109606,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -109641,7 +109641,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"최근 어깨부터 허리에 걸쳐 아프니까 마사지를 받는 편이 좋을까?\")과 맞지 않습니다."
@@ -109678,8 +109678,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -109713,7 +109713,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 관광지는 젊은 사람부터 나이 드신 분까지 폭넓게 인기가 있다.\")과 맞지 않습니다."
@@ -111581,10 +111581,10 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "得(う)る",
-        "copyNoRuby": "得る",
+        "copy": "飲(の)み",
+        "copyNoRuby": "飲み",
         "isCorrect": false,
-        "trans": "~할 수 있다"
+        "trans": "마시다 (어간)"
       },
       {
         "marker": "④",
@@ -111616,7 +111616,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "得る",
+          "text": "飲み",
           "trans": "~할 수 있다",
           "isCorrect": false,
           "note": "「得る」: '~할 수 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"냉장고 안의 것을 다 사용하기 위해서 오늘은 카레로 하자!\")과 맞지 않습니다."
@@ -112127,8 +112127,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -112162,7 +112162,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남편은 집에서 아무것도 안 하는 주제에 입만 살았습니다.\")과 맞지 않습니다."
@@ -113692,11 +113692,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～くらい",
     "patternMeaning": "~정도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これ、おいしいね。うん、ほっぺがおちる(   )",
-    "qPlain": "これ、おいしいね。うん、ほっぺがおちる(   )",
+    "qRuby": "これ、おいしいね。うん、ほっぺがおちる(   )。",
+    "qPlain": "これ、おいしいね。うん、ほっぺがおちる(   )。",
     "qTrans": "이거 맛있네. 응 둘이 먹다 하나 죽어도 모를 정도로 맛있어.",
-    "target": "くらいおいしい。",
-    "targetNoRuby": "くらいおいしい。",
+    "target": "くらいおいしい",
+    "targetNoRuby": "くらいおいしい",
     "options": [
       {
         "marker": "①",
@@ -113714,8 +113714,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらいおいしい。",
-        "copyNoRuby": "くらいおいしい。",
+        "copy": "くらいおいしい",
+        "copyNoRuby": "くらいおいしい",
         "isCorrect": true,
         "trans": "~정도"
       },
@@ -113749,7 +113749,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらいおいしい。",
+          "text": "くらいおいしい",
           "trans": "~정도",
           "isCorrect": true,
           "note": "「くらいおいしい。」는 '~정도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이거 맛있네. 응 둘이 먹다 하나 죽어도 모를 정도로 맛있어.\")에 자연스럽게 들어맞는 정답입니다."
@@ -114008,11 +114008,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～くらい",
     "patternMeaning": "~정도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "その(   )自分(じぶん)でやってくれる？",
-    "qPlain": "その(   )自分でやってくれる？",
+    "qRuby": "その(   )、自分(じぶん)でやってくれる？",
+    "qPlain": "その(   )、自分でやってくれる？",
     "qTrans": "그 정도는 스스로 해줄래?",
-    "target": "くらい、",
-    "targetNoRuby": "くらい、",
+    "target": "くらい",
+    "targetNoRuby": "くらい",
     "options": [
       {
         "marker": "①",
@@ -114037,8 +114037,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": true,
         "trans": "~정도"
       }
@@ -114072,7 +114072,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": true,
           "note": "「くらい、」는 '~정도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"그 정도는 스스로 해줄래?\")에 자연스럽게 들어맞는 정답입니다."
@@ -114346,8 +114346,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -114381,7 +114381,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 빵가게는 매우 인기가 있어서 오후에는 다 팔려버리는 일이 있으니까 빨리 사러 가는 편이 좋아.\")과 맞지 않습니다."
@@ -114511,8 +114511,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       }
@@ -114546,7 +114546,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"할머니집은 때때로 물이 나오지 않는 경우가 있어서 걱정입니다.\")과 맞지 않습니다."
@@ -116644,8 +116644,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       }
@@ -116679,7 +116679,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 달부터 이 부서에 배속된 야마다라고 합니다.\")과 맞지 않습니다."
@@ -117413,8 +117413,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -117448,7 +117448,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여름동안 이 회사에서는 넥타이를 안 해도 괜찮다.\")과 맞지 않습니다."
@@ -118059,8 +118059,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -118094,7 +118094,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"박씨는 만날 때마다 일본어가 능숙해져있어 대단하네요.\")과 맞지 않습니다."
@@ -120170,16 +120170,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～すぎる",
     "patternMeaning": "너무~하다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "どれもこれもかわい(   )子供(こども)の服(ふく)を買(か)いすぎてしまった。",
-    "qPlain": "どれもこれもかわい(   )子供の服を買いすぎてしまった。",
+    "qRuby": "どれもこれもかわい(   )、子供(こども)の服(ふく)を買(か)いすぎてしまった。",
+    "qPlain": "どれもこれもかわい(   )、子供の服を買いすぎてしまった。",
     "qTrans": "이것 저것 너무 귀여워서 아이 옷을 많이 사버렸다.",
-    "target": "すぎて、",
-    "targetNoRuby": "すぎて、",
+    "target": "すぎて",
+    "targetNoRuby": "すぎて",
     "options": [
       {
         "marker": "①",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": true,
         "trans": "너무~하다"
       },
@@ -120213,7 +120213,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": true,
           "note": "「すぎて、」는 '너무~하다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이것 저것 너무 귀여워서 아이 옷을 많이 사버렸다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -120659,8 +120659,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -120694,7 +120694,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 음식 소금을 좀 너무 넣어서 짜게 되어버렸습니다.\")과 맞지 않습니다."
@@ -120903,8 +120903,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -120938,7 +120938,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"너무 먹어서 벌써 배가 부릅니다.\")과 맞지 않습니다."
@@ -122950,8 +122950,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ございます。",
-        "copyNoRuby": "ございます。",
+        "copy": "ございます",
+        "copyNoRuby": "ございます",
         "isCorrect": false,
         "trans": "겸양어 : 나를 낮춤으로써 상대를 높임"
       },
@@ -122985,7 +122985,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ございます。",
+          "text": "ございます",
           "trans": "겸양어 : 나를 낮춤으로써 상대를 높임",
           "isCorrect": false,
           "note": "「ございます。」: '겸양어 : 나를 낮춤으로써 상대를 높임'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 우승했지만 기뻐 보이지 않는 건 왜일까?\")과 맞지 않습니다."
@@ -123747,8 +123747,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -123782,7 +123782,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일도 비가 내릴 것 같지 않으니까 오늘도 정원의 꽃에게 물을 많이 주었습니다.\")과 맞지 않습니다."
@@ -124544,8 +124544,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -124579,7 +124579,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여동생은 매우 기분 좋은 듯 자고 있습니다.\")과 맞지 않습니다."
@@ -125471,8 +125471,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -125506,7 +125506,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아이가 책을 읽고 싶어 해서 한 권 사줬다.\")과 맞지 않습니다."
@@ -125636,8 +125636,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -125671,7 +125671,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남편이 내 예전 사진을 보고 싶어 합니다.\")과 맞지 않습니다."
@@ -125866,8 +125866,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -125901,7 +125901,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 교토의 온천에 가고 싶어 합니다.\")과 맞지 않습니다."
@@ -126282,8 +126282,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       }
@@ -126317,7 +126317,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"친구가 우리집에 오고 싶어 합니다.\")과 맞지 않습니다."
@@ -126411,39 +126411,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～たって、～だって",
     "patternMeaning": "~해도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "いつでもいいっ(   )夜遅(よるおそ)くに来(こ)られても困(こま)るよね。",
-    "qPlain": "いつでもいいっ(   )夜遅くに来られても困るよね。",
+    "qRuby": "いつでもいいっ(   )、こんなに夜遅(よるおそ)くに来(こ)られても困(こま)るよね。",
+    "qPlain": "いつでもいいっ(   )、こんなに夜遅くに来られても困るよね。",
     "qTrans": "언제라도 괜찮다고 해도 이렇게 밤 늦게 오면 곤란해.",
-    "target": "たって、こんなに",
-    "targetNoRuby": "たって、こんなに",
+    "target": "たって",
+    "targetNoRuby": "たって",
     "options": [
       {
         "marker": "①",
-        "copy": "そうにないですね",
-        "copyNoRuby": "そうにないですね",
-        "isCorrect": false,
-        "trans": "~것 같지 않다, ~않은 것 같다"
+        "copy": "たって",
+        "copyNoRuby": "たって",
+        "isCorrect": true,
+        "trans": "~라고 해도"
       },
       {
         "marker": "②",
-        "copy": "なくてはならない",
-        "copyNoRuby": "なくてはならない",
+        "copy": "たら",
+        "copyNoRuby": "たら",
         "isCorrect": false,
-        "trans": "~하지 않으면 안 된다, ~해야 한다"
+        "trans": "~했다면"
       },
       {
         "marker": "③",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
-        "isCorrect": true,
-        "trans": "~해도"
+        "copy": "ても",
+        "copyNoRuby": "ても",
+        "isCorrect": false,
+        "trans": "~하더라도"
       },
       {
         "marker": "④",
-        "copy": "たばかりじゃない",
-        "copyNoRuby": "たばかりじゃない",
+        "copy": "とすれば",
+        "copyNoRuby": "とすれば",
         "isCorrect": false,
-        "trans": "~한지 얼마 안 됨, 막~함"
+        "trans": "~라고 가정하면"
       }
     ],
     "ansJa": "いつでもいいったって、こんなに夜遅(よるおそ)くに来(こ)られても困(こま)るよね。",
@@ -126454,28 +126454,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "そうにないですね",
+          "text": "たって",
           "trans": "~것 같지 않다, ~않은 것 같다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「そうにないですね」: '~것 같지 않다, ~않은 것 같다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"언제라도 괜찮다고 해도 이렇게 밤 늦게 오면 곤란해.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "なくてはならない",
+          "text": "たら",
           "trans": "~하지 않으면 안 된다, ~해야 한다",
           "isCorrect": false,
           "note": "「なくてはならない」: '~하지 않으면 안 된다, ~해야 한다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"언제라도 괜찮다고 해도 이렇게 밤 늦게 오면 곤란해.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "たって、こんなに",
+          "text": "ても",
           "trans": "~해도",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「たって、こんなに」는 '~해도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"언제라도 괜찮다고 해도 이렇게 밤 늦게 오면 곤란해.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "たばかりじゃない",
+          "text": "とすれば",
           "trans": "~한지 얼마 안 됨, 막~함",
           "isCorrect": false,
           "note": "「たばかりじゃない」: '~한지 얼마 안 됨, 막~함'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"언제라도 괜찮다고 해도 이렇게 밤 늦게 오면 곤란해.\")과 맞지 않습니다."
@@ -126490,39 +126490,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～たって、～だって",
     "patternMeaning": "~해도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "かわいいっ(   )芸能人(げいのうじん)になれるわけじゃない。",
-    "qPlain": "かわいいっ(   )芸能人になれるわけじゃない。",
+    "qRuby": "かわいいっ(   )、みんな芸能人(げいのうじん)になれるわけじゃない。",
+    "qPlain": "かわいいっ(   )、みんな芸能人になれるわけじゃない。",
     "qTrans": "귀엽다고 해도 모두가 연예인이 될 리 없다.",
-    "target": "たって、みんな",
-    "targetNoRuby": "たって、みんな",
+    "target": "たって",
+    "targetNoRuby": "たって",
     "options": [
       {
         "marker": "①",
-        "copy": "そうにないから",
-        "copyNoRuby": "そうにないから",
-        "isCorrect": false,
-        "trans": "~것 같지 않다, ~않은 것 같다"
+        "copy": "たって",
+        "copyNoRuby": "たって",
+        "isCorrect": true,
+        "trans": "~라고 해도"
       },
       {
         "marker": "②",
-        "copy": "させてください",
-        "copyNoRuby": "させてください",
+        "copy": "たら",
+        "copyNoRuby": "たら",
         "isCorrect": false,
-        "trans": "~하게 해주세요 (부탁)"
+        "trans": "~했다면"
       },
       {
         "marker": "③",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
-        "isCorrect": true,
-        "trans": "~해도"
+        "copy": "ても",
+        "copyNoRuby": "ても",
+        "isCorrect": false,
+        "trans": "~하더라도"
       },
       {
         "marker": "④",
-        "copy": "褒(ほ)められました",
-        "copyNoRuby": "褒められました",
+        "copy": "とすれば",
+        "copyNoRuby": "とすれば",
         "isCorrect": false,
-        "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어"
+        "trans": "~라고 가정하면"
       }
     ],
     "ansJa": "かわいいったって、みんな芸能人(げいのうじん)になれるわけじゃない。",
@@ -126533,28 +126533,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "そうにないから",
+          "text": "たって",
           "trans": "~것 같지 않다, ~않은 것 같다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「そうにないから」: '~것 같지 않다, ~않은 것 같다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀엽다고 해도 모두가 연예인이 될 리 없다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "させてください",
+          "text": "たら",
           "trans": "~하게 해주세요 (부탁)",
           "isCorrect": false,
           "note": "「させてください」: '~하게 해주세요 (부탁)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀엽다고 해도 모두가 연예인이 될 리 없다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "たって、みんな",
+          "text": "ても",
           "trans": "~해도",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「たって、みんな」는 '~해도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"귀엽다고 해도 모두가 연예인이 될 리 없다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "褒められました",
+          "text": "とすれば",
           "trans": "수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어",
           "isCorrect": false,
           "note": "「褒められました」: '수동형 : 행동의 영향을 받는 사람이 주어, 사역수동형 : 행동을 하는 사람이 주어'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"귀엽다고 해도 모두가 연예인이 될 리 없다.\")과 맞지 않습니다."
@@ -127762,8 +127762,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -127797,7 +127797,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그가 나를 좋아하지 않아도 돼. 그래도 나는 한결같이 그가 좋아.\")과 맞지 않습니다."
@@ -128487,8 +128487,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -128522,7 +128522,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"만약 주변에서 반대하더라도 우리들은 결혼할 생각입니다.\")과 맞지 않습니다."
@@ -130067,8 +130067,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -130102,7 +130102,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아이가 태어난 지 얼마 안되어서 아내는 지금 병원에 있습니다.\")과 맞지 않습니다."
@@ -132509,8 +132509,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -132544,7 +132544,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아빠는 가족을 위해서 열심히 일하고 있다.\")과 맞지 않습니다."
@@ -132810,39 +132810,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ために",
     "patternMeaning": "① ~하기 위해서 (목적)② ~때문에 (이유)",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "このカレーがもっとおいしくなる(   )",
-    "qPlain": "このカレーがもっとおいしくなる(   )",
+    "qRuby": "このカレーがもっとおいしくなる(   )、チョコレートを入(い)れました。",
+    "qPlain": "このカレーがもっとおいしくなる(   )、チョコレートを入れました。",
     "qTrans": "이 카레가 더욱 맛있어 지기 위해서 초콜릿을 넣었습니다.",
-    "target": "ために、チョコレートを入(い)れました。",
-    "targetNoRuby": "ために、チョコレートを入れました。",
+    "target": "ために",
+    "targetNoRuby": "ために",
     "options": [
       {
         "marker": "①",
-        "copy": "らしくなっていました",
-        "copyNoRuby": "らしくなっていました",
-        "isCorrect": false,
-        "trans": "~답다"
+        "copy": "ために",
+        "copyNoRuby": "ために",
+        "isCorrect": true,
+        "trans": "~하기 위해"
       },
       {
         "marker": "②",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "ように",
+        "copyNoRuby": "ように",
         "isCorrect": false,
-        "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
+        "trans": "~하도록"
       },
       {
         "marker": "③",
-        "copy": "ために、チョコレートを入(い)れました。",
-        "copyNoRuby": "ために、チョコレートを入れました。",
-        "isCorrect": true,
-        "trans": "~하기 위해서 (목적) ~때문에 (이유)"
+        "copy": "せいで",
+        "copyNoRuby": "せいで",
+        "isCorrect": false,
+        "trans": "~탓에"
       },
       {
         "marker": "④",
-        "copy": "主婦(しゅふ)だったり大学生(だいがくせい)だったり",
-        "copyNoRuby": "主婦だったり大学生だったり",
+        "copy": "おかげで",
+        "copyNoRuby": "おかげで",
         "isCorrect": false,
-        "trans": "~하기도 하고 ~하기도 한다"
+        "trans": "~덕분에"
       }
     ],
     "ansJa": "このカレーがもっとおいしくなるために、チョコレートを入(い)れました。",
@@ -132853,28 +132853,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "らしくなっていました",
+          "text": "ために",
           "trans": "~답다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「らしくなっていました」: '~답다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 카레가 더욱 맛있어 지기 위해서 초콜릿을 넣었습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "お手伝いいたしますので",
+          "text": "ように",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "③",
-          "text": "ために、チョコレートを入れました。",
+          "text": "せいで",
           "trans": "~하기 위해서 (목적) ~때문에 (이유)",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「ために、チョコレートを入れました。」는 '~하기 위해서 (목적) ~때문에 (이유)'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 카레가 더욱 맛있어 지기 위해서 초콜릿을 넣었습니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "主婦だったり大学生だったり",
+          "text": "おかげで",
           "trans": "~하기도 하고 ~하기도 한다",
           "isCorrect": false,
           "note": "「主婦だったり大学生だったり」: '~하기도 하고 ~하기도 한다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 카레가 더욱 맛있어 지기 위해서 초콜릿을 넣었습니다.\")과 맞지 않습니다."
@@ -132904,8 +132904,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -132939,7 +132939,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 바빴기 때문에 어제 회식에는 갈 수 없었습니다.\")과 맞지 않습니다."
@@ -133213,8 +133213,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -133248,7 +133248,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"태풍이 왔기 때문에 농작물은 큰 피해를 받았습니다.\")과 맞지 않습니다."
@@ -133392,8 +133392,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -133427,7 +133427,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 장래에 아파트를 사기 위해 돈을 모으고 있습니다.\")과 맞지 않습니다."
@@ -133550,8 +133550,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -133585,7 +133585,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마의 생일 선물을 사기 위해서 백화점에 왔습니다.\")과 맞지 않습니다."
@@ -136926,8 +136926,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -136961,7 +136961,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"우체국에 편지를 부치러 간 김에 돈도 뽑아 왔습니다.\")과 맞지 않습니다."
@@ -137493,8 +137493,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -137528,7 +137528,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"카페에 가는 거야? 그럼 그 김에 나한테도 아이스커피를 사다 주지 않을래?\")과 맞지 않습니다."
@@ -140265,8 +140265,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       }
@@ -140300,7 +140300,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"상사에게 받는 회식 권유는 솔직히 거절하기 힘들죠.\")과 맞지 않습니다."
@@ -140502,8 +140502,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       }
@@ -140537,7 +140537,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀가 열심히 만들어 줬으니까 단 것을 별로 안 좋아한다고는 말하기 어려워.\")과 맞지 않습니다."
@@ -140725,8 +140725,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -140760,7 +140760,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"상사에게는 엄청 신세를 졌기 때문에 회사를 그만둔다고는 말하기 어렵다.\")과 맞지 않습니다."
@@ -144581,16 +144581,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ておく",
     "patternMeaning": "~해 두다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "シャツにアイロンをかけ(   )",
-    "qPlain": "シャツにアイロンをかけ(   )",
+    "qRuby": "シャツにアイロンをかけ(   )。",
+    "qPlain": "シャツにアイロンをかけ(   )。",
     "qTrans": "셔츠에 다림질을 해 두었습니다.",
-    "target": "ておきました。",
-    "targetNoRuby": "ておきました。",
+    "target": "ておきました",
+    "targetNoRuby": "ておきました",
     "options": [
       {
         "marker": "①",
-        "copy": "ておきました。",
-        "copyNoRuby": "ておきました。",
+        "copy": "ておきました",
+        "copyNoRuby": "ておきました",
         "isCorrect": true,
         "trans": "~해 두다"
       },
@@ -144603,8 +144603,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ておきました",
-        "copyNoRuby": "ておきました",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -144624,7 +144624,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ておきました。",
+          "text": "ておきました",
           "trans": "~해 두다",
           "isCorrect": true,
           "note": "「ておきました。」는 '~해 두다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"셔츠에 다림질을 해 두었습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -144638,7 +144638,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ておきました",
+          "text": "ので",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「ておきました」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"셔츠에 다림질을 해 두었습니다.\")과 맞지 않습니다."
@@ -144905,8 +144905,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "っぱなしじゃないか。やり",
-        "copyNoRuby": "っぱなしじゃないか。やり",
+        "copy": "っぱなし",
+        "copyNoRuby": "っぱなし",
         "isCorrect": false,
         "trans": "~한 채로"
       },
@@ -144940,7 +144940,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "っぱなしじゃないか。やり",
+          "text": "っぱなし",
           "trans": "~한 채로",
           "isCorrect": false,
           "note": "「っぱなしじゃないか。やり」: '~한 채로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"음악실은 아무도 사용하지 않으니까 열쇠를 잠가 둬 주세요.\")과 맞지 않습니다."
@@ -146887,8 +146887,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "たって、みんな",
-        "copyNoRuby": "たって、みんな",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -146922,7 +146922,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "たって、みんな",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、みんな」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"차는 움직이기만 한다면 뭐든 상관없다.\")과 맞지 않습니다."
@@ -147210,8 +147210,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -147245,7 +147245,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"잠시 짐을 맡겨 둬도 될까요?\")과 맞지 않습니다."
@@ -147512,8 +147512,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -147547,7 +147547,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그것은 손님이 말씀하신 대로입니다.\")과 맞지 않습니다."
@@ -147842,8 +147842,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -147877,7 +147877,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마가 말한 대로 해봤더니 능숙하게 할 수 있었다.\")과 맞지 않습니다."
@@ -149005,11 +149005,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～とく",
     "patternMeaning": "~해 두다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "あとでやるから、そのままにし(   )",
-    "qPlain": "あとでやるから、そのままにし(   )",
+    "qRuby": "あとでやるから、そのままにし(   )。",
+    "qPlain": "あとでやるから、そのままにし(   )。",
     "qTrans": "이따가 할테니까 그대로 둬.",
-    "target": "といて。",
-    "targetNoRuby": "といて。",
+    "target": "といて",
+    "targetNoRuby": "といて",
     "options": [
       {
         "marker": "①",
@@ -149034,8 +149034,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": true,
         "trans": "~해 두다"
       }
@@ -149069,7 +149069,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": true,
           "note": "「といて。」는 '~해 두다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이따가 할테니까 그대로 둬.\")에 자연스럽게 들어맞는 정답입니다."
@@ -150054,8 +150054,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -150089,7 +150089,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 지금 봉사활동을 해줄 사람을 찾고 있는 중입니다.\")과 맞지 않습니다."
@@ -152194,8 +152194,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -152229,7 +152229,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 어제 텔레비전을 끄지 않고 자버렸습니다.\")과 맞지 않습니다."
@@ -153293,8 +153293,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -153328,7 +153328,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"돈이 없어서 아무것도 못 샀습니다.\")과 맞지 않습니다."
@@ -153365,8 +153365,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -153400,7 +153400,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"친구에게 생일 선물을 받지 못해서 슬펐습니다.\")과 맞지 않습니다."
@@ -153516,8 +153516,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -153551,7 +153551,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"길을 모르겠어서 휴대폰으로 알아봤습니다.\")과 맞지 않습니다."
@@ -154320,8 +154320,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -154355,7 +154355,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"싸지 않아도 괜찮습니다만, 성능 좋은 냉장고를 사고 싶습니다.\")과 맞지 않습니다."
@@ -154478,8 +154478,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": false,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       },
@@ -154513,7 +154513,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"선생님 오늘 중으로 쓰시지 않아도 상관없지만 마감일까지는 원고를 부탁드립니다.\")과 맞지 않습니다."
@@ -154722,8 +154722,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": false,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       }
@@ -154757,7 +154757,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
@@ -155577,8 +155577,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": false,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       },
@@ -155612,7 +155612,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
@@ -155663,8 +155663,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -155698,7 +155698,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내년에 회사 빌딩이 새로워집니다.\")과 맞지 않습니다."
@@ -158751,8 +158751,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       }
@@ -158786,7 +158786,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"가전제품 보급에 따라 집안일은 편해졌다.\")과 맞지 않습니다."
@@ -159850,15 +159850,15 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
       {
         "marker": "④",
-        "copy": "くらい",
-        "copyNoRuby": "くらい",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -159885,14 +159885,14 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"걱정하지 않아도 그녀는 친구의 한 명에 지나지 않아.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "くらい",
+          "text": "ので",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"걱정하지 않아도 그녀는 친구의 한 명에 지나지 않아.\")과 맞지 않습니다."
@@ -160381,39 +160381,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～にする",
     "patternMeaning": "~로 하다, ~로 정하다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "そうだな、どちら(   )",
-    "qPlain": "そうだな、どちら(   )",
+    "qRuby": "そうだな、どちら(   )かな。すみません、このピアスをください。",
+    "qPlain": "そうだな、どちら(   )かな。すみません、このピアスをください。",
     "qTrans": "그렇네, 뭘로 할까? 실례지만 이 귀걸이 주세요.",
-    "target": "にしようかな。すみません、このピアスをください。",
-    "targetNoRuby": "にしようかな。すみません、このピアスをください。",
+    "target": "にしよう",
+    "targetNoRuby": "にしよう",
     "options": [
       {
         "marker": "①",
-        "copy": "にしようかな。すみません、このピアスをください。",
-        "copyNoRuby": "にしようかな。すみません、このピアスをください。",
+        "copy": "にしよう",
+        "copyNoRuby": "にしよう",
         "isCorrect": true,
-        "trans": "~로 하다, ~로 정하다"
+        "trans": "~로 할까"
       },
       {
         "marker": "②",
-        "copy": "てほしいですから",
-        "copyNoRuby": "てほしいですから",
+        "copy": "にすれば",
+        "copyNoRuby": "にすれば",
         "isCorrect": false,
-        "trans": "~했으면 한다, ~하길 바란다."
+        "trans": "~로 하면"
       },
       {
         "marker": "③",
-        "copy": "ほどではないので",
-        "copyNoRuby": "ほどではないので",
+        "copy": "にして",
+        "copyNoRuby": "にして",
         "isCorrect": false,
-        "trans": "~할 정도다"
+        "trans": "~로 하고"
       },
       {
         "marker": "④",
-        "copy": "ほどのことではないです",
-        "copyNoRuby": "ほどのことではないです",
+        "copy": "にする",
+        "copyNoRuby": "にする",
         "isCorrect": false,
-        "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다"
+        "trans": "~로 한다"
       }
     ],
     "ansJa": "そうだな、どちらにしようかな。すみません、このピアスをください。",
@@ -160424,28 +160424,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にしようかな。すみません、このピアスをください。",
+          "text": "にしよう",
           "trans": "~로 하다, ~로 정하다",
           "isCorrect": true,
           "note": "「にしようかな。すみません、このピアスをください。」는 '~로 하다, ~로 정하다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"그렇네, 뭘로 할까? 실례지만 이 귀걸이 주세요.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "てほしいですから",
+          "text": "にすれば",
           "trans": "~했으면 한다, ~하길 바란다.",
           "isCorrect": false,
           "note": "「てほしいですから」: '~했으면 한다, ~하길 바란다.'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "③",
-          "text": "ほどではないので",
+          "text": "にして",
           "trans": "~할 정도다",
           "isCorrect": false,
           "note": "「ほどではないので」: '~할 정도다'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "④",
-          "text": "ほどのことではないです",
+          "text": "にする",
           "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다",
           "isCorrect": false,
           "note": "「ほどのことではないです」: '~할 만큼은 아니다, ~할 정도의 일은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그렇네, 뭘로 할까? 실례지만 이 귀걸이 주세요.\")과 맞지 않습니다."
@@ -160963,8 +160963,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -160998,7 +160998,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 일본 축제에 대해 리포트를 쓰고 있습니다.\")과 맞지 않습니다."
@@ -161042,8 +161042,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -161077,7 +161077,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"수업 후, 장래 대학진학에 대하여 선생님과 상담했다.\")과 맞지 않습니다."
@@ -161171,11 +161171,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～について",
     "patternMeaning": "~에 관해서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "それ(   )今(いま)、急(いそ)いで決(き)めなくても大丈夫(だいじょうぶ)ですよ。",
-    "qPlain": "それ(   )今、急いで決めなくても大丈夫ですよ。",
+    "qRuby": "それ(   )、今(いま)、急(いそ)いで決(き)めなくても大丈夫(だいじょうぶ)ですよ。",
+    "qPlain": "それ(   )、今、急いで決めなくても大丈夫ですよ。",
     "qTrans": "그것에 대해서는 지금 서둘러 결정하지 않아도 괜찮습니다.",
-    "target": "については、",
-    "targetNoRuby": "については、",
+    "target": "については",
+    "targetNoRuby": "については",
     "options": [
       {
         "marker": "①",
@@ -161193,8 +161193,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "については、",
-        "copyNoRuby": "については、",
+        "copy": "については",
+        "copyNoRuby": "については",
         "isCorrect": true,
         "trans": "~에 관해서"
       },
@@ -161228,7 +161228,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "については、",
+          "text": "については",
           "trans": "~에 관해서",
           "isCorrect": true,
           "note": "「については、」는 '~에 관해서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"그것에 대해서는 지금 서둘러 결정하지 않아도 괜찮습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -162830,11 +162830,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～につき",
     "patternMeaning": "~이므로, ~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "リニューアルオープン(   )8月(がつ)まで休業(きゅうぎょう)します。",
-    "qPlain": "リニューアルオープン(   )8月まで休業します。",
+    "qRuby": "リニューアルオープン(   )、8月(がつ)まで休業(きゅうぎょう)します。",
+    "qPlain": "リニューアルオープン(   )、8月まで休業します。",
     "qTrans": "리뉴얼 오픈으로 8월까지 휴업합니다.",
-    "target": "につき、",
-    "targetNoRuby": "につき、",
+    "target": "につき",
+    "targetNoRuby": "につき",
     "options": [
       {
         "marker": "①",
@@ -162852,8 +162852,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "につき、",
-        "copyNoRuby": "につき、",
+        "copy": "につき",
+        "copyNoRuby": "につき",
         "isCorrect": true,
         "trans": "~이므로, ~라서"
       },
@@ -162887,7 +162887,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "につき、",
+          "text": "につき",
           "trans": "~이므로, ~라서",
           "isCorrect": true,
           "note": "「につき、」는 '~이므로, ~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"리뉴얼 오픈으로 8월까지 휴업합니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -163556,8 +163556,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -163591,7 +163591,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본인에게 된장과 간장은 없으면 안되는 것이다.\")과 맞지 않습니다."
@@ -163699,11 +163699,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～にとって",
     "patternMeaning": "~에게 (있어서)",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "あなた(   )結婚(けっこん)とはなんですか。",
-    "qPlain": "あなた(   )結婚とはなんですか。",
+    "qRuby": "あなた(   )、結婚(けっこん)とはなんですか。",
+    "qPlain": "あなた(   )、結婚とはなんですか。",
     "qTrans": "당신에게 있어 결혼은 무엇입니까?",
-    "target": "にとって、",
-    "targetNoRuby": "にとって、",
+    "target": "にとって",
+    "targetNoRuby": "にとって",
     "options": [
       {
         "marker": "①",
@@ -163721,8 +163721,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": true,
         "trans": "~에게 (있어서)"
       },
@@ -163756,7 +163756,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": true,
           "note": "「にとって、」는 '~에게 (있어서)'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"당신에게 있어 결혼은 무엇입니까?\")에 자연스럽게 들어맞는 정답입니다."
@@ -164913,10 +164913,10 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "得(う)る",
-        "copyNoRuby": "得る",
+        "copy": "では",
+        "copyNoRuby": "では",
         "isCorrect": false,
-        "trans": "~할 수 있다"
+        "trans": "~에서는"
       }
     ],
     "ansJa": "日本(にほん)で働(はたら)くにはどんなビザが必要(ひつよう)でしょうか。",
@@ -164948,7 +164948,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "得る",
+          "text": "では",
           "trans": "~할 수 있다",
           "isCorrect": false,
           "note": "「得る」: '~할 수 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본에서 일하려면 어떤 비자가 필요할까요?\")과 맞지 않습니다."
@@ -165603,15 +165603,15 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -165638,14 +165638,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인터넷 발달에 따라, 전세계의 물건을 살 수 있게 되었습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인터넷 발달에 따라, 전세계의 물건을 살 수 있게 되었습니다.\")과 맞지 않습니다."
@@ -165998,8 +165998,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -166033,7 +166033,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"큰 비에 따라 운동회는 연기되었습니다.\")과 맞지 않습니다."
@@ -166249,8 +166249,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -166284,7 +166284,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번에는 실패해버렸지만, 사고방식에 따라서는 다음 성공의 기회일지도 모른다고도 생각한다.\")과 맞지 않습니다."
@@ -166938,39 +166938,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～によると",
     "patternMeaning": "~에 따르면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ニュース(   )事件(じけん)の犯人(はんにん)は近所(きんじょ)に住(す)む男(おとこ)だったそうです。",
-    "qPlain": "ニュース(   )事件の犯人は近所に住む男だったそうです。",
+    "qRuby": "ニュース(   )、この事件(じけん)の犯人(はんにん)は近所(きんじょ)に住(す)む男(おとこ)だったそうです。",
+    "qPlain": "ニュース(   )、この事件の犯人は近所に住む男だったそうです。",
     "qTrans": "뉴스에 따르면 이 사건의 범인은 근처에 사는 남자였다고 합니다.",
-    "target": "によると、この",
-    "targetNoRuby": "によると、この",
+    "target": "によると",
+    "targetNoRuby": "によると",
     "options": [
       {
         "marker": "①",
-        "copy": "たとえ",
-        "copyNoRuby": "たとえ",
-        "isCorrect": false,
-        "trans": "가령~해도, 설사~해도"
-      },
-      {
-        "marker": "②",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": true,
         "trans": "~에 따르면"
       },
       {
-        "marker": "③",
-        "copy": "たところ",
-        "copyNoRuby": "たところ",
+        "marker": "②",
+        "copy": "によって",
+        "copyNoRuby": "によって",
         "isCorrect": false,
-        "trans": "~했더니"
+        "trans": "~에 의해서"
+      },
+      {
+        "marker": "③",
+        "copy": "について",
+        "copyNoRuby": "について",
+        "isCorrect": false,
+        "trans": "~에 대해서"
       },
       {
         "marker": "④",
-        "copy": "ないといけない",
-        "copyNoRuby": "ないといけない",
+        "copy": "に対して",
+        "copyNoRuby": "に対して",
         "isCorrect": false,
-        "trans": "~하지 않으면 안 된다, ~해야 한다"
+        "trans": "~에 대해서"
       }
     ],
     "ansJa": "ニュースによると、この事件(じけん)の犯人(はんにん)は近所(きんじょ)に住(す)む男(おとこ)だったそうです。",
@@ -166981,28 +166981,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たとえ",
+          "text": "によると",
           "trans": "가령~해도, 설사~해도",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「たとえ」: '가령~해도, 설사~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"뉴스에 따르면 이 사건의 범인은 근처에 사는 남자였다고 합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "によると、この",
+          "text": "によって",
           "trans": "~에 따르면",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「によると、この」는 '~에 따르면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"뉴스에 따르면 이 사건의 범인은 근처에 사는 남자였다고 합니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "たところ",
+          "text": "について",
           "trans": "~했더니",
           "isCorrect": false,
           "note": "「たところ」: '~했더니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"뉴스에 따르면 이 사건의 범인은 근처에 사는 남자였다고 합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "ないといけない",
+          "text": "に対して",
           "trans": "~하지 않으면 안 된다, ~해야 한다",
           "isCorrect": false,
           "note": "「ないといけない」: '~하지 않으면 안 된다, ~해야 한다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"뉴스에 따르면 이 사건의 범인은 근처에 사는 남자였다고 합니다.\")과 맞지 않습니다."
@@ -167104,8 +167104,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -167139,7 +167139,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"관계자 말에 따르면, 이번 학교 축제에 인기 가수가 온다고 합니다.\")과 맞지 않습니다."
@@ -167175,11 +167175,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～によると",
     "patternMeaning": "~에 따르면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ラジオ(   )今週地域(こんしゅうちいき)のお祭(まつ)りが開催(かいさい)されるそうです。",
-    "qPlain": "ラジオ(   )今週地域のお祭りが開催されるそうです。",
+    "qRuby": "ラジオ(   )、今週地域(こんしゅうちいき)のお祭(まつ)りが開催(かいさい)されるそうです。",
+    "qPlain": "ラジオ(   )、今週地域のお祭りが開催されるそうです。",
     "qTrans": "라디오에 따르면, 이번주 지역 축제가 개최된다고 합니다.",
-    "target": "によると、",
-    "targetNoRuby": "によると、",
+    "target": "によると",
+    "targetNoRuby": "によると",
     "options": [
       {
         "marker": "①",
@@ -167197,8 +167197,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": true,
         "trans": "~에 따르면"
       },
@@ -167232,7 +167232,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": true,
           "note": "「によると、」는 '~에 따르면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"라디오에 따르면, 이번주 지역 축제가 개최된다고 합니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -167254,39 +167254,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～によると",
     "patternMeaning": "~에 따르면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "キムさん(   )日本語(にほんご)を勉強(べんきょう)してみたいと言(い)っているらしい。",
-    "qPlain": "キムさん(   )日本語を勉強してみたいと言っているらしい。",
+    "qRuby": "キムさん(   )、パクさんも日本語(にほんご)を勉強(べんきょう)してみたいと言(い)っているらしい。",
+    "qPlain": "キムさん(   )、パクさんも日本語を勉強してみたいと言っているらしい。",
     "qTrans": "김씨에 따르면 박씨도 일본어를 공부하고 싶다고 말했다고 한다.",
-    "target": "によると、パクさんも",
-    "targetNoRuby": "によると、パクさんも",
+    "target": "によると",
+    "targetNoRuby": "によると",
     "options": [
       {
         "marker": "①",
-        "copy": "ところなので",
-        "copyNoRuby": "ところなので",
-        "isCorrect": false,
-        "trans": "～ところだ 막 ~하려는 참이다～ているところだ ~하고 있는 중이다～たところだ 막 ~했다"
+        "copy": "によると",
+        "copyNoRuby": "によると",
+        "isCorrect": true,
+        "trans": "~에 따르면"
       },
       {
         "marker": "②",
-        "copy": "わけではないですよ",
-        "copyNoRuby": "わけではないですよ",
+        "copy": "によって",
+        "copyNoRuby": "によって",
         "isCorrect": false,
-        "trans": "~인 것은 아니다"
+        "trans": "~에 의해서"
       },
       {
         "marker": "③",
-        "copy": "たばかりだから",
-        "copyNoRuby": "たばかりだから",
+        "copy": "について",
+        "copyNoRuby": "について",
         "isCorrect": false,
-        "trans": "~한지 얼마 안 됨, 막~함"
+        "trans": "~에 대해서"
       },
       {
         "marker": "④",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
-        "isCorrect": true,
-        "trans": "~에 따르면"
+        "copy": "に対して",
+        "copyNoRuby": "に対して",
+        "isCorrect": false,
+        "trans": "~에 대해서"
       }
     ],
     "ansJa": "キムさんによると、パクさんも日本語(にほんご)を勉強(べんきょう)してみたいと言(い)っているらしい。",
@@ -167297,30 +167297,30 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ところなので",
+          "text": "によると",
           "trans": "～ところだ 막 ~하려는 참이다～ているところだ ~하고 있는 중이다～たところだ 막 ~했다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ところなので」: '～ところだ 막 ~하려는 참이다～ているところだ ~하고 있는 중이다～たところだ 막 ~했다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨에 따르면 박씨도 일본어를 공부하고 싶다고 말했다고 한다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "わけではないですよ",
+          "text": "によって",
           "trans": "~인 것은 아니다",
           "isCorrect": false,
           "note": "「わけではないですよ」: '~인 것은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨에 따르면 박씨도 일본어를 공부하고 싶다고 말했다고 한다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "たばかりだから",
+          "text": "について",
           "trans": "~한지 얼마 안 됨, 막~함",
           "isCorrect": false,
           "note": "「たばかりだから」: '~한지 얼마 안 됨, 막~함'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨에 따르면 박씨도 일본어를 공부하고 싶다고 말했다고 한다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "によると、パクさんも",
+          "text": "に対して",
           "trans": "~에 따르면",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「によると、パクさんも」는 '~에 따르면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"김씨에 따르면 박씨도 일본어를 공부하고 싶다고 말했다고 한다.\")에 자연스럽게 들어맞는 정답입니다."
         }
       ]
@@ -168468,8 +168468,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -168503,7 +168503,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사고에 의해 지하철이 1시간에 걸쳐 정지했다.\")과 맞지 않습니다."
@@ -169804,8 +169804,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -169839,7 +169839,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 지진은 해일의 피해에다가 화재의 피해까지 있어서 다수의 사상자가 나왔다.\")과 맞지 않습니다."
@@ -169876,8 +169876,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -169911,7 +169911,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 건에 관해서 뭔가 질문은 있습니까?\")과 맞지 않습니다."
@@ -170127,8 +170127,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -170162,7 +170162,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"최근 이상기온에 대해 어떻게 생각하십니까?\")과 맞지 않습니다."
@@ -170515,8 +170515,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -170550,7 +170550,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 지금 일본의 된장에 대한 자료를 모으고 있습니다.\")과 맞지 않습니다."
@@ -170673,8 +170673,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -170708,7 +170708,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"결혼식에 관한 비용이 생각 이상으로 들어버렸다.\")과 맞지 않습니다."
@@ -170824,8 +170824,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -170859,7 +170859,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본 유학에 관한 정보를 얻고 싶습니다만, 어디에 문의하면 좋을까요?\")과 맞지 않습니다."
@@ -170982,8 +170982,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -171017,7 +171017,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"젊은 여성들은 미용에 관해서 관심이 높다.\")과 맞지 않습니다."
@@ -171370,8 +171370,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -171405,7 +171405,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 선생님은 노력하지 않는 학생에게는 엄합니다.\")과 맞지 않습니다."
@@ -171614,8 +171614,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -171649,7 +171649,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본의 평균수명은 80세인데 비해 우리나라는 70세정도입니다.\")과 맞지 않습니다."
@@ -171772,8 +171772,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -171807,7 +171807,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"작년 겨울은 따뜻했는데 비해 올해 겨울은 매우 춥다.\")과 맞지 않습니다."
@@ -174695,8 +174695,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -174730,7 +174730,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"젊었을 때에 비해 세월의 흐름이 빠르게 느껴지게 되었습니다.\")과 맞지 않습니다."
@@ -179126,8 +179126,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -179161,7 +179161,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 영화 전혀 재미있지 않았기 때문에, 다른 영화를 봤으면 좋았을 텐데.\")과 맞지 않습니다."
@@ -179894,39 +179894,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ばいい",
     "patternMeaning": "~면 된다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ボーナスがたくさんもらえれ(   )",
-    "qPlain": "ボーナスがたくさんもらえれ(   )",
+    "qRuby": "ボーナスがたくさんもらえれ(   )のにな。",
+    "qPlain": "ボーナスがたくさんもらえれ(   )のにな。",
     "qTrans": "보너스를 많이 받을 수 있으면 좋을텐데.",
-    "target": "ばいいのにな。",
-    "targetNoRuby": "ばいいのにな。",
+    "target": "ばいい",
+    "targetNoRuby": "ばいい",
     "options": [
       {
         "marker": "①",
-        "copy": "たばかりだから",
-        "copyNoRuby": "たばかりだから",
-        "isCorrect": false,
-        "trans": "~한지 얼마 안 됨, 막~함"
+        "copy": "ばいい",
+        "copyNoRuby": "ばいい",
+        "isCorrect": true,
+        "trans": "~면 좋을 텐데"
       },
       {
         "marker": "②",
-        "copy": "ばいいのにな。",
-        "copyNoRuby": "ばいいのにな。",
-        "isCorrect": true,
-        "trans": "~면 된다"
+        "copy": "ばよかった",
+        "copyNoRuby": "ばよかった",
+        "isCorrect": false,
+        "trans": "~면 좋았을 텐데"
       },
       {
         "marker": "③",
-        "copy": "でさえあれば",
-        "copyNoRuby": "でさえあれば",
+        "copy": "ばだめ",
+        "copyNoRuby": "ばだめ",
         "isCorrect": false,
-        "trans": "~만 ~하면"
+        "trans": "~면 안 돼"
       },
       {
         "marker": "④",
-        "copy": "反対(はんたい)されれば",
-        "copyNoRuby": "反対されれば",
+        "copy": "ばどう",
+        "copyNoRuby": "ばどう",
         "isCorrect": false,
-        "trans": "~면 ~수록"
+        "trans": "~면 어때"
       }
     ],
     "ansJa": "ボーナスがたくさんもらえればいいのにな。",
@@ -179937,28 +179937,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たばかりだから",
+          "text": "ばいい",
           "trans": "~한지 얼마 안 됨, 막~함",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「たばかりだから」: '~한지 얼마 안 됨, 막~함'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "②",
-          "text": "ばいいのにな。",
+          "text": "ばよかった",
           "trans": "~면 된다",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「ばいいのにな。」는 '~면 된다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"보너스를 많이 받을 수 있으면 좋을텐데.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "でさえあれば",
+          "text": "ばだめ",
           "trans": "~만 ~하면",
           "isCorrect": false,
           "note": "「でさえあれば」: '~만 ~하면'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
         },
         {
           "marker": "④",
-          "text": "反対されれば",
+          "text": "ばどう",
           "trans": "~면 ~수록",
           "isCorrect": false,
           "note": "「反対されれば」: '~면 ~수록'의 절을 이어주는 연결형(접속형)이므로, 문장을 매듭짓는 종결 빈칸 위치에 올 수 없습니다."
@@ -180160,8 +180160,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -180195,7 +180195,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"자네가 오고 싶으면 오면 된다.\")과 맞지 않습니다."
@@ -182911,8 +182911,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -182946,7 +182946,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"해외여행 전에 보험에 가입했습니다.\")과 맞지 않습니다."
@@ -183392,8 +183392,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -183427,7 +183427,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"장래에 신주쿠같이 번화한 곳에 살고 싶습니다.\")과 맞지 않습니다."
@@ -183528,39 +183528,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～みたいな",
     "patternMeaning": "~것 같은",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ソースやドレッシング(   )食(た)べるのは健康(けんこう)に良(よ)くない。",
-    "qPlain": "ソースやドレッシング(   )食べるのは健康に良くない。",
+    "qRuby": "ソースやドレッシング(   )しょっぱいものをたくさんかけて食(た)べるのは健康(けんこう)に良(よ)くない。",
+    "qPlain": "ソースやドレッシング(   )しょっぱいものをたくさんかけて食べるのは健康に良くない。",
     "qTrans": "소스나 드레싱 같은 짠 것을 많이 뿌려서 먹는 것은 건강에 좋지 않아.",
-    "target": "みたいなしょっぱいものをたくさんかけて",
-    "targetNoRuby": "みたいなしょっぱいものをたくさんかけて",
+    "target": "みたいな",
+    "targetNoRuby": "みたいな",
     "options": [
       {
         "marker": "①",
-        "copy": "そうなので、そこのガソリンスタンドに",
-        "copyNoRuby": "そうなので、そこのガソリンスタンドに",
-        "isCorrect": false,
-        "trans": "~인 것 같다, ~처럼 보인다"
+        "copy": "みたいな",
+        "copyNoRuby": "みたいな",
+        "isCorrect": true,
+        "trans": "~같은"
       },
       {
         "marker": "②",
-        "copy": "みたいなしょっぱいものをたくさんかけて",
-        "copyNoRuby": "みたいなしょっぱいものをたくさんかけて",
-        "isCorrect": true,
-        "trans": "~것 같은"
+        "copy": "そうな",
+        "copyNoRuby": "そうな",
+        "isCorrect": false,
+        "trans": "~인 것 같은"
       },
       {
         "marker": "③",
-        "copy": "食(た)べ始(はじ)めましょうか",
-        "copyNoRuby": "食べ始めましょうか",
+        "copy": "ような",
+        "copyNoRuby": "ような",
         "isCorrect": false,
-        "trans": "~하기 시작하다"
+        "trans": "~같은 (문어체)"
       },
       {
         "marker": "④",
-        "copy": "おかげでまたやり",
-        "copyNoRuby": "おかげでまたやり",
+        "copy": "らしい",
+        "copyNoRuby": "らしい",
         "isCorrect": false,
-        "trans": "～おかげだ ~덕분이다～おかげで ~덕분에"
+        "trans": "~다운"
       }
     ],
     "ansJa": "ソースやドレッシングみたいなしょっぱいものをたくさんかけて食(た)べるのは健康(けんこう)に良(よ)くない。",
@@ -183571,28 +183571,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "そうなので、そこのガソリンスタンドに",
+          "text": "みたいな",
           "trans": "~인 것 같다, ~처럼 보인다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「そうなので、そこのガソリンスタンドに」: '~인 것 같다, ~처럼 보인다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"소스나 드레싱 같은 짠 것을 많이 뿌려서 먹는 것은 건강에 좋지 않아.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "みたいなしょっぱいものをたくさんかけて",
+          "text": "そうな",
           "trans": "~것 같은",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「みたいなしょっぱいものをたくさんかけて」는 '~것 같은'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"소스나 드레싱 같은 짠 것을 많이 뿌려서 먹는 것은 건강에 좋지 않아.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "食べ始めましょうか",
+          "text": "ような",
           "trans": "~하기 시작하다",
           "isCorrect": false,
           "note": "「食べ始めましょうか」: '~하기 시작하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"소스나 드레싱 같은 짠 것을 많이 뿌려서 먹는 것은 건강에 좋지 않아.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "おかげでまたやり",
+          "text": "らしい",
           "trans": "～おかげだ ~덕분이다～おかげで ~덕분에",
           "isCorrect": false,
           "note": "「おかげでまたやり」: '～おかげだ ~덕분이다～おかげで ~덕분에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"소스나 드레싱 같은 짠 것을 많이 뿌려서 먹는 것은 건강에 좋지 않아.\")과 맞지 않습니다."
@@ -191220,8 +191220,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       }
@@ -191255,7 +191255,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 채소가 싫은 건 아닙니다.\")과 맞지 않습니다."
@@ -191436,8 +191436,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "お手伝(てつだ)いいたしますので",
-        "copyNoRuby": "お手伝いいたしますので",
+        "copy": "お手伝いいたします",
+        "copyNoRuby": "お手伝いいたします",
         "isCorrect": false,
         "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식."
       },
@@ -191471,7 +191471,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "お手伝いいたしますので",
+          "text": "お手伝いいたします",
           "trans": "자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.",
           "isCorrect": false,
           "note": "「お手伝いいたしますので」: '자신의 행동을 낮추어 표현함으로써 상대방을 높이는 방식.'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘 식사하러 안 가실래요? 식사요? 시간이 없는 건 아닌데 오늘은 좀.\")과 맞지 않습니다."
@@ -191823,39 +191823,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～わけではない",
     "patternMeaning": "~인 것은 아니다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "お腹(なか)がすいたという(   )食(た)べたい。",
-    "qPlain": "お腹がすいたという(   )食べたい。",
+    "qRuby": "お腹(なか)がすいたという(   )けど、なにかちょっと食(た)べたい。",
+    "qPlain": "お腹がすいたという(   )けど、なにかちょっと食べたい。",
     "qTrans": "배가 고픈 건 아니지만 뭔가 좀 먹고 싶다.",
-    "target": "わけではないけど、なにかちょっと",
-    "targetNoRuby": "わけではないけど、なにかちょっと",
+    "target": "わけではない",
+    "targetNoRuby": "わけではない",
     "options": [
       {
         "marker": "①",
-        "copy": "薬(くすり)だったり食(た)べ物(もの)だったり",
-        "copyNoRuby": "薬だったり食べ物だったり",
-        "isCorrect": false,
-        "trans": "~하기도 하고 ~하기도 한다"
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
+        "isCorrect": true,
+        "trans": "~인 것은 아니다"
       },
       {
         "marker": "②",
-        "copy": "好(す)きだったり嫌(きら)いだったり",
-        "copyNoRuby": "好きだったり嫌いだったり",
+        "copy": "はずではない",
+        "copyNoRuby": "はずではない",
         "isCorrect": false,
-        "trans": "~하기도 하고 ~하기도 한다"
+        "trans": "~일 리는 없다"
       },
       {
         "marker": "③",
-        "copy": "わけにはいかないです",
-        "copyNoRuby": "わけにはいかないです",
+        "copy": "わけがない",
+        "copyNoRuby": "わけがない",
         "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "trans": "~일 리가 없다"
       },
       {
         "marker": "④",
-        "copy": "わけではないけど、なにかちょっと",
-        "copyNoRuby": "わけではないけど、なにかちょっと",
-        "isCorrect": true,
-        "trans": "~인 것은 아니다"
+        "copy": "つもりではない",
+        "copyNoRuby": "つもりではない",
+        "isCorrect": false,
+        "trans": "~할 셈은 아니다"
       }
     ],
     "ansJa": "お腹(なか)がすいたというわけではないけど、なにかちょっと食(た)べたい。",
@@ -191866,30 +191866,30 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "薬だったり食べ物だったり",
+          "text": "わけではない",
           "trans": "~하기도 하고 ~하기도 한다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「薬だったり食べ物だったり」: '~하기도 하고 ~하기도 한다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"배가 고픈 건 아니지만 뭔가 좀 먹고 싶다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "好きだったり嫌いだったり",
+          "text": "はずではない",
           "trans": "~하기도 하고 ~하기도 한다",
           "isCorrect": false,
           "note": "「好きだったり嫌いだったり」: '~하기도 하고 ~하기도 한다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"배가 고픈 건 아니지만 뭔가 좀 먹고 싶다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "わけにはいかないです",
+          "text": "わけがない",
           "trans": "~할 수는 없다",
           "isCorrect": false,
           "note": "「わけにはいかないです」: '~할 수는 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"배가 고픈 건 아니지만 뭔가 좀 먹고 싶다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "わけではないけど、なにかちょっと",
+          "text": "つもりではない",
           "trans": "~인 것은 아니다",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「わけではないけど、なにかちょっと」는 '~인 것은 아니다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"배가 고픈 건 아니지만 뭔가 좀 먹고 싶다.\")에 자연스럽게 들어맞는 정답입니다."
         }
       ]
@@ -192305,8 +192305,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "わけじゃないよ",
-        "copyNoRuby": "わけじゃないよ",
+        "copy": "はずがない",
+        "copyNoRuby": "はずがない",
         "isCorrect": false,
         "trans": "~인 것은 아니다"
       },
@@ -192340,7 +192340,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "わけじゃないよ",
+          "text": "はずがない",
           "trans": "~인 것은 아니다",
           "isCorrect": false,
           "note": "「わけじゃないよ」: '~인 것은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"애인이라고 해서 휴대전화까지 봐도 되는 건 아니라고 생각해.\")과 맞지 않습니다."
@@ -193267,8 +193267,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -193302,7 +193302,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"선생님 제가 그렇게 빨리 달릴 리 없잖아요.\")과 맞지 않습니다."
@@ -194201,8 +194201,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "たって、こんなに",
-        "copyNoRuby": "たって、こんなに",
+        "copy": "たって",
+        "copyNoRuby": "たって",
         "isCorrect": false,
         "trans": "~해도"
       },
@@ -194236,7 +194236,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たって、こんなに",
+          "text": "たって",
           "trans": "~해도",
           "isCorrect": false,
           "note": "「たって、こんなに」: '~해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"길을 잃은 강아지를 가만히 둘 수는 없어. 가여우니까.\")과 맞지 않습니다."
@@ -195070,8 +195070,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではないか。",
-        "copyNoRuby": "ではないか。",
+        "copy": "ではないか",
+        "copyNoRuby": "ではないか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -195105,7 +195105,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではないか。",
+          "text": "ではないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「ではないか。」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아이가 태어난 것을 계기로 집을 샀습니다.\")과 맞지 않습니다."
@@ -195242,8 +195242,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "については、",
-        "copyNoRuby": "については、",
+        "copy": "については",
+        "copyNoRuby": "については",
         "isCorrect": false,
         "trans": "~에 관해서"
       },
@@ -195277,7 +195277,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "については、",
+          "text": "については",
           "trans": "~에 관해서",
           "isCorrect": false,
           "note": "「については、」: '~에 관해서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사고를 계기로 오토바이를 타는 것을 그만뒀다.\")과 맞지 않습니다."
@@ -195465,8 +195465,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではないか。",
-        "copyNoRuby": "ではないか。",
+        "copy": "ではないか",
+        "copyNoRuby": "ではないか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -195500,7 +195500,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではないか。",
+          "text": "ではないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「ではないか。」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그와 헤어진 것을 계기로 머리를 잘랐습니다.\")과 맞지 않습니다."
@@ -195623,8 +195623,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -195658,7 +195658,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"언제나 저 회사는 비서를 통해 사장과의 약속을 잡고 있습니다.\")과 맞지 않습니다."
@@ -196427,8 +196427,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -196462,7 +196462,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나는 블로그를 통해서 자신의 의견을 발신하고 있습니다.\")과 맞지 않습니다."
@@ -196506,8 +196506,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -196541,7 +196541,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본어 공부를 통해 일본 문화를 알 수 있었습니다.\")과 맞지 않습니다."
@@ -196657,8 +196657,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -196692,7 +196692,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 지역에서는 오늘부터 3일 내내 축제가 열린다.\")과 맞지 않습니다."
@@ -197921,8 +197921,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -197956,7 +197956,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이것은 새롭게 산 가방입니다.\")과 맞지 않습니다."
@@ -198165,8 +198165,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -198200,7 +198200,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"친구가 오기 때문에 방을 깨끗하게 했습니다.\")과 맞지 않습니다."
@@ -198632,8 +198632,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -198667,7 +198667,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그런 음식을 먹으면 건강해지기는커녕 병에 걸려버려.\")과 맞지 않습니다."
@@ -199192,8 +199192,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -199227,7 +199227,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"드디어 주말이 왔다고 생각했는데 벌써 월요일이다.\")과 맞지 않습니다."
@@ -200061,8 +200061,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -200096,7 +200096,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이탈리아는 포도재배에 적합하기 때문에 포도농업이 왕성합니다.\")과 맞지 않습니다."
@@ -201311,8 +201311,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -201346,7 +201346,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"1시간이나 기다렸지만 그녀는 끝내 오지 않았다.\")과 맞지 않습니다."
@@ -201648,8 +201648,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -201683,7 +201683,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 한정 운동화를 살까 말까 고민을 거듭한 끝에 결국 사기로 했습니다.\")과 맞지 않습니다."
@@ -218217,8 +218217,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -218252,7 +218252,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘 나는 일이 바빠서 운동부족이 되지 쉽다.\")과 맞지 않습니다."
@@ -218863,8 +218863,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -218898,7 +218898,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"키츠네우동과 타누키소바 어떤 게 좋아? 나는 어떤 것도 좋은데 어느 쪽인가 하면 키츠네우동이려나?\")과 맞지 않습니다."
@@ -219574,8 +219574,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -219609,7 +219609,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"4월인데 오늘은 추워졌네요. 마치 겨울로 되돌아간 것 같네.\")과 맞지 않습니다."
@@ -219818,8 +219818,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -219853,7 +219853,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 내가 콩쿠르에서 우승했을때는 자신이 우승한 듯이 기뻐해 주었다.\")과 맞지 않습니다."
@@ -220845,8 +220845,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -220880,7 +220880,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여기 레스토랑은 물 한잔부터 비싸.\")과 맞지 않습니다."
@@ -221061,8 +221061,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -221096,7 +221096,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"새로 온 선생님은 말투로 보아 엄격할 거 같다.\")과 맞지 않습니다."
@@ -221298,8 +221298,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -221333,7 +221333,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 복장으로 보아 그는 부자라고 생각해.\")과 맞지 않습니다."
@@ -221549,8 +221549,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -221584,7 +221584,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"미안하지만, 설명부터 이해가 안되는데 대체 뭘 어떻게 하고 싶은 겁니까?\")과 맞지 않습니다."
@@ -222181,8 +222181,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -222216,7 +222216,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 태도를 보면 아내는 아직도 화나 있는 것 같다.\")과 맞지 않습니다."
@@ -222246,8 +222246,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       },
@@ -222281,7 +222281,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"한국인의 입장으로 보면 집 안에 신발을 신은 채 들어가는 건 생각할 수 없습니다.\")과 맞지 않습니다."
@@ -222569,8 +222569,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -222604,7 +222604,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"고민되네, 디자인을 보면 이쪽 옷이 좋습니다만 색은 저쪽 옷이 좋아요.\")과 맞지 않습니다."
@@ -224637,8 +224637,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -224672,7 +224672,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘엔 일류대학을 나왔다고 해서 앞으로의 인생이 밝은 건 아니다.\")과 맞지 않습니다."
@@ -224924,39 +224924,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～からには",
     "patternMeaning": "~한 이상에는",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "やせたい(   )全(まった)く食(た)べないのは健康(けんこう)に良(よ)くありません。",
-    "qPlain": "やせたい(   )全く食べないのは健康に良くありません。",
+    "qRuby": "やせたい(   )、ごはんを全(まった)く食(た)べないのは健康(けんこう)に良(よ)くありません。",
+    "qPlain": "やせたい(   )、ごはんを全く食べないのは健康に良くありません。",
     "qTrans": "마르고 싶다고 해서 밥을 전혀 먹지 않는 것은 건강에 좋지 않습니다.",
-    "target": "からといって、ごはんを",
-    "targetNoRuby": "からといって、ごはんを",
+    "target": "からといって",
+    "targetNoRuby": "からといって",
     "options": [
       {
         "marker": "①",
-        "copy": "ものじゃないよ",
-        "copyNoRuby": "ものじゃないよ",
-        "isCorrect": false,
-        "trans": "~하는게 아니다"
+        "copy": "からといって",
+        "copyNoRuby": "からといって",
+        "isCorrect": true,
+        "trans": "~라고 해서"
       },
       {
         "marker": "②",
-        "copy": "からといって、ごはんを",
-        "copyNoRuby": "からといって、ごはんを",
-        "isCorrect": true,
+        "copy": "からには",
+        "copyNoRuby": "からには",
+        "isCorrect": false,
         "trans": "~한 이상에는"
       },
       {
         "marker": "③",
-        "copy": "もんじゃないよ",
-        "copyNoRuby": "もんじゃないよ",
+        "copy": "からこそ",
+        "copyNoRuby": "からこそ",
         "isCorrect": false,
-        "trans": "~하는게 아니다"
+        "trans": "~이기에 비로소"
       },
       {
         "marker": "④",
-        "copy": "どころではありません",
-        "copyNoRuby": "どころではありません",
+        "copy": "以上は",
+        "copyNoRuby": "以上は",
         "isCorrect": false,
-        "trans": "~할 상황이 아니다"
+        "trans": "~한 이상은"
       }
     ],
     "ansJa": "やせたいからといって、ごはんを全(まった)く食(た)べないのは健康(けんこう)に良(よ)くありません。",
@@ -224967,28 +224967,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものじゃないよ",
+          "text": "からといって",
           "trans": "~하는게 아니다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ものじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"마르고 싶다고 해서 밥을 전혀 먹지 않는 것은 건강에 좋지 않습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "からといって、ごはんを",
+          "text": "からには",
           "trans": "~한 이상에는",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「からといって、ごはんを」는 '~한 이상에는'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"마르고 싶다고 해서 밥을 전혀 먹지 않는 것은 건강에 좋지 않습니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "もんじゃないよ",
+          "text": "からこそ",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「もんじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"마르고 싶다고 해서 밥을 전혀 먹지 않는 것은 건강에 좋지 않습니다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "どころではありません",
+          "text": "以上は",
           "trans": "~할 상황이 아니다",
           "isCorrect": false,
           "note": "「どころではありません」: '~할 상황이 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"마르고 싶다고 해서 밥을 전혀 먹지 않는 것은 건강에 좋지 않습니다.\")과 맞지 않습니다."
@@ -225262,8 +225262,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -225297,7 +225297,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내가 이 팀의 캡틴이 된 이상 팀이 우승할 수 있도록 전력을 다하겠습니다.\")과 맞지 않습니다."
@@ -225341,8 +225341,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -225376,7 +225376,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시험을 보는 이상 절대로 합격해 보이겠습니다.\")과 맞지 않습니다."
@@ -228508,8 +228508,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -228543,7 +228543,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"술을 그만 둘 정도라면 죽는 편이 낫다. 매일 하는 반주는 그만둘 수 없어.\")과 맞지 않습니다."
@@ -229449,8 +229449,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、",
-        "copyNoRuby": "から、",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -229484,7 +229484,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"지금이니까 말 할 수 있는 건데 그때는 돈이 없어서 생활하는 것도 정말 힘들었습니다.\")과 맞지 않습니다."
@@ -230469,8 +230469,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -230504,7 +230504,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나를 그런 식으로 칭찬해줘서 고마워.\")과 맞지 않습니다."
@@ -231015,8 +231015,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -231050,7 +231050,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀가 도와준 덕분에 무사히 끝냈습니다.\")과 맞지 않습니다."
@@ -232042,8 +232042,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -232077,7 +232077,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그는 중국어를 할 수 있어서 베이징지사로 배속되었다.\")과 맞지 않습니다."
@@ -232365,8 +232365,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -232379,8 +232379,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "にとって",
-        "copyNoRuby": "にとって",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       }
@@ -232400,7 +232400,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"방 문이 열려 있는 것으로 누군가가 이 방에 들어갔다는 것을 알았다.\")과 맞지 않습니다."
@@ -232414,7 +232414,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "にとって",
+          "text": "ので",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"방 문이 열려 있는 것으로 누군가가 이 방에 들어갔다는 것을 알았다.\")과 맞지 않습니다."
@@ -233241,8 +233241,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -233276,7 +233276,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번에 슈퍼에서 여러 시식을 준비한 일로 많은 손님을 만족시킬 수 있어서 판매량 증가로 연결되었다.\")과 맞지 않습니다."
@@ -234096,8 +234096,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -234131,7 +234131,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"간단한 수술이니까 걱정할 필요는 없습니다.\")과 맞지 않습니다."
@@ -234333,8 +234333,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -234368,7 +234368,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"조금 과자를 먹은 정도로 그렇게 화낼 필요는 없지 않아? 아니, 그거 내가 소중히 간직해 두었던 과자라고.\")과 맞지 않습니다."
@@ -234670,8 +234670,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       }
@@ -234705,7 +234705,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그렇게 혼자서 무리할 필요 없어. 모두와분담해서 하면 되니까.\")과 맞지 않습니다."
@@ -236624,8 +236624,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ではないか。",
-        "copyNoRuby": "ではないか。",
+        "copy": "ではないか",
+        "copyNoRuby": "ではないか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -236659,7 +236659,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ではないか。",
+          "text": "ではないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「ではないか。」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"맛있기만 하면 먹을 수 있습니다.\")과 맞지 않습니다."
@@ -236717,8 +236717,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -236752,7 +236752,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신입사원은 일을 못 해도 밝기만 하면 선배에게 귀여움을 받습니다.\")과 맞지 않습니다."
@@ -240337,8 +240337,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -240372,7 +240372,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사용법은 당신에게 달려있습니다.\")과 맞지 않습니다."
@@ -242233,8 +242233,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -242268,7 +242268,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제 몸상태가 나빴던 탓에 나만 수학여행에 갈 수 없었습니다.\")과 맞지 않습니다."
@@ -242635,8 +242635,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -242670,7 +242670,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어제는 낮잠을 잔 탓에 밤에 좀처럼 잠들 수 없었다.\")과 맞지 않습니다."
@@ -242707,8 +242707,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -242742,7 +242742,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"감기 탓인지 오늘은 뭔가 열이 있는 것 같습니다.\")과 맞지 않습니다."
@@ -243173,16 +243173,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～だけ",
     "patternMeaning": "~만큼, ~대로",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "あとはなるようになる(   )",
-    "qPlain": "あとはなるようになる(   )",
+    "qRuby": "あとはなるようになる(   )。",
+    "qPlain": "あとはなるようになる(   )。",
     "qTrans": "이 이후엔 될 대로 될 뿐이다.",
-    "target": "だけだ。",
-    "targetNoRuby": "だけだ。",
+    "target": "だけだ",
+    "targetNoRuby": "だけだ",
     "options": [
       {
         "marker": "①",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": true,
         "trans": "~만큼, ~대로"
       },
@@ -243216,7 +243216,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": true,
           "note": "「だけだ。」는 '~만큼, ~대로'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 이후엔 될 대로 될 뿐이다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -247698,8 +247698,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ておきました。",
-        "copyNoRuby": "ておきました。",
+        "copy": "ておきました",
+        "copyNoRuby": "ておきました",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -247733,7 +247733,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ておきました。",
+          "text": "ておきました",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「ておきました。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"불을 켜 놓은 채로 그 자리를 벗어나는 것은 위험해.\")과 맞지 않습니다."
@@ -247913,39 +247913,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～っぱなし",
     "patternMeaning": "~한 채로",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これじゃ、ただやられ(   )返(かえ)しに行(い)くか？",
-    "qPlain": "これじゃ、ただやられ(   )返しに行くか？",
+    "qRuby": "これじゃ、ただやられ(   )じゃないか。やり返(かえ)しに行(い)くか？",
+    "qPlain": "これじゃ、ただやられ(   )じゃないか。やり返しに行くか？",
     "qTrans": "이래서는 그냥 당하기만 한 채잖아. 복수하러 갈까?",
-    "target": "っぱなしじゃないか。やり",
-    "targetNoRuby": "っぱなしじゃないか。やり",
+    "target": "っぱなし",
+    "targetNoRuby": "っぱなし",
     "options": [
       {
         "marker": "①",
-        "copy": "にかかっています",
-        "copyNoRuby": "にかかっています",
-        "isCorrect": false,
-        "trans": "~에 달려있다"
+        "copy": "っぱなし",
+        "copyNoRuby": "っぱなし",
+        "isCorrect": true,
+        "trans": "~한 채 (방치)"
       },
       {
         "marker": "②",
-        "copy": "ておいてください",
-        "copyNoRuby": "ておいてください",
+        "copy": "ずくめ",
+        "copyNoRuby": "ずくめ",
         "isCorrect": false,
-        "trans": "~해 두다"
+        "trans": "~투성이"
       },
       {
         "marker": "③",
-        "copy": "をものともせずに",
-        "copyNoRuby": "をものともせずに",
+        "copy": "まみれ",
+        "copyNoRuby": "まみれ",
         "isCorrect": false,
-        "trans": "~에도 아랑곳하지 않고"
+        "trans": "~범벅"
       },
       {
         "marker": "④",
-        "copy": "っぱなしじゃないか。やり",
-        "copyNoRuby": "っぱなしじゃないか。やり",
-        "isCorrect": true,
-        "trans": "~한 채로"
+        "copy": "がち",
+        "copyNoRuby": "がち",
+        "isCorrect": false,
+        "trans": "~하기 일쑤"
       }
     ],
     "ansJa": "これじゃ、ただやられっぱなしじゃないか。やり返(かえ)しに行(い)くか？",
@@ -247956,30 +247956,30 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にかかっています",
+          "text": "っぱなし",
           "trans": "~에 달려있다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「にかかっています」: '~에 달려있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이래서는 그냥 당하기만 한 채잖아. 복수하러 갈까?\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ておいてください",
+          "text": "ずくめ",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「ておいてください」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이래서는 그냥 당하기만 한 채잖아. 복수하러 갈까?\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "をものともせずに",
+          "text": "まみれ",
           "trans": "~에도 아랑곳하지 않고",
           "isCorrect": false,
           "note": "「をものともせずに」: '~에도 아랑곳하지 않고'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이래서는 그냥 당하기만 한 채잖아. 복수하러 갈까?\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "っぱなしじゃないか。やり",
+          "text": "가ち",
           "trans": "~한 채로",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「っぱなしじゃないか。やり」는 '~한 채로'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이래서는 그냥 당하기만 한 채잖아. 복수하러 갈까?\")에 자연스럽게 들어맞는 정답입니다."
         }
       ]
@@ -249206,8 +249206,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -249241,7 +249241,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"조사한 결과 이 지폐들은 지금부터 약 300년전의것이었다.\")과 맞지 않습니다."
@@ -249896,8 +249896,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -249931,7 +249931,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"조사결과, 이 유적은 3000년전의 것이 아닌 것으로 판명되었다.\")과 맞지 않습니다."
@@ -250779,8 +250779,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -250814,7 +250814,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 작업을 한 후가 아니면 오늘은 돌아갈 수 없습니다.\")과 맞지 않습니다."
@@ -251734,8 +251734,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       }
@@ -251769,7 +251769,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"나, 그가 너무 좋아 미치겠어.\")과 맞지 않습니다."
@@ -251950,8 +251950,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -251985,7 +251985,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"1점차로 진 것이 분해서 미치겠다.\")과 맞지 않습니다."
@@ -252122,8 +252122,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -252157,7 +252157,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모국의 가족이 보고싶어 죽겠다.\")과 맞지 않습니다."
@@ -253451,8 +253451,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       },
@@ -253486,7 +253486,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘 그녀는 울기만 한다.\")과 맞지 않습니다."
@@ -254707,11 +254707,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ではないか (놀람)",
     "patternMeaning": "~하잖아 ~하지 않은가?",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これはすごくおいしい(   )君(きみ)も食(た)べてみなさい。",
-    "qPlain": "これはすごくおいしい(   )君も食べてみなさい。",
+    "qRuby": "これはすごくおいしい(   )。君(きみ)も食(た)べてみなさい。",
+    "qPlain": "これはすごくおいしい(   )。君も食べてみなさい。",
     "qTrans": "이것은 엄청 맛있지 않은가?! 자네도 먹어보게.",
-    "target": "ではないか。",
-    "targetNoRuby": "ではないか。",
+    "target": "ではないか",
+    "targetNoRuby": "ではないか",
     "options": [
       {
         "marker": "①",
@@ -254729,8 +254729,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ではないか。",
-        "copyNoRuby": "ではないか。",
+        "copy": "ではないか",
+        "copyNoRuby": "ではないか",
         "isCorrect": true,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -254764,7 +254764,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ではないか。",
+          "text": "ではないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": true,
           "note": "「ではないか。」는 '~하잖아 ~하지 않은가?'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이것은 엄청 맛있지 않은가?! 자네도 먹어보게.\")에 자연스럽게 들어맞는 정답입니다."
@@ -255181,16 +255181,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ではないか (놀람)",
     "patternMeaning": "~하잖아 ~하지 않은가?",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "やればできる(   )",
-    "qPlain": "やればできる(   )",
+    "qRuby": "やればできる(   )。",
+    "qPlain": "やればできる(   )。",
     "qTrans": "하면 되잖아.",
-    "target": "じゃないか。",
-    "targetNoRuby": "じゃないか。",
+    "target": "じゃないか",
+    "targetNoRuby": "じゃないか",
     "options": [
       {
         "marker": "①",
-        "copy": "じゃないか。",
-        "copyNoRuby": "じゃないか。",
+        "copy": "じゃないか",
+        "copyNoRuby": "じゃないか",
         "isCorrect": true,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -255224,7 +255224,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "じゃないか。",
+          "text": "じゃないか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": true,
           "note": "「じゃないか。」는 '~하잖아 ~하지 않은가?'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"하면 되잖아.\")에 자연스럽게 들어맞는 정답입니다."
@@ -255275,8 +255275,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "じゃないですか",
-        "copyNoRuby": "じゃないですか",
+        "copy": "わけではないですか",
+        "copyNoRuby": "わけではないですか",
         "isCorrect": false,
         "trans": "~하잖아 ~하지 않은가?"
       },
@@ -255310,7 +255310,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "じゃないですか",
+          "text": "わけではないですか",
           "trans": "~하잖아 ~하지 않은가?",
           "isCorrect": false,
           "note": "「じゃないですか」: '~하잖아 ~하지 않은가?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 독신이라고 생각하고 있었는데 그렇게 큰 아이까지 있는 거 아니겠어요?\")과 맞지 않습니다."
@@ -255526,8 +255526,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -255561,7 +255561,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 두사람은 오늘 전혀 말을 섞지 않고 있는데 뭔가 있었던 거 아닐까?\")과 맞지 않습니다."
@@ -256072,8 +256072,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "もんじゃないよ",
-        "copyNoRuby": "もんじゃないよ",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -256107,7 +256107,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "もんじゃないよ",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「もんじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본어 시험, 너도 하면 되는 거 아닐까?\")과 맞지 않습니다."
@@ -256151,8 +256151,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "のではないか",
-        "copyNoRuby": "のではないか",
+        "copy": "はずがないか",
+        "copyNoRuby": "はずがないか",
         "isCorrect": false,
         "trans": "~아냐? ~아닐까?"
       },
@@ -256186,7 +256186,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "のではないか",
+          "text": "はずがないか",
           "trans": "~아냐? ~아닐까?",
           "isCorrect": false,
           "note": "「のではないか」: '~아냐? ~아닐까?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"왠지 흐려졌네요. 비가 내리는 거 아닐까요?\")과 맞지 않습니다."
@@ -256216,15 +256216,15 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -256251,14 +256251,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"계속 병으로 결석하고 있던 야마다씨 학교에 왔네. 이제 몸이 괜찮은 거 아닐까?\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "ので",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"계속 병으로 결석하고 있던 야마다씨 학교에 왔네. 이제 몸이 괜찮은 거 아닐까?\")과 맞지 않습니다."
@@ -256295,8 +256295,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -256309,8 +256309,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "んじゃないか",
-        "copyNoRuby": "んじゃないか",
+        "copy": "わけがないか",
+        "copyNoRuby": "わけがないか",
         "isCorrect": false,
         "trans": "~아냐? ~아닐까?"
       },
@@ -256330,7 +256330,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이렇게 큰 소리가 나니까 밖은 엄청난 비가 내리고 있는 거 아닐까?\")과 맞지 않습니다."
@@ -256344,7 +256344,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "んじゃないか",
+          "text": "わけがないか",
           "trans": "~아냐? ~아닐까?",
           "isCorrect": false,
           "note": "「んじゃないか」: '~아냐? ~아닐까?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이렇게 큰 소리가 나니까 밖은 엄청난 비가 내리고 있는 거 아닐까?\")과 맞지 않습니다."
@@ -258291,8 +258291,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       }
@@ -258326,7 +258326,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본인이라고 하면 전부 한자를 읽을 수 있다고 생각되기 십상입니다만 그런 것도 아닙니다.\")과 맞지 않습니다."
@@ -259002,8 +259002,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       }
@@ -259037,7 +259037,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오사카에서 유명한 음식이라고 하면 타코야끼죠.\")과 맞지 않습니다."
@@ -259462,8 +259462,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -259497,7 +259497,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신주쿠나 아키하바라 같은 도시는 외국인에게도 인기있는 관광지입니다.\")과 맞지 않습니다."
@@ -259627,8 +259627,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -259662,7 +259662,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"농업이나 임업 같은 힘든 일은 지금의 젊은이들은 하고 싶어하지 않는다.\")과 맞지 않습니다."
@@ -261911,8 +261911,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -261946,7 +261946,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"다음주에 가족과 여행에 가기 때문에 날씨를 알아봤더니 그다지 좋지 않았기 때문에 접이식 우산을 준비해 두었습니다.\")과 맞지 않습니다."
@@ -262543,8 +262543,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -262578,7 +262578,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"호텔 예약을 하려고 했더니 이번달은 이미 다 차버렸다고 합니다.\")과 맞지 않습니다."
@@ -263247,8 +263247,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -263282,7 +263282,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"후회해 봤자 시간을 이제 과거로는 되돌릴 수 없어.\")과 맞지 않습니다."
@@ -264037,8 +264037,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -264072,7 +264072,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"마침 목욕을 하려고 했던 참에 전화가 걸려왔습니다.\")과 맞지 않습니다."
@@ -264195,8 +264195,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -264230,7 +264230,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨는 영어는 물론이고 일본어와 중국어까지 할 수 있다.\")과 맞지 않습니다."
@@ -264518,8 +264518,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -264553,7 +264553,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"약을 먹어봤는데 증상이 좋아지기는커녕 점점 나빠지고 있다.\")과 맞지 않습니다."
@@ -264611,8 +264611,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -264646,7 +264646,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일요일은 느긋하게 쉴 수 있기는커녕 아이만 돌봐서 엄청 힘들었어.\")과 맞지 않습니다."
@@ -264669,8 +264669,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -264704,7 +264704,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신종바이러스의 감염자는 적어지기는커녕 오히려 점점 증가하고 있다.\")과 맞지 않습니다."
@@ -264740,39 +264740,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～どころか",
     "patternMeaning": "~은 커녕",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "リンゴダイエットはやせる(   )体(からだ)を壊(こわ)しかねないよ。",
-    "qPlain": "リンゴダイエットはやせる(   )体を壊しかねないよ。",
+    "qRuby": "リンゴダイエットはやせる(   )、リンゴだけだと体(からだ)を壊(こわ)しかねないよ。",
+    "qPlain": "リンゴダイエットはやせる(   )、リンゴだけだと体を壊しかねないよ。",
     "qTrans": "사과다이어트는 마르기는커녕 사과만으로는 몸을 버리기 십상이야.",
-    "target": "どころか、リンゴだけだと",
-    "targetNoRuby": "どころか、リンゴだけだと",
+    "target": "どころか",
+    "targetNoRuby": "どころか",
     "options": [
       {
         "marker": "①",
-        "copy": "ほどのことでもない",
-        "copyNoRuby": "ほどのことでもない",
-        "isCorrect": false,
-        "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다"
+        "copy": "どころか",
+        "copyNoRuby": "どころか",
+        "isCorrect": true,
+        "trans": "~커녕"
       },
       {
         "marker": "②",
-        "copy": "ほどのことではないでしょう",
-        "copyNoRuby": "ほどのことではないでしょう",
+        "copy": "ばかりか",
+        "copyNoRuby": "ばかりか",
         "isCorrect": false,
-        "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다"
+        "trans": "~뿐만 아니라"
       },
       {
         "marker": "③",
-        "copy": "どころか、リンゴだけだと",
-        "copyNoRuby": "どころか、リンゴだけだと",
-        "isCorrect": true,
-        "trans": "~은 커녕"
+        "copy": "反面",
+        "copyNoRuby": "反面",
+        "isCorrect": false,
+        "trans": "~인 반면"
       },
       {
         "marker": "④",
-        "copy": "がらなくていいですよ",
-        "copyNoRuby": "がらなくていいですよ",
+        "copy": "一方で",
+        "copyNoRuby": "一方で",
         "isCorrect": false,
-        "trans": "~워하지 말고"
+        "trans": "~하는 한편"
       }
     ],
     "ansJa": "リンゴダイエットはやせるどころか、リンゴだけだと体(からだ)を壊(こわ)しかねないよ。",
@@ -264783,28 +264783,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ほどのことでもない",
+          "text": "どころか",
           "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ほどのことでもない」: '~할 만큼은 아니다, ~할 정도의 일은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사과다이어트는 마르기는커녕 사과만으로는 몸을 버리기 십상이야.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ほどのことではないでしょう",
+          "text": "ばかりか",
           "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다",
           "isCorrect": false,
           "note": "「ほどのことではないでしょう」: '~할 만큼은 아니다, ~할 정도의 일은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사과다이어트는 마르기는커녕 사과만으로는 몸을 버리기 십상이야.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "どころか、リンゴだけだと",
+          "text": "反面",
           "trans": "~은 커녕",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「どころか、リンゴだけだと」는 '~은 커녕'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"사과다이어트는 마르기는커녕 사과만으로는 몸을 버리기 십상이야.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "がらなくていいですよ",
+          "text": "一方で",
           "trans": "~워하지 말고",
           "isCorrect": false,
           "note": "「がらなくていいですよ」: '~워하지 말고'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사과다이어트는 마르기는커녕 사과만으로는 몸을 버리기 십상이야.\")과 맞지 않습니다."
@@ -266241,39 +266241,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～として",
     "patternMeaning": "~로서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "これはアイデア(   )実現(じつげん)するには難(むずか)しいね。",
-    "qPlain": "これはアイデア(   )実現するには難しいね。",
+    "qRuby": "これはアイデア(   )はいいけれど、実現(じつげん)するには難(むずか)しいね。",
+    "qPlain": "これはアイデア(   )はいいけれど、実現するには難しいね。",
     "qTrans": "이것은 아이디어로는 좋지만 실현하기에는 어렵네.",
-    "target": "としてはいいけれど、",
-    "targetNoRuby": "としてはいいけれど、",
+    "target": "として",
+    "targetNoRuby": "として",
     "options": [
       {
         "marker": "①",
-        "copy": "ごときがここまで",
-        "copyNoRuby": "ごときがここまで",
-        "isCorrect": false,
-        "trans": "~같은"
-      },
-      {
-        "marker": "②",
-        "copy": "ということだな",
-        "copyNoRuby": "ということだな",
-        "isCorrect": false,
-        "trans": "1. ~라고 한다 (전문), 2. ~라는 것이다 (결론)"
-      },
-      {
-        "marker": "③",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "として",
+        "copyNoRuby": "として",
         "isCorrect": true,
         "trans": "~로서"
       },
       {
-        "marker": "④",
-        "copy": "よりほかはないです",
-        "copyNoRuby": "よりほかはないです",
+        "marker": "②",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
-        "trans": "~수 밖에 없다"
+        "trans": "~에게 있어서"
+      },
+      {
+        "marker": "③",
+        "copy": "にして",
+        "copyNoRuby": "にして",
+        "isCorrect": false,
+        "trans": "~치고는"
+      },
+      {
+        "marker": "④",
+        "copy": "について",
+        "copyNoRuby": "について",
+        "isCorrect": false,
+        "trans": "~에 대해서"
       }
     ],
     "ansJa": "これはアイデアとしてはいいけれど、実現(じつげん)するには難(むずか)しいね。",
@@ -266284,28 +266284,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ごときがここまで",
+          "text": "として",
           "trans": "~같은",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ごときがここまで」: '~같은'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이것은 아이디어로는 좋지만 실현하기에는 어렵네.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ということだな",
+          "text": "にとって",
           "trans": "1. ~라고 한다 (전문), 2. ~라는 것이다 (결론)",
           "isCorrect": false,
           "note": "「ということだな」: '1. ~라고 한다 (전문), 2. ~라는 것이다 (결론)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이것은 아이디어로는 좋지만 실현하기에는 어렵네.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "としてはいいけれど、",
+          "text": "にして",
           "trans": "~로서",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「としてはいいけれど、」는 '~로서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이것은 아이디어로는 좋지만 실현하기에는 어렵네.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "よりほかはないです",
+          "text": "について",
           "trans": "~수 밖에 없다",
           "isCorrect": false,
           "note": "「よりほかはないです」: '~수 밖에 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이것은 아이디어로는 좋지만 실현하기에는 어렵네.\")과 맞지 않습니다."
@@ -266342,8 +266342,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       },
@@ -266377,7 +266377,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 학교의 비상근교사로서 일하고 있습니다.\")과 맞지 않습니다."
@@ -269322,16 +269322,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～とは",
     "patternMeaning": "~다니, ~라니",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ドリアンがこんなにおいしかった(   )初(はじ)めて知(し)ったよ。",
-    "qPlain": "ドリアンがこんなにおいしかった(   )初めて知ったよ。",
+    "qRuby": "ドリアンがこんなにおいしかった(   )。初(はじ)めて知(し)ったよ。",
+    "qPlain": "ドリアンがこんなにおいしかった(   )。初めて知ったよ。",
     "qTrans": "두리안이 이렇게 맛있었다니! 처음 알았다.",
-    "target": "とは。",
-    "targetNoRuby": "とは。",
+    "target": "とは",
+    "targetNoRuby": "とは",
     "options": [
       {
         "marker": "①",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": true,
         "trans": "~다니, ~라니"
       },
@@ -269365,7 +269365,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~다니, ~라니",
           "isCorrect": true,
           "note": "「とは。」는 '~다니, ~라니'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"두리안이 이렇게 맛있었다니! 처음 알았다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -269509,8 +269509,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -269544,7 +269544,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"퇴원했다고는 해도 아직 안정을 취하지 않으면 안됩니다.\")과 맞지 않습니다."
@@ -269559,16 +269559,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～とはいえ",
     "patternMeaning": "~라고는 해도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "プロ(   )失敗(しっぱい)することだってあります。",
-    "qPlain": "プロ(   )失敗することだってあります。",
+    "qRuby": "プロ(   )、失敗(しっぱい)することだってあります。",
+    "qPlain": "プロ(   )、失敗することだってあります。",
     "qTrans": "프로라고 해도 실패하는 일도 있습니다.",
-    "target": "とはいえ、",
-    "targetNoRuby": "とはいえ、",
+    "target": "とはいえ",
+    "targetNoRuby": "とはいえ",
     "options": [
       {
         "marker": "①",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": true,
         "trans": "~라고는 해도"
       },
@@ -269602,7 +269602,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": true,
           "note": "「とはいえ、」는 '~라고는 해도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"프로라고 해도 실패하는 일도 있습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -269983,8 +269983,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~라고는 해도"
       }
@@ -270018,7 +270018,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とはいえ、",
+          "text": "ので",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남녀평등이라고 해도 세상에는 아직 평등이라고 말 할 수 없는 부분이 있다.\")과 맞지 않습니다."
@@ -270062,8 +270062,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -270097,7 +270097,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"10월이 됐다고 해도 아직 더운 날이 계속되고 있다.\")과 맞지 않습니다."
@@ -270199,8 +270199,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -270234,7 +270234,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"역에서 가깝다고 해서 집세가 10만엔이나 하는 집에는 살 수 없어.\")과 맞지 않습니다."
@@ -270838,15 +270838,15 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
       {
         "marker": "③",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -270873,14 +270873,14 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사람은 실제로 만나보지 않으면 어떤 사람인지 알 수 없어요.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사람은 실제로 만나보지 않으면 어떤 사람인지 알 수 없어요.\")과 맞지 않습니다."
@@ -273215,8 +273215,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -273250,7 +273250,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 요리는 간단하지만 손이 많이 가는 요리처럼 보입니다.\")과 맞지 않습니다."
@@ -273380,8 +273380,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       }
@@ -273415,7 +273415,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 브랜드는 적당한 가격이지만 질과 디자인이 좋아서 인기가 있다.\")과 맞지 않습니다."
@@ -274931,39 +274931,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～なんて",
     "patternMeaning": "~따위, ~라는",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "こちら(   )似合(にあ)いだと思(おも)いますよ。",
-    "qPlain": "こちら(   )似合いだと思いますよ。",
+    "qRuby": "こちら(   )いかがですか。お似合(にあ)いだと思(おも)いますよ。",
+    "qPlain": "こちら(   )いかがですか。お似合いだと思いますよ。",
     "qTrans": "이쪽은 어떠세요? 어울리는데요.",
-    "target": "なんていかがですか。お",
-    "targetNoRuby": "なんていかがですか。お",
+    "target": "なんて",
+    "targetNoRuby": "なんて",
     "options": [
       {
         "marker": "①",
-        "copy": "ったらありゃしない",
-        "copyNoRuby": "ったらありゃしない",
-        "isCorrect": false,
-        "trans": "정말 ~하다, 매우~하다"
+        "copy": "なんて",
+        "copyNoRuby": "なんて",
+        "isCorrect": true,
+        "trans": "~따위, ~같은 것"
       },
       {
         "marker": "②",
-        "copy": "でも差(さ)し支(つか)えありません",
-        "copyNoRuby": "でも差し支えありません",
+        "copy": "など",
+        "copyNoRuby": "など",
         "isCorrect": false,
-        "trans": "~해도 문제없다, ~해도 좋다"
+        "trans": "~등"
       },
       {
         "marker": "③",
-        "copy": "なんていかがですか。お",
-        "copyNoRuby": "なんていかがですか。お",
-        "isCorrect": true,
-        "trans": "~따위, ~라는"
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
+        "isCorrect": false,
+        "trans": "~정도"
       },
       {
         "marker": "④",
-        "copy": "よりほかはないです",
-        "copyNoRuby": "よりほかはないです",
+        "copy": "ばかり",
+        "copyNoRuby": "ばかり",
         "isCorrect": false,
-        "trans": "~수 밖에 없다"
+        "trans": "~만"
       }
     ],
     "ansJa": "こちらなんていかがですか。お似合(にあ)いだと思(おも)いますよ。",
@@ -274974,28 +274974,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ったらありゃしない",
+          "text": "なんて",
           "trans": "정말 ~하다, 매우~하다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ったらありゃしない」: '정말 ~하다, 매우~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이쪽은 어떠세요? 어울리는데요.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "でも差し支えありません",
+          "text": "など",
           "trans": "~해도 문제없다, ~해도 좋다",
           "isCorrect": false,
           "note": "「でも差し支えありません」: '~해도 문제없다, ~해도 좋다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이쪽은 어떠세요? 어울리는데요.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "なんていかがですか。お",
+          "text": "くらい",
           "trans": "~따위, ~라는",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「なんていかがですか。お」는 '~따위, ~라는'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이쪽은 어떠세요? 어울리는데요.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "よりほかはないです",
+          "text": "ばかり",
           "trans": "~수 밖에 없다",
           "isCorrect": false,
           "note": "「よりほかはないです」: '~수 밖에 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이쪽은 어떠세요? 어울리는데요.\")과 맞지 않습니다."
@@ -276763,8 +276763,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -276798,7 +276798,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어떠한 일에서도 최선을 다합니다.\")과 맞지 않습니다."
@@ -277330,8 +277330,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       }
@@ -277365,7 +277365,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시간을 지키는 것은 일에 있어서 최저한의 매너입니다.\")과 맞지 않습니다."
@@ -277546,8 +277546,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -277581,7 +277581,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"초등학교에서의 영어교육은 아직 개선의 여지가 있어.\")과 맞지 않습니다."
@@ -277718,8 +277718,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -277753,7 +277753,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시의회에서의 정치가의 발언이 문제시되었다.\")과 맞지 않습니다."
@@ -278249,16 +278249,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～に応じて",
     "patternMeaning": "~따라서, ~에 맞게",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "お客様(きゃくさま)のニーズ(   )柔軟(じゅうなん)な対応(たいおう)を心(こころ)がけることが大切(たいせつ)です。",
-    "qPlain": "お客様のニーズ(   )柔軟な対応を心がけることが大切です。",
+    "qRuby": "お客様(きゃくさま)のニーズ(   )、柔軟(じゅうなん)な対応(たいおう)を心(こころ)がけることが大切(たいせつ)です。",
+    "qPlain": "お客様のニーズ(   )、柔軟な対応を心がけることが大切です。",
     "qTrans": "손님의 요구에 맞춰 유연한 대응을 유념하고 있는 것이 중요합니다.",
-    "target": "に応(おう)じ、",
-    "targetNoRuby": "に応じ、",
+    "target": "に応(おう)じ",
+    "targetNoRuby": "に応じ",
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": true,
         "trans": "~따라서, ~에 맞게"
       },
@@ -278292,7 +278292,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": true,
           "note": "「に応じ、」는 '~따라서, ~에 맞게'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"손님의 요구에 맞춰 유연한 대응을 유념하고 있는 것이 중요합니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -280081,8 +280081,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -280116,7 +280116,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"연습했음에도 불구하고 긴장해서 잘 발표할 수 없었다.\")과 맞지 않습니다."
@@ -280483,8 +280483,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -280518,7 +280518,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 아이는 초등학생인데도 불구하고 정치에 대해 잘 알고 있습니다.\")과 맞지 않습니다."
@@ -280806,8 +280806,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       }
@@ -280841,7 +280841,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여성뿐 아니라 남성도 육아휴직을 할 수 있는 사회가 됐으면 좋겠다고 생각합니다.\")과 맞지 않습니다."
@@ -280950,8 +280950,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -280985,7 +280985,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 대학은 일본인뿐 아니라 전세계의 유학생을 수용하고 있습니다.\")과 맞지 않습니다."
@@ -281266,8 +281266,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "すぎて、",
-        "copyNoRuby": "すぎて、",
+        "copy": "すぎて",
+        "copyNoRuby": "すぎて",
         "isCorrect": false,
         "trans": "너무~하다"
       },
@@ -281301,7 +281301,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "すぎて、",
+          "text": "すぎて",
           "trans": "너무~하다",
           "isCorrect": false,
           "note": "「すぎて、」: '너무~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본어는 외국인뿐 아니라 일본인에게도 어려운 언어입니다.\")과 맞지 않습니다."
@@ -281905,8 +281905,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -281940,7 +281940,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"전자서적의 영향으로 최근에는 만화뿐 아니라 잡지의 판매량도 떨어졌습니다.\")과 맞지 않습니다."
@@ -282530,8 +282530,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -282565,7 +282565,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"김씨는 영어뿐만 아니고 일본어도 잘합니다.\")과 맞지 않습니다."
@@ -282695,8 +282695,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
+        "copy": "ば",
+        "copyNoRuby": "ば",
         "isCorrect": false,
         "trans": "~면"
       },
@@ -282730,7 +282730,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ば、いつでも",
+          "text": "ば",
           "trans": "~면",
           "isCorrect": false,
           "note": "「ば、いつでも」: '~면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"거래처 분에게 식사를 대접받았을 뿐 아니라 선물까지 받아버렸습니다.\")과 맞지 않습니다."
@@ -282767,8 +282767,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "については、",
-        "copyNoRuby": "については、",
+        "copy": "については",
+        "copyNoRuby": "については",
         "isCorrect": false,
         "trans": "~에 관해서"
       },
@@ -282802,7 +282802,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "については、",
+          "text": "については",
           "trans": "~에 관해서",
           "isCorrect": false,
           "note": "「については、」: '~에 관해서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 일본에서 일본어를 공부했을 뿐 아니라 결혼상대까지 찾았습니다.\")과 맞지 않습니다."
@@ -283241,8 +283241,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -283276,7 +283276,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘 K-POP가수들은 한국뿐 아니라 전세계에서 인기가 있다.\")과 맞지 않습니다."
@@ -283313,8 +283313,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -283348,7 +283348,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"요즘에는 여성뿐만 아니라 남성도 육아휴직을 할 수 있게 됐다.\")과 맞지 않습니다."
@@ -283392,8 +283392,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -283427,7 +283427,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신종바이러스의 영향으로 개인상점뿐만 아니라 대기업도 큰 타격을 입고 있다.\")과 맞지 않습니다."
@@ -284914,10 +284914,10 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "得(え)る",
-        "copyNoRuby": "得る",
+        "copy": "に向(む)け",
+        "copyNoRuby": "に向け",
         "isCorrect": false,
-        "trans": "~할 수 있다"
+        "trans": "~를 향해"
       }
     ],
     "ansJa": "彼(かれ)に限(かぎ)って遅(おく)れるはずがないんだけど、何(なに)かあったのだろうか。",
@@ -284949,7 +284949,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "得る",
+          "text": "に向け",
           "trans": "~할 수 있다",
           "isCorrect": false,
           "note": "「得る」: '~할 수 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 만큼은 늦을 리가 없는데 무슨 일이 있었던 걸까?\")과 맞지 않습니다."
@@ -289317,8 +289317,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -289352,7 +289352,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"소득이 증가됨에 따라 세금 지급도 늘었습니다.\")과 맞지 않습니다."
@@ -290674,8 +290674,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -290709,7 +290709,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"엄마는 나만 혼내. 나쁜 건 남동생인데.\")과 맞지 않습니다."
@@ -292161,8 +292161,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -292196,7 +292196,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시간이 지나기만 하고 전혀 아이디어가 떠오르지 않는다.\")과 맞지 않습니다."
@@ -292728,8 +292728,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -292763,7 +292763,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"결과는 안타까웠지만 결과는 차치하고 노력한 과정이 중요해.\")과 맞지 않습니다."
@@ -292951,8 +292951,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -292986,7 +292986,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"갈지 말지는 그렇다 치고 연락은 하지 않으면 안된다.\")과 맞지 않습니다."
@@ -293741,8 +293741,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -293776,7 +293776,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신주쿠는 주말은 물론 평일도 사람이 많다.\")과 맞지 않습니다."
@@ -293985,8 +293985,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -294020,7 +294020,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"박씨는 성격은 물론 얼굴도 잘 생겼기 때문에 여성에게 인기가 있습니다.\")과 맞지 않습니다."
@@ -294128,11 +294128,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～はもちろん",
     "patternMeaning": "~은 물론",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "このホテルはサービス(   )料理(りょうり)も本当(ほんとう)においしい。",
-    "qPlain": "このホテルはサービス(   )料理も本当においしい。",
+    "qRuby": "このホテルはサービス(   )、料理(りょうり)も本当(ほんとう)においしい。",
+    "qPlain": "このホテルはサービス(   )、料理も本当においしい。",
     "qTrans": "이 호텔은 서비스는 물론 요리도 정말 맛있다.",
-    "target": "はもちろん、",
-    "targetNoRuby": "はもちろん、",
+    "target": "はもちろん",
+    "targetNoRuby": "はもちろん",
     "options": [
       {
         "marker": "①",
@@ -294150,8 +294150,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": true,
         "trans": "~은 물론"
       },
@@ -294185,7 +294185,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": true,
           "note": "「はもちろん、」는 '~은 물론'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 호텔은 서비스는 물론 요리도 정말 맛있다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -294229,8 +294229,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -294264,7 +294264,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 소바가게는 소바는 물론이고 실은 돈가스덮밥이 맛있습니다. 한 번 먹어 보세요.\")과 맞지 않습니다."
@@ -294365,11 +294365,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～はもちろん",
     "patternMeaning": "~은 물론",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "クリスマスはケーキ(   )服(ふく)やおもちゃもたくさん売(う)れる。",
-    "qPlain": "クリスマスはケーキ(   )服やおもちゃもたくさん売れる。",
+    "qRuby": "クリスマスはケーキ(   )、服(ふく)やおもちゃもたくさん売(う)れる。",
+    "qPlain": "クリスマスはケーキ(   )、服やおもちゃもたくさん売れる。",
     "qTrans": "크리스마스 케이크는 물론 옷이나 장난감도 많이 팔린다.",
-    "target": "はもちろん、",
-    "targetNoRuby": "はもちろん、",
+    "target": "はもちろん",
+    "targetNoRuby": "はもちろん",
     "options": [
       {
         "marker": "①",
@@ -294387,8 +294387,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": true,
         "trans": "~은 물론"
       },
@@ -294422,7 +294422,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": true,
           "note": "「はもちろん、」는 '~은 물론'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"크리스마스 케이크는 물론 옷이나 장난감도 많이 팔린다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -295321,8 +295321,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "べきではないよ",
-        "copyNoRuby": "べきではないよ",
+        "copy": "べきである",
+        "copyNoRuby": "べきである",
         "isCorrect": false,
         "trans": "~해서는 안 된다"
       },
@@ -295356,7 +295356,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "べきではないよ",
+          "text": "べきである",
           "trans": "~해서는 안 된다",
           "isCorrect": false,
           "note": "「べきではないよ」: '~해서는 안 된다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"불평만 말하지 말고 우선은 행동부터 해야 하지 않을까?\")과 맞지 않습니다."
@@ -295421,8 +295421,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "べきじゃないかな",
-        "copyNoRuby": "べきじゃないかな",
+        "copy": "べきである",
+        "copyNoRuby": "べきである",
         "isCorrect": false,
         "trans": "~해서는 안 된다"
       }
@@ -295456,7 +295456,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "べきじゃないかな",
+          "text": "べきである",
           "trans": "~해서는 안 된다",
           "isCorrect": false,
           "note": "「べきじゃないかな」: '~해서는 안 된다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사람은 외견으로 판단하면 안되는 법이다.\")과 맞지 않습니다."
@@ -295579,8 +295579,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "べきではないよ",
-        "copyNoRuby": "べきではないよ",
+        "copy": "べきである",
+        "copyNoRuby": "べきである",
         "isCorrect": false,
         "trans": "~해서는 안 된다"
       }
@@ -295614,7 +295614,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "べきではないよ",
+          "text": "べきである",
           "trans": "~해서는 안 된다",
           "isCorrect": false,
           "note": "「べきではないよ」: '~해서는 안 된다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그렇게 간단하게 자신의 꿈을 포기하면 안되는 법이다.\")과 맞지 않습니다."
@@ -295658,8 +295658,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       }
@@ -295693,7 +295693,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"휴대전화가 고장 나버렸지만 수리도 어려워 보이기 때문에 사는 것 외에 방도가 없다.\")과 맞지 않습니다."
@@ -296039,8 +296039,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       },
@@ -296074,7 +296074,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"생활하기 위해서는 일 하는 것 외에 방도가 없다.\")과 맞지 않습니다."
@@ -296197,8 +296197,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -296232,7 +296232,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"마음에 드는 옷이었는데 더러워져서 입을 수 없게 되었기 때문에 버릴 수밖에 없다.\")과 맞지 않습니다."
@@ -296290,8 +296290,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "どころではなく、",
-        "copyNoRuby": "どころではなく、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~은 커녕"
       }
@@ -296325,7 +296325,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "どころではなく、",
+          "text": "ので",
           "trans": "~은 커녕",
           "isCorrect": false,
           "note": "「どころではなく、」: '~은 커녕'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아무도 리더를 하고 싶어하지 않았기 때문에 내가 하는 것 외에 방도가 없었다.\")과 맞지 않습니다."
@@ -297382,8 +297382,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -297417,7 +297417,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어릴 적부터 기르던 반려동물의 죽음은 죽을 만큼 슬펐다.\")과 맞지 않습니다."
@@ -299041,8 +299041,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
+        "copy": "ば",
+        "copyNoRuby": "ば",
         "isCorrect": false,
         "trans": "~면"
       },
@@ -299076,7 +299076,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ば、いつでも",
+          "text": "ば",
           "trans": "~면",
           "isCorrect": false,
           "note": "「ば、いつでも」: '~면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"물어봐서 답한 것뿐으로 내가 말한 것이 아니다.\")과 맞지 않습니다."
@@ -299292,8 +299292,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ものではない",
-        "copyNoRuby": "ものではない",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       }
@@ -299327,7 +299327,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ものではない",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「ものではない」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"남의 가정에 끼어드는 거 아니야.\")과 맞지 않습니다."
@@ -299357,8 +299357,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "からといって、ごはんを",
-        "copyNoRuby": "からといって、ごはんを",
+        "copy": "からといって",
+        "copyNoRuby": "からといって",
         "isCorrect": false,
         "trans": "~한 이상에는"
       },
@@ -299392,7 +299392,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "からといって、ごはんを",
+          "text": "からといって",
           "trans": "~한 이상에는",
           "isCorrect": false,
           "note": "「からといって、ごはんを」: '~한 이상에는'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"타인의 실패를 웃는 게 아니야.\")과 맞지 않습니다."
@@ -299429,15 +299429,15 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
       {
         "marker": "②",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -299464,14 +299464,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사람은 외견으로 판단하면 안되는 법이라고 생각해.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사람은 외견으로 판단하면 안되는 법이라고 생각해.\")과 맞지 않습니다."
@@ -299587,8 +299587,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "もんじゃない",
-        "copyNoRuby": "もんじゃない",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -299622,7 +299622,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "もんじゃない",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「もんじゃない」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"제공된 식사는 남기는 게 아니야. 제대로먹어.\")과 맞지 않습니다."
@@ -299687,8 +299687,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "もんじゃない",
-        "copyNoRuby": "もんじゃない",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       }
@@ -299722,7 +299722,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "もんじゃない",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「もんじゃない」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"열심히 공부해도 좀처럼 만점을 받을 수 있는 게 아닌 법이다.\")과 맞지 않습니다."
@@ -299752,8 +299752,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ものじゃないよ",
-        "copyNoRuby": "ものじゃないよ",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -299787,7 +299787,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ものじゃないよ",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「ものじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인스턴트 식품만 먹으면 안돼. 몸에 좋지 않으니까.\")과 맞지 않습니다."
@@ -300061,8 +300061,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものじゃないよ",
-        "copyNoRuby": "ものじゃないよ",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -300096,7 +300096,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものじゃないよ",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「ものじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"결혼식에 검은 넥타이를 하는게 아닌 법이야.\")과 맞지 않습니다."
@@ -300377,8 +300377,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -300412,7 +300412,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그런 고급주택지에 살 수 있다면 살아보고 싶어.\")과 맞지 않습니다."
@@ -300685,42 +300685,42 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ものなら ~할 수 있다면",
     "patternMeaning": "~할 수 있다면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "やれる(   )",
-    "qPlain": "やれる(   )",
+    "qRuby": "やれる(   )、やってみな。",
+    "qPlain": "やれる(   )、やってみな。",
     "qTrans": "할 수 있으면 해봐!",
-    "target": "もんならやってみな。",
-    "targetNoRuby": "もんならやってみな。",
+    "target": "ものなら",
+    "targetNoRuby": "ものなら",
     "options": [
       {
         "marker": "①",
-        "copy": "たことがない",
-        "copyNoRuby": "たことがない",
-        "isCorrect": false,
-        "trans": "~한 적이 있다"
-      },
-      {
-        "marker": "②",
-        "copy": "もんならやってみな。",
-        "copyNoRuby": "もんならやってみな。",
+        "copy": "ものなら",
+        "copyNoRuby": "ものなら",
         "isCorrect": true,
         "trans": "~할 수 있다면"
       },
       {
-        "marker": "③",
-        "copy": "わけにはいかない",
-        "copyNoRuby": "わけにはいかない",
+        "marker": "②",
+        "copy": "ところで",
+        "copyNoRuby": "ところで",
         "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "trans": "~해 본들"
+      },
+      {
+        "marker": "③",
+        "copy": "ばかりに",
+        "copyNoRuby": "ばかりに",
+        "isCorrect": false,
+        "trans": "~한 탓에"
       },
       {
         "marker": "④",
-        "copy": "ったらありゃしない",
-        "copyNoRuby": "ったらありゃしない",
+        "copy": "くせに",
+        "copyNoRuby": "くせに",
         "isCorrect": false,
-        "trans": "정말 ~하다, 매우~하다"
+        "trans": "~주제에"
       }
     ],
-    "ansJa": "やれるもんならやってみな。",
+    "ansJa": "やれるものなら、やってみな。",
     "ansKo": "할 수 있으면 해봐!",
     "expl": {
       "main": "「～ものなら ~할 수 있다면」 표현은 한국어로 \"~할 수 있다면\"을(를) 의미하며, N2 시험 빈출 핵심 문형입니다.",
@@ -300728,28 +300728,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "たことがない",
+          "text": "ものなら",
           "trans": "~한 적이 있다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「たことがない」: '~한 적이 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"할 수 있으면 해봐!\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "もんならやってみな。",
+          "text": "ところで",
           "trans": "~할 수 있다면",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「もんならやってみな。」는 '~할 수 있다면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"할 수 있으면 해봐!\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "わけにはいかない",
+          "text": "ばかりに",
           "trans": "~할 수는 없다",
           "isCorrect": false,
           "note": "「わけにはいかない」: '~할 수는 없다'(이)라는 뜻으로, 심리적/도덕적 이유로 할 수 없음을 나타내는 표현으로 문맥에 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "ったらありゃしない",
+          "text": "くせに",
           "trans": "정말 ~하다, 매우~하다",
           "isCorrect": false,
           "note": "「ったらありゃしない」: '정말 ~하다, 매우~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"할 수 있으면 해봐!\")과 맞지 않습니다."
@@ -301001,39 +301001,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ものなら ~할 수 있다면",
     "patternMeaning": "~할 수 있다면",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "モデルなんて、なれる(   )",
-    "qPlain": "モデルなんて、なれる(   )",
+    "qRuby": "モデルなんて、なれる(   )なってみたいよね。",
+    "qPlain": "モデルなんて、なれる(   )なってみたいよね。",
     "qTrans": "모델 따위 될 수 있는 거라면 되어보고 싶어.",
-    "target": "ものならなってみたいよね。",
-    "targetNoRuby": "ものならなってみたいよね。",
+    "target": "ものなら",
+    "targetNoRuby": "ものなら",
     "options": [
       {
         "marker": "①",
-        "copy": "ものならなってみたいよね。",
-        "copyNoRuby": "ものならなってみたいよね。",
+        "copy": "ものなら",
+        "copyNoRuby": "ものなら",
         "isCorrect": true,
         "trans": "~할 수 있다면"
       },
       {
         "marker": "②",
-        "copy": "ほどのことではないです",
-        "copyNoRuby": "ほどのことではないです",
+        "copy": "ところで",
+        "copyNoRuby": "ところで",
         "isCorrect": false,
-        "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다"
+        "trans": "~해 본들"
       },
       {
         "marker": "③",
-        "copy": "ことはありませんよ",
-        "copyNoRuby": "ことはありませんよ",
+        "copy": "ばかりに",
+        "copyNoRuby": "ばかりに",
         "isCorrect": false,
-        "trans": "~할 필요는 없다"
+        "trans": "~한 탓에"
       },
       {
         "marker": "④",
-        "copy": "といったらなかった",
-        "copyNoRuby": "といったらなかった",
+        "copy": "くせに",
+        "copyNoRuby": "くせに",
         "isCorrect": false,
-        "trans": "정말 ~하다, 매우~하다"
+        "trans": "~주제에"
       }
     ],
     "ansJa": "モデルなんて、なれるものならなってみたいよね。",
@@ -301044,28 +301044,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものならなってみたいよね。",
+          "text": "ものなら",
           "trans": "~할 수 있다면",
           "isCorrect": true,
           "note": "「ものならなってみたいよね。」는 '~할 수 있다면'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"모델 따위 될 수 있는 거라면 되어보고 싶어.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "ほどのことではないです",
+          "text": "ところで",
           "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다",
           "isCorrect": false,
           "note": "「ほどのことではないです」: '~할 만큼은 아니다, ~할 정도의 일은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모델 따위 될 수 있는 거라면 되어보고 싶어.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ことはありませんよ",
+          "text": "ばかりに",
           "trans": "~할 필요는 없다",
           "isCorrect": false,
           "note": "「ことはありませんよ」: '~할 필요는 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모델 따위 될 수 있는 거라면 되어보고 싶어.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "といったらなかった",
+          "text": "くせに",
           "trans": "정말 ~하다, 매우~하다",
           "isCorrect": false,
           "note": "「といったらなかった」: '정말 ~하다, 매우~하다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"모델 따위 될 수 있는 거라면 되어보고 싶어.\")과 맞지 않습니다."
@@ -301806,8 +301806,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -301841,7 +301841,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"옛날에는 부모님께 말대꾸를 했다가는 맞았었습니다.\")과 맞지 않습니다."
@@ -305217,8 +305217,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -305252,7 +305252,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"바쁠 경우에는 도와주러 갈 테니 연락주세요.\")과 맞지 않습니다."
@@ -305763,8 +305763,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -305798,7 +305798,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"만일 올 수 있을 거 같으면 와주세요.\")과 맞지 않습니다."
@@ -307508,8 +307508,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       }
@@ -307543,7 +307543,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"내일 소풍은 날씨와 상관없이 실시하므로 도시락 준비를 부탁드립니다.\")과 맞지 않습니다."
@@ -307731,8 +307731,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -307766,7 +307766,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 가방은 성별불문 젊은 층에 인기가 있습니다.\")과 맞지 않습니다."
@@ -308061,8 +308061,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -308096,7 +308096,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "ので",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"작년은 기무라 선생님을 비롯하여 많은 선생님들께 신세를 졌습니다.\")과 맞지 않습니다."
@@ -308111,11 +308111,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～をはじめ",
     "patternMeaning": "~을 비롯하여",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ジーンズはアメリカ(   )世界中(せかいじゅう)の国(くに)で履(は)かれるようになりました。",
-    "qPlain": "ジーンズはアメリカ(   )世界中の国で履かれるようになりました。",
+    "qRuby": "ジーンズはアメリカ(   )、世界中(せかいじゅう)の国(くに)で履(は)かれるようになりました。",
+    "qPlain": "ジーンズはアメリカ(   )、世界中の国で履かれるようになりました。",
     "qTrans": "청바지는 미국을 시작으로 전세계의 나라에서 입혀지게 되었습니다.",
-    "target": "をはじめ、",
-    "targetNoRuby": "をはじめ、",
+    "target": "をはじめ",
+    "targetNoRuby": "をはじめ",
     "options": [
       {
         "marker": "①",
@@ -308140,8 +308140,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": true,
         "trans": "~을 비롯하여"
       }
@@ -308175,7 +308175,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": true,
           "note": "「をはじめ、」는 '~을 비롯하여'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"청바지는 미국을 시작으로 전세계의 나라에서 입혀지게 되었습니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -308377,8 +308377,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -308412,7 +308412,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "ので",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 성과는 함께 열심히 해준 팀 멤버를 비롯해 많은 분들의 협력 덕분입니다.\")과 맞지 않습니다."
@@ -308923,8 +308923,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -308958,7 +308958,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인기가수의 연애스캔들을 둘러싸고 다양한 소문이 난무하고 있다.\")과 맞지 않습니다."
@@ -309088,8 +309088,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       }
@@ -309123,7 +309123,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"지구의 기원을 둘러싸고 격렬한 논의가 나눠졌다.\")과 맞지 않습니다."
@@ -309232,8 +309232,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -309267,7 +309267,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"국회에서는 고등학교의 학비를 무료로 할지 어떨지를 둘러싸고 논의가 이루어졌습니다.\")과 맞지 않습니다."
@@ -309311,8 +309311,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -309346,7 +309346,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"조례 개정을 둘러싸고 서명운동이 일어나고 있다.\")과 맞지 않습니다."
@@ -309390,8 +309390,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -309425,7 +309425,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번대회, 우승상금 100만을 둘러싸고 열렬한 싸움이 행해졌습니다.\")과 맞지 않습니다."
@@ -309620,8 +309620,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -309655,7 +309655,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 문제를 둘러싸고 여러 의견이 나오고 있습니다만 아직 해결에는 시간이 걸릴 것 같습니다.\")과 맞지 않습니다."
@@ -309878,8 +309878,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -309913,7 +309913,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 이 프로젝트 팀에서 뺄 수 없는 존재입니다.\")과 맞지 않습니다."
@@ -310094,8 +310094,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -310129,7 +310129,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"누가 했다고 해도 팀 전체에 연대 책입니다.\")과 맞지 않습니다."
@@ -310417,8 +310417,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -310452,7 +310452,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"사전에 예약했기 때문에 기다리지 않아도 됐습니다.\")과 맞지 않습니다."
@@ -310819,8 +310819,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -310854,7 +310854,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"실패했다가는 잘려버려(해고당해버려)\")과 맞지 않습니다."
@@ -311451,8 +311451,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -311486,7 +311486,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 과자는 먹기 시작하면 계속 쭉 먹어 버린다.\")과 맞지 않습니다."
@@ -312471,8 +312471,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -312506,7 +312506,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"건강하지 않으면 행복 할 수 없어.\")과 맞지 않습니다."
@@ -313275,8 +313275,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       }
@@ -313310,7 +313310,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"입학시의 등록금은 이유여하에 관계없이 반환되지 않으니 양해 부탁드립니다.\")과 맞지 않습니다."
@@ -313491,8 +313491,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものじゃないよ",
-        "copyNoRuby": "ものじゃないよ",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -313526,7 +313526,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものじゃないよ",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「ものじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"목적 여하를 불문하고 이하의 국가로의 도항은 삼가주십시오.\")과 맞지 않습니다."
@@ -314065,8 +314065,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       }
@@ -314100,7 +314100,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀가 쓴 논문의 서툶은 부정할 수 없지만 흥미진진한 것도 사실입니다.\")과 맞지 않습니다."
@@ -315078,8 +315078,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -315113,7 +315113,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"결혼 인사 겸 한번 찾아 뵙겠습니다.\")과 맞지 않습니다."
@@ -315387,8 +315387,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -315422,7 +315422,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"병문안 겸 병원 근처에 있는 친구네 집을 방문했습니다.\")과 맞지 않습니다."
@@ -315631,8 +315631,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -315666,7 +315666,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"다나카씨는 유학생으로서 영어를 공부하는 한편 미국인에게 일본어를 가르쳐 주고 있다.\")과 맞지 않습니다."
@@ -317218,8 +317218,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "から、もっと",
-        "copyNoRuby": "から、もっと",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -317253,7 +317253,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "から、もっと",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、もっと」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이산화탄소는 산소와 탄소로 구성된다.\")과 맞지 않습니다."
@@ -317606,8 +317606,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -317641,7 +317641,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"축구는 한 팀11명의 구성이다.\")과 맞지 않습니다."
@@ -317692,8 +317692,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものじゃないよ",
-        "copyNoRuby": "ものじゃないよ",
+        "copy": "わけではない",
+        "copyNoRuby": "わけではない",
         "isCorrect": false,
         "trans": "~하는게 아니다"
       },
@@ -317727,7 +317727,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものじゃないよ",
+          "text": "わけではない",
           "trans": "~하는게 아니다",
           "isCorrect": false,
           "note": "「ものじゃないよ」: '~하는게 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 합창단은 남녀 합쳐 30명의 단원으로 구성되어 있다.\")과 맞지 않습니다."
@@ -318008,8 +318008,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -318043,7 +318043,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"100만엔이나 하는 차를 샀습니다.\")과 맞지 않습니다."
@@ -318073,8 +318073,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -318094,8 +318094,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       }
@@ -318108,7 +318108,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 주변은 교통편도 좋기 때문에 집값은 싸더라도 10만엔이나 한다.\")과 맞지 않습니다."
@@ -318129,7 +318129,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 주변은 교통편도 좋기 때문에 집값은 싸더라도 10만엔이나 한다.\")과 맞지 않습니다."
@@ -318166,8 +318166,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ので、",
-        "copyNoRuby": "ので、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "(원인, 이유) ~때문에"
       },
@@ -318201,7 +318201,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ので、",
+          "text": "ので",
           "trans": "(원인, 이유) ~때문에",
           "isCorrect": false,
           "note": "「ので、」: '(원인, 이유) ~때문에'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그가 100만엔이나 하는 반지를 약혼반지로 줬다.\")과 맞지 않습니다."
@@ -318231,15 +318231,15 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
       {
         "marker": "②",
-        "copy": "べきじゃない",
-        "copyNoRuby": "べきじゃない",
+        "copy": "べきである",
+        "copyNoRuby": "べきである",
         "isCorrect": false,
         "trans": "~해서는 안 된다"
       },
@@ -318266,14 +318266,14 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여동생은 뭐든 혼자서 해결하려고 하는 경향이 있다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "べきじゃない",
+          "text": "べきである",
           "trans": "~해서는 안 된다",
           "isCorrect": false,
           "note": "「べきじゃない」: '~해서는 안 된다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여동생은 뭐든 혼자서 해결하려고 하는 경향이 있다.\")과 맞지 않습니다."
@@ -318719,8 +318719,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -318754,7 +318754,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그 선배는 일을 과장해서 말하는 경향이 있으니까 반절 정도만 믿는 게 좋다고 생각합니다.\")과 맞지 않습니다."
@@ -319645,39 +319645,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ごとき",
     "patternMeaning": "~같은",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "たかがゲーム(   )",
-    "qPlain": "たかがゲーム(   )",
+    "qRuby": "たかがゲーム(   )でそんなにむきになるなよ。",
+    "qPlain": "たかがゲーム(   )でそんなにむきになるなよ。",
     "qTrans": "고작 게임 같은 거에 그렇게 화내지마.",
-    "target": "ごときでそんなにむきになるなよ。",
-    "targetNoRuby": "ごときでそんなにむきになるなよ。",
+    "target": "ごとき",
+    "targetNoRuby": "ごとき",
     "options": [
       {
         "marker": "①",
-        "copy": "ごときでそんなにむきになるなよ。",
-        "copyNoRuby": "ごときでそんなにむきになるなよ。",
+        "copy": "ごとき",
+        "copyNoRuby": "ごとき",
         "isCorrect": true,
-        "trans": "~같은"
+        "trans": "~따위, ~같은 것"
       },
       {
         "marker": "②",
-        "copy": "ずには済(す)まなかった",
-        "copyNoRuby": "ずには済まなかった",
+        "copy": "ばかり",
+        "copyNoRuby": "ばかり",
         "isCorrect": false,
-        "trans": "~해야 한다, ~하지 않으면 해결되지 않는다"
+        "trans": "~정도"
       },
       {
         "marker": "③",
-        "copy": "ならいざしらず、そんなおしゃれして",
-        "copyNoRuby": "ならいざしらず、そんなおしゃれして",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
-        "trans": "~라면 몰라도"
+        "trans": "~만큼"
       },
       {
         "marker": "④",
-        "copy": "わけにはいかない",
-        "copyNoRuby": "わけにはいかない",
+        "copy": "ほど",
+        "copyNoRuby": "ほど",
         "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "trans": "~정도"
       }
     ],
     "ansJa": "たかがゲームごときでそんなにむきになるなよ。",
@@ -319688,28 +319688,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ごときでそんなにむきになるなよ。",
+          "text": "ごとき",
           "trans": "~같은",
           "isCorrect": true,
           "note": "「ごときでそんなにむきになるなよ。」는 '~같은'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"고작 게임 같은 거에 그렇게 화내지마.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "ずには済まなかった",
+          "text": "ばかり",
           "trans": "~해야 한다, ~하지 않으면 해결되지 않는다",
           "isCorrect": false,
           "note": "「ずには済まなかった」: '~해야 한다, ~하지 않으면 해결되지 않는다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"고작 게임 같은 거에 그렇게 화내지마.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ならいざしらず、そんなおしゃれして",
+          "text": "くらい",
           "trans": "~라면 몰라도",
           "isCorrect": false,
           "note": "「ならいざしらず、そんなおしゃれして」: '~라면 몰라도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"고작 게임 같은 거에 그렇게 화내지마.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "わけにはいかない",
+          "text": "ほど",
           "trans": "~할 수는 없다",
           "isCorrect": false,
           "note": "「わけにはいかない」: '~할 수는 없다'(이)라는 뜻으로, 심리적/도덕적 이유로 할 수 없음을 나타내는 표현으로 문맥에 맞지 않습니다."
@@ -319897,8 +319897,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -319932,7 +319932,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 신제품은 날개 돋친듯 팔리고 있다.\")과 맞지 않습니다."
@@ -320830,11 +320830,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ことだし",
     "patternMeaning": "~이니, ~이기도 하니",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "お腹(なか)もすいてきた(   )何(なに)か食(た)べに行(い)こうか。",
-    "qPlain": "お腹もすいてきた(   )何か食べに行こうか。",
+    "qRuby": "お腹(なか)もすいてきた(   )、何(なに)か食(た)べに行(い)こうか。",
+    "qPlain": "お腹もすいてきた(   )、何か食べに行こうか。",
     "qTrans": "배도 고파졌으니 뭔가 먹으러 갈까?",
-    "target": "ことだし、",
-    "targetNoRuby": "ことだし、",
+    "target": "ことだし",
+    "targetNoRuby": "ことだし",
     "options": [
       {
         "marker": "①",
@@ -320859,8 +320859,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": true,
         "trans": "~이니, ~이기도 하니"
       }
@@ -320894,7 +320894,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": true,
           "note": "「ことだし、」는 '~이니, ~이기도 하니'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"배도 고파졌으니 뭔가 먹으러 갈까?\")에 자연스럽게 들어맞는 정답입니다."
@@ -321003,8 +321003,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -321038,7 +321038,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"급해서 아무런 대접도 못 해드려 죄송합니다.\")과 맞지 않습니다."
@@ -321161,8 +321161,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       },
@@ -321196,7 +321196,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"갑작스러워 아무것도 준비가 되어 있지 않습니다.\")과 맞지 않습니다."
@@ -322030,8 +322030,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -322065,7 +322065,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 세상은 상처 입지 않고 살아가는 것은 어렵겠지.\")과 맞지 않습니다."
@@ -322181,8 +322181,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -322216,7 +322216,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 사람은 언제나 생각하지 않고 행동하고 있는 것 같아 미치겠어.\")과 맞지 않습니다."
@@ -322971,8 +322971,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -323006,7 +323006,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 휴일이지만 문제가 발생해서 회사에 가지 않을 수 없다.\")과 맞지 않습니다."
@@ -324235,8 +324235,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -324256,8 +324256,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -324270,7 +324270,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신종 바이러스의 영향으로 대부분의 친구를 만나지 못한 채 일 년이 끝났다.\")과 맞지 않습니다."
@@ -324291,7 +324291,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"신종 바이러스의 영향으로 대부분의 친구를 만나지 못한 채 일 년이 끝났다.\")과 맞지 않습니다."
@@ -324867,8 +324867,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "どころではなく、",
-        "copyNoRuby": "どころではなく、",
+        "copy": "どころではなく",
+        "copyNoRuby": "どころではなく",
         "isCorrect": false,
         "trans": "~은 커녕"
       },
@@ -324902,7 +324902,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "どころではなく、",
+          "text": "どころではなく",
           "trans": "~은 커녕",
           "isCorrect": false,
           "note": "「どころではなく、」: '~은 커녕'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 가게의 카레냄새 맛있을 것 같다. 이런 냄새 맡으면 먹지 않을 수 없지.\")과 맞지 않습니다."
@@ -329937,8 +329937,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -329972,7 +329972,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"어떤 이유든 책임자가 책임을 져야 하는 법이다.\")과 맞지 않습니다."
@@ -330181,8 +330181,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -330216,7 +330216,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아이여도 타인에게 민폐를 끼치는 것은 좋지 않은 일입니다.\")과 맞지 않습니다."
@@ -330720,8 +330720,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -330755,7 +330755,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 사진, 너무 하지 않아? 좀 더 다른 사진이 있었을 텐데.\")과 맞지 않습니다."
@@ -331043,8 +331043,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -331078,7 +331078,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이만큼의 일을 혼자서 전부 한 거야? 힘들었을 텐데, 정말 고생했어.\")과 맞지 않습니다."
@@ -332379,8 +332379,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -332414,7 +332414,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시대에 따라서 사람들의 생활이 바뀌고 있습니다.\")과 맞지 않습니다."
@@ -332537,8 +332537,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -332572,7 +332572,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아빠는 매일 밤 맥주를 마시기 때문에 살이 찌고 있습니다.\")과 맞지 않습니다."
@@ -334124,8 +334124,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -334159,7 +334159,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"죄송해요 기사님, 여기서 괜찮습니다.\")과 맞지 않습니다."
@@ -334655,39 +334655,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～てからというもの",
     "patternMeaning": "~하고 나서 계속",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "たばこをやめ(   )感(かん)じられるようになった。",
-    "qPlain": "たばこをやめ(   )感じられるようになった。",
+    "qRuby": "たばこをやめ(   )、ごはんがおいしく感(かん)じられるようになった。",
+    "qPlain": "たばこをやめ(   )、ごはんがおいしく感じられるようになった。",
     "qTrans": "담배를 그만두고 나서 밥이 맛있다고 느껴지게 되었다.",
-    "target": "てからというもの、ごはんがおいしく",
-    "targetNoRuby": "てからというもの、ごはんがおいしく",
+    "target": "てからというもの",
+    "targetNoRuby": "てからというもの",
     "options": [
       {
         "marker": "①",
-        "copy": "わけにはいかない",
-        "copyNoRuby": "わけにはいかない",
-        "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "copy": "てからというもの",
+        "copyNoRuby": "てからというもの",
+        "isCorrect": true,
+        "trans": "~하고 나서부터 줄곧"
       },
       {
         "marker": "②",
-        "copy": "にほかなりません",
-        "copyNoRuby": "にほかなりません",
+        "copy": "てはじめて",
+        "copyNoRuby": "てはじめて",
         "isCorrect": false,
-        "trans": "바로~이다"
+        "trans": "~하고 나서 비로소"
       },
       {
         "marker": "③",
-        "copy": "てからというもの、ごはんがおいしく",
-        "copyNoRuby": "てからというもの、ごはんがおいしく",
-        "isCorrect": true,
-        "trans": "~하고 나서 계속"
+        "copy": "ていらい",
+        "copyNoRuby": "ていらい",
+        "isCorrect": false,
+        "trans": "~한 이래"
       },
       {
         "marker": "④",
-        "copy": "にちがいない",
-        "copyNoRuby": "にちがいない",
+        "copy": "たところで",
+        "copyNoRuby": "たところで",
         "isCorrect": false,
-        "trans": "~임에 틀림없다"
+        "trans": "~해 봤자"
       }
     ],
     "ansJa": "たばこをやめてからというもの、ごはんがおいしく感(かん)じられるようになった。",
@@ -334698,28 +334698,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "わけにはいかない",
+          "text": "てからというもの",
           "trans": "~할 수는 없다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「わけにはいかない」: '~할 수는 없다'(이)라는 뜻으로, 심리적/도덕적 이유로 할 수 없음을 나타내는 표현으로 문맥에 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "にほかなりません",
+          "text": "てはじめて",
           "trans": "바로~이다",
           "isCorrect": false,
           "note": "「にほかなりません」: '바로~이다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"담배를 그만두고 나서 밥이 맛있다고 느껴지게 되었다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "てからというもの、ごはんがおいしく",
+          "text": "ていらい",
           "trans": "~하고 나서 계속",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「てからというもの、ごはんがおいしく」는 '~하고 나서 계속'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"담배를 그만두고 나서 밥이 맛있다고 느껴지게 되었다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "にちがいない",
+          "text": "たところで",
           "trans": "~임에 틀림없다",
           "isCorrect": false,
           "note": "「にちがいない」: '~임에 틀림없다'(이)라는 뜻으로, 확신에 찬 추측 표현으로 본 문맥과 어울리지 않습니다."
@@ -334756,8 +334756,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -334791,7 +334791,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"독립 생활을 시작하고 나서 인스턴트식품을 많이 먹게 되었다.\")과 맞지 않습니다."
@@ -335216,8 +335216,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "なんていかがですか。お",
-        "copyNoRuby": "なんていかがですか。お",
+        "copy": "なんて",
+        "copyNoRuby": "なんて",
         "isCorrect": false,
         "trans": "~따위, ~라는"
       },
@@ -335230,8 +335230,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       },
@@ -335251,7 +335251,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "なんていかがですか。お",
+          "text": "なんて",
           "trans": "~따위, ~라는",
           "isCorrect": false,
           "note": "「なんていかがですか。お」: '~따위, ~라는'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"스마트폰이 있으면 컴퓨터가 없어도 괜찮습니다.\")과 맞지 않습니다."
@@ -335265,7 +335265,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"스마트폰이 있으면 컴퓨터가 없어도 괜찮습니다.\")과 맞지 않습니다."
@@ -335388,8 +335388,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "からといって、ごはんを",
-        "copyNoRuby": "からといって、ごはんを",
+        "copy": "からといって",
+        "copyNoRuby": "からといって",
         "isCorrect": false,
         "trans": "~한 이상에는"
       },
@@ -335423,7 +335423,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "からといって、ごはんを",
+          "text": "からといって",
           "trans": "~한 이상에는",
           "isCorrect": false,
           "note": "「からといって、ごはんを」: '~한 이상에는'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"출결 연락은 메일로도 괜찮습니다.\")과 맞지 않습니다."
@@ -336889,8 +336889,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -336924,7 +336924,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시험 결과가 신경 쓰여 미치겠다.\")과 맞지 않습니다."
@@ -337578,39 +337578,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ではあるまいし",
     "patternMeaning": "~도 아니고, ~도 아닌데",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ドラマ(   )起(お)きるわけないよ。",
-    "qPlain": "ドラマ(   )起きるわけないよ。",
+    "qRuby": "ドラマ(   )、そんなこと起(お)きるわけないよ。",
+    "qPlain": "ドラマ(   )、そんなこと起きるわけないよ。",
     "qTrans": "드라마도 아니고 그런 일 일어날 리 없어.",
-    "target": "でもあるまいし、そんなこと",
-    "targetNoRuby": "でもあるまいし、そんなこと",
+    "target": "でもあるまいし",
+    "targetNoRuby": "でもあるまいし",
     "options": [
       {
         "marker": "①",
-        "copy": "どころではありません",
-        "copyNoRuby": "どころではありません",
-        "isCorrect": false,
-        "trans": "~할 상황이 아니다"
+        "copy": "でもあるまいし",
+        "copyNoRuby": "でもあるまいし",
+        "isCorrect": true,
+        "trans": "~도 아니고"
       },
       {
         "marker": "②",
-        "copy": "よりほかはないです",
-        "copyNoRuby": "よりほかはないです",
+        "copy": "ではなくて",
+        "copyNoRuby": "ではなくて",
         "isCorrect": false,
-        "trans": "~수 밖에 없다"
+        "trans": "~가 아니라"
       },
       {
         "marker": "③",
-        "copy": "でもあるまいし、そんなこと",
-        "copyNoRuby": "でもあるまいし、そんなこと",
-        "isCorrect": true,
-        "trans": "~도 아니고, ~도 아닌데"
+        "copy": "ではないが",
+        "copyNoRuby": "ではないが",
+        "isCorrect": false,
+        "trans": "~는 아니지만"
       },
       {
         "marker": "④",
-        "copy": "からといって、ごはんを",
-        "copyNoRuby": "からといって、ごはんを",
+        "copy": "ではなく",
+        "copyNoRuby": "ではなく",
         "isCorrect": false,
-        "trans": "~한 이상에는"
+        "trans": "~가 아니고"
       }
     ],
     "ansJa": "ドラマでもあるまいし、そんなこと起(お)きるわけないよ。",
@@ -337621,28 +337621,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "どころではありません",
+          "text": "でもあるまいし",
           "trans": "~할 상황이 아니다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「どころではありません」: '~할 상황이 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"드라마도 아니고 그런 일 일어날 리 없어.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "よりほかはないです",
+          "text": "ではなくて",
           "trans": "~수 밖에 없다",
           "isCorrect": false,
           "note": "「よりほかはないです」: '~수 밖에 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"드라마도 아니고 그런 일 일어날 리 없어.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "でもあるまいし、そんなこと",
+          "text": "ではないが",
           "trans": "~도 아니고, ~도 아닌데",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「でもあるまいし、そんなこと」는 '~도 아니고, ~도 아닌데'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"드라마도 아니고 그런 일 일어날 리 없어.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "からといって、ごはんを",
+          "text": "ではなく",
           "trans": "~한 이상에는",
           "isCorrect": false,
           "note": "「からといって、ごはんを」: '~한 이상에는'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"드라마도 아니고 그런 일 일어날 리 없어.\")과 맞지 않습니다."
@@ -337736,39 +337736,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ではあるまいし",
     "patternMeaning": "~도 아니고, ~도 아닌데",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ゲーム(   )簡単(かんたん)に人生(じんせい)はリセットできないんだよ。",
-    "qPlain": "ゲーム(   )簡単に人生はリセットできないんだよ。",
+    "qRuby": "ゲーム(   )、そんな簡単(かんたん)に人生(じんせい)はリセットできないんだよ。",
+    "qPlain": "ゲーム(   )、そんな簡単に人生はリセットできないんだよ。",
     "qTrans": "게임도 아니고 그렇게 간단하게 인생을 리셋할 수 없어.",
-    "target": "じゃあるまいし、そんな",
-    "targetNoRuby": "じゃあるまいし、そんな",
+    "target": "じゃあるまいし",
+    "targetNoRuby": "じゃあるまいし",
     "options": [
       {
         "marker": "①",
-        "copy": "ないではいられません",
-        "copyNoRuby": "ないではいられません",
-        "isCorrect": false,
-        "trans": "~하지 않고 있을 수 없다"
+        "copy": "じゃあるまいし",
+        "copyNoRuby": "じゃあるまいし",
+        "isCorrect": true,
+        "trans": "~도 아니고"
       },
       {
         "marker": "②",
-        "copy": "でもあるまいし、そんなこと",
-        "copyNoRuby": "でもあるまいし、そんなこと",
+        "copy": "じゃなくて",
+        "copyNoRuby": "じゃなくて",
         "isCorrect": false,
-        "trans": "~도 아니고, ~도 아닌데"
+        "trans": "~가 아니라"
       },
       {
         "marker": "③",
-        "copy": "じゃあるまいし、そんな",
-        "copyNoRuby": "じゃあるまいし、そんな",
-        "isCorrect": true,
-        "trans": "~도 아니고, ~도 아닌데"
+        "copy": "じゃないが",
+        "copyNoRuby": "じゃないが",
+        "isCorrect": false,
+        "trans": "~는 아니지만"
       },
       {
         "marker": "④",
-        "copy": "ことはありませんよ",
-        "copyNoRuby": "ことはありませんよ",
+        "copy": "ではないが",
+        "copyNoRuby": "ではないが",
         "isCorrect": false,
-        "trans": "~할 필요는 없다"
+        "trans": "~는 아니지만"
       }
     ],
     "ansJa": "ゲームじゃあるまいし、そんな簡単(かんたん)に人生(じんせい)はリセットできないんだよ。",
@@ -337779,28 +337779,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ないではいられません",
+          "text": "じゃあるまいし",
           "trans": "~하지 않고 있을 수 없다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ないではいられません」: '~하지 않고 있을 수 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"게임도 아니고 그렇게 간단하게 인생을 리셋할 수 없어.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "でもあるまいし、そんなこと",
+          "text": "じゃなくて",
           "trans": "~도 아니고, ~도 아닌데",
           "isCorrect": false,
           "note": "「でもあるまいし、そんなこと」: '~도 아니고, ~도 아닌데'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"게임도 아니고 그렇게 간단하게 인생을 리셋할 수 없어.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "じゃあるまいし、そんな",
+          "text": "じゃないが",
           "trans": "~도 아니고, ~도 아닌데",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「じゃあるまいし、そんな」는 '~도 아니고, ~도 아닌데'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"게임도 아니고 그렇게 간단하게 인생을 리셋할 수 없어.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "ことはありませんよ",
+          "text": "ではないが",
           "trans": "~할 필요는 없다",
           "isCorrect": false,
           "note": "「ことはありませんよ」: '~할 필요는 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"게임도 아니고 그렇게 간단하게 인생을 리셋할 수 없어.\")과 맞지 않습니다."
@@ -338713,8 +338713,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       }
@@ -338748,7 +338748,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 정치가는 답변 중에 자신의 책임이 아니라고 말하기를 주저하지 않았다.\")과 맞지 않습니다."
@@ -338785,8 +338785,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -338820,7 +338820,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 사람은 이번 실수를 타인의 탓을 하기를 주저하지 않았다.\")과 맞지 않습니다."
@@ -340602,8 +340602,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -340637,7 +340637,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 세계에 신은 존재한다고 믿는다.\")과 맞지 않습니다."
@@ -340990,8 +340990,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -341025,7 +341025,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 과자는 단맛과 짠맛이 어우러져 한번 먹으면 그만 둘 수 없다.\")과 맞지 않습니다."
@@ -341083,8 +341083,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       }
@@ -341118,7 +341118,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 폐교는 짙은 안개와 어우러져 섬뜩한 분위기에 둘러싸여 있다.\")과 맞지 않습니다."
@@ -341449,11 +341449,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～とあって",
     "patternMeaning": "~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "サミット(   )街(まち)は厳重(げんじゅう)な警戒態勢(げんかいたいせい)がひかれている。",
-    "qPlain": "サミット(   )街は厳重な警戒態勢がひかれている。",
+    "qRuby": "サミット(   )、街(まち)は厳重(げんじゅう)な警戒態勢(げんかいたいせい)がひかれている。",
+    "qPlain": "サミット(   )、街は厳重な警戒態勢がひかれている。",
     "qTrans": "정상회담이라서 거리는 엄중한 경계태세가 깔려있다.",
-    "target": "とあって、",
-    "targetNoRuby": "とあって、",
+    "target": "とあって",
+    "targetNoRuby": "とあって",
     "options": [
       {
         "marker": "①",
@@ -341478,8 +341478,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": true,
         "trans": "~라서"
       }
@@ -341513,7 +341513,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": true,
           "note": "「とあって、」는 '~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"정상회담이라서 거리는 엄중한 경계태세가 깔려있다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -341528,16 +341528,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～とあって",
     "patternMeaning": "~라서",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "もうすぐゴールデンウィーク(   )駅(えき)の中(なか)にはイベントのポスターが満載(まんさい)です。",
-    "qPlain": "もうすぐゴールデンウィーク(   )駅の中にはイベントのポスターが満載です。",
+    "qRuby": "もうすぐゴールデンウィーク(   )、駅(えき)の中(なか)にはイベントのポスターが満載(まんさい)です。",
+    "qPlain": "もうすぐゴールデンウィーク(   )、駅の中にはイベントのポスターが満載です。",
     "qTrans": "이제 곧 골든위크라서 역 안에는 이벤트 포스터가 만재합니다.",
-    "target": "とあって、",
-    "targetNoRuby": "とあって、",
+    "target": "とあって",
+    "targetNoRuby": "とあって",
     "options": [
       {
         "marker": "①",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": true,
         "trans": "~라서"
       },
@@ -341571,7 +341571,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": true,
           "note": "「とあって、」는 '~라서'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이제 곧 골든위크라서 역 안에는 이벤트 포스터가 만재합니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -341780,8 +341780,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -341815,7 +341815,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 주변은 교통편이 좋아서 집세가 비쌉니다.\")과 맞지 않습니다."
@@ -341938,8 +341938,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       },
@@ -341973,7 +341973,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"유명인이 와서 이 영화관에는 많은 사람이 몰려들고 있다.\")과 맞지 않습니다."
@@ -343755,8 +343755,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -343790,7 +343790,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 칵테일은 술이라고 하기보다 주스같아.\")과 맞지 않습니다."
@@ -344071,8 +344071,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -344106,7 +344106,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"부자가 되고 싶다기보다 단지 행복하게 살고 싶을 뿐입니다.\")과 맞지 않습니다."
@@ -344624,8 +344624,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": false,
         "trans": "~라고 해도"
       },
@@ -344659,7 +344659,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": false,
           "note": "「にしても、」: '~라고 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"선생님이라고 해도 틀리는 일도 있어.\")과 맞지 않습니다."
@@ -344789,8 +344789,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -344824,7 +344824,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"해일의 무서움은 말로 다 할 수 없다.\")과 맞지 않습니다."
@@ -344854,8 +344854,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -344889,7 +344889,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오랜만에 엄마가 손수 만든 음식을 먹고 너무 맛있었다.\")과 맞지 않습니다."
@@ -345486,8 +345486,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -345521,7 +345521,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"우리 애는 강아지며 고양이며 할 것없이 동물이라면 모든지 좋아합니다.\")과 맞지 않습니다."
@@ -345737,8 +345737,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       },
@@ -345772,7 +345772,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 밖에서 잘 놀고 온 듯, 우리 애는 손이며 발이며 할 것없이 흙투성이가 되어 있다\")과 맞지 않습니다."
@@ -346218,8 +346218,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "に応(おう)じ、",
-        "copyNoRuby": "に応じ、",
+        "copy": "に応(おう)じ",
+        "copyNoRuby": "に応じ",
         "isCorrect": false,
         "trans": "~따라서, ~에 맞게"
       }
@@ -346253,7 +346253,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "に応じ、",
+          "text": "に応じ",
           "trans": "~따라서, ~에 맞게",
           "isCorrect": false,
           "note": "「に応じ、」: '~따라서, ~에 맞게'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"최근 인터넷 정보는 어디까지가 진실인지 모르겠어.\")과 맞지 않습니다."
@@ -346448,8 +346448,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       },
@@ -346483,7 +346483,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"몸 상태가 나빠서 여행할 때가 아닙니다.\")과 맞지 않습니다."
@@ -346663,11 +346663,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～どころではなく",
     "patternMeaning": "~은 커녕",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "カラオケ(   )今(いま)から病院(びょういん)へ行(い)かなければいけないんだ。",
-    "qPlain": "カラオケ(   )今から病院へ行かなければいけないんだ。",
+    "qRuby": "カラオケ(   )、今(いま)から病院(びょういん)へ行(い)かなければいけないんだ。",
+    "qPlain": "カラオケ(   )、今から病院へ行かなければいけないんだ。",
     "qTrans": "노래방 보다는 지금부터 병원에 가지 않으면 안된다.",
-    "target": "どころではなく、",
-    "targetNoRuby": "どころではなく、",
+    "target": "どころではなく",
+    "targetNoRuby": "どころではなく",
     "options": [
       {
         "marker": "①",
@@ -346685,8 +346685,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "どころではなく、",
-        "copyNoRuby": "どころではなく、",
+        "copy": "どころではなく",
+        "copyNoRuby": "どころではなく",
         "isCorrect": true,
         "trans": "~은 커녕"
       },
@@ -346720,7 +346720,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "どころではなく、",
+          "text": "どころではなく",
           "trans": "~은 커녕",
           "isCorrect": true,
           "note": "「どころではなく、」는 '~은 커녕'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"노래방 보다는 지금부터 병원에 가지 않으면 안된다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -346829,8 +346829,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -346864,7 +346864,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그가 의기소침해 있었기 때문에 농담으로 분위기를 풀 때가 아니고 격려해주는 방법밖에 없다.\")과 맞지 않습니다."
@@ -347389,8 +347389,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、",
-        "copyNoRuby": "によると、",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -347424,7 +347424,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시험에서 이름을 적지 않은 사람은 0점으로 합니다.\")과 맞지 않습니다."
@@ -348581,8 +348581,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -348616,7 +348616,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여동생은 맛없다는 듯한 표정을 지었습니다.\")과 맞지 않습니다."
@@ -348811,8 +348811,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -348846,7 +348846,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"카페에서 들으려는 것도 아닌데 주변의 목소리에 귀를 기울이고 있다.\")과 맞지 않습니다."
@@ -349048,15 +349048,15 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
+        "copy": "ば",
+        "copyNoRuby": "ば",
         "isCorrect": false,
         "trans": "~면"
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -349083,14 +349083,14 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ば、いつでも",
+          "text": "ば",
           "trans": "~면",
           "isCorrect": false,
           "note": "「ば、いつでも」: '~면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"영화의 엔드롤이 시작되자 누구 할 것 없이 사람들은 자리에서 일어나기 시작했다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"영화의 엔드롤이 시작되자 누구 할 것 없이 사람들은 자리에서 일어나기 시작했다.\")과 맞지 않습니다."
@@ -349206,8 +349206,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -349241,7 +349241,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"40살쯤 되면 몸 어딘가가 나빠져도 이상하지 않은 나이입니다.\")과 맞지 않습니다."
@@ -349457,8 +349457,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とはいえ、",
-        "copyNoRuby": "とはいえ、",
+        "copy": "とはいえ",
+        "copyNoRuby": "とはいえ",
         "isCorrect": false,
         "trans": "~라고는 해도"
       }
@@ -349492,7 +349492,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とはいえ、",
+          "text": "とはいえ",
           "trans": "~라고는 해도",
           "isCorrect": false,
           "note": "「とはいえ、」: '~라고는 해도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인기 아이돌 가수의 콘서트 정도 되면 티켓은 좀처럼 입수하기 어렵다.\")과 맞지 않습니다."
@@ -349752,8 +349752,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -349787,7 +349787,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"선배는 무뚝뚝해서 무섭다고 생각했더니 매우 상냥한 사람이었다.\")과 맞지 않습니다."
@@ -349924,8 +349924,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -349959,7 +349959,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"스즈키씨는 남편이 한국인이어서 한국어를 잘 할 거라고 생각했는데 전혀 못했다.\")과 맞지 않습니다."
@@ -350779,8 +350779,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -350814,7 +350814,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여기의 상품은 새제품이 아닌 건 아니지만 미사용으로 반품된 것입니다.\")과 맞지 않습니다."
@@ -350865,8 +350865,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -350900,7 +350900,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"매년이라고 까지는 말하지 않아도 2, 3년에 한번 정도는 해외여행을 하고싶습니다.\")과 맞지 않습니다."
@@ -351425,8 +351425,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "んじゃないか",
-        "copyNoRuby": "んじゃないか",
+        "copy": "わけがないか",
+        "copyNoRuby": "わけがないか",
         "isCorrect": false,
         "trans": "~아냐? ~아닐까?"
       },
@@ -351460,7 +351460,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "んじゃないか",
+          "text": "わけがないか",
           "trans": "~아냐? ~아닐까?",
           "isCorrect": false,
           "note": "「んじゃないか」: '~아냐? ~아닐까?'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"낫토는 못 먹는 건 아니지만 나는 그다지 좋아하지 않습니다.\")과 맞지 않습니다."
@@ -351590,8 +351590,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       }
@@ -351625,7 +351625,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"자네의 기분을 모르는 건 아니지만 선배상사에게 대한 말투에는 조심해야해.\")과 맞지 않습니다."
@@ -352064,8 +352064,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       }
@@ -352099,7 +352099,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 가게는 항상 붐빈다.\")과 맞지 않습니다."
@@ -352122,8 +352122,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "くらい、",
-        "copyNoRuby": "くらい、",
+        "copy": "くらい",
+        "copyNoRuby": "くらい",
         "isCorrect": false,
         "trans": "~정도"
       },
@@ -352157,7 +352157,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "くらい、",
+          "text": "くらい",
           "trans": "~정도",
           "isCorrect": false,
           "note": "「くらい、」: '~정도'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그녀는 태어나면서부터 행운의 주인이다. (그녀는 타고난 행운아다)\")과 맞지 않습니다."
@@ -352287,8 +352287,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "だけだ。",
-        "copyNoRuby": "だけだ。",
+        "copy": "だけだ",
+        "copyNoRuby": "だけだ",
         "isCorrect": false,
         "trans": "~만큼, ~대로"
       },
@@ -352322,7 +352322,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "だけだ。",
+          "text": "だけだ",
           "trans": "~만큼, ~대로",
           "isCorrect": false,
           "note": "「だけだ。」: '~만큼, ~대로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"옛날 그대로의 전통을 중요시한다.\")과 맞지 않습니다."
@@ -353479,8 +353479,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "はもちろん、",
-        "copyNoRuby": "はもちろん、",
+        "copy": "はもちろん",
+        "copyNoRuby": "はもちろん",
         "isCorrect": false,
         "trans": "~은 물론"
       },
@@ -353514,7 +353514,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "はもちろん、",
+          "text": "はもちろん",
           "trans": "~은 물론",
           "isCorrect": false,
           "note": "「はもちろん、」: '~은 물론'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"전화로 용건이 해결됐기 때문에 거기까지 가지 않아도 된다.\")과 맞지 않습니다."
@@ -353860,8 +353860,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -353895,7 +353895,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"노력 없이는 성공은 없다.\")과 맞지 않습니다."
@@ -354111,8 +354111,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -354146,7 +354146,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"지역 주민의 이해 없이는 공장 건설은 어렵다고 생각합니다.\")과 맞지 않습니다."
@@ -354405,39 +354405,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ならいざしらず",
     "patternMeaning": "~라면 몰라도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "デート(   )近(ちか)くのスーパーに行(い)く必要(ひつよう)なんてある？",
-    "qPlain": "デート(   )近くのスーパーに行く必要なんてある？",
+    "qRuby": "デート(   )、そんなおしゃれして近(ちか)くのスーパーに行(い)く必要(ひつよう)なんてある？",
+    "qPlain": "デート(   )、そんなおしゃれして近くのスーパーに行く必要なんてある？",
     "qTrans": "데이트라면 모를까 그렇게 멋지게 차려입고 근처 슈퍼에 갈 필요있어?",
-    "target": "ならいざしらず、そんなおしゃれして",
-    "targetNoRuby": "ならいざしらず、そんなおしゃれして",
+    "target": "ならいざしらず",
+    "targetNoRuby": "ならいざしらず",
     "options": [
       {
         "marker": "①",
-        "copy": "ほどのことではないでしょう",
-        "copyNoRuby": "ほどのことではないでしょう",
-        "isCorrect": false,
-        "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다"
-      },
-      {
-        "marker": "②",
-        "copy": "ならいざしらず、そんなおしゃれして",
-        "copyNoRuby": "ならいざしらず、そんなおしゃれして",
+        "copy": "ならいざしらず",
+        "copyNoRuby": "ならいざしらず",
         "isCorrect": true,
         "trans": "~라면 몰라도"
       },
       {
-        "marker": "③",
-        "copy": "にかかっています",
-        "copyNoRuby": "にかかっています",
+        "marker": "②",
+        "copy": "ならまだしも",
+        "copyNoRuby": "ならまだしも",
         "isCorrect": false,
-        "trans": "~에 달려있다"
+        "trans": "~라면 모를까"
+      },
+      {
+        "marker": "③",
+        "copy": "ならともかく",
+        "copyNoRuby": "ならともかく",
+        "isCorrect": false,
+        "trans": "~라면 어쨌든"
       },
       {
         "marker": "④",
-        "copy": "わけにはいかない",
-        "copyNoRuby": "わけにはいかない",
+        "copy": "はおろか",
+        "copyNoRuby": "はおろか",
         "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "trans": "~은 커녕"
       }
     ],
     "ansJa": "デートならいざしらず、そんなおしゃれして近(ちか)くのスーパーに行(い)く必要(ひつよう)なんてある？",
@@ -354448,28 +354448,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ほどのことではないでしょう",
+          "text": "ならいざしらず",
           "trans": "~할 만큼은 아니다, ~할 정도의 일은 아니다",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「ほどのことではないでしょう」: '~할 만큼은 아니다, ~할 정도의 일은 아니다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"데이트라면 모를까 그렇게 멋지게 차려입고 근처 슈퍼에 갈 필요있어?\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "ならいざしらず、そんなおしゃれして",
+          "text": "ならまだしも",
           "trans": "~라면 몰라도",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「ならいざしらず、そんなおしゃれして」는 '~라면 몰라도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"데이트라면 모를까 그렇게 멋지게 차려입고 근처 슈퍼에 갈 필요있어?\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "③",
-          "text": "にかかっています",
+          "text": "ならともかく",
           "trans": "~에 달려있다",
           "isCorrect": false,
           "note": "「にかかっています」: '~에 달려있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"데이트라면 모를까 그렇게 멋지게 차려입고 근처 슈퍼에 갈 필요있어?\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "わけにはいかない",
+          "text": "はおろか",
           "trans": "~할 수는 없다",
           "isCorrect": false,
           "note": "「わけにはいかない」: '~할 수는 없다'(이)라는 뜻으로, 심리적/도덕적 이유로 할 수 없음을 나타내는 표현으로 문맥에 맞지 않습니다."
@@ -355368,8 +355368,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -355403,7 +355403,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"아이라면 모를까 어른이니까 자신의 일은 스스로 해.\")과 맞지 않습니다."
@@ -355440,8 +355440,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -355475,7 +355475,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"시험 후라면 모를까 시험 전에 놀러 갈 여유같은 거 어디에도 없어.\")과 맞지 않습니다."
@@ -357422,8 +357422,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -357457,7 +357457,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 불경기에 우리가 할 수 있는 것은 무엇일지를 생각하지 않으면 안된다.\")과 맞지 않습니다."
@@ -357673,8 +357673,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       }
@@ -357708,7 +357708,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"취직이 힘든 시대에 그는 3개의 회사에서 내정을 받았습니다.\")과 맞지 않습니다."
@@ -358837,8 +358837,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       },
@@ -358872,7 +358872,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 배우는 멋있다고들 하는데 내 의견으로는 널리고 널린 타입과 다르지 않다고 생각한다.\")과 맞지 않습니다."
@@ -359016,10 +359016,10 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ておきました",
-        "copyNoRuby": "ておきました",
+        "copy": "にすぎません",
+        "copyNoRuby": "にすぎません",
         "isCorrect": false,
-        "trans": "~해 두다"
+        "trans": "~에 지나지 않습니다"
       }
     ],
     "ansJa": "成功(せいこう)するかどうかは私(わたし)たちのこれからの頑張(がんば)りにかかっています。",
@@ -359051,7 +359051,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ておきました",
+          "text": "にすぎません",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「ておきました。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"성공할지 어떨지는 우리들의 앞으로의 노력에 달려있습니다.\")과 맞지 않습니다."
@@ -360833,8 +360833,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       }
@@ -360868,7 +360868,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 시기에 증세를 하는 것은 국민의 부담이 되는 것은 이해하고도 남는다.\")과 맞지 않습니다."
@@ -361049,8 +361049,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ば、いつでも",
-        "copyNoRuby": "ば、いつでも",
+        "copy": "ば",
+        "copyNoRuby": "ば",
         "isCorrect": false,
         "trans": "~면"
       },
@@ -361084,7 +361084,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ば、いつでも",
+          "text": "ば",
           "trans": "~면",
           "isCorrect": false,
           "note": "「ば、いつでも」: '~면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여름 방학 숙제는 빨리 끝내는 것이 제일이다.\")과 맞지 않습니다."
@@ -361444,8 +361444,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -361479,7 +361479,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"초등학생에게는 10000엔은 큰 돈이라고 생각합니다.\")과 맞지 않습니다."
@@ -362959,8 +362959,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -362994,7 +362994,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘은 2월 치고는 따뜻하네요.\")과 맞지 않습니다."
@@ -363584,8 +363584,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ことだし、",
-        "copyNoRuby": "ことだし、",
+        "copy": "ことだし",
+        "copyNoRuby": "ことだし",
         "isCorrect": false,
         "trans": "~이니, ~이기도 하니"
       },
@@ -363619,7 +363619,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ことだし、",
+          "text": "ことだし",
           "trans": "~이니, ~이기도 하니",
           "isCorrect": false,
           "note": "「ことだし、」: '~이니, ~이기도 하니'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"손님의 입장에서 보면 우리 사내의 문제따위 상관없는 일입니다.\")과 맞지 않습니다."
@@ -364043,16 +364043,16 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～にしても",
     "patternMeaning": "~라고 해도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "リハーサル(   )本番(ほんばん)と同(おな)じ気持(きも)ちで臨(のぞ)むことが大切(たいせつ)です。",
-    "qPlain": "リハーサル(   )本番と同じ気持ちで臨むことが大切です。",
+    "qRuby": "リハーサル(   )、本番(ほんばん)と同(おな)じ気持(きも)ちで臨(のぞ)むことが大切(たいせつ)です。",
+    "qPlain": "リハーサル(   )、本番と同じ気持ちで臨むことが大切です。",
     "qTrans": "리허설이라고 해도 본방과 같은 마음으로 임하는 것이 중요합니다.",
-    "target": "にしても、",
-    "targetNoRuby": "にしても、",
+    "target": "にしても",
+    "targetNoRuby": "にしても",
     "options": [
       {
         "marker": "①",
-        "copy": "にしても、",
-        "copyNoRuby": "にしても、",
+        "copy": "にしても",
+        "copyNoRuby": "にしても",
         "isCorrect": true,
         "trans": "~라고 해도"
       },
@@ -364086,7 +364086,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "にしても、",
+          "text": "にしても",
           "trans": "~라고 해도",
           "isCorrect": true,
           "note": "「にしても、」는 '~라고 해도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"리허설이라고 해도 본방과 같은 마음으로 임하는 것이 중요합니다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -364596,11 +364596,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～にしろ",
     "patternMeaning": "~라고 해도, ~라고 하더라도",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "わざとじゃない(   )人(ひと)に迷惑(めいわく)をかけたらきちんと謝(あやま)るべきだ。",
-    "qPlain": "わざとじゃない(   )人に迷惑をかけたらきちんと謝るべきだ。",
+    "qRuby": "わざとじゃない(   )、人(ひと)に迷惑(めいわく)をかけたらきちんと謝(あやま)るべきだ。",
+    "qPlain": "わざとじゃない(   )、人に迷惑をかけたらきちんと謝るべきだ。",
     "qTrans": "일부러가 아니라고 한들 타인에게 민폐를 끼쳤다면 제대로 사과해야 하는 법이다.",
-    "target": "にしろ、",
-    "targetNoRuby": "にしろ、",
+    "target": "にしろ",
+    "targetNoRuby": "にしろ",
     "options": [
       {
         "marker": "①",
@@ -364611,8 +364611,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "にしろ、",
-        "copyNoRuby": "にしろ、",
+        "copy": "にしろ",
+        "copyNoRuby": "にしろ",
         "isCorrect": true,
         "trans": "~라고 해도, ~라고 하더라도"
       },
@@ -364646,7 +364646,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "にしろ、",
+          "text": "にしろ",
           "trans": "~라고 해도, ~라고 하더라도",
           "isCorrect": true,
           "note": "「にしろ、」는 '~라고 해도, ~라고 하더라도'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"일부러가 아니라고 한들 타인에게 민폐를 끼쳤다면 제대로 사과해야 하는 법이다.\")에 자연스럽게 들어맞는 정답입니다."
@@ -365415,8 +365415,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       }
@@ -365450,7 +365450,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 의료 드라마는 사실에 입각해 만들어졌습니다.\")과 맞지 않습니다."
@@ -367699,8 +367699,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -367734,7 +367734,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번에는 만족할 만한 가치가 없는 성적이었습니다.\")과 맞지 않습니다."
@@ -369444,8 +369444,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       }
@@ -369479,7 +369479,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"인터넷의 보급에 따라 인터넷쇼핑이 번성해졌습니다.\")과 맞지 않습니다."
@@ -370299,8 +370299,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、パクさんも",
-        "copyNoRuby": "によると、パクさんも",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -370334,7 +370334,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、パクさんも",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、パクさんも」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 소년이 하는 일은 범죄는 해당하지 않다고 한다.\")과 맞지 않습니다."
@@ -370392,8 +370392,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とは。",
-        "copyNoRuby": "とは。",
+        "copy": "とは",
+        "copyNoRuby": "とは",
         "isCorrect": false,
         "trans": "~라니!"
       }
@@ -370427,7 +370427,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とは。",
+          "text": "とは",
           "trans": "~라니!",
           "isCorrect": false,
           "note": "「とは。」: '~라니!'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이건 모두가 자주 실패하니까 한 번 실패한 정도로 풀이 죽을 필요는 없어.\")과 맞지 않습니다."
@@ -371082,8 +371082,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -371117,7 +371117,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"집까지 데려다 드릴까요? 아니요 이 근처이기 때문에 그럴 필요 없어요.\")과 맞지 않습니다."
@@ -372827,8 +372827,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -372862,7 +372862,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"목표 달성을 향해 사원이 일환이 되어 힘내자.\")과 맞지 않습니다."
@@ -373315,8 +373315,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       }
@@ -373350,7 +373350,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"여러분의 협력에 의해 전회보다 유익한 모임을 열 수 있었습니다.\")과 맞지 않습니다."
@@ -374730,8 +374730,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -374765,7 +374765,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 지역은 역은 물론이고 슈퍼도 없어서 불편합니다.\")과 맞지 않습니다."
@@ -375678,8 +375678,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -375713,7 +375713,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"방심한 탓에 한 레벨 아래 상대에게 저버렸습니다.\")과 맞지 않습니다."
@@ -376849,8 +376849,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "から、お",
-        "copyNoRuby": "から、お",
+        "copy": "から",
+        "copyNoRuby": "から",
         "isCorrect": false,
         "trans": "~때문에, ~라서"
       },
@@ -376884,7 +376884,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "から、お",
+          "text": "から",
           "trans": "~때문에, ~라서",
           "isCorrect": false,
           "note": "「から、お」: '~때문에, ~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"그는 사귀면 안 되는 사람과 사귀어서 인생을 망쳐 버렸다.\")과 맞지 않습니다."
@@ -378745,8 +378745,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "っぱなしじゃないか。やり",
-        "copyNoRuby": "っぱなしじゃないか。やり",
+        "copy": "っぱなし",
+        "copyNoRuby": "っぱなし",
         "isCorrect": false,
         "trans": "~한 채로"
       },
@@ -378780,7 +378780,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "っぱなしじゃないか。やり",
+          "text": "っぱなし",
           "trans": "~한 채로",
           "isCorrect": false,
           "note": "「っぱなしじゃないか。やり」: '~한 채로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"옛날에는 연애결혼 따위 생각할 수도 없었습니다\")과 맞지 않습니다."
@@ -378831,8 +378831,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "によると、この",
-        "copyNoRuby": "によると、この",
+        "copy": "によると",
+        "copyNoRuby": "によると",
         "isCorrect": false,
         "trans": "~에 따르면"
       },
@@ -378866,7 +378866,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "によると、この",
+          "text": "によると",
           "trans": "~에 따르면",
           "isCorrect": false,
           "note": "「によると、この」: '~에 따르면'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 건은 문제로서 취급할 정도는 아니다.\")과 맞지 않습니다."
@@ -381675,8 +381675,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "としてはいいけれど、",
-        "copyNoRuby": "としてはいいけれど、",
+        "copy": "としてはいいけれど",
+        "copyNoRuby": "としてはいいけれど",
         "isCorrect": false,
         "trans": "~로서"
       },
@@ -381710,7 +381710,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "としてはいいけれど、",
+          "text": "としてはいいけれど",
           "trans": "~로서",
           "isCorrect": false,
           "note": "「としてはいいけれど、」: '~로서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 여배우는 미모는 물론이고 스포츠도 만능이다.\")과 맞지 않습니다."
@@ -381976,39 +381976,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～もさることながら",
     "patternMeaning": "~은 물론이고",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "あのホテルはレストラン(   )一流(いちりゅう)だ。",
-    "qPlain": "あのホテルはレストラン(   )一流だ。",
+    "qRuby": "あのホテルはレストラン(   )、サービスも一流(いちりゅう)だ。",
+    "qPlain": "あのホテルはレストラン(   )、サービスも一流だ。",
     "qTrans": "이 호텔은 레스토랑은 물론이고 서비스도 일류이다.",
-    "target": "もさることながら、サービスも",
-    "targetNoRuby": "もさることながら、サービスも",
+    "target": "もさることながら",
+    "targetNoRuby": "もさることながら",
     "options": [
       {
         "marker": "①",
-        "copy": "てからというもの",
-        "copyNoRuby": "てからというもの",
-        "isCorrect": false,
-        "trans": "~하고 나서 계속"
+        "copy": "もさることながら",
+        "copyNoRuby": "もさることながら",
+        "isCorrect": true,
+        "trans": "~도 물론이거니와"
       },
       {
         "marker": "②",
-        "copy": "たことがありませんので",
-        "copyNoRuby": "たことがありませんので",
+        "copy": "はおろか",
+        "copyNoRuby": "はおろか",
         "isCorrect": false,
-        "trans": "~한 적이 있다"
+        "trans": "~은 커녕"
       },
       {
         "marker": "③",
-        "copy": "もさることながら、サービスも",
-        "copyNoRuby": "もさることながら、サービスも",
-        "isCorrect": true,
-        "trans": "~은 물론이고"
+        "copy": "ばかりか",
+        "copyNoRuby": "ばかりか",
+        "isCorrect": false,
+        "trans": "~뿐만 아니라"
       },
       {
         "marker": "④",
-        "copy": "わけにはいかない",
-        "copyNoRuby": "わけにはいかない",
+        "copy": "のみならず",
+        "copyNoRuby": "のみならず",
         "isCorrect": false,
-        "trans": "~할 수는 없다"
+        "trans": "~뿐만 아니라"
       }
     ],
     "ansJa": "あのホテルはレストランもさることながら、サービスも一流(いちりゅう)だ。",
@@ -382019,28 +382019,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "てからというもの",
+          "text": "もさることながら",
           "trans": "~하고 나서 계속",
-          "isCorrect": false,
+          "isCorrect": true,
           "note": "「てからというもの」: '~하고 나서 계속'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 호텔은 레스토랑은 물론이고 서비스도 일류이다.\")과 맞지 않습니다."
         },
         {
           "marker": "②",
-          "text": "たことがありませんので",
+          "text": "はおろか",
           "trans": "~한 적이 있다",
           "isCorrect": false,
           "note": "「たことがありませんので」: '~한 적이 있다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 호텔은 레스토랑은 물론이고 서비스도 일류이다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "もさることながら、サービスも",
+          "text": "ばかりか",
           "trans": "~은 물론이고",
-          "isCorrect": true,
+          "isCorrect": false,
           "note": "「もさることながら、サービスも」는 '~은 물론이고'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"이 호텔은 레스토랑은 물론이고 서비스도 일류이다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "④",
-          "text": "わけにはいかない",
+          "text": "のみならず",
           "trans": "~할 수는 없다",
           "isCorrect": false,
           "note": "「わけにはいかない」: '~할 수는 없다'(이)라는 뜻으로, 심리적/도덕적 이유로 할 수 없음을 나타내는 표현으로 문맥에 맞지 않습니다."
@@ -382529,39 +382529,39 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～もしない",
     "patternMeaning": "~하기도 않다",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "でき(   )正直(しょうじき)ちょっと困(こま)ります。",
-    "qPlain": "でき(   )正直ちょっと困ります。",
+    "qRuby": "でき(   )のに「やります。」といわれても正直(しょうじき)ちょっと困(こま)ります。",
+    "qPlain": "でき(   )のに「やります。」といわれても正直ちょっと困ります。",
     "qTrans": "하지도 못하는데 ‘할게요’라고 말해도 솔직히 곤란합니다.",
-    "target": "もしないのに「やります。」といわれても",
-    "targetNoRuby": "もしないのに「やります。」といわれても",
+    "target": "もしない",
+    "targetNoRuby": "もしない",
     "options": [
       {
         "marker": "①",
-        "copy": "もしないのに「やります。」といわれても",
-        "copyNoRuby": "もしないのに「やります。」といわれても",
+        "copy": "もしない",
+        "copyNoRuby": "もしない",
         "isCorrect": true,
-        "trans": "~하기도 않다"
+        "trans": "~하지도 않고"
       },
       {
         "marker": "②",
-        "copy": "をものともしない",
-        "copyNoRuby": "をものともしない",
+        "copy": "やしない",
+        "copyNoRuby": "やしない",
         "isCorrect": false,
-        "trans": "~에도 아랑곳하지 않고"
+        "trans": "~하지도 않는다"
       },
       {
         "marker": "③",
-        "copy": "ようにもできない",
-        "copyNoRuby": "ようにもできない",
+        "copy": "っこない",
+        "copyNoRuby": "っこない",
         "isCorrect": false,
-        "trans": "~하려고 해도 ~할 수 없다"
+        "trans": "~할 리 없다"
       },
       {
         "marker": "④",
-        "copy": "っぱなしじゃないか。やり",
-        "copyNoRuby": "っぱなしじゃないか。やり",
+        "copy": "そうにない",
+        "copyNoRuby": "そうにない",
         "isCorrect": false,
-        "trans": "~한 채로"
+        "trans": "~할 것 같지 않다"
       }
     ],
     "ansJa": "できもしないのに「やります。」といわれても正直(しょうじき)ちょっと困(こま)ります。",
@@ -382572,28 +382572,28 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "もしないのに「やります。」といわれても",
+          "text": "もしない",
           "trans": "~하기도 않다",
           "isCorrect": true,
           "note": "「もしないのに「やります。」といわれても」는 '~하기도 않다'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"하지도 못하는데 ‘할게요’라고 말해도 솔직히 곤란합니다.\")에 자연스럽게 들어맞는 정답입니다."
         },
         {
           "marker": "②",
-          "text": "をものともしない",
+          "text": "やしない",
           "trans": "~에도 아랑곳하지 않고",
           "isCorrect": false,
           "note": "「をものともしない」: '~에도 아랑곳하지 않고'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"하지도 못하는데 ‘할게요’라고 말해도 솔직히 곤란합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "③",
-          "text": "ようにもできない",
+          "text": "っこない",
           "trans": "~하려고 해도 ~할 수 없다",
           "isCorrect": false,
           "note": "「ようにもできない」: '~하려고 해도 ~할 수 없다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"하지도 못하는데 ‘할게요’라고 말해도 솔직히 곤란합니다.\")과 맞지 않습니다."
         },
         {
           "marker": "④",
-          "text": "っぱなしじゃないか。やり",
+          "text": "そうにない",
           "trans": "~한 채로",
           "isCorrect": false,
           "note": "「っぱなしじゃないか。やり」: '~한 채로'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"하지도 못하는데 ‘할게요’라고 말해도 솔직히 곤란합니다.\")과 맞지 않습니다."
@@ -382616,8 +382616,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -382651,7 +382651,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"먹지도 않고 맛있는지 어떨지 따위몰라.\")과 맞지 않습니다."
@@ -383556,11 +383556,11 @@ window.JLPT_GRAMMAR_DATA = [
     "pattern": "～ものか",
     "patternMeaning": "~할까 보냐, ~하나 봐라",
     "instruction": "빈칸에 들어갈 가장 알맞은 문법 표현을 고르세요.",
-    "qRuby": "ここであきらめる(   )絶対最後(ぜったいさいご)までやり遂(と)げるぞ。",
-    "qPlain": "ここであきらめる(   )絶対最後までやり遂げるぞ。",
+    "qRuby": "ここであきらめる(   )。絶対最後(ぜったいさいご)までやり遂(と)げるぞ。",
+    "qPlain": "ここであきらめる(   )。絶対最後までやり遂げるぞ。",
     "qTrans": "여기에서 포기할까 보냐! 절대로 마지막까지 완수하겠어!",
-    "target": "ものか。",
-    "targetNoRuby": "ものか。",
+    "target": "ものか",
+    "targetNoRuby": "ものか",
     "options": [
       {
         "marker": "①",
@@ -383578,8 +383578,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": true,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -383613,7 +383613,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": true,
           "note": "「ものか。」는 '~할까 보냐, ~하나 봐라'을(를) 뜻하는 핵심 문형으로, 본 문맥(\"여기에서 포기할까 보냐! 절대로 마지막까지 완수하겠어!\")에 자연스럽게 들어맞는 정답입니다."
@@ -388304,8 +388304,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -388339,7 +388339,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"태풍의 영향을 받아 채소 가격이 상승하기 시작하고 있다.\")과 맞지 않습니다."
@@ -388620,8 +388620,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       },
@@ -388655,7 +388655,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"정보기술 관계를 배우고 싶다면 이 대학을 제쳐 두고는 없겠지.\")과 맞지 않습니다."
@@ -388957,8 +388957,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "ものか。",
-        "copyNoRuby": "ものか。",
+        "copy": "ものか",
+        "copyNoRuby": "ものか",
         "isCorrect": false,
         "trans": "~할까 보냐, ~하나 봐라"
       }
@@ -388992,7 +388992,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "ものか。",
+          "text": "ものか",
           "trans": "~할까 보냐, ~하나 봐라",
           "isCorrect": false,
           "note": "「ものか。」: '~할까 보냐, ~하나 봐라'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 맛을 아는 사람은 우리를 제외하고는 없습니다,\")과 맞지 않습니다."
@@ -389338,8 +389338,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -389373,7 +389373,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"저 백화점은 연말 세일을 마지막으로 폐점한다는 것 같다.\")과 맞지 않습니다."
@@ -389431,8 +389431,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "④",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       }
@@ -389466,7 +389466,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "④",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"3월 31일을 마지막으로 이 서비스는 종료하겠습니다.\")과 맞지 않습니다."
@@ -389819,8 +389819,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -389854,7 +389854,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"외무대신은 중국을 시작으로 아시아 여러 나라를 방문합니다.\")과 맞지 않습니다."
@@ -389970,8 +389970,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -390005,7 +390005,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번에 공개된 영화를 시작으로 이 젊은 배우는 드라마와 버라이어티에 자주 출연하게 되었다.\")과 맞지 않습니다."
@@ -391155,8 +391155,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -391190,7 +391190,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"일본에서는 출산을 계기로 퇴직하는 여성이 많다.\")과 맞지 않습니다."
@@ -391306,8 +391306,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -391341,7 +391341,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"휴대 전화가 고장 난 것을 계기로 새로운 것을 사기로 했다.\")과 맞지 않습니다."
@@ -391715,8 +391715,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "とあって、",
-        "copyNoRuby": "とあって、",
+        "copy": "とあって",
+        "copyNoRuby": "とあって",
         "isCorrect": false,
         "trans": "~라서"
       },
@@ -391750,7 +391750,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "とあって、",
+          "text": "とあって",
           "trans": "~라서",
           "isCorrect": false,
           "note": "「とあって、」: '~라서'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"작년도의 반성을 전제로 올해의 학습 계획을 세울 예정입니다.\")과 맞지 않습니다."
@@ -392570,8 +392570,8 @@ window.JLPT_GRAMMAR_DATA = [
     "options": [
       {
         "marker": "①",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -392605,7 +392605,7 @@ window.JLPT_GRAMMAR_DATA = [
       "choices": [
         {
           "marker": "①",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘로 나는 이 그룹을 은퇴합니다 지금까지 응원해 주셔서 감사했습니다.\")과 맞지 않습니다."
@@ -392821,8 +392821,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "をはじめ",
+        "copyNoRuby": "をはじめ",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -392856,7 +392856,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "をはじめ、",
+          "text": "をはじめ",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이번 달 말로이 서비스는 종료합니다.\")과 맞지 않습니다."
@@ -393058,8 +393058,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "をはじめ、",
-        "copyNoRuby": "をはじめ、",
+        "copy": "ので",
+        "copyNoRuby": "ので",
         "isCorrect": false,
         "trans": "~을 비롯하여"
       },
@@ -393093,7 +393093,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "をはじめ、",
+          "text": "ので",
           "trans": "~을 비롯하여",
           "isCorrect": false,
           "note": "「をはじめ、」: '~을 비롯하여'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"이 최신 기계로 하면 작업 효과는 지금까지 세배를 전망할 수 있겠지.\")과 맞지 않습니다."
@@ -393446,8 +393446,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "②",
-        "copy": "といて。",
-        "copyNoRuby": "といて。",
+        "copy": "といて",
+        "copyNoRuby": "といて",
         "isCorrect": false,
         "trans": "~해 두다"
       },
@@ -393481,7 +393481,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "②",
-          "text": "といて。",
+          "text": "といて",
           "trans": "~해 두다",
           "isCorrect": false,
           "note": "「といて。」: '~해 두다'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"구조대는 계속되는 재해에도 아랑곳하지 않고 사람들을 살리러 향했다.\")과 맞지 않습니다."
@@ -395902,8 +395902,8 @@ window.JLPT_GRAMMAR_DATA = [
       },
       {
         "marker": "③",
-        "copy": "にとって、",
-        "copyNoRuby": "にとって、",
+        "copy": "にとって",
+        "copyNoRuby": "にとって",
         "isCorrect": false,
         "trans": "~에게 (있어서)"
       },
@@ -395937,7 +395937,7 @@ window.JLPT_GRAMMAR_DATA = [
         },
         {
           "marker": "③",
-          "text": "にとって、",
+          "text": "にとって",
           "trans": "~에게 (있어서)",
           "isCorrect": false,
           "note": "「にとって、」: '~에게 (있어서)'(이)라는 뜻으로, 문제의 출제 의도 및 문맥 흐름(\"오늘 아침부터 머리가 깨질 듯한 두통입니다.\")과 맞지 않습니다."
