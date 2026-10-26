@@ -4341,6 +4341,7 @@
     }
   }
 
+    const NIHONEZ_BOOKMARKLET_CODE = "javascript:(function(){try { var l = []; var n = Date.now(); var dL = 'N1'; var bT = document.body ? document.body.innerText : ''; var u = window.location.href; var m = u.match(/n([1-5])/i) || bT.match(/JLPT\\s*N([1-5])/i) || document.title.match(/N([1-5])/i); if (m) dL = 'N' + m[1].toUpperCase(); if (window.testResults && typeof window.testResults === 'object') { var tR = window.testResults; for (var qId in tR) { if (!tR.hasOwnProperty(qId)) continue; var r = tR[qId]; if (r && !r.is_correct) { var qEl = document.getElementById('question-' + qId) || document.getElementById('q-' + qId); var qText = ''; var opts = []; var wC = ''; var cC = ''; if (qEl) { var qCEl = qEl.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); qText = qCEl ? qCEl.innerText.trim() : ''; var cEls = Array.from(qEl.querySelectorAll('.answer-choice, .choice-item, li')); cEls.forEach(function (cEl, ci) { var cTxt = cEl.innerText.replace(/^[①②③④\\(\\)\\d\\.\\s]+/, '').trim(); var isCorr = (r.correct_answer && parseInt(r.correct_answer, 10) === (ci + 1)) || cEl.classList.contains('correct-answer'); var isUser = (r.user_answer && parseInt(r.user_answer, 10) === (ci + 1)) || cEl.classList.contains('checked-answer'); if (isCorr) cC = cTxt; if (isUser && !isCorr) wC = cTxt; opts.push({ marker: ['①', '②', '③', '④'][ci] || ('(' + (ci + 1) + ')'), copy: cTxt, copyNoRuby: cTxt, trans: '', isCorrect: isCorr }); }); } if (!qText) qText = 'Nihonez 문제 #' + qId; var exTxt = r.explaination || (r.explanation ? (r.explanation.main || r.explanation) : '') || ''; var trTxt = r.listening_script_translation || ''; l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: 'external', typeName: 'Nihonez 오답', instruction: '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qText, qRuby: qText, qTrans: trTxt, options: opts.length > 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qText, ansKo: trTxt, expl: { main: exTxt || 'Nihonez 오답 복습' }, source: 'nihonez' }); } } } if (l.length === 0) { var wrongEls = Array.from(document.querySelectorAll('.question-container.answer-wrong, .question-container.incorrect, .answer-wrong, .test-question.wrong, .question-card.wrong')); if (wrongEls.length === 0) { var allC = Array.from(document.querySelectorAll('.question-container, .test-question, [id^=question-]')); wrongEls = allC.filter(function (el) { return el.querySelector('.checked-answer:not(.correct-answer), .answer-choice.wrong, .wrong-answer, .user-answer-wrong, .text-danger'); }); } wrongEls.forEach(function (el, idx) { var qTE = el.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); var qP = qTE ? qTE.innerText.trim() : (el.innerText.split('\\n')[0] || ('문제 ' + (idx + 1))); if (!qP || qP.length < 2) return; var oEls = Array.from(el.querySelectorAll('.answer-choice, .choice-item, .option, li')); var opts = []; var wC = ''; var cC = ''; oEls.forEach(function (optEl, oi) { var mk = ['①', '②', '③', '④'][oi] || ('(' + (oi + 1) + ')'); var oTxt = optEl.innerText.replace(/^[①②③④\\(\\)\\d\\.\\s]+/, '').trim(); var isCorr = optEl.classList.contains('correct') || optEl.classList.contains('correct-answer') || optEl.classList.contains('is-correct'); var isChk = optEl.classList.contains('checked') || optEl.classList.contains('checked-answer') || optEl.classList.contains('selected') || !!optEl.querySelector('input:checked'); if (isCorr) cC = oTxt; if (isChk && !isCorr) wC = oTxt; opts.push({ marker: mk, copy: oTxt, copyNoRuby: oTxt, trans: '', isCorrect: isCorr }); }); var exEl = el.querySelector('.explanation, .explanation-content, .expl-text, .solution'); var exT = exEl ? exEl.innerText.trim() : ''; var trEl = el.querySelector('.passage-translation, .question-translation, .translation, .trans-ko'); var trT = trEl ? trEl.innerText.trim() : ''; var qId = el.id ? el.id.replace('question-', '') : (n + '-' + (idx + 1)); l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: 'external', typeName: 'Nihonez 오답', instruction: '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qP, qRuby: qP, qTrans: trT, options: opts.length > 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qP, ansKo: trT, expl: { main: exT || 'Nihonez 오답 복습' }, source: 'nihonez' }); }); } if (l.length === 0 && document.querySelector('.attempt-card, [data-review-category]')) { alert('📌 현재 페이지는 오답 목록 요약 대시보드입니다.\\n\\n각 시험 카드의 [Review wrong answers] 또는 [View full results]를 눌러 오답 상세 화면이 열리면 이 북마크를 다시 클릭해 주세요!'); return; } if (l.length === 0) { alert('⚠️ 현재 화면에서 틀린 문제를 찾지 못했습니다.\\n\\n시험 제출 후 결과 화면(채점 결과/오답 풀이)에서 클릭해 주세요.'); return; } var jS = JSON.stringify(l); if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(jS); } try { fetch('http://localhost:3000/api/import-mistakes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: l }) }).catch(function () {}); } catch (e) {} var tU = 'https://chanchan9741-hash.github.io/JLPT/index.html#import-mistakes=' + encodeURIComponent(jS); var win = window.open(tU, 'jlpt_master_tab'); if (win) { win.focus(); } else { alert('🎉 ' + l.length + '개의 오답을 추출하여 클립보드에 복사했습니다!\\n\\nJLPT Master 탭으로 이동하세요.'); } } catch (err) { alert('북마클릿 실행 오류: ' + err.message); }})();";
   function setupExternalImportModal() {
     const modal = document.getElementById('modal-external-import');
     const btnOpen = document.getElementById('btn-import-external');
@@ -4371,17 +4372,23 @@
     });
 
     // Copy Bookmarklet code button
-    const btnCopyBookmarklet = document.getElementById('btn-copy-bookmarklet-code');
+        const btnCopyBookmarklet = document.getElementById('btn-copy-bookmarklet-code');
     const linkBookmarklet = document.getElementById('link-bookmarklet');
-    if (btnCopyBookmarklet && linkBookmarklet) {
+    const textareaBookmarklet = document.getElementById('textarea-bookmarklet-code');
+    if (textareaBookmarklet) {
+      textareaBookmarklet.value = NIHONEZ_BOOKMARKLET_CODE;
+    }
+    if (btnCopyBookmarklet) {
       btnCopyBookmarklet.addEventListener('click', () => {
-        const code = linkBookmarklet.getAttribute('href');
+        if (textareaBookmarklet) {
+          textareaBookmarklet.select();
+        }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(code).then(() => {
+          navigator.clipboard.writeText(NIHONEZ_BOOKMARKLET_CODE).then(() => {
             showToast('📋 북마클릿 코드가 클립보드에 복사되었습니다! 브라우저 북마크에 등록하세요.');
           });
         } else {
-          prompt('아래 북마클릿 코드를 복사하세요:', code);
+          prompt('아래 북마클릿 코드를 복사하세요:', NIHONEZ_BOOKMARKLET_CODE);
         }
       });
     }
