@@ -200,6 +200,10 @@
 
           this.mergeDriveData(driveData);
           console.log('[Sync] Connected to Google Drive sync server!');
+          window.addEventListener('focus', () => this.checkRemoteUpdates());
+          setInterval(() => {
+            if (this.connected) this.checkRemoteUpdates();
+          }, 4000);
           return;
         }
       } catch (err) {
@@ -218,6 +222,19 @@
         for (const [id, m] of Object.entries(driveData.mistakes)) {
           if (!mistakes[id] || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.count || 1) >= (mistakes[id].count || 1)) {
             mistakes[id] = m;
+            if (!srs[id]) {
+              srs[id] = {
+                id,
+                level: m.level || 'N1',
+                repetitions: 0,
+                interval: 1,
+                easeFactor: 2.5,
+                state: 'learning',
+                lapses: 1,
+                lastReviewed: m.lastWrongDate || Date.now(),
+                dueDate: Date.now()
+              };
+            }
             updated = true;
           }
         }
@@ -272,9 +289,29 @@
         localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
         localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
         localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
+        localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
         updateMistakeBadge();
+        updateAnkiBadge();
         renderStats();
+        if (state.currentTab === 'mistakes') {
+          renderMistakesList();
+        } else if (state.currentTab === 'anki') {
+          ankiState.currentQueue = buildAnkiQueue();
+          renderAnkiSession();
+        }
       }
+    },
+
+    async checkRemoteUpdates() {
+      if (!this.connected && !this.syncUrl) return;
+      try {
+        const url = this.syncUrl || '';
+        const res = await fetch(`${url}/api/sync-data`, { method: 'GET', cache: 'no-cache' });
+        if (res.ok) {
+          const driveData = await res.json();
+          this.mergeDriveData(driveData);
+        }
+      } catch (e) {}
     },
 
     scheduleSync() {
@@ -344,6 +381,10 @@
     renderTypeFilterChips();
     renderCurrentQuestion();
     renderStats();
+    setupExternalImportModal();
+    window.name = 'jlpt_master_tab';
+    checkUrlHashImport();
+    window.addEventListener('hashchange', checkUrlHashImport);
     syncManager.init();
 
     // Check for pending cloud data received before app was ready
@@ -4153,6 +4194,287 @@
     saveMistakes();
   }
 
+
+  // --- External Mistakes Import (Nihonez / Bookmarklet / Clipboard / File) ---
+  function importExternalMistakes(rawInput, sourceName = '외부 연동') {
+    let items = [];
+    if (typeof rawInput === 'string') {
+      try {
+        const parsed = JSON.parse(rawInput.trim());
+        if (Array.isArray(parsed)) items = parsed;
+        else if (parsed.items && Array.isArray(parsed.items)) items = parsed.items;
+        else if (parsed.mistakes && typeof parsed.mistakes === 'object') items = Object.values(parsed.mistakes);
+        else items = [parsed];
+      } catch (e) {
+        showToast('⚠️ JSON 형식이 올바르지 않습니다. 데이터를 확인해 주세요.');
+        return 0;
+      }
+    } else if (Array.isArray(rawInput)) {
+      items = rawInput;
+    } else if (rawInput && typeof rawInput === 'object') {
+      if (rawInput.items && Array.isArray(rawInput.items)) items = rawInput.items;
+      else if (rawInput.mistakes && typeof rawInput.mistakes === 'object') items = Object.values(rawInput.mistakes);
+      else items = [rawInput];
+    }
+
+    if (!items || items.length === 0) {
+      showToast('⚠️ 가져올 오답 문제가 없습니다.');
+      return 0;
+    }
+
+    const now = Date.now();
+    let addedCount = 0;
+
+    items.forEach((item, idx) => {
+      if (!item.qPlain && !item.questionText && !item.content) return;
+      const qPlain = (item.qPlain || item.questionText || item.content || '').trim();
+      const level = (item.level || 'N1').toUpperCase();
+      const id = item.id || `NH-${level}-${now}-${idx + 1}`;
+
+      const prev = mistakes[id];
+      const prevCount = prev ? (prev.count || 1) : 0;
+
+      let options = item.options || [];
+      if (Array.isArray(item.choices) && options.length === 0) {
+        options = item.choices.map((c, cIdx) => ({
+          marker: ['①','②','③','④'][cIdx] || `(${cIdx+1})`,
+          copy: typeof c === 'string' ? c : (c.text || c.copy || ''),
+          copyNoRuby: typeof c === 'string' ? c : (c.text || c.copy || ''),
+          trans: c.translation || '',
+          isCorrect: !!c.isCorrect
+        }));
+      }
+
+      const correctOpt = options.find(o => o.isCorrect);
+      const ansJa = item.ansJa || (correctOpt ? correctOpt.copy : '') || qPlain;
+      const ansKo = item.ansKo || item.qTrans || item.translation || '';
+
+      const mistakeObj = {
+        id,
+        level,
+        typeCode: item.typeCode || 'external',
+        typeName: item.typeName || (sourceName === 'nihonez' ? 'Nihonez 오답' : '외부 오답'),
+        instruction: item.instruction || '빈칸에 들어갈 가장 알맞은 표현을 고르세요.',
+        qPlain,
+        qRuby: item.qRuby || qPlain,
+        qTrans: item.qTrans || item.translation || '',
+        options: options.length > 0 ? options : [
+          { marker: '①', copy: ansJa, isCorrect: true },
+          { marker: '②', copy: item.wrongChoice || '오답 선택지', isCorrect: false }
+        ],
+        wrongChoice: item.wrongChoice || (prev ? prev.wrongChoice : ''),
+        ansJa,
+        ansKo,
+        expl: item.expl && item.expl.main ? item.expl : { main: (typeof item.expl === 'string' ? item.expl : (item.explanation || '외부 오답 복습 문제')) },
+        count: prevCount + 1,
+        firstWrongDate: prev ? (prev.firstWrongDate || now) : now,
+        lastWrongDate: now,
+        isMastered: false,
+        isBookmarked: prev ? !!prev.isBookmarked : false,
+        source: item.source || sourceName
+      };
+
+      mistakes[id] = mistakeObj;
+
+      // Enroll into SRS
+      const curSrs = srs[id] || {
+        id,
+        level,
+        repetitions: 0,
+        interval: 1,
+        easeFactor: 2.5,
+        state: 'learning',
+        lapses: 0
+      };
+      srs[id] = calculateNextSrs(curSrs, 'again');
+
+      // Record in history
+      const curHist = history[id] || { solved: 0, correct: 0 };
+      history[id] = {
+        solved: (curHist.solved || 0) + 1,
+        correct: curHist.correct || 0,
+        lastResult: false,
+        lastDate: now
+      };
+
+      addedCount++;
+    });
+
+    if (addedCount > 0) {
+      saveMistakes();
+      saveSrs();
+      saveHistory();
+      recordDailyActivity({ category: 'quiz', isCorrect: false, count: addedCount });
+      updateMistakeBadge();
+      updateAnkiBadge();
+      renderStats();
+
+      if (state.currentTab === 'mistakes') {
+        renderMistakesList();
+      } else if (state.currentTab === 'anki') {
+        ankiState.currentQueue = buildAnkiQueue();
+        renderAnkiSession();
+      }
+
+      showToast(`🎉 [${sourceName}] ${addedCount}개의 오답 문제가 오답노트 & 안키 덱에 등록되었습니다!`);
+    }
+
+    return addedCount;
+  }
+
+  
+  // URL Hash Auto-Import Handler (for GitHub Pages & cross-tab bookmarklet sync)
+  function checkUrlHashImport() {
+    if (!window.location.hash || !window.location.hash.includes('import-mistakes=')) return;
+    try {
+      const raw = window.location.hash.split('import-mistakes=')[1];
+      if (raw) {
+        const decoded = decodeURIComponent(raw);
+        const parsed = JSON.parse(decoded);
+        setTimeout(() => {
+          importExternalMistakes(parsed, 'Nihonez 원클릭 연동');
+          history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        }, 300);
+      }
+    } catch (e) {
+      console.warn('[Hash Import] Failed to parse URL hash data:', e);
+    }
+  }
+
+  function setupExternalImportModal() {
+    const modal = document.getElementById('modal-external-import');
+    const btnOpen = document.getElementById('btn-import-external');
+    const btnClose = document.getElementById('btn-close-external-import');
+    const btnCloseFooter = document.getElementById('btn-close-external-import-footer');
+    if (!modal) return;
+
+    if (btnOpen) {
+      btnOpen.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+      });
+    }
+
+    const closeModal = () => modal.classList.add('hidden');
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnCloseFooter) btnCloseFooter.addEventListener('click', closeModal);
+
+    // Tab buttons
+    modal.querySelectorAll('.import-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.querySelectorAll('.import-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const targetTab = btn.dataset.importTab;
+        modal.querySelectorAll('.import-tab-content').forEach(c => c.classList.add('hidden'));
+        const targetEl = document.getElementById(`import-tab-${targetTab}`);
+        if (targetEl) targetEl.classList.remove('hidden');
+      });
+    });
+
+    // Copy Bookmarklet code button
+    const btnCopyBookmarklet = document.getElementById('btn-copy-bookmarklet-code');
+    const linkBookmarklet = document.getElementById('link-bookmarklet');
+    if (btnCopyBookmarklet && linkBookmarklet) {
+      btnCopyBookmarklet.addEventListener('click', () => {
+        const code = linkBookmarklet.getAttribute('href');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(() => {
+            showToast('📋 북마클릿 코드가 클립보드에 복사되었습니다! 브라우저 북마크에 등록하세요.');
+          });
+        } else {
+          prompt('아래 북마클릿 코드를 복사하세요:', code);
+        }
+      });
+    }
+
+    // Read Clipboard button
+    const btnReadClipboard = document.getElementById('btn-read-clipboard-mistakes');
+    if (btnReadClipboard) {
+      btnReadClipboard.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard || !navigator.clipboard.readText) {
+            showToast('⚠️ 브라우저 보안으로 클립보드 자동 읽기가 제한되었습니다. 아래 텍스트 창에 직접 붙여넣어 주세요.');
+            return;
+          }
+          const text = await navigator.clipboard.readText();
+          if (!text || !text.trim()) {
+            showToast('⚠️ 클립보드가 비어있습니다. Nihonez에서 북마클릿을 먼저 실행해 주세요.');
+            return;
+          }
+          const count = importExternalMistakes(text, '클립보드');
+          if (count > 0) {
+            closeModal();
+          }
+        } catch (err) {
+          console.warn('Clipboard read error:', err);
+          showToast('⚠️ 클립보드 접근 권한이 없습니다. 아래 텍스트 상자에 Ctrl+V로 붙여넣어 주세요.');
+        }
+      });
+    }
+
+    // Submit Pasted JSON Textarea
+    const btnSubmitPasted = document.getElementById('btn-submit-pasted-mistakes');
+    const textareaJson = document.getElementById('textarea-external-json');
+    if (btnSubmitPasted && textareaJson) {
+      btnSubmitPasted.addEventListener('click', () => {
+        const val = textareaJson.value.trim();
+        if (!val) {
+          showToast('⚠️ 붙여넣은 텍스트가 없습니다.');
+          return;
+        }
+        const count = importExternalMistakes(val, '직접 입력');
+        if (count > 0) {
+          textareaJson.value = '';
+          closeModal();
+        }
+      });
+    }
+
+    // Dropzone for files
+    const dropzone = document.getElementById('dropzone-mistakes');
+    const fileInput = document.getElementById('input-external-mistakes-file');
+
+    if (dropzone && fileInput) {
+      dropzone.addEventListener('click', () => fileInput.click());
+
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFileImport(files[0]);
+        }
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFileImport(e.target.files[0]);
+        }
+      });
+
+      function handleFileImport(file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const count = importExternalMistakes(event.target.result, file.name);
+            if (count > 0) closeModal();
+          } catch (err) {
+            showToast('⚠️ 파일 내용을 읽는 중 오류가 발생했습니다.');
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+  }
+
   // Expose global app object for inline handlers
   window.app = {
     init,
@@ -4162,6 +4484,7 @@
     handleOptionSelect,
     mergeExternalData,
     recordGrammarMistake,
+    importExternalMistakes,
     startAnkiSingleCard: (id) => {
       ankiState.currentQueue = [id];
       ankiState.queueIndex = 0;

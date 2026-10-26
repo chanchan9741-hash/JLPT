@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=3.9">
+  <link rel="stylesheet" href="css/style.css?v=4.0">
   <link rel="stylesheet" href="css/reading.css?v=3.9">
   <link rel="stylesheet" href="css/grammar.css?v=3.9">
 </head>
@@ -889,6 +889,10 @@
             </div>
 
             <div class="action-group">
+              <button class="btn btn-secondary" id="btn-import-external" title="Nihonez(니혼이지) 또는 외부 오답 데이터를 원클릭/드래그앤드롭으로 가져옵니다">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>📥 외부 오답 가져오기</span>
+              </button>
               <button class="btn btn-primary" id="btn-quiz-mistakes" title="현재 필터된 오답들만 모아서 바로 테스트">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 <span>오답 집중 테스트</span>
@@ -1389,7 +1393,7 @@
 
   <!-- Main App Script -->
   <script src="data/sync_init.js?v=3.9"></script>
-  <script src="js/app.js?v=3.9"></script>
+  <script src="js/app.js?v=4.0"></script>
   <script src="js/reading.js?v=3.9"></script>
   <script src="js/grammar.js?v=3.9"></script>
 
@@ -1525,6 +1529,114 @@
         <button class="drawer-close-btn" id="btn-close-drawer" aria-label="닫기">&times;</button>
       </div>
       <div class="drawer-body" id="drawer-passage-body"></div>
+    </div>
+  </div>
+
+
+  <!-- External Mistakes Import Modal (Nihonez / 외부 연동) -->
+  <div class="modal-overlay hidden" id="modal-external-import">
+    <div class="modal-card modal-external-import-card">
+      <div class="modal-header">
+        <div class="picker-header-title">
+          <h3>📥 외부 오답 가져오기</h3>
+          <span class="picker-sub-badge">Nihonez(니혼이지) 원클릭 연동</span>
+        </div>
+        <button class="modal-close-btn" id="btn-close-external-import">&times;</button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="import-tabs-nav">
+        <button class="import-tab-btn active" data-import-tab="bookmarklet">⚡ 1초 원클릭 연동</button>
+        <button class="import-tab-btn" data-import-tab="clipboard">📋 클립보드 등록</button>
+        <button class="import-tab-btn" data-import-tab="file">📂 파일 드래그&드롭</button>
+      </div>
+
+      <!-- Tab 1: Bookmarklet (1초 원클릭 연동) -->
+      <div class="import-tab-content" id="import-tab-bookmarklet">
+        <div class="bookmarklet-hero">
+          <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.6;">
+            Nihonez(니혼이지) 사이트에서 시험을 치른 후, 아래 버튼을 북마크 바에 드래그해 두면<br>
+            <b style="color:var(--text-primary);">단 한 번의 클릭</b>으로 현재 화면의 모든 오답이 이 앱으로 즉시 전송됩니다!
+          </p>
+
+          <div style="margin-bottom:1.25rem;">
+            <a href="javascript:(function(){try{const l=[];const n=Date.now();let dL='N1';const bT=document.body.innerText||'';const u=window.location.href;const m=u.match(/n([1-5])/i)||bT.match(/JLPT\s*N([1-5])/i)||document.title.match(/N([1-5])/i);if(m)dL='N'+m[1].toUpperCase();if(window.testResults&&Array.isArray(window.testResults.questions)){window.testResults.questions.forEach((q,idx)=>{if(!q.isCorrect||q.userAnswer!==q.correctAnswer){l.push({id:'NH-'+(q.level||dL)+'-'+n+'-'+(idx+1),level:q.level||dL,typeCode:'external',typeName:q.category||'Nihonez 오답',instruction:q.instruction||'빈칸에 들어갈 가장 알맞은 표현을 고르세요.',qPlain:q.questionText||q.content||'',qRuby:q.questionRuby||q.questionText||'',qTrans:q.translation||'',options:(q.choices||q.options||[]).map((c,ci)=>({marker:['①','②','③','④'][ci]||('('+(ci+1)+')'),copy:typeof c==='string'?c:(c.text||c.copy||''),copyNoRuby:typeof c==='string'?c:(c.text||c.copy||''),trans:c.translation||'',isCorrect:(c.isCorrect!==undefined)?c.isCorrect:(ci===q.correctAnswer||c.text===q.correctAnswer)})),wrongChoice:q.userChoice||q.wrongAnswer||'',ansJa:q.correctSentence||q.correctText||'',ansKo:q.translation||'',expl:{main:q.explanation||'Nihonez 해설'},source:'nihonez'});}});}if(l.length===0){let c=Array.from(document.querySelectorAll('.question-container.answer-wrong,.question-container.incorrect,.answer-wrong,.test-question.wrong,.question-card.wrong'));if(c.length===0){c=Array.from(document.querySelectorAll('.question-container,.test-question,.question-item,.question-box')).filter(el=>el.querySelector('.answer-choice.wrong,.checked-answer:not(.correct-answer),.wrong-answer,.choice.wrong,.user-answer-wrong,.text-danger,.wrong,.incorrect'));}if(c.length===0){c=Array.from(document.querySelectorAll('.question-container,.test-question,.question-wrapper'));}c.forEach((el,idx)=>{const qE=el.querySelector('.question-text,.question-content,.q-text,.passage-text,.question,h3,h4');const qP=qE?qE.innerText.trim():(el.innerText.split('\n')[0]||('문제 '+(idx+1)));if(!qP||qP.length<2)return;const opts=[];let wC='';let cC='';Array.from(el.querySelectorAll('.answer-choice,.choice-item,.option,li,.radio-label')).forEach((oE,oi)=>{const mk=['①','②','③','④'][oi]||('('+(oi+1)+')');const txt=oE.innerText.replace(/^[①②③④\(\)\d\.\s]+/,'').trim();const isC=oE.classList.contains('correct')||oE.classList.contains('correct-answer')||oE.classList.contains('is-correct')||!!oE.querySelector('.correct-mark,.fa-check,[data-correct=\"true\"]');const isK=oE.classList.contains('checked')||oE.classList.contains('checked-answer')||oE.classList.contains('user-answer')||oE.classList.contains('selected')||!!oE.querySelector('input:checked');if(isC)cC=txt;if(isK&&!isC)wC=txt;opts.push({marker:mk,copy:txt,copyNoRuby:txt,trans:'',isCorrect:isC});});const exE=el.querySelector('.explanation,.explanation-content,.expl-text,.solution');const trE=el.querySelector('.passage-translation,.question-translation,.translation,.trans-ko');l.push({id:'NH-'+dL+'-'+n+'-'+(idx+1),level:dL,typeCode:'external',typeName:'Nihonez 오답',instruction:'빈칸에 들어갈 가장 알맞은 표현을 고르세요.',qPlain:qP,qRuby:qP,qTrans:trE?trE.innerText.trim():'',options:opts.length>0?opts:[{marker:'①',copy:'정답 확인',isCorrect:true},{marker:'②',copy:'오답',isCorrect:false}],wrongChoice:wC||'내 오답',ansJa:cC||qP,ansKo:trE?trE.innerText.trim():'',expl:{main:exE?exE.innerText.trim():'Nihonez 오답 복습'},source:'nihonez'});});}if(l.length===0){alert('⚠️ 현재 페이지에서 틀린 문제를 찾지 못했습니다.\nNihonez 시험 결과 또는 오답 복습 화면에서 클릭해 주세요.');return;}const jS=JSON.stringify(l);if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(jS);}try{fetch('http://localhost:3000/api/import-mistakes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:l})}).catch(()=>{});}catch(e){}const tU='https://chanchan9741-hash.github.io/JLPT/index.html#import-mistakes='+encodeURIComponent(jS);const win=window.open(tU,'jlpt_master_tab');if(win){win.focus();}else{alert('📋 '+l.length+'개의 오답이 추출되었습니다! JLPT MASTER 탭으로 이동하세요.');}}catch(e){alert('오류 발생: '+e.message);}})();" class="bookmarklet-btn" id="link-bookmarklet" draggable="true" title="이 버튼을 브라우저 북마크(즐겨찾기) 바로 드래그하세요">
+              <span>🔗 JLPT 오답 자동등록 (북마크바로 드래그)</span>
+            </a>
+          </div>
+
+          <div style="display:flex; justify-content:center; gap:0.5rem;">
+            <button class="btn btn-secondary btn-sm" id="btn-copy-bookmarklet-code">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <span>북마클릿 코드 복사</span>
+            </button>
+          </div>
+        </div>
+
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-badge">1</span>
+            <div>
+              <strong>북마크 바에 등록하기:</strong><br>
+              위의 보라색 <b>[🔗 JLPT 오답 자동등록]</b> 버튼을 마우스로 클릭한 채, 브라우저 상단의 <b>북마크 바</b>로 끌어다 놓으세요. (Ctrl+Shift+B로 북마크 바 표시 가능)
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-badge">2</span>
+            <div>
+              <strong>Nihonez에서 클릭하기:</strong><br>
+              <a href="https://nihonez.com/jlpt-review/" target="_blank" style="color:var(--primary); font-weight:700;">nihonez.com</a> 시험 결과 또는 오답 복습 페이지에서 북마크 바의 <b>[JLPT 오답 자동등록]</b>을 누르세요.
+            </div>
+          </li>
+          <li class="step-item">
+            <span class="step-badge">3</span>
+            <div>
+              <strong>끝! 즉시 연동 완료:</strong><br>
+              틀린 문제들이 1초 만에 이 앱의 <b>오답노트, Anki 망각곡선 복습 덱(SRS), 오답 집중 테스트</b>에 자동으로 등록됩니다!
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab 2: Clipboard (클립보드에서 바로 등록) -->
+      <div class="import-tab-content hidden" id="import-tab-clipboard">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.5;">
+          Nihonez 북마클릿에서 자동 복사되었거나, 직접 복사한 JSON 텍스트를 버튼 하나로 즉시 앱에 등록합니다.
+        </p>
+
+        <button class="btn btn-primary" id="btn-read-clipboard-mistakes" style="width:100%; padding:1rem; font-size:1.05rem; font-weight:800; margin-bottom:1.25rem; display:flex; justify-content:center; align-items:center; gap:0.6rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+          <span>📋 클립보드 내용 읽어서 즉시 자동 등록</span>
+        </button>
+
+        <div style="margin-bottom:1rem;">
+          <label style="display:block; font-size:0.85rem; font-weight:700; color:var(--text-primary); margin-bottom:0.4rem;">또는 직접 텍스트(JSON) 붙여넣기:</label>
+          <textarea id="textarea-external-json" placeholder="[{ ... }] 형식의 오답 JSON 데이터를 붙여넣으세요" style="width:100%; height:140px; padding:0.8rem; border-radius:10px; border:1px solid var(--border-card); background:var(--bg-input); color:var(--text-primary); font-family:monospace; font-size:0.82rem; line-height:1.4; resize:vertical; outline:none;"></textarea>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <button class="btn btn-secondary btn-sm" id="btn-submit-pasted-mistakes">입력한 텍스트 등록하기</button>
+        </div>
+      </div>
+
+      <!-- Tab 3: File Dropzone (파일 드래그 & 드롭) -->
+      <div class="import-tab-content hidden" id="import-tab-file">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem; line-height:1.5;">
+          내보내기 한 오답 데이터 파일(.json 또는 .txt)을 아래에 드래그하면 즉시 오답노트에 반영됩니다.
+        </p>
+
+        <div class="external-dropzone" id="dropzone-mistakes">
+          <div class="dropzone-icon">📥</div>
+          <div class="dropzone-title">여기에 오답 파일(.json, .txt)을 끌어다 놓으세요</div>
+          <div class="dropzone-desc">또는 이곳을 클릭하여 컴퓨터에서 파일 선택</div>
+          <input type="file" id="input-external-mistakes-file" accept=".json,.txt" style="display:none;">
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer" style="padding:1rem 1.5rem; border-top:1px solid var(--border-subtle); display:flex; justify-content:flex-end;">
+        <button class="btn btn-secondary btn-sm" id="btn-close-external-import-footer">닫기</button>
+      </div>
     </div>
   </div>
 

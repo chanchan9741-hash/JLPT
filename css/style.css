@@ -3894,3 +3894,155 @@ html.is-mobile-device .question-footer {
 .legend-dot.normal {
   background: var(--bg-card);
 }
+
+/* ==========================================================================
+   External Mistakes Import Modal Styles
+   ========================================================================== */
+.modal-external-import-card {
+  max-width: 680px;
+  width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-xl);
+}
+
+.import-tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1.5px solid var(--border-subtle);
+  padding: 0 1.5rem;
+  background: var(--bg-surface);
+}
+
+.import-tab-btn {
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.import-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.import-tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.import-tab-content {
+  padding: 1.5rem;
+}
+
+.bookmarklet-hero {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.bookmarklet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--primary-gradient);
+  color: #ffffff !important;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+  cursor: grab;
+  text-decoration: none !important;
+  transition: all var(--transition-normal);
+  user-select: none;
+}
+
+.bookmarklet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+}
+
+.bookmarklet-btn:active {
+  cursor: grabbing;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  text-align: left;
+  margin-top: 1.25rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.external-dropzone {
+  border: 2px dashed var(--border-card);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.external-dropzone:hover,
+.external-dropzone.dragover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.dropzone-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.dropzone-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.dropzone-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

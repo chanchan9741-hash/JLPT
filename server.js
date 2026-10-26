@@ -563,7 +563,8 @@ const server = http.createServer((req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, *');
+  res.setHeader('Access-Control-Allow-Private-Network', 'true');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -645,6 +646,151 @@ const server = http.createServer((req, res) => {
         console.error('Failed to parse sync payload:', e);
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    return;
+  }
+
+  // API 3: POST /api/import-mistakes (Direct 1-click import from Nihonez bookmarklet or external)
+  if (req.method === 'POST' && pathname === '/api/import-mistakes') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        const rawItems = Array.isArray(payload) ? payload : (payload.items || (payload.mistakes ? Object.values(payload.mistakes) : []));
+
+        if (!rawItems || rawItems.length === 0) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ success: false, error: '가져올 오답 항목이 비어있습니다.' }));
+          return;
+        }
+
+        // Read existing sync data
+        let syncData = { mistakes: {}, history: {}, bookmarks: [], dailyStats: {}, srs: {} };
+        if (fs.existsSync(SYNC_DATA_FILE)) {
+          try {
+            syncData = JSON.parse(fs.readFileSync(SYNC_DATA_FILE, 'utf-8'));
+          } catch (e) {}
+        }
+        if (!syncData.mistakes) syncData.mistakes = {};
+        if (!syncData.history) syncData.history = {};
+        if (!syncData.dailyStats) syncData.dailyStats = {};
+
+        const now = Date.now();
+        const today = new Date().toISOString().slice(0, 10);
+        let importedCount = 0;
+
+        rawItems.forEach((item, idx) => {
+          if (!item.qPlain && !item.questionText && !item.content) return;
+          const qPlain = (item.qPlain || item.questionText || item.content || '').trim();
+          const level = (item.level || 'N1').toUpperCase();
+          const id = item.id || `NH-${level}-${now}-${idx + 1}`;
+
+          const existing = syncData.mistakes[id] || {};
+          const prevCount = existing.count || 0;
+
+          // Normalize options
+          let options = item.options || [];
+          if (Array.isArray(item.choices) && options.length === 0) {
+            options = item.choices.map((c, cIdx) => ({
+              marker: ['①','②','③','④'][cIdx] || `(${cIdx+1})`,
+              copy: typeof c === 'string' ? c : (c.text || c.copy || ''),
+              copyNoRuby: typeof c === 'string' ? c : (c.text || c.copy || ''),
+              trans: c.translation || '',
+              isCorrect: !!c.isCorrect
+            }));
+          }
+
+          const correctOpt = options.find(o => o.isCorrect);
+          const ansJa = item.ansJa || (correctOpt ? correctOpt.copy : '') || qPlain;
+          const ansKo = item.ansKo || item.qTrans || item.translation || '';
+
+          const mistakeObj = {
+            id,
+            level,
+            typeCode: item.typeCode || 'external',
+            typeName: item.typeName || 'Nihonez 오답',
+            instruction: item.instruction || '빈칸에 들어갈 가장 알맞은 표현을 고르세요.',
+            qPlain,
+            qRuby: item.qRuby || qPlain,
+            qTrans: item.qTrans || item.translation || '',
+            options,
+            ansJa,
+            ansKo,
+            expl: item.expl && item.expl.main ? item.expl : { main: (typeof item.expl === 'string' ? item.expl : (item.explanation || 'Nihonez 오답 복습 문제')) },
+            count: prevCount + 1,
+            firstWrongDate: existing.firstWrongDate || now,
+            lastWrongDate: now,
+            wrongChoice: item.wrongChoice || existing.wrongChoice || '',
+            isMastered: false,
+            isBookmarked: existing.isBookmarked || false,
+            source: item.source || 'nihonez'
+          };
+
+          syncData.mistakes[id] = mistakeObj;
+
+          // History entry
+          const prevHist = syncData.history[id] || { solved: 0, correct: 0 };
+          syncData.history[id] = {
+            solved: (prevHist.solved || 0) + 1,
+            correct: prevHist.correct || 0,
+            lastResult: false,
+            lastDate: now
+          };
+
+          importedCount++;
+        });
+
+        // Update daily stats
+        if (!syncData.dailyStats[today]) {
+          syncData.dailyStats[today] = {
+            date: today,
+            solved: 0,
+            correct: 0,
+            quizSolved: 0,
+            grammarSolved: 0,
+            readingSolved: 0,
+            ankiSolved: 0,
+            lastUpdated: now
+          };
+        }
+        syncData.dailyStats[today].solved += importedCount;
+        syncData.dailyStats[today].lastUpdated = now;
+
+        syncData.lastSyncTime = now;
+        syncData.lastSyncDate = new Date().toISOString();
+
+        // Write files
+        fs.writeFileSync(SYNC_DATA_FILE, JSON.stringify(syncData, null, 2), 'utf-8');
+
+        // Generate reports
+        const mdContent = generateMistakesMarkdown(syncData.mistakes || {}, syncData.history || {}, syncData.dailyStats || {});
+        const reportHtml = generateMistakesHtml(syncData.mistakes || {}, syncData.history || {}, syncData.dailyStats || {});
+
+        const REPORT_HTML_FILE = path.join(BASE_DIR, '오답노트_보고서.html');
+        fs.writeFileSync(REPORT_HTML_FILE, reportHtml, 'utf-8');
+        try {
+          fs.writeFileSync(path.join(BASE_DIR, '..', '오답노트_보고서.html'), reportHtml, 'utf-8');
+        } catch (e) {}
+        fs.writeFileSync(MISTAKES_MD_FILE, mdContent, 'utf-8');
+        try {
+          fs.writeFileSync(path.join(BASE_DIR, '..', '오답노트_자동동기화.md'), mdContent, 'utf-8');
+        } catch (e) {}
+
+        console.log(`[Nihonez Import] Successfully imported ${importedCount} wrong questions at ${new Date().toLocaleTimeString()}!`);
+
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({
+          success: true,
+          count: importedCount,
+          message: `${importedCount}개의 오답 문제가 성공적으로 등록되었습니다.`,
+          syncTime: syncData.lastSyncTime
+        }));
+      } catch (err) {
+        console.error('Failed to import mistakes:', err);
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, error: err.message }));
       }
     });
     return;
