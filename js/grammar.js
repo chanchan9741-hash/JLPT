@@ -571,7 +571,7 @@
             </div>
             <div class="g-rule-desc">
               <strong>의미:</strong> ${cur.patternMeaning}<br>
-              ${cur.expl ? cur.expl.main : ''}
+              ${cur.expl ? (typeof window.formatExplanation === 'function' ? window.formatExplanation(cur.expl.main) : cur.expl.main) : ''}
             </div>
           </div>
 

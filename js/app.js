@@ -117,14 +117,15 @@
     }
   };
 
-  // Anki Spaced Repetition (SRS) State
+  // Anki Spaced Repetition (SRS) State (카드 뒤집기 없이 객관식 실전 풀이 + 복습곡선 자동 연동)
   let ankiState = {
     level: 'ALL',
     source: 'due', // 'due' | 'mistakes' | 'all_srs' | 'history' | 'bookmarks'
-    mode: 'flashcard', // 'flashcard' | 'quiz'
+    mode: 'quiz',
     currentQueue: [],
     queueIndex: 0,
-    isFlipped: false,
+    answered: false,
+    selectedOption: null,
     sessionSolvedCount: 0
   };
 
@@ -1392,7 +1393,7 @@
     }
 
     // Core explanation
-    explMain.textContent = q.expl && q.expl.main ? q.expl.main : '정답과 해설을 확인하고 복습하세요.';
+    explMain.innerHTML = formatExplanation(q.expl && q.expl.main ? q.expl.main : '정답과 해설을 확인하고 복습하세요.');
 
     // Choice notes breakdown
     if (q.expl && q.expl.choices && q.expl.choices.length > 0) {
@@ -1535,7 +1536,7 @@
               ${m.wrongChoice ? `<span style="color:var(--danger); font-size:0.8rem; margin-left:auto;">(내가 찍은 답: ${escapeHtml(m.wrongChoice)})</span>` : ''}
             </div>
             ${m.ansJa && m.typeCode !== 'kanji_reading' ? `<div style="color:var(--text-secondary); font-size:0.85rem;">완성문: ${escapeHtml(m.ansJa)}</div>` : ''}
-            <div class="mc-expl-preview">💡 ${escapeHtml(m.expl?.main || '')}</div>
+            <div class="mc-expl-preview" style="margin-top:0.6rem;">${formatExplanation(m.expl?.main || '')}</div>
           </div>
         </div>
       `;
@@ -2545,34 +2546,24 @@
       });
     }
 
-    // Mode segmented control
-    document.querySelectorAll('#anki-mode-segmented .seg-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#anki-mode-segmented .seg-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        ankiState.mode = btn.dataset.ankiMode;
-        renderAnkiSession();
-      });
-    });
-
-    // Flip card button
-    const btnFlipCard = document.getElementById('btn-flip-card');
-    if (btnFlipCard) {
-      btnFlipCard.addEventListener('click', () => flipAnkiCard(true));
-    }
-
-    const btnFlipBack = document.getElementById('btn-flip-back');
-    if (btnFlipBack) {
-      btnFlipBack.addEventListener('click', () => flipAnkiCard(false));
-    }
-
-    // 4 Evaluation Buttons
+    // 4 Evaluation Buttons (Manual SRS fine-tuning)
     ['again', 'hard', 'good', 'easy'].forEach(grade => {
       const btn = document.getElementById(`btn-eval-${grade}`);
       if (btn) {
-        btn.addEventListener('click', () => rateAnkiCard(grade));
+        btn.addEventListener('click', () => rateAnkiCard(grade, true));
       }
     });
+
+    // Next / Prev Navigation Buttons
+    const btnNext = document.getElementById('btn-anki-next');
+    if (btnNext) {
+      btnNext.addEventListener('click', nextAnkiQuestion);
+    }
+
+    const btnPrev = document.getElementById('btn-anki-prev');
+    if (btnPrev) {
+      btnPrev.addEventListener('click', prevAnkiQuestion);
+    }
 
     // Audio & Bookmark buttons
     const btnAudio = document.getElementById('btn-anki-audio');
@@ -2747,6 +2738,7 @@
     }
   }
 
+
   function renderAnkiSession() {
     const arena = document.getElementById('anki-arena');
     const cardWrapper = document.getElementById('anki-card-wrapper');
@@ -2800,6 +2792,9 @@
 
     const fillEl = document.getElementById('anki-progress-fill');
     if (fillEl) fillEl.style.width = `${progressPercent}%`;
+
+    ankiState.answered = false;
+    ankiState.selectedOption = null;
 
     const cardId = ankiState.currentQueue[ankiState.queueIndex];
     renderAnkiCard(cardId);
@@ -2855,7 +2850,11 @@
       qTransEl.classList.toggle('hidden', !state.showTrans);
     }
 
-    // Render options
+    // Reset explanation drawer
+    const explBox = document.getElementById('anki-explanation-box');
+    if (explBox) explBox.classList.add('hidden');
+
+    // Render options (direct quiz items)
     const optionsGrid = document.getElementById('anki-options-grid');
     if (optionsGrid) {
       optionsGrid.innerHTML = '';
@@ -2872,18 +2871,14 @@
         `;
 
         item.addEventListener('click', () => {
-          if (ankiState.mode === 'quiz' && !ankiState.isFlipped) {
-            handleAnkiQuizSelect(idx);
-          } else {
-            flipAnkiCard(true);
-          }
+          handleAnkiOptionSelect(idx);
         });
 
         optionsGrid.appendChild(item);
       });
     }
 
-    // Back card content
+    // Explanation Content
     const csJa = document.getElementById('anki-cs-ja');
     if (csJa) csJa.textContent = q.ansJa || q.qPlain;
 
@@ -2909,7 +2904,7 @@
       }
     }
 
-    // Preview intervals for the 4 buttons
+    // Preview intervals for the 4 manual override buttons
     const prevAgain = calculateNextSrs(card, 'again');
     const prevHard = calculateNextSrs(card, 'hard');
     const prevGood = calculateNextSrs(card, 'good');
@@ -2926,38 +2921,22 @@
 
     const intEasy = document.getElementById('eval-interval-easy');
     if (intEasy) intEasy.textContent = `${prevEasy.interval}일`;
-
-    // Reset flip state to front
-    flipAnkiCard(false);
   }
 
-  function flipAnkiCard(toBack = true) {
-    ankiState.isFlipped = toBack;
-    const cardFront = document.getElementById('anki-card-front');
-    const cardBack = document.getElementById('anki-card-back');
+  function handleAnkiOptionSelect(optIdx) {
+    if (ankiState.answered) return;
 
-    if (toBack) {
-      if (cardFront) cardFront.classList.add('hidden');
-      if (cardBack) cardBack.classList.remove('hidden');
-
-      // Reveal translations on back
-      const qTransEl = document.getElementById('anki-question-trans');
-      if (qTransEl) qTransEl.classList.remove('hidden');
-    } else {
-      if (cardFront) cardFront.classList.remove('hidden');
-      if (cardBack) cardBack.classList.add('hidden');
-    }
-  }
-
-  function handleAnkiQuizSelect(optIdx) {
     const cardId = ankiState.currentQueue[ankiState.queueIndex];
     const q = getQuestionById(cardId);
     if (!q || !q.options) return;
 
+    ankiState.answered = true;
+    ankiState.selectedOption = optIdx;
+
     const selectedOpt = q.options[optIdx];
     const isCorrect = selectedOpt && selectedOpt.isCorrect;
 
-    // Visual highlights
+    // Visual highlights on options
     const items = document.querySelectorAll('#anki-options-grid .anki-option-item');
     items.forEach((item, idx) => {
       if (q.options[idx].isCorrect) {
@@ -2974,15 +2953,42 @@
       sound.playWrong();
     }
 
-    setTimeout(() => {
-      flipAnkiCard(true);
-    }, 280);
+    // Automatically apply Anki SRS Spaced Repetition Curve!
+    const autoGrade = isCorrect ? 'good' : 'again';
+    const nextSrs = applySrsGrading(cardId, autoGrade);
+
+    // Update Result & SRS Feedback Banner
+    const banner = document.getElementById('anki-result-banner');
+    const statusText = document.getElementById('anki-result-text');
+    const statusIcon = document.getElementById('anki-result-icon');
+    const srsFeedback = document.getElementById('anki-srs-feedback-tag');
+
+    if (banner) {
+      banner.className = `anki-result-banner ${isCorrect ? 'correct' : 'wrong'}`;
+    }
+    if (statusIcon) statusIcon.textContent = isCorrect ? '✓' : '✗';
+    if (statusText) statusText.textContent = isCorrect ? '정답입니다!' : '오답입니다.';
+    if (srsFeedback) {
+      if (isCorrect) {
+        srsFeedback.innerHTML = `<span>망각곡선 간격: <b>+${nextSrs.interval}일</b> 연장 (${nextSrs.state === 'mastered' ? '✨ 마스터 완료' : nextSrs.repetitions + '회 연속 정답'})</span>`;
+      } else {
+        srsFeedback.innerHTML = `<span>복습 간격이 <b>1일(내일)</b>로 재설정되며, 3문제 뒤에 다시 출제됩니다.</span>`;
+      }
+    }
+
+    // Reveal Explanation Box
+    const explBox = document.getElementById('anki-explanation-box');
+    if (explBox) {
+      explBox.classList.remove('hidden');
+      explBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Always reveal translation when answered
+    const qTransEl = document.getElementById('anki-question-trans');
+    if (qTransEl) qTransEl.classList.remove('hidden');
   }
 
-  function rateAnkiCard(grade) {
-    const cardId = ankiState.currentQueue[ankiState.queueIndex];
-    if (!cardId) return;
-
+  function applySrsGrading(cardId, grade) {
     const q = getQuestionById(cardId);
     const existing = srs[cardId] || {
       id: cardId,
@@ -3000,24 +3006,53 @@
     recordDailyActivity({ category: 'anki', isCorrect: grade !== 'again', count: 1 });
 
     if (grade === 'again') {
-      sound.playWrong();
-      showToast('🔴 [다시] 3문제 뒤에 다시 출제됩니다.');
       // Re-queue card 3~4 positions ahead for immediate retention loop!
       const targetPos = Math.min(ankiState.currentQueue.length, ankiState.queueIndex + 4);
       ankiState.currentQueue.splice(targetPos, 0, cardId);
+    }
+
+    // Update badge on card
+    const badgeSrs = document.getElementById('anki-card-srs-status');
+    if (badgeSrs) {
+      const stateName = next.state === 'mastered' ? '✨ 마스터' : (next.state === 'review' ? '복습 안정권' : '학습 중');
+      badgeSrs.textContent = `${stateName} · 간격: ${next.interval || 1}일 (${next.repetitions || 0}회 연속 정답)`;
+    }
+
+    return next;
+  }
+
+  function rateAnkiCard(grade, advance = true) {
+    const cardId = ankiState.currentQueue[ankiState.queueIndex];
+    if (!cardId) return;
+
+    const next = applySrsGrading(cardId, grade);
+
+    if (grade === 'again') {
+      showToast('🔴 [다시] 3문제 뒤에 다시 출제됩니다.');
     } else if (grade === 'hard') {
       showToast(`🟠 [어려움] ${next.interval}일 후 복습으로 예약되었습니다.`);
     } else if (grade === 'good') {
-      sound.playCorrect();
       showToast(`🟢 [알맞음] ${next.interval}일 후 복습으로 예약되었습니다.`);
     } else if (grade === 'easy') {
-      sound.playCorrect();
       showToast(`🔵 [쉬움] ${next.interval}일 후 복습으로 예약되었습니다.`);
     }
 
+    if (advance) {
+      nextAnkiQuestion();
+    }
+  }
+
+  function nextAnkiQuestion() {
     ankiState.sessionSolvedCount++;
     ankiState.queueIndex++;
     renderAnkiSession();
+  }
+
+  function prevAnkiQuestion() {
+    if (ankiState.queueIndex > 0) {
+      ankiState.queueIndex--;
+      renderAnkiSession();
+    }
   }
 
   function renderAnkiSchedule() {
@@ -3141,6 +3176,97 @@
       setTimeout(() => toast.remove(), 300);
     }, 2500);
   }
+
+  function renderMarkdownSafe(str) {
+    if (!str) return '';
+    let s = escapeHtml(str);
+    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/\*([^\*]+?)\*/g, '<em>$1</em>');
+    s = s.replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px;">$1</code>');
+    return s;
+  }
+
+  function formatWrongChoicesSection(text) {
+    const rawItems = text.split(/(?=(?:^|\s)[1-4]\.\s)/g).map(s => s.trim()).filter(Boolean);
+    if (rawItems.length > 1) {
+      let out = '<div class="expl-wrong-list">';
+      rawItems.forEach(item => {
+        let formatted = renderMarkdownSafe(item);
+        formatted = formatted.replace(/❌\s*(?:-&gt;|-&gt;|→)?/g, '<span class="expl-x-mark">❌</span> <span class="expl-arrow">→</span>');
+        out += `<div class="expl-wrong-item">${formatted}</div>`;
+      });
+      out += '</div>';
+      return out;
+    }
+    return renderMarkdownSafe(text).replace(/\n/g, '<br>');
+  }
+
+  window.formatExplanation = formatExplanation;
+  function formatExplanation(rawText) {
+    if (!rawText) return '정답과 해설을 확인하고 복습하세요.';
+    const text = String(rawText).trim();
+
+    const sectionConfigs = [
+      { key: 'correct answer', label: '🎯 정답 및 의미', type: 'correct' },
+      { key: 'question translation', label: '📖 지문 전체 해석', type: 'trans' },
+      { key: 'explanation', label: '💡 핵심 문법 및 상세 해설', type: 'expl' },
+      { key: 'why other options are incorrect', label: '🔍 오답 선지 상세 분석', type: 'wrong-choices' },
+      { key: 'test-taking tip', label: '⚡ 실전 출제 팁', type: 'tip' },
+      { key: 'grammar/vocabulary note', label: '📝 핵심 문법 · 어휘 메모', type: 'note' },
+      { key: '정답', label: '🎯 정답 및 의미', type: 'correct' },
+      { key: '문제 해석', label: '📖 지문 전체 해석', type: 'trans' },
+      { key: '문제 번역', label: '📖 지문 전체 해석', type: 'trans' },
+      { key: '상세 해설', label: '💡 핵심 문법 및 상세 해설', type: 'expl' },
+      { key: '오답 분석', label: '🔍 오답 선지 상세 분석', type: 'wrong-choices' },
+      { key: '출제 팁', label: '⚡ 실전 출제 팁', type: 'tip' }
+    ];
+
+    const sectionRegex = /\*\*(Correct Answer|Question Translation|Explanation|Why Other Options Are Incorrect|💡?\s*Test-Taking Tip|Grammar\/Vocabulary Note|정답|문제\s*(?:해석|번역)|상세\s*해설|오답\s*분석|출제\s*팁)\*\*/gi;
+
+    if (sectionRegex.test(text)) {
+      sectionRegex.lastIndex = 0;
+      const parts = text.split(sectionRegex);
+      if (parts.length > 1) {
+        let html = '<div class="formatted-expl-container">';
+        if (parts[0] && parts[0].trim()) {
+          html += `<div class="expl-block expl-block-intro"><div class="expl-block-body">${renderMarkdownSafe(parts[0].trim())}</div></div>`;
+        }
+
+        for (let i = 1; i < parts.length; i += 2) {
+          const rawKey = (parts[i] || '').trim();
+          let body = (parts[i + 1] || '').trim();
+          const cleanKey = rawKey.replace(/^💡\s*/, '').toLowerCase();
+          const conf = sectionConfigs.find(c => c.key === cleanKey) || {
+            label: rawKey,
+            type: 'expl'
+          };
+
+          let bodyHtml = '';
+          if (conf.type === 'wrong-choices') {
+            bodyHtml = formatWrongChoicesSection(body);
+          } else if (conf.type === 'expl') {
+            let s = renderMarkdownSafe(body);
+            s = s.replace(/(\s|^)([1-4]\)|[①②③④])/g, '<br><br><strong>$2</strong>');
+            bodyHtml = s.replace(/\n/g, '<br>');
+          } else {
+            bodyHtml = renderMarkdownSafe(body).replace(/\n/g, '<br>');
+          }
+
+          html += `
+            <div class="expl-block expl-block-${conf.type}">
+              <div class="expl-block-header">${conf.label}</div>
+              <div class="expl-block-body">${bodyHtml}</div>
+            </div>
+          `;
+        }
+        html += '</div>';
+        return html;
+      }
+    }
+
+    return `<div class="formatted-expl-simple">${renderMarkdownSafe(text).replace(/\n/g, '<br>')}</div>`;
+  }
+
 
   function escapeHtml(str) {
     if (!str) return '';
@@ -3674,27 +3800,29 @@
           document.getElementById('btn-bookmark').click();
         }
       } else if (state.currentTab === 'anki') {
-        if (!ankiState.isFlipped) {
-          if (ankiState.mode === 'quiz' && (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4')) {
+        if (!ankiState.answered) {
+          // Choosing option 1, 2, 3, 4
+          if (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4') {
             const optIdx = parseInt(e.key, 10) - 1;
-            handleAnkiQuizSelect(optIdx);
-          } else if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            flipAnkiCard(true);
+            handleAnkiOptionSelect(optIdx);
           }
         } else {
-          // Card is flipped: 1 Again, 2 Hard, 3 Good, 4 Easy
-          if (e.key === '1') {
-            rateAnkiCard('again');
-          } else if (e.key === '2') {
-            rateAnkiCard('hard');
-          } else if (e.key === '3') {
-            rateAnkiCard('good');
-          } else if (e.key === '4') {
-            rateAnkiCard('easy');
-          } else if (e.key === ' ' || e.key === 'Enter') {
+          // Answered: Space or Enter moves to next review question
+          if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
-            rateAnkiCard('good');
+            nextAnkiQuestion();
+          } else if (e.key === '1') {
+            rateAnkiCard('again', true);
+          } else if (e.key === '2') {
+            rateAnkiCard('hard', true);
+          } else if (e.key === '3') {
+            rateAnkiCard('good', true);
+          } else if (e.key === '4') {
+            rateAnkiCard('easy', true);
+          } else if (e.key === 'p' || e.key === 'P' || e.key === 'ArrowLeft') {
+            prevAnkiQuestion();
+          } else if (e.key === 'n' || e.key === 'N' || e.key === 'ArrowRight') {
+            nextAnkiQuestion();
           }
         }
 

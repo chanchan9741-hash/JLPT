@@ -1095,14 +1095,138 @@ kbd {
 }
 
 .expl-main-text {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.96rem;
+  line-height: 1.65;
   color: var(--text-primary);
-  background: var(--primary-light);
-  padding: 0.9rem 1.15rem;
+  background: var(--bg-card);
+  padding: 1rem 1.15rem;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
   border-left: 4px solid var(--primary);
 }
+
+/* Formatted Structured Explanation */
+.formatted-expl-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.expl-block {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.expl-block-header {
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.expl-block-body {
+  font-size: 0.93rem;
+  color: var(--text-primary);
+  line-height: 1.68;
+}
+
+.expl-block-body strong {
+  color: var(--accent, #6366f1);
+  font-weight: 700;
+}
+
+/* Correct Answer Block */
+.expl-block-correct {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-left: 4px solid #10b981;
+}
+.expl-block-correct .expl-block-header {
+  color: #10b981;
+}
+
+/* Translation Block */
+.expl-block-trans {
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-left: 4px solid #3b82f6;
+}
+.expl-block-trans .expl-block-header {
+  color: #60a5fa;
+}
+
+/* Core Explanation Block */
+.expl-block-expl {
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-left: 4px solid #6366f1;
+}
+.expl-block-expl .expl-block-header {
+  color: #a5b4fc;
+}
+
+/* Wrong Choices Block */
+.expl-block-wrong-choices {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-left: 4px solid #ef4444;
+}
+.expl-block-wrong-choices .expl-block-header {
+  color: #f87171;
+}
+
+.expl-wrong-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+}
+
+.expl-wrong-item {
+  padding: 0.65rem 0.85rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 0.89rem;
+  line-height: 1.55;
+  border-left: 3px solid rgba(239, 68, 68, 0.5);
+}
+
+.expl-wrong-item strong {
+  color: #fca5a5;
+}
+
+.expl-x-mark {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.expl-arrow {
+  color: #94a3b8;
+  margin: 0 0.35rem;
+  font-weight: 700;
+}
+
+/* Tip & Note Blocks */
+.expl-block-tip,
+.expl-block-note {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-left: 4px solid #f59e0b;
+}
+.expl-block-tip .expl-block-header,
+.expl-block-note .expl-block-header {
+  color: #fbbf24;
+}
+
+.formatted-expl-simple {
+  line-height: 1.68;
+}
+
 
 .choice-notes-list {
   display: flex;
@@ -4045,4 +4169,61 @@ html.is-mobile-device .question-footer {
 .dropzone-desc {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   Anki SRS Direct Quiz (카드 뒤집기 없는 복습곡선 실전 문제 풀이)
+   ========================================================================== */
+.anki-explanation-box {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.anki-result-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.anki-result-banner.correct {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  color: #059669;
+}
+.anki-result-banner.wrong {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  color: #dc2626;
+}
+.anki-result-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+}
+.anki-srs-feedback-tag {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: var(--bg-card);
+  border: 1px solid currentColor;
+  font-weight: 600;
+}
+.anki-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
