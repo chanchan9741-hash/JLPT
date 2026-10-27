@@ -118,6 +118,7 @@ window.JLPT_FIREBASE = (function () {
 
     unsubscribeSnapshot = docRef.onSnapshot((doc) => {
       if (isSyncingToCloud) return; // Prevent echo loop
+      if (doc.metadata && doc.metadata.hasPendingWrites) return; // Prevent local write echo loop
 
       if (doc.exists) {
         const cloudData = doc.data();
@@ -231,7 +232,7 @@ window.JLPT_FIREBASE = (function () {
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
     } finally {
-      setTimeout(() => { isSyncingToCloud = false; }, 300);
+      setTimeout(() => { isSyncingToCloud = false; }, 2000);
     }
   }
 

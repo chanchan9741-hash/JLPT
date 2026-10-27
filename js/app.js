@@ -222,7 +222,7 @@
       let updated = false;
       if (driveData.mistakes) {
         for (const [id, m] of Object.entries(driveData.mistakes)) {
-          if (!mistakes[id] || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.count || 1) >= (mistakes[id].count || 1)) {
+          if (!mistakes[id] || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.count || 1) > (mistakes[id].count || 1) || (m.isMastered && !mistakes[id].isMastered)) {
             mistakes[id] = m;
             if (!srs[id]) {
               srs[id] = {
@@ -297,8 +297,10 @@
         renderStats();
         if (state.currentTab === 'mistakes') {
           if (state.mistakesSubview === 'quiz') {
-            ankiState.currentQueue = buildAnkiQueue();
-            renderAnkiSession();
+            if (!ankiState.answered && (!ankiState.currentQueue || ankiState.currentQueue.length === 0)) {
+              ankiState.currentQueue = buildAnkiQueue();
+              renderAnkiSession();
+            }
           } else {
             renderMistakesList();
           }
@@ -621,7 +623,7 @@
     localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
     updateMistakeBadge();
     renderStats();
-    if (state.currentTab === 'mistakes') {
+    if (state.currentTab === 'mistakes' && state.mistakesSubview === 'list') {
       renderMistakesList();
     }
     syncManager.scheduleSync();
@@ -3427,13 +3429,45 @@
       });
     }
 
+    function updateFuriganaDisplay() {
+      const qTextEl = document.getElementById('q-text');
+      const q = currentQuestions && currentQuestions[state.currentIndex];
+      if (qTextEl && q) {
+        const displayedQuestion = state.furigana ? q.qRuby : q.qPlain;
+        qTextEl.innerHTML = formatQuestionDisplay(displayedQuestion, q.typeCode);
+      }
+      const btn = document.getElementById('btn-quick-furigana');
+      if (btn) {
+        btn.classList.toggle('active', state.furigana);
+        const dot = btn.querySelector('.pill-dot');
+        if (dot) dot.classList.toggle('active', state.furigana);
+      }
+    }
+
+    function updateTransDisplay() {
+      const qTransEl = document.getElementById('q-translation');
+      if (qTransEl) {
+        if (state.showTrans || state.answered) {
+          qTransEl.classList.remove('hidden');
+        } else {
+          qTransEl.classList.add('hidden');
+        }
+      }
+      const btn = document.getElementById('btn-quick-trans');
+      if (btn) {
+        btn.classList.toggle('active', state.showTrans);
+        const dot = btn.querySelector('.pill-dot');
+        if (dot) dot.classList.toggle('active', state.showTrans);
+      }
+    }
+
     const btnQuickFurigana = document.getElementById('btn-quick-furigana');
     if (btnQuickFurigana) {
       btnQuickFurigana.addEventListener('click', () => {
         state.furigana = !state.furigana;
         if (toggleFurigana) toggleFurigana.checked = state.furigana;
         saveState();
-        renderCurrentQuestion();
+        updateFuriganaDisplay();
         showToast(state.furigana ? 'あ 요미가나(후리가나) 표시 ON' : 'あ 요미가나(후리가나) 숨김');
       });
     }
@@ -3445,7 +3479,7 @@
       toggleTrans.addEventListener('change', (e) => {
         state.showTrans = e.target.checked;
         saveState();
-        renderCurrentQuestion();
+        updateTransDisplay();
         showToast(state.showTrans ? '👁️ 한글 뜻 항상 표시 ON' : '🙈 한글 뜻 숨김 모드 (글 길게 눌러 확인)');
       });
     }
@@ -3456,7 +3490,7 @@
         state.showTrans = !state.showTrans;
         if (toggleTrans) toggleTrans.checked = state.showTrans;
         saveState();
-        renderCurrentQuestion();
+        updateTransDisplay();
         showToast(state.showTrans ? '👁️ 한글 뜻 항상 표시 ON' : '🙈 한글 뜻 숨김 모드 (글 길게 눌러 확인)');
       });
     }
@@ -3737,7 +3771,9 @@
         renderStats();
         updateMistakeBadge();
         updateAnkiBadge();
-        renderCurrentQuestion();
+        if (!state.answered) {
+          renderCurrentQuestion();
+        }
         const totalSolved = Object.keys(history).length;
         showToast(`✅ 구글 드라이브 동기화 완료! (총 ${totalSolved}문제 푼 기록 반영됨)`);
       }
@@ -4318,7 +4354,7 @@
         } else {
           const cloudCount = m.count || 1;
           const localCount = mistakes[id].count || 1;
-          if (cloudCount >= localCount || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0)) {
+          if (cloudCount > localCount || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.isMastered && !mistakes[id].isMastered)) {
             mistakes[id] = { ...m };
             changed = true;
           }
@@ -4383,12 +4419,17 @@
       updateAnkiBadge();
       if (state.currentTab === 'mistakes') {
         if (state.mistakesSubview === 'quiz') {
-          renderAnkiSession();
+          // Do not interrupt user while answering or reading explanation
+          if (!ankiState.answered && (!ankiState.currentQueue || ankiState.currentQueue.length === 0)) {
+            ankiState.currentQueue = buildAnkiQueue();
+            renderAnkiSession();
+          }
         } else {
           renderMistakesList();
         }
       }
-      renderCurrentQuestion();
+      // CRITICAL FIX: Do NOT call renderCurrentQuestion() here!
+      // Background sync must NEVER reset the active question or wipe the explanation while the user is reading it.
     }
     renderStats();
   }
