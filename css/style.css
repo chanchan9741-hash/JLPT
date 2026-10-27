@@ -4227,3 +4227,62 @@ html.is-mobile-device .question-footer {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
+
+
+/* ==========================================================================
+   Mistakes View Unified Subviews & Nav
+   ========================================================================== */
+.mistakes-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.mistakes-title-row h2 {
+  margin-bottom: 0 !important;
+}
+
+.mistakes-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+#mistakes-subview-segmented {
+  padding: 4px;
+  border-radius: var(--radius-lg);
+  gap: 6px;
+}
+
+#mistakes-subview-segmented .seg-btn {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#mistakes-subview-segmented .seg-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.mistakes-subpanel {
+  display: block;
+}
+
+.mistakes-subpanel.hidden {
+  display: none !important;
+}
+
+.hero-stat-card.anki-stat-due {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.3);
+}

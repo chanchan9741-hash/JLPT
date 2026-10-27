@@ -102,6 +102,7 @@
     level: 'N1',
     type: 'ALL',
     mode: 'drill', // 'drill' (instant feedback) | 'exam' (mock test) | 'mistake-drill'
+    mistakesSubview: 'quiz', // 'quiz' (SRS review quiz) | 'list' (mistakes management)
     currentIndex: 0,
     levelIndices: {},
     isShuffled: false,
@@ -295,10 +296,12 @@
         updateAnkiBadge();
         renderStats();
         if (state.currentTab === 'mistakes') {
-          renderMistakesList();
-        } else if (state.currentTab === 'anki') {
-          ankiState.currentQueue = buildAnkiQueue();
-          renderAnkiSession();
+          if (state.mistakesSubview === 'quiz') {
+            ankiState.currentQueue = buildAnkiQueue();
+            renderAnkiSession();
+          } else {
+            renderMistakesList();
+          }
         }
       }
     },
@@ -1467,6 +1470,13 @@
     const recoveryRate = allMistakes.length > 0 ? Math.round((masteredCount / allMistakes.length) * 100) : 0;
     nbAccuracy.textContent = `${recoveryRate}%`;
 
+    const nowDue = Date.now();
+    const dueCards = Object.values(srs).filter(c => (c.dueDate || 0) <= nowDue + 60000);
+    const nbTodayDue = document.getElementById('nb-today-due');
+    if (nbTodayDue) {
+      nbTodayDue.textContent = dueCards.length.toLocaleString();
+    }
+
     // Filter items
     let filtered = allMistakes.filter(m => {
       if (filterLevel !== 'ALL' && m.level !== filterLevel) return false;
@@ -1514,6 +1524,9 @@
               ${isMastered ? '<span class="badge" style="background:var(--success); color:#fff;">✨ 정복됨</span>' : ''}
             </div>
             <div class="mc-actions">
+              <button class="btn btn-primary btn-sm btn-mc-drill" data-id="${m.id}" title="이 오답 즉시 복습 풀기">
+                ⚡ 복습 풀기
+              </button>
               <button class="btn btn-ghost btn-sm btn-mc-bookmark ${isBookmarked ? 'active' : ''}" data-id="${m.id}" title="북마크">
                 ★
               </button>
@@ -1545,6 +1558,15 @@
     listContainer.innerHTML = html;
 
     // Attach listeners for card actions
+    listContainer.querySelectorAll('.btn-mc-drill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.target.closest('button').dataset.id;
+        if (id && window.app && window.app.startAnkiSingleCard) {
+          window.app.startAnkiSingleCard(id);
+        }
+      });
+    });
+
     listContainer.querySelectorAll('.btn-mc-master').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = e.target.closest('button').dataset.id;
@@ -2422,7 +2444,7 @@
       showToast('★ 북마크에 추가되었습니다.');
     }
     saveBookmarks();
-    if (state.currentTab === 'anki') {
+    if (state.currentTab === 'mistakes' && state.mistakesSubview === 'quiz') {
       renderAnkiCard(ankiState.currentQueue[ankiState.queueIndex]);
     }
   }
@@ -2443,6 +2465,11 @@
     if (dueCountBadgeMobile) {
       dueCountBadgeMobile.textContent = dueCount.toLocaleString();
       dueCountBadgeMobile.style.display = dueCount > 0 ? 'inline-flex' : 'none';
+    }
+
+    const nbTodayDue = document.getElementById('nb-today-due');
+    if (nbTodayDue) {
+      nbTodayDue.textContent = dueCount.toLocaleString();
     }
 
     // Hero stat numbers
@@ -2601,6 +2628,13 @@
         ankiState.queueIndex = 0;
         renderAnkiSession();
         showToast('⚡ 내일 이후 복습 카드를 미리 당겨왔습니다!');
+      });
+    }
+
+    const btnCompletedSwitchList = document.getElementById('btn-completed-switch-list');
+    if (btnCompletedSwitchList) {
+      btnCompletedSwitchList.addEventListener('click', () => {
+        setMistakesSubview('list');
       });
     }
 
@@ -3112,7 +3146,37 @@
   }
 
   // --- Tab Navigation ---
+  function setMistakesSubview(subview) {
+    state.mistakesSubview = subview;
+    const btnQuiz = document.getElementById('btn-subview-quiz');
+    const btnList = document.getElementById('btn-subview-list');
+    const panelQuiz = document.getElementById('panel-mistakes-quiz');
+    const panelList = document.getElementById('panel-mistakes-list');
+
+    if (btnQuiz && btnList) {
+      btnQuiz.classList.toggle('active', subview === 'quiz');
+      btnList.classList.toggle('active', subview === 'list');
+    }
+
+    if (panelQuiz && panelList) {
+      if (subview === 'quiz') {
+        panelQuiz.classList.remove('hidden');
+        panelList.classList.add('hidden');
+        initAnkiTab();
+        renderAnkiSession();
+      } else {
+        panelQuiz.classList.add('hidden');
+        panelList.classList.remove('hidden');
+        renderMistakesList();
+      }
+    }
+  }
+
   function switchTab(tabName) {
+    if (tabName === 'anki') {
+      tabName = 'mistakes';
+      state.mistakesSubview = 'quiz';
+    }
     state.currentTab = tabName;
     document.querySelectorAll('.nav-tab').forEach(tab => {
       tab.classList.toggle('active', tab.dataset.tab === tabName);
@@ -3123,11 +3187,10 @@
       view.classList.toggle('active', view.id === `view-${tabName}`);
     });
 
-    if (tabName === 'anki') {
-      initAnkiTab();
-      renderAnkiSession();
-    } else if (tabName === 'mistakes') {
-      renderMistakesList();
+    if (tabName === 'mistakes') {
+      updateAnkiBadge();
+      updateMistakeBadge();
+      setMistakesSubview(state.mistakesSubview || 'quiz');
     } else if (tabName === 'stats') {
       renderStats();
     } else if (tabName === 'reading') {
@@ -3484,7 +3547,20 @@
     if (btnPdf) {
       btnPdf.addEventListener('click', exportMistakesToPdf);
     }
-    document.getElementById('btn-quiz-mistakes').addEventListener('click', startMistakesQuiz);
+    // Mistakes subview buttons
+    const btnSubQuiz = document.getElementById('btn-subview-quiz');
+    if (btnSubQuiz) {
+      btnSubQuiz.addEventListener('click', () => setMistakesSubview('quiz'));
+    }
+    const btnSubList = document.getElementById('btn-subview-list');
+    if (btnSubList) {
+      btnSubList.addEventListener('click', () => setMistakesSubview('list'));
+    }
+
+    const btnQuizMistakes = document.getElementById('btn-quiz-mistakes');
+    if (btnQuizMistakes) {
+      btnQuizMistakes.addEventListener('click', () => setMistakesSubview('quiz'));
+    }
 
     document.getElementById('btn-clear-mastered').addEventListener('click', () => {
       if (confirm('정복 완료(마스터)된 오답들을 오답노트에서 모두 삭제하시겠습니까?')) {
@@ -3799,7 +3875,7 @@
         } else if (e.key === 'b' || e.key === 'B') {
           document.getElementById('btn-bookmark').click();
         }
-      } else if (state.currentTab === 'anki') {
+      } else if (state.currentTab === 'mistakes' && state.mistakesSubview === 'quiz') {
         if (!ankiState.answered) {
           // Choosing option 1, 2, 3, 4
           if (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4') {
@@ -4306,10 +4382,11 @@
       updateMistakeBadge();
       updateAnkiBadge();
       if (state.currentTab === 'mistakes') {
-        renderMistakesList();
-      }
-      if (state.currentTab === 'anki') {
-        renderAnkiSession();
+        if (state.mistakesSubview === 'quiz') {
+          renderAnkiSession();
+        } else {
+          renderMistakesList();
+        }
       }
       renderCurrentQuestion();
     }
@@ -4438,10 +4515,12 @@
       renderStats();
 
       if (state.currentTab === 'mistakes') {
-        renderMistakesList();
-      } else if (state.currentTab === 'anki') {
-        ankiState.currentQueue = buildAnkiQueue();
-        renderAnkiSession();
+        if (state.mistakesSubview === 'quiz') {
+          ankiState.currentQueue = buildAnkiQueue();
+          renderAnkiSession();
+        } else {
+          renderMistakesList();
+        }
       }
 
       showToast(`🎉 [${sourceName}] ${addedCount}개의 오답 문제가 오답노트 & 안키 덱에 등록되었습니다!`);
@@ -4620,10 +4699,12 @@
     mergeExternalData,
     recordGrammarMistake,
     importExternalMistakes,
+    setMistakesSubview,
     startAnkiSingleCard: (id) => {
       ankiState.currentQueue = [id];
       ankiState.queueIndex = 0;
-      switchTab('anki');
+      switchTab('mistakes');
+      setMistakesSubview('quiz');
     },
     resetAnkiCard: (id) => {
       if (srs[id]) {
