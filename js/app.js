@@ -3203,6 +3203,10 @@
       if (window.grammarApp && window.grammarApp.render) {
         window.grammarApp.render();
       }
+    } else if (tabName === 'mock') {
+      if (window.mockApp && window.mockApp.render) {
+        window.mockApp.render();
+      }
     }
   }
 
