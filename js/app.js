@@ -282,6 +282,15 @@
         }
       }
 
+      if (driveData.srs) {
+        for (const [id, s] of Object.entries(driveData.srs)) {
+          if (!srs[id] || (s.repetitions || 0) > (srs[id].repetitions || 0) || (s.dueDate || 0) > (srs[id].dueDate || 0) || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+            srs[id] = { ...s };
+            updated = true;
+          }
+        }
+      }
+
       if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
         window.grammarApp.mergeGrammarData(driveData);
       }
@@ -501,6 +510,12 @@
               dailyStats[dt] = { ...ds };
               changed = true;
             }
+        if (window.JLPT_INITIAL_SYNC.srs) {
+          for (const [id, s] of Object.entries(window.JLPT_INITIAL_SYNC.srs)) {
+            if (!srs[id] || (s.repetitions || 0) > (srs[id].repetitions || 0) || (s.dueDate || 0) > (srs[id].dueDate || 0) || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+              srs[id] = { ...s };
+              changed = true;
+            }
           }
         }
         if (changed) {
@@ -508,6 +523,7 @@
           localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
           localStorage.setItem(STORAGE_KEYS.BOOKMARKS, JSON.stringify(Array.from(bookmarks)));
           localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(dailyStats));
+          localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
         }
       }
     } catch (e) {
@@ -3733,7 +3749,7 @@
 
       if (payload.srs) {
         for (const [id, s] of Object.entries(payload.srs)) {
-          if (!srs[id] || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+          if (!srs[id] || (s.repetitions || 0) > (srs[id].repetitions || 0) || (s.dueDate || 0) > (srs[id].dueDate || 0) || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
             srs[id] = { ...s };
             updated = true;
           }
@@ -3763,6 +3779,9 @@
             }
           }
         }
+      if (payload.grammarHistory && window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
+        window.grammarApp.mergeGrammarData(payload);
+        updated = true;
       }
 
       if (updated) {
@@ -3848,13 +3867,28 @@
 
     if (btnDriveExport) {
       btnDriveExport.addEventListener('click', () => {
+        let grammarHistory = {};
+        let grammarBookmarks = [];
+        if (window.grammarApp && typeof window.grammarApp.getGrammarData === 'function') {
+          const gData = window.grammarApp.getGrammarData();
+          grammarHistory = gData.grammarHistory;
+          grammarBookmarks = gData.grammarBookmarks;
+        } else {
+          try {
+            grammarHistory = JSON.parse(localStorage.getItem('jlpt_grammar_history_v1') || '{}');
+            grammarBookmarks = JSON.parse(localStorage.getItem('jlpt_grammar_bookmarks_v1') || '[]');
+          } catch (e) {}
+        }
         const payload = {
           lastSyncTime: Date.now(),
           lastSyncDate: new Date().toISOString(),
           history,
           mistakes,
           bookmarks: Array.from(bookmarks),
-          srs
+          srs,
+          dailyStats,
+          grammarHistory,
+          grammarBookmarks
         };
         const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -4377,7 +4411,7 @@
 
     if (cloudData.srs) {
       for (const [id, s] of Object.entries(cloudData.srs)) {
-        if (!srs[id] || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
+        if (!srs[id] || (s.repetitions || 0) > (srs[id].repetitions || 0) || (s.dueDate || 0) > (srs[id].dueDate || 0) || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0)) {
           srs[id] = { ...s };
           changed = true;
         }

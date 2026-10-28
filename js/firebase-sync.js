@@ -135,6 +135,25 @@ window.JLPT_FIREBASE = (function () {
         if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
           window.grammarApp.mergeGrammarData(cloudData);
         }
+
+        // Automatic two-way sync: If local has more data than cloud, upload the merged data back!
+        try {
+          const localPayload = window.app && window.app.getAppData ? window.app.getAppData() : null;
+          if (localPayload) {
+            const localHistCount = Object.keys(localPayload.history || {}).length;
+            const cloudHistCount = Object.keys(cloudData.history || {}).length;
+            const todayStr = new Date().toISOString().slice(0, 10);
+            const localTodaySolved = localPayload.dailyStats && localPayload.dailyStats[todayStr] ? (localPayload.dailyStats[todayStr].solved || 0) : 0;
+            const cloudTodaySolved = cloudData.dailyStats && cloudData.dailyStats[todayStr] ? (cloudData.dailyStats[todayStr].solved || 0) : 0;
+
+            if (localHistCount > cloudHistCount || localTodaySolved > cloudTodaySolved) {
+              console.log('[Firebase] Local data has newer/more records than cloud. Auto-uploading merged data to cloud...');
+              scheduleCloudUpload(800);
+            }
+          }
+        } catch (syncErr) {
+          console.error('[Firebase] Auto-sync comparison error:', syncErr);
+        }
       } else {
         // Document does not exist yet for this user: upload current local data
         console.log('[Firebase] First time login, pushing initial local data to cloud.');
