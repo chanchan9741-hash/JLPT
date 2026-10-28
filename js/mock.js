@@ -1130,6 +1130,17 @@
     mState.history.unshift(resultObj);
     saveHistory();
 
+    // Record to daily stats
+    if (typeof window.recordDailyActivity === 'function') {
+      if (correctCount > 0) {
+        window.recordDailyActivity({ category: 'quiz', isCorrect: true, count: correctCount });
+      }
+      const wrongCount = qList.length - correctCount;
+      if (wrongCount > 0) {
+        window.recordDailyActivity({ category: 'quiz', isCorrect: false, count: wrongCount });
+      }
+    }
+
     // Sound effect
     if (window.app) {
       if (isPass) {

@@ -142,7 +142,8 @@ window.JLPT_FIREBASE = (function () {
           if (localPayload) {
             const localHistCount = Object.keys(localPayload.history || {}).length;
             const cloudHistCount = Object.keys(cloudData.history || {}).length;
-            const todayStr = new Date().toISOString().slice(0, 10);
+            const now = new Date();
+            const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
             const localTodaySolved = localPayload.dailyStats && localPayload.dailyStats[todayStr] ? (localPayload.dailyStats[todayStr].solved || 0) : 0;
             const cloudTodaySolved = cloudData.dailyStats && cloudData.dailyStats[todayStr] ? (cloudData.dailyStats[todayStr].solved || 0) : 0;
 
@@ -228,6 +229,15 @@ window.JLPT_FIREBASE = (function () {
       if (Object.keys(mistakes).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.mistakes) {
         mistakes = { ...window.JLPT_INITIAL_SYNC.mistakes };
       }
+      if (Object.keys(srs).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.srs) {
+        srs = { ...window.JLPT_INITIAL_SYNC.srs };
+      }
+      if (Object.keys(dailyStats).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.dailyStats) {
+        dailyStats = { ...window.JLPT_INITIAL_SYNC.dailyStats };
+      }
+      if (Object.keys(grammarHistory).length === 0 && window.JLPT_INITIAL_SYNC && window.JLPT_INITIAL_SYNC.grammarHistory) {
+        grammarHistory = { ...window.JLPT_INITIAL_SYNC.grammarHistory };
+      }
 
       await docRef.set({
         mistakes,
@@ -310,6 +320,11 @@ window.JLPT_FIREBASE = (function () {
   }
 
   async function loginWithGoogle() {
+    if (window.location && window.location.protocol === 'file:') {
+      alert('⚠️ [로컬 파일 실행 모드 안내]\n\nfile:// 경로에서는 Google 보안 정책상 계정 로그인이 제한됩니다.\n\nPC에서도 웹 주소:\n👉 https://chanchan9741-hash.github.io/JLPT/\n로 접속하시면 휴대폰과 100% 동일하게 로그인 및 양방향 실시간 동기화가 진행됩니다!');
+      return;
+    }
+
     if (!isConfigured()) {
       showConfigModal();
       return;

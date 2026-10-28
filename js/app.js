@@ -4479,6 +4479,11 @@
     if (!mistakeObj || !mistakeObj.id) return;
     mistakes[mistakeObj.id] = mistakeObj;
     saveMistakes();
+    updateMistakeBadge();
+    syncManager.scheduleSync();
+    if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.scheduleCloudUpload) {
+      window.JLPT_FIREBASE.scheduleCloudUpload();
+    }
   }
 
 
@@ -4855,6 +4860,12 @@
       };
       srs[item.id] = calculateNextSrs(curSrs, 'again');
       saveSrs();
+      updateMistakeBadge();
+      updateAnkiBadge();
+      syncManager.scheduleSync();
+      if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.scheduleCloudUpload) {
+        window.JLPT_FIREBASE.scheduleCloudUpload();
+      }
 
       showToast('⚠️ 독해 오답노트 & 안키 복습 덱에 자동 등록되었습니다.');
     }
