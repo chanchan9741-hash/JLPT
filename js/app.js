@@ -1498,7 +1498,7 @@
     }
 
     // Filter items
-    let filtered = allMistakes.filter(m => {
+    let filtered = allMistakes.map(m => hydrateMistake(m)).filter(m => {
       if (filterLevel !== 'ALL' && m.level !== filterLevel) return false;
       if (filterType !== 'ALL' && m.typeName !== filterType) return false;
       if (filterStatus === 'active' && m.isMastered) return false;
@@ -1506,7 +1506,7 @@
       if (filterStatus === 'bookmarked' && !bookmarks.has(m.id)) return false;
 
       if (searchKeyword) {
-        const text = `${m.qPlain} ${m.qTrans} ${m.ansJa} ${m.ansKo} ${m.expl?.main || ''}`.toLowerCase();
+        const text = `${m.qPlain || ''} ${m.qTrans || ''} ${m.ansJa || ''} ${m.ansKo || ''} ${m.expl?.main || ''}`.toLowerCase();
         if (!text.includes(searchKeyword)) return false;
       }
       return true;
@@ -1532,7 +1532,7 @@
     filtered.forEach(m => {
       const isBookmarked = bookmarks.has(m.id);
       const isMastered = m.isMastered;
-      const correctOpt = m.options.find(o => o.isCorrect);
+      const correctOpt = (m.options || []).find(o => o.isCorrect);
 
       html += `
         <div class="mistake-card-item ${isMastered ? 'is-mastered' : ''}" data-id="${m.id}">
@@ -1625,7 +1625,7 @@
 
   // --- Export Mistakes to Markdown for NotebookLM ---
   function exportMistakesToMarkdown() {
-    const allMistakes = Object.values(mistakes);
+    const allMistakes = Object.values(mistakes).map(m => hydrateMistake(m));
     if (allMistakes.length === 0) {
       showToast('내보낼 오답노트가 비어 있습니다.');
       return;
@@ -1680,7 +1680,7 @@
 
   // --- Export Mistakes to CSV (Excel compatible with UTF-8 BOM) ---
   function exportMistakesToCsv() {
-    const allMistakes = Object.values(mistakes);
+    const allMistakes = Object.values(mistakes).map(m => hydrateMistake(m));
     if (allMistakes.length === 0) {
       showToast('내보낼 오답노트가 비어 있습니다.');
       return;
@@ -1757,7 +1757,7 @@
 
   // --- Export Mistakes to Clean Printable PDF Report ---
   function exportMistakesToPdf() {
-    const allMistakes = Object.values(mistakes);
+    const allMistakes = Object.values(mistakes).map(m => hydrateMistake(m));
     if (allMistakes.length === 0) {
       showToast('인쇄/저장할 오답노트가 비어 있습니다.');
       return;
@@ -2040,7 +2040,7 @@
       return;
     }
 
-    currentQuestions = [...allMistakes];
+    currentQuestions = allMistakes.map(m => hydrateMistake(m));
     state.currentIndex = 0;
     state.mode = 'mistake-drill';
     state.isShuffled = true;
@@ -2358,10 +2358,9 @@
   // Anki Spaced Repetition (SRS) Engine
   // ==========================================================================
 
-  // Helper: Find Question by ID across datasets
-  function getQuestionById(id) {
+  // Helper: Find static question across all loaded datasets (vocab, reading, grammar)
+  function findStaticQuestionById(id) {
     if (!id) return null;
-    if (mistakes[id]) return mistakes[id];
     const lvl = id.split('-')[0];
     if (window.JLPT_DATA && window.JLPT_DATA[lvl]) {
       const found = window.JLPT_DATA[lvl].find(q => q.id === id);
@@ -2373,6 +2372,44 @@
         if (found) return found;
       }
     }
+    if (window.JLPT_READING_DATA && Array.isArray(window.JLPT_READING_DATA)) {
+      const found = window.JLPT_READING_DATA.find(q => q.id === id);
+      if (found) return found;
+    }
+    if (window.JLPT_GRAMMAR_DATA && Array.isArray(window.JLPT_GRAMMAR_DATA)) {
+      const found = window.JLPT_GRAMMAR_DATA.find(q => q.id === id);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  // Hydrate mistake object with static question text, ruby, options & explanation if slimmed
+  function hydrateMistake(m) {
+    if (!m) return null;
+    if (m.qPlain && m.options && m.options.length > 0) return m;
+    const base = findStaticQuestionById(m.id);
+    if (base) {
+      return {
+        ...base,
+        ...m,
+        options: (base.options || []).map(o => ({ ...o })),
+        qPlain: base.qPlain || '',
+        qRuby: base.qRuby || base.qPlain || '',
+        qTrans: base.qTrans || '',
+        ansJa: base.ansJa || '',
+        ansKo: base.ansKo || '',
+        expl: base.expl || { main: '' }
+      };
+    }
+    return m;
+  }
+
+  // Helper: Find Question by ID across datasets & mistakes
+  function getQuestionById(id) {
+    if (!id) return null;
+    if (mistakes[id]) return hydrateMistake(mistakes[id]);
+    const staticQ = findStaticQuestionById(id);
+    if (staticQ) return staticQ;
     return null;
   }
 
@@ -4389,14 +4426,15 @@
 
     if (cloudData.mistakes) {
       for (const [id, m] of Object.entries(cloudData.mistakes)) {
+        const hydrated = hydrateMistake(m);
         if (!mistakes[id]) {
-          mistakes[id] = { ...m };
+          mistakes[id] = hydrated;
           changed = true;
         } else {
-          const cloudCount = m.count || 1;
+          const cloudCount = hydrated.count || 1;
           const localCount = mistakes[id].count || 1;
-          if (cloudCount > localCount || (m.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (m.isMastered && !mistakes[id].isMastered)) {
-            mistakes[id] = { ...m };
+          if (cloudCount > localCount || (hydrated.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (hydrated.isMastered && !mistakes[id].isMastered)) {
+            mistakes[id] = { ...mistakes[id], ...hydrated };
             changed = true;
           }
         }
@@ -4593,6 +4631,7 @@
     });
 
     if (addedCount > 0) {
+      window.__HAS_UNSAVED_LOCAL_CHANGES__ = true;
       saveMistakes();
       saveSrs();
       saveHistory();
@@ -4611,6 +4650,20 @@
       }
 
       showToast(`🎉 [${sourceName}] ${addedCount}개의 오답 문제가 오답노트 & 안키 덱에 등록되었습니다!`);
+
+      // Immediately trigger Firebase upload if logged in, or prompt login
+      if (window.JLPT_FIREBASE) {
+        if (window.JLPT_FIREBASE.getCurrentUser && window.JLPT_FIREBASE.getCurrentUser()) {
+          console.log('[Import] User is logged in. Uploading imported mistakes to cloud...');
+          window.JLPT_FIREBASE.scheduleCloudUpload(150);
+        } else {
+          setTimeout(() => {
+            if (window.JLPT_FIREBASE && (!window.JLPT_FIREBASE.getCurrentUser || !window.JLPT_FIREBASE.getCurrentUser())) {
+              showToast('ℹ️ 모바일 기기와 동기화하려면 우측 상단의 [구글 로그인] 버튼을 눌러주세요.', 4500);
+            }
+          }, 1500);
+        }
+      }
     }
 
     return addedCount;
@@ -4627,7 +4680,9 @@
         const parsed = JSON.parse(decoded);
         setTimeout(() => {
           importExternalMistakes(parsed, 'Nihonez 원클릭 연동');
-          history.replaceState(null, document.title, window.location.pathname + window.location.search);
+          try {
+            window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+          } catch (e) {}
         }, 300);
       }
     } catch (e) {

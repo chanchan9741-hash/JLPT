@@ -97,6 +97,11 @@ window.JLPT_FIREBASE = (function () {
 
       // Start realtime listening
       startRealtimeSync(user.uid);
+
+      if (window.__HAS_UNSAVED_LOCAL_CHANGES__) {
+        console.log('[Firebase] Unsaved local changes detected on login, uploading...');
+        scheduleCloudUpload(600);
+      }
     } else {
       console.log('[Firebase] User logged out.');
       if (unsubscribeSnapshot) {
@@ -136,19 +141,27 @@ window.JLPT_FIREBASE = (function () {
           window.grammarApp.mergeGrammarData(cloudData);
         }
 
-        // Automatic two-way sync: If local has more data than cloud, upload the merged data back!
+        // Automatic two-way sync: If local has more data or unsaved mistakes, upload the merged data back!
         try {
           const localPayload = window.app && window.app.getAppData ? window.app.getAppData() : null;
           if (localPayload) {
+            const localMistakes = localPayload.mistakes || {};
+            const cloudMistakes = cloudData.mistakes || {};
+            const localMistakesKeys = Object.keys(localMistakes);
+            const cloudMistakesKeys = Object.keys(cloudMistakes);
+            const hasMissingMistakesInCloud = localMistakesKeys.some(id => !cloudMistakes[id]);
+            const hasMissingSrsInCloud = Object.keys(localPayload.srs || {}).some(id => !cloudData.srs || !cloudData.srs[id]);
             const localHistCount = Object.keys(localPayload.history || {}).length;
             const cloudHistCount = Object.keys(cloudData.history || {}).length;
+            const localMistakesCount = localMistakesKeys.length;
+            const cloudMistakesCount = cloudMistakesKeys.length;
             const now = new Date();
             const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
             const localTodaySolved = localPayload.dailyStats && localPayload.dailyStats[todayStr] ? (localPayload.dailyStats[todayStr].solved || 0) : 0;
             const cloudTodaySolved = cloudData.dailyStats && cloudData.dailyStats[todayStr] ? (cloudData.dailyStats[todayStr].solved || 0) : 0;
 
-            if (localHistCount > cloudHistCount || localTodaySolved > cloudTodaySolved) {
-              console.log('[Firebase] Local data has newer/more records than cloud. Auto-uploading merged data to cloud...');
+            if (window.__HAS_UNSAVED_LOCAL_CHANGES__ || hasMissingMistakesInCloud || hasMissingSrsInCloud || localMistakesCount > cloudMistakesCount || localHistCount > cloudHistCount || localTodaySolved > cloudTodaySolved) {
+              console.log('[Firebase] Local data has newer/missing records than cloud. Auto-uploading merged data to cloud...');
               scheduleCloudUpload(800);
             }
           }
@@ -239,27 +252,58 @@ window.JLPT_FIREBASE = (function () {
         grammarHistory = { ...window.JLPT_INITIAL_SYNC.grammarHistory };
       }
 
-      await docRef.set({
-        mistakes,
+      // Optimize mistakes: Slim down built-in questions to prevent Firestore INDEX_ENTRIES_COUNT_LIMIT_EXCEEDED (40,000 limit)
+      // External questions (NH-*, external, nihonez) preserve their full questions, ruby, options & explanations!
+      const cloudMistakes = {};
+      for (const id in (mistakes || {})) {
+        const m = mistakes[id];
+        if (id.startsWith('NH-') || m.typeCode === 'external' || m.source === 'nihonez' || !id.match(/^(N[1-5]-|R-|G-)/i)) {
+          cloudMistakes[id] = m;
+        } else {
+          cloudMistakes[id] = {
+            id: m.id,
+            level: m.level || 'N1',
+            typeCode: m.typeCode || 'grammar',
+            typeName: m.typeName || '',
+            count: m.count || 1,
+            firstWrongDate: m.firstWrongDate || Date.now(),
+            lastWrongDate: m.lastWrongDate || Date.now(),
+            wrongChoice: m.wrongChoice || '',
+            isMastered: !!m.isMastered,
+            isBookmarked: !!m.isBookmarked
+          };
+        }
+      }
+
+      // Sanitize payload with JSON parse/stringify to strip any undefined values that Firestore SDK rejects
+      const sanitizedDoc = JSON.parse(JSON.stringify({
+        mistakes: cloudMistakes,
         history,
         bookmarks,
         srs,
         dailyStats,
         grammarHistory,
         grammarBookmarks,
-        lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
         lastUpdatedClient: Date.now(),
         userEmail: currentUser.email || '',
         userName: currentUser.displayName || ''
+      }));
+
+      await docRef.set({
+        ...sanitizedDoc,
+        lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
       }, { merge: true });
 
-      console.log('[Firebase] Cloud data updated successfully. Solved count:', Object.keys(history).length, 'Grammar count:', Object.keys(grammarHistory).length);
+      window.__HAS_UNSAVED_LOCAL_CHANGES__ = false;
+
+      console.log('[Firebase] Cloud data updated successfully. Mistakes:', Object.keys(cloudMistakes).length, 'History:', Object.keys(history).length);
       updateSyncStatusUI('connected', '클라우드 실시간 동기화됨 ✓');
       setTimeout(() => {
         updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
       }, 1500);
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
+      if (window.showToast) window.showToast('⚠️ 클라우드 데이터 업로드 실패: ' + err.message);
     } finally {
       setTimeout(() => { isSyncingToCloud = false; }, 2000);
     }
