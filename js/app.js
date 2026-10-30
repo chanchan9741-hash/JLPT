@@ -1517,30 +1517,13 @@
   function renderMistakesList() {
     const listContainer = document.getElementById('mistakes-list');
     const emptyState = document.getElementById('mistakes-empty-state');
-    const nbTotal = document.getElementById('nb-total-mistakes');
-    const nbMastered = document.getElementById('nb-mastered-count');
-    const nbAccuracy = document.getElementById('nb-accuracy-rate');
+    updateMistakesHeroStats();
 
-    const searchKeyword = (document.getElementById('input-mistake-search').value || '').trim().toLowerCase();
-    const filterLevel = document.getElementById('select-mistake-level').value;
-    const filterType = document.getElementById('select-mistake-type').value;
-    const filterStatus = document.getElementById('select-mistake-status').value;
-
-    const allMistakes = Object.values(mistakes);
-    const masteredCount = allMistakes.filter(m => m.isMastered).length;
-    const activeCount = allMistakes.length - masteredCount;
-
-    nbTotal.textContent = activeCount;
-    nbMastered.textContent = masteredCount;
-    const recoveryRate = allMistakes.length > 0 ? Math.round((masteredCount / allMistakes.length) * 100) : 0;
-    nbAccuracy.textContent = `${recoveryRate}%`;
-
-    const nowDue = Date.now();
-    const dueCards = Object.values(srs).filter(c => (c.dueDate || 0) <= nowDue + 60000);
-    const nbTodayDue = document.getElementById('nb-today-due');
-    if (nbTodayDue) {
-      nbTodayDue.textContent = dueCards.length.toLocaleString();
-    }
+    const searchKeyword = (document.getElementById('input-mistake-search')?.value || '').trim().toLowerCase();
+    const filterLevel = document.getElementById('select-mistake-level')?.value || 'ALL';
+    const filterType = document.getElementById('select-mistake-type')?.value || 'ALL';
+    const filterStatus = document.getElementById('select-mistake-status')?.value || 'ALL';
+    const allMistakes = Object.values(mistakes || {});
 
     // Filter items
     let filtered = allMistakes.map(m => hydrateMistake(m)).filter(m => {
@@ -2557,13 +2540,36 @@
     }
   }
 
+  // Mistakes Hero Stats Cards (Always kept in sync across all views and devices!)
+  function updateMistakesHeroStats() {
+    const allMistakes = Object.values(mistakes || {});
+    const masteredCount = allMistakes.filter(m => m.isMastered).length;
+    const activeCount = allMistakes.length - masteredCount;
+    const recoveryRate = allMistakes.length > 0 ? Math.round((masteredCount / allMistakes.length) * 100) : 0;
+
+    const nbTotal = document.getElementById('nb-total-mistakes');
+    const nbMastered = document.getElementById('nb-mastered-count');
+    const nbAccuracy = document.getElementById('nb-accuracy-rate');
+    const nbTodayDue = document.getElementById('nb-today-due');
+
+    if (nbTotal) nbTotal.textContent = activeCount.toLocaleString();
+    if (nbMastered) nbMastered.textContent = masteredCount.toLocaleString();
+    if (nbAccuracy) nbAccuracy.textContent = `${recoveryRate}%`;
+
+    const nowDue = Date.now();
+    const dueCards = Object.values(srs || {}).filter(c => (c.dueDate || 0) <= nowDue + 60000);
+    if (nbTodayDue) {
+      nbTodayDue.textContent = dueCards.length.toLocaleString();
+    }
+  }
+
   // Anki Badges & Counters
   function updateAnkiBadge() {
     const dueCountBadgeHeader = document.getElementById('header-anki-due-count');
     const dueCountBadgeMobile = document.getElementById('mobile-anki-due-count');
 
     const now = Date.now();
-    const dueCards = Object.values(srs).filter(c => (c.dueDate || 0) <= now + 60000);
+    const dueCards = Object.values(srs || {}).filter(c => (c.dueDate || 0) <= now + 60000);
     const dueCount = dueCards.length;
 
     if (dueCountBadgeHeader) {
@@ -2575,26 +2581,7 @@
       dueCountBadgeMobile.style.display = dueCount > 0 ? 'inline-flex' : 'none';
     }
 
-    const nbTodayDue = document.getElementById('nb-today-due');
-    if (nbTodayDue) {
-      nbTodayDue.textContent = dueCount.toLocaleString();
-    }
-
-    // Hero stat numbers
-    const statDue = document.getElementById('anki-stat-due');
-    const statLearning = document.getElementById('anki-stat-learning');
-    const statReview = document.getElementById('anki-stat-review');
-    const statMastered = document.getElementById('anki-stat-mastered');
-
-    const allSrs = Object.values(srs);
-    const learningCount = allSrs.filter(c => c.state === 'learning').length;
-    const reviewCount = allSrs.filter(c => c.state === 'review').length;
-    const masteredCount = allSrs.filter(c => c.state === 'mastered').length;
-
-    if (statDue) statDue.textContent = dueCount.toLocaleString();
-    if (statLearning) statLearning.textContent = learningCount.toLocaleString();
-    if (statReview) statReview.textContent = reviewCount.toLocaleString();
-    if (statMastered) statMastered.textContent = masteredCount.toLocaleString();
+    updateMistakesHeroStats();
   }
 
   // Anki Queue Builder
@@ -3326,13 +3313,18 @@
   }
 
   function updateMistakeBadge() {
+    const allMistakes = Object.values(mistakes || {});
+    const activeCount = allMistakes.filter(m => !m.isMastered).length;
+
     const badges = document.querySelectorAll('.mistake-count-badge');
-    if (!badges || badges.length === 0) return;
-    const activeCount = Object.values(mistakes).filter(m => !m.isMastered).length;
-    badges.forEach(badge => {
-      badge.textContent = activeCount.toLocaleString();
-      badge.style.display = activeCount > 0 ? 'inline-flex' : 'none';
-    });
+    if (badges && badges.length > 0) {
+      badges.forEach(badge => {
+        badge.textContent = activeCount.toLocaleString();
+        badge.style.display = activeCount > 0 ? 'inline-flex' : 'none';
+      });
+    }
+
+    updateMistakesHeroStats();
   }
 
   function showToast(msg) {
