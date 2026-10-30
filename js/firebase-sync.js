@@ -143,7 +143,17 @@ window.JLPT_FIREBASE = (function () {
 
         // Automatic two-way sync: If local has more data or unsaved mistakes, upload the merged data back!
         try {
-          const localPayload = window.app && window.app.getAppData ? window.app.getAppData() : null;
+          let localPayload = window.app && window.app.getAppData ? window.app.getAppData() : null;
+          if (!localPayload) {
+            try {
+              localPayload = {
+                mistakes: JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || '{}'),
+                srs: JSON.parse(localStorage.getItem('jlpt_srs_v1') || '{}'),
+                history: JSON.parse(localStorage.getItem('jlpt_history_v1') || '{}'),
+                dailyStats: JSON.parse(localStorage.getItem('jlpt_daily_stats_v1') || '{}')
+              };
+            } catch (e) {}
+          }
           if (localPayload) {
             const localMistakes = localPayload.mistakes || {};
             const cloudMistakes = cloudData.mistakes || {};
@@ -262,7 +272,8 @@ window.JLPT_FIREBASE = (function () {
       const cloudMistakes = {};
       for (const id in (mistakes || {})) {
         const m = mistakes[id];
-        if (id.startsWith('NH-') || m.typeCode === 'external' || m.source === 'nihonez' || !id.match(/^(N[1-5]-|R-|G-)/i)) {
+        const isBuiltIn = id.match(/^(N[1-5]-|GM-|SN-|R-|G-)/i) && !id.startsWith('NH-') && m.typeCode !== 'external' && m.source !== 'nihonez';
+        if (!isBuiltIn) {
           cloudMistakes[id] = {
             ...m,
             lastModified: m.lastModified || m.masteredDate || m.lastWrongDate || Date.now()
@@ -312,13 +323,17 @@ window.JLPT_FIREBASE = (function () {
 
       window.__HAS_UNSAVED_LOCAL_CHANGES__ = false;
 
-      console.log('[Firebase] Cloud data updated successfully. Mistakes:', Object.keys(cloudMistakes).length, 'History:', Object.keys(history).length);
-      updateSyncStatusUI('connected', '클라우드 실시간 동기화됨 ✓');
+      const totalMistakesCount = Object.keys(cloudMistakes).length;
+      const activeMistakesCount = Object.values(cloudMistakes).filter(m => !m.isMastered).length;
+      console.log('[Firebase] Cloud data updated successfully. Total Mistakes:', totalMistakesCount, 'Active:', activeMistakesCount, 'History:', Object.keys(history).length);
+      updateSyncStatusUI('connected', `클라우드 동기화됨 (오답 ${activeMistakesCount}개) ✓`);
+      if (window.showToast) window.showToast(`☁️ 클라우드 동기화 완료: 미완료 오답 ${activeMistakesCount}개 반영됨`);
       setTimeout(() => {
         updateSyncStatusUI('connected', '클라우드 실시간 동기화 중');
-      }, 1500);
+      }, 2500);
     } catch (err) {
       console.error('[Firebase] Upload failed:', err);
+      updateSyncStatusUI('offline', '클라우드 업로드 실패');
       if (window.showToast) window.showToast('⚠️ 클라우드 데이터 업로드 실패: ' + err.message);
     } finally {
       setTimeout(() => { isSyncingToCloud = false; }, 2000);
@@ -593,6 +608,41 @@ window.JLPT_FIREBASE = (function () {
     });
   }
 
+  function checkAndSyncWithCloud() {
+    if (!currentUser || !isInitialized) return;
+    try {
+      let localMistakes = {};
+      let localSrs = {};
+      if (window.app && typeof window.app.getAppData === 'function') {
+        const d = window.app.getAppData();
+        localMistakes = d.mistakes || {};
+        localSrs = d.srs || {};
+      } else {
+        localMistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || '{}');
+        localSrs = JSON.parse(localStorage.getItem('jlpt_srs_v1') || '{}');
+      }
+
+      const cloudData = window.__PENDING_CLOUD_DATA__;
+      const cloudMistakes = (cloudData && cloudData.mistakes) ? cloudData.mistakes : {};
+      const localCount = Object.keys(localMistakes).length;
+      const cloudCount = Object.keys(cloudMistakes).length;
+
+      console.log(`[Firebase] checkAndSyncWithCloud: Local mistakes=${localCount}, Cloud mistakes=${cloudCount}`);
+
+      if (localCount > cloudCount || window.__HAS_UNSAVED_LOCAL_CHANGES__) {
+        console.log('[Firebase] Local has more records than cloud. Uploading to cloud...');
+        uploadCurrentDataToCloud();
+      } else if (cloudCount > localCount && cloudData) {
+        console.log('[Firebase] Cloud has more records than local. Merging into local...');
+        if (window.app && typeof window.app.mergeExternalData === 'function') {
+          window.app.mergeExternalData(cloudData);
+        }
+      }
+    } catch (e) {
+      console.error('[Firebase] checkAndSyncWithCloud error:', e);
+    }
+  }
+
   return {
     init,
     setConfig,
@@ -603,6 +653,7 @@ window.JLPT_FIREBASE = (function () {
     scheduleCloudUpload,
     uploadCurrentDataToCloud,
     forceCloudSync,
+    checkAndSyncWithCloud,
     showConfigModal
   };
 })();

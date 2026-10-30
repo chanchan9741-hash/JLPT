@@ -408,6 +408,11 @@
       console.log('[App] Applying pending cloud data received before init');
       mergeExternalData(window.__PENDING_CLOUD_DATA__);
     }
+
+    // Trigger two-way cloud sync check now that app is fully loaded
+    if (window.JLPT_FIREBASE && typeof window.JLPT_FIREBASE.checkAndSyncWithCloud === 'function') {
+      window.JLPT_FIREBASE.checkAndSyncWithCloud();
+    }
   }
 
   // --- Persistence Handlers ---
@@ -4590,6 +4595,15 @@
       // Background sync must NEVER reset the active question or wipe the explanation while the user is reading it.
     }
     renderStats();
+
+    // Check if local has mistakes that are completely missing in cloud
+    const cloudMistakes = (cloudData && cloudData.mistakes) ? cloudData.mistakes : {};
+    const localKeys = Object.keys(mistakes || {});
+    const hasUnsyncedMistakes = localKeys.some(id => !cloudMistakes[id] && !deletedMistakes[id]);
+    if (hasUnsyncedMistakes && window.JLPT_FIREBASE && typeof window.JLPT_FIREBASE.scheduleCloudUpload === 'function') {
+      console.log('[App] Local has mistakes missing in cloud after merge. Triggering upload...');
+      window.JLPT_FIREBASE.scheduleCloudUpload(600);
+    }
   }
 
   function recordGrammarMistake(mistakeObj) {
