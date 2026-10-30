@@ -1,4 +1,3 @@
-// Initial sync data from cloud
 window.JLPT_INITIAL_SYNC = {
   "lastUpdated": "2026-10-29T06:43:09.206Z",
   "userEmail": "chanchan9741@gmail.com",
@@ -6670,7 +6669,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "reading_short",
       "level": "N1",
       "wrongChoice": "",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791778119513
     },
     "N1-0149": {
       "id": "N1-0149",
@@ -6682,7 +6682,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791354278636,
       "wrongChoice": "さっぱり",
       "typeCode": "context_defined",
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791354278636
     },
     "GM-N1-4723": {
       "typeCode": "grammar",
@@ -6694,7 +6695,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "っぱなしで",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792400867867
     },
     "N1-0110": {
       "level": "N1",
@@ -6706,7 +6708,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791352307011,
       "isMastered": false,
       "firstWrongDate": 1791352307011,
-      "id": "N1-0110"
+      "id": "N1-0110",
+      "lastModified": 1791352307011
     },
     "N1-0398": {
       "lastWrongDate": 1791443612740,
@@ -6718,7 +6721,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0398",
       "isBookmarked": false,
       "count": 1,
-      "firstWrongDate": 1791443612740
+      "firstWrongDate": 1791443612740,
+      "lastModified": 1791443612740
     },
     "N1-0009": {
       "level": "N1",
@@ -6730,7 +6734,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "ばらばらに",
       "count": 1,
       "isMastered": true,
-      "id": "N1-0009"
+      "id": "N1-0009",
+      "lastModified": 1790833408231,
+      "masteredDate": 1790833408231
     },
     "N1-0459": {
       "typeCode": "kanji_reading",
@@ -6742,7 +6748,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791782026553,
       "wrongChoice": "がいりょう",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791782026553
     },
     "GM-N1-4886": {
       "count": 1,
@@ -6754,7 +6761,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "isMastered": false,
       "typeCode": "grammar",
-      "lastWrongDate": 1792577102566
+      "lastWrongDate": 1792577102566,
+      "lastModified": 1792577102566
     },
     "N1-0237": {
       "typeName": "문맥 규정",
@@ -6766,7 +6774,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "lastWrongDate": 1791430481779,
       "level": "N1",
-      "id": "N1-0237"
+      "id": "N1-0237",
+      "lastModified": 1791430481779
     },
     "N1-0424": {
       "id": "N1-0424",
@@ -6778,7 +6787,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "typeName": "문맥 규정",
       "wrongChoice": "大胆(だいたん)だ",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791449226632
     },
     "GM-N1-4893": {
       "lastWrongDate": 1792674263872,
@@ -6790,7 +6800,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "isBookmarked": false,
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792674263872
     },
     "N1-0095": {
       "lastWrongDate": 1791351595945,
@@ -6802,7 +6813,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문맥 규정",
       "typeCode": "context_defined",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791351595945
     },
     "N1-0529": {
       "id": "N1-0529",
@@ -6814,7 +6826,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "つもる",
       "count": 2,
       "firstWrongDate": 1790835857558,
-      "lastWrongDate": 1791258074283
+      "lastWrongDate": 1791258074283,
+      "lastModified": 1791258074283,
+      "masteredDate": 1791258074283
     },
     "N1-0434": {
       "typeCode": "context_defined",
@@ -6826,7 +6840,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "lastWrongDate": 1791598430446,
       "count": 1,
-      "firstWrongDate": 1791598430446
+      "firstWrongDate": 1791598430446,
+      "lastModified": 1791598430446
     },
     "N1-0243": {
       "typeName": "문맥 규정",
@@ -6838,7 +6853,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791430800328,
       "wrongChoice": "内訳(うちわけ)",
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791430800328
     },
     "GM-N1-4882": {
       "isMastered": false,
@@ -6850,7 +6866,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "isBookmarked": false,
       "count": 1,
-      "lastWrongDate": 1792576821011
+      "lastWrongDate": 1792576821011,
+      "lastModified": 1792576821011
     },
     "N1-0792": {
       "level": "N1",
@@ -6862,7 +6879,9 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790845434310,
       "typeCode": "kanji_reading",
       "count": 1,
-      "typeName": "한자 읽기"
+      "typeName": "한자 읽기",
+      "lastModified": 1790845434310,
+      "masteredDate": 1790845434310
     },
     "N1-0465": {
       "lastWrongDate": 1791782264549,
@@ -6874,7 +6893,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "isBookmarked": false,
       "id": "N1-0465",
-      "wrongChoice": "ひんべ"
+      "wrongChoice": "ひんべ",
+      "lastModified": 1791782264549
     },
     "N1-0132": {
       "isMastered": false,
@@ -6886,7 +6906,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0132",
       "lastWrongDate": 1791353365985,
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791353365985
     },
     "N1-0296": {
       "level": "N1",
@@ -6898,7 +6919,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "count": 1,
       "id": "N1-0296",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791434014068
     },
     "GM-N1-4927": {
       "wrongChoice": "を機",
@@ -6910,7 +6932,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "isBookmarked": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1792683930803
     },
     "N1-1721": {
       "typeCode": "usage",
@@ -6922,7 +6945,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "客(きゃく)の好(この)みを聞(き)いて、今夜(こんや)の料理(りょうり)の[人選(じんせん)]をしました。",
       "id": "N1-1721",
       "firstWrongDate": 1790835666884,
-      "count": 1
+      "count": 1,
+      "lastModified": 1790835666884,
+      "masteredDate": 1790835666884
     },
     "GM-N1-4890": {
       "count": 1,
@@ -6934,7 +6959,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4890",
       "lastWrongDate": 1792577415334,
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792577415334
     },
     "N1-0128": {
       "isMastered": true,
@@ -6946,7 +6972,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "id": "N1-0128",
       "wrongChoice": "呼(よ)び出(だ)す",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791260949695,
+      "masteredDate": 1791260949695
     },
     "N1-0383": {
       "typeCode": "context_defined",
@@ -6958,7 +6986,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791442731183,
       "isMastered": false,
       "count": 1,
-      "id": "N1-0383"
+      "id": "N1-0383",
+      "lastModified": 1791442731183
     },
     "N1-0726": {
       "firstWrongDate": 1790844519977,
@@ -6970,7 +6999,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "한자 읽기",
       "isBookmarked": false,
       "count": 1,
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1790844519977,
+      "masteredDate": 1790844519977
     },
     "N1-0332": {
       "firstWrongDate": 1791436824829,
@@ -6982,7 +7013,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "偶然(ぐうぜん)",
       "typeCode": "context_defined",
       "typeName": "문맥 규정",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791436824829
     },
     "N1-0479": {
       "wrongChoice": "みずき",
@@ -6994,7 +7026,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791782665810,
       "level": "N1",
       "firstWrongDate": 1791782665810,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791782665810
     },
     "N1-0094": {
       "count": 1,
@@ -7006,7 +7039,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "N1-0094",
       "lastWrongDate": 1791351568836,
-      "firstWrongDate": 1791351568836
+      "firstWrongDate": 1791351568836,
+      "lastModified": 1791351568836
     },
     "GM-N1-4804": {
       "firstWrongDate": 1792406190150,
@@ -7018,7 +7052,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "isMastered": false,
       "level": "N1",
-      "wrongChoice": "てはいけません"
+      "wrongChoice": "てはいけません",
+      "lastModified": 1792406190150
     },
     "GM-N1-4097": {
       "lastWrongDate": 1792037513224,
@@ -7030,7 +7065,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "wrongChoice": "に上(のぼ)る",
       "id": "GM-N1-4097",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792037513224
     },
     "GM-N1-4620": {
       "level": "N1",
@@ -7042,7 +7078,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1792141100642,
       "wrongChoice": "につけ",
-      "id": "GM-N1-4620"
+      "id": "GM-N1-4620",
+      "lastModified": 1792141100642
     },
     "N1-0283": {
       "isMastered": false,
@@ -7054,7 +7091,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791433188441,
       "id": "N1-0283",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791433188441
     },
     "GM-N1-4619": {
       "id": "GM-N1-4619",
@@ -7066,7 +7104,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792130202355,
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
-      "firstWrongDate": 1792130202355
+      "firstWrongDate": 1792130202355,
+      "lastModified": 1792130202355
     },
     "GM-N1-4931": {
       "count": 1,
@@ -7078,7 +7117,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4931",
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792981734739
     },
     "N1-1078": {
       "isBookmarked": false,
@@ -7090,7 +7130,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "複雑(ふくざつ)だ",
       "typeName": "유의 표현",
       "id": "N1-1078",
-      "count": 1
+      "count": 1,
+      "lastModified": 1790845040955,
+      "masteredDate": 1790845040955
     },
     "GM-N1-4986": {
       "isMastered": false,
@@ -7102,7 +7144,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "count": 1,
       "lastWrongDate": 1793010093742,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1793010093742
     },
     "N1-0280": {
       "count": 1,
@@ -7114,7 +7157,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "多数派(たすうは)",
       "level": "N1",
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791433052985
     },
     "GM-N1-4597": {
       "level": "N1",
@@ -7126,7 +7170,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "isMastered": false,
       "count": 1,
-      "lastWrongDate": 1792129574317
+      "lastWrongDate": 1792129574317,
+      "lastModified": 1792129574317
     },
     "N1-0436": {
       "wrongChoice": "時代遅(じだいおく)れだ",
@@ -7138,7 +7183,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "typeName": "문맥 규정",
       "count": 1,
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791598463174
     },
     "N1-0086": {
       "isMastered": false,
@@ -7150,7 +7196,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "細長(ほそなが)い",
       "id": "N1-0086",
       "level": "N1",
-      "lastWrongDate": 1791262439026
+      "lastWrongDate": 1791262439026,
+      "lastModified": 1791262439026
     },
     "N1-0108": {
       "typeCode": "context_defined",
@@ -7162,7 +7209,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791352246384,
       "wrongChoice": "テーマ",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791352246384
     },
     "GM-N1-4803": {
       "count": 1,
@@ -7174,7 +7222,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "level": "N1",
       "typeCode": "grammar",
-      "firstWrongDate": 1792406075558
+      "firstWrongDate": 1792406075558,
+      "lastModified": 1792406075558
     },
     "N1-1077": {
       "isBookmarked": false,
@@ -7186,7 +7235,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "役(やく)に立(た)たない",
       "lastWrongDate": 1791260166552,
       "level": "N1",
-      "firstWrongDate": 1791260166552
+      "firstWrongDate": 1791260166552,
+      "lastModified": 1791260166552,
+      "masteredDate": 1791260166552
     },
     "GM-N1-5006": {
       "isBookmarked": false,
@@ -7198,7 +7249,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "lastWrongDate": 1793020542450,
       "typeCode": "grammar",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1793020542450
     },
     "N1-0359": {
       "typeName": "문맥 규정",
@@ -7210,7 +7262,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "N1-0359",
       "isMastered": false,
-      "wrongChoice": "取(と)り替(か)える"
+      "wrongChoice": "取(と)り替(か)える",
+      "lastModified": 1791438644860
     },
     "GM-N1-4912": {
       "isBookmarked": false,
@@ -7222,7 +7275,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "isMastered": false,
       "count": 1,
-      "firstWrongDate": 1792678480746
+      "firstWrongDate": 1792678480746,
+      "lastModified": 1792678480746
     },
     "N1-0401": {
       "id": "N1-0401",
@@ -7234,7 +7288,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "isMastered": false,
       "wrongChoice": "徐々(じょじょ)に",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791443684337
     },
     "N1-0077": {
       "firstWrongDate": 1791351408691,
@@ -7246,7 +7301,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "id": "N1-0077",
       "count": 1,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791351408691
     },
     "GM-N1-4325": {
       "count": 1,
@@ -7258,7 +7314,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792119008905
     },
     "N1-0205": {
       "typeName": "문맥 규정",
@@ -7270,7 +7327,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "wrongChoice": "ぐっすり",
       "isMastered": false,
-      "id": "N1-0205"
+      "id": "N1-0205",
+      "lastModified": 1791427681955
     },
     "N1-0482": {
       "wrongChoice": "けいさ",
@@ -7282,7 +7340,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0482",
       "firstWrongDate": 1791782698136,
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791782698136
     },
     "N1-0054": {
       "count": 1,
@@ -7294,7 +7353,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "乏(とぼ)しい",
       "id": "N1-0054",
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791348110857
     },
     "N1-0001": {
       "count": 2,
@@ -7306,7 +7366,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0001",
       "firstWrongDate": 1790755180887,
       "lastWrongDate": 1790770591292,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1790770591292
     },
     "N1-0291": {
       "level": "N1",
@@ -7318,7 +7379,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "id": "N1-0291",
       "wrongChoice": "防(ふせ)ぐ",
-      "firstWrongDate": 1791433470930
+      "firstWrongDate": 1791433470930,
+      "lastModified": 1791433470930
     },
     "N1-0161": {
       "level": "N1",
@@ -7330,7 +7392,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeName": "문맥 규정",
       "wrongChoice": "思(おも)い込(こ)む",
-      "id": "N1-0161"
+      "id": "N1-0161",
+      "lastModified": 1791354787671
     },
     "N1-0133": {
       "count": 1,
@@ -7342,7 +7405,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791353454499,
       "lastWrongDate": 1791353454499,
       "wrongChoice": "立(た)ち寄(よ)る",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791353454499
     },
     "N1-0285": {
       "wrongChoice": "日帰(ひがえ)り",
@@ -7354,7 +7418,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0285",
       "level": "N1",
       "isMastered": false,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791433250736
     },
     "N1-0428": {
       "count": 1,
@@ -7366,7 +7431,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "firstWrongDate": 1791449309441,
       "typeCode": "context_defined",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791449309441
     },
     "N1-0351": {
       "wrongChoice": "一人掛(ひとりか)け",
@@ -7378,7 +7444,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "lastWrongDate": 1791438078419,
       "typeName": "문맥 규정",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791438078419
     },
     "GM-N5-0038": {
       "lastWrongDate": 1791956080440,
@@ -7390,7 +7457,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "ではいけません",
       "firstWrongDate": 1791956080440,
       "isBookmarked": false,
-      "level": "N5"
+      "level": "N5",
+      "lastModified": 1791956080440
     },
     "GM-N1-5000": {
       "typeCode": "grammar",
@@ -7402,7 +7470,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "ならではの",
       "id": "GM-N1-5000",
-      "firstWrongDate": 1793014390578
+      "firstWrongDate": 1793014390578,
+      "lastModified": 1793014390578
     },
     "N1-0163": {
       "level": "N1",
@@ -7414,7 +7483,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeName": "문맥 규정",
       "isMastered": false,
-      "id": "N1-0163"
+      "id": "N1-0163",
+      "lastModified": 1791354960817
     },
     "N1-0013": {
       "isBookmarked": false,
@@ -7426,7 +7496,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "typeCode": "context_defined",
       "lastWrongDate": 1791262856043,
-      "id": "N1-0013"
+      "id": "N1-0013",
+      "lastModified": 1791262856043
     },
     "GM-N1-4129": {
       "wrongChoice": "とばかり",
@@ -7438,7 +7509,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "isMastered": false,
       "isBookmarked": false,
-      "firstWrongDate": 1792037948318
+      "firstWrongDate": 1792037948318,
+      "lastModified": 1792037948318
     },
     "N1-0153": {
       "wrongChoice": "心(こころ)を打(う)つ",
@@ -7450,7 +7522,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0153",
       "count": 1,
       "isBookmarked": false,
-      "firstWrongDate": 1791354406626
+      "firstWrongDate": 1791354406626,
+      "lastModified": 1791354406626
     },
     "GM-N1-4841": {
       "count": 1,
@@ -7462,7 +7535,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "firstWrongDate": 1792408764754,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792408764754
     },
     "GM-N1-4862": {
       "isBookmarked": false,
@@ -7474,7 +7548,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792411631260,
       "isMastered": false,
       "level": "N1",
-      "wrongChoice": "にもまして"
+      "wrongChoice": "にもまして",
+      "lastModified": 1792411631260
     },
     "GM-N1-4288": {
       "lastWrongDate": 1792116203958,
@@ -7486,7 +7561,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792116203958
     },
     "N1-0112": {
       "isMastered": false,
@@ -7498,7 +7574,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791352394743,
       "firstWrongDate": 1791352394743,
       "count": 1,
-      "id": "N1-0112"
+      "id": "N1-0112",
+      "lastModified": 1791352394743
     },
     "GM-N1-4913": {
       "level": "N1",
@@ -7510,7 +7587,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "GM-N1-4913",
       "lastWrongDate": 1792678492974,
-      "wrongChoice": "をもって"
+      "wrongChoice": "をもって",
+      "lastModified": 1792678492974
     },
     "N1-0203": {
       "count": 1,
@@ -7522,7 +7600,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791427574117,
       "isMastered": false,
       "typeCode": "context_defined",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791427574117
     },
     "N1-0878": {
       "id": "N1-0878",
@@ -7534,7 +7613,9 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": true,
       "isBookmarked": false,
       "count": 3,
-      "wrongChoice": "かなどる"
+      "wrongChoice": "かなどる",
+      "lastModified": 1791257952910,
+      "masteredDate": 1791257952910
     },
     "GM-N1-4646": {
       "count": 1,
@@ -7546,7 +7627,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "level": "N1",
       "typeName": "문법 (文法)",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792144056093
     },
     "GM-N1-4640": {
       "isBookmarked": false,
@@ -7558,7 +7640,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "firstWrongDate": 1792143310772,
       "id": "GM-N1-4640",
-      "lastWrongDate": 1792143310772
+      "lastWrongDate": 1792143310772,
+      "lastModified": 1792143310772
     },
     "N1-0064": {
       "level": "N1",
@@ -7570,7 +7653,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791348611684,
       "count": 1,
       "id": "N1-0064",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791348611684
     },
     "N1-0154": {
       "isMastered": false,
@@ -7582,7 +7666,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791354444582,
       "wrongChoice": "あらかじめ",
       "level": "N1",
-      "id": "N1-0154"
+      "id": "N1-0154",
+      "lastModified": 1791354444582
     },
     "N1-0337": {
       "typeCode": "context_defined",
@@ -7594,7 +7679,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791437217746,
       "isBookmarked": false,
       "count": 1,
-      "wrongChoice": "わずかな"
+      "wrongChoice": "わずかな",
+      "lastModified": 1791437217746
     },
     "N5-0003": {
       "wrongChoice": "けす",
@@ -7606,7 +7692,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "id": "N5-0003",
       "isMastered": false,
-      "level": "N5"
+      "level": "N5",
+      "lastModified": 1790771054587
     },
     "N1-0233": {
       "id": "N1-0233",
@@ -7618,7 +7705,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "推薦(すいせん)",
       "firstWrongDate": 1791429635697,
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791429635697
     },
     "GM-N5-0175": {
       "firstWrongDate": 1791971677056,
@@ -7630,7 +7718,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "lastWrongDate": 1791971677056,
       "isBookmarked": false,
-      "id": "GM-N5-0175"
+      "id": "GM-N5-0175",
+      "lastModified": 1791971677056
     },
     "N1-0306": {
       "lastWrongDate": 1791435157099,
@@ -7642,7 +7731,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "wrongChoice": "べたべた",
       "typeCode": "context_defined",
-      "id": "N1-0306"
+      "id": "N1-0306",
+      "lastModified": 1791435157099
     },
     "N1-1397": {
       "lastWrongDate": 1791356885344,
@@ -7654,7 +7744,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791356885344,
       "typeCode": "usage",
       "level": "N1",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791356885344
     },
     "GM-N1-4907": {
       "firstWrongDate": 1792676683645,
@@ -7666,7 +7757,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "GM-N1-4907",
       "wrongChoice": "ようにも",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792676683645
     },
     "N1-0189": {
       "typeName": "문맥 규정",
@@ -7678,7 +7770,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "工業地帯(こうぎょうちたい)",
       "id": "N1-0189",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791356042090
     },
     "N1-0241": {
       "level": "N1",
@@ -7690,7 +7783,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791430604286,
       "wrongChoice": "製造(せいぞう)",
       "isBookmarked": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791430604286
     },
     "N1-0017": {
       "lastWrongDate": 1790844421662,
@@ -7702,7 +7796,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790844421662,
       "isMastered": false,
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1790844421662
     },
     "N1-0480": {
       "count": 1,
@@ -7714,7 +7809,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "だき",
       "isMastered": false,
       "level": "N1",
-      "firstWrongDate": 1791782681729
+      "firstWrongDate": 1791782681729,
+      "lastModified": 1791782681729
     },
     "N1-0085": {
       "wrongChoice": "余(あま)る",
@@ -7726,7 +7822,9 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "lastWrongDate": 1791262415313,
       "id": "N1-0085",
-      "firstWrongDate": 1791262415313
+      "firstWrongDate": 1791262415313,
+      "lastModified": 1791262415313,
+      "masteredDate": 1791262415313
     },
     "N1-1246": {
       "isBookmarked": false,
@@ -7738,7 +7836,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "isMastered": false,
       "lastWrongDate": 1791874081932,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791874081932
     },
     "N1-0138": {
       "id": "N1-0138",
@@ -7750,7 +7849,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791353728846,
       "isMastered": false,
-      "lastWrongDate": 1791353728846
+      "lastWrongDate": 1791353728846,
+      "lastModified": 1791353728846
     },
     "N1-0015": {
       "isMastered": false,
@@ -7762,7 +7862,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "wrongChoice": "のんびり",
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791340269029
     },
     "N1-0373": {
       "firstWrongDate": 1791440048970,
@@ -7774,7 +7875,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "typeCode": "context_defined",
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791440048970
     },
     "GM-N3-2626": {
       "level": "N3",
@@ -7786,7 +7888,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "typeCode": "grammar",
       "count": 1,
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1791956590722
     },
     "N1-0273": {
       "isBookmarked": false,
@@ -7798,7 +7901,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "人口(じんこう)",
       "id": "N1-0273",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791432844610
     },
     "GM-N1-4654": {
       "typeCode": "grammar",
@@ -7810,7 +7914,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792145620840,
       "wrongChoice": "に足(た)りない",
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792145620840
     },
     "GM-N1-4953": {
       "typeName": "문법 (文法)",
@@ -7822,7 +7927,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1792990522591,
       "lastWrongDate": 1792990522591,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792990522591
     },
     "N1-1344": {
       "lastWrongDate": 1790835275072,
@@ -7834,7 +7940,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "新(あたら)しい考(かんが)えに反対(はんたい)する人(ひと)は全員[古典派](ぜんいんこてんは)と呼(よ)ばれる。",
       "typeCode": "usage",
       "level": "N1",
-      "typeName": "용법"
+      "typeName": "용법",
+      "lastModified": 1790835275072,
+      "masteredDate": 1790835275072
     },
     "GM-N1-4938": {
       "typeName": "문법 (文法)",
@@ -7846,7 +7954,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "isBookmarked": false,
       "wrongChoice": "を皮切",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792981921717
     },
     "GM-N1-4817": {
       "firstWrongDate": 1792406979721,
@@ -7858,7 +7967,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792406979721
     },
     "N1-0220": {
       "firstWrongDate": 1791428289517,
@@ -7870,7 +7980,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "id": "N1-0220",
       "wrongChoice": "ぐっすり",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791428289517
     },
     "N1-0145": {
       "id": "N1-0145",
@@ -7882,7 +7993,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "count": 1,
       "typeName": "문맥 규정",
-      "lastWrongDate": 1791354042095
+      "lastWrongDate": 1791354042095,
+      "lastModified": 1791354042095
     },
     "N1-0358": {
       "id": "N1-0358",
@@ -7894,7 +8006,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791356801185,
       "count": 1,
       "isMastered": false,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791356801185
     },
     "N1-1779": {
       "firstWrongDate": 1791356959826,
@@ -7906,7 +8019,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "용법",
       "isBookmarked": false,
-      "typeCode": "usage"
+      "typeCode": "usage",
+      "lastModified": 1791356959826
     },
     "N1-1841": {
       "isMastered": true,
@@ -7918,7 +8032,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "level": "N1",
       "lastWrongDate": 1791259222437,
-      "id": "N1-1841"
+      "id": "N1-1841",
+      "lastModified": 1791259222437,
+      "masteredDate": 1791259222437
     },
     "N1-0194": {
       "wrongChoice": "増(ふ)える",
@@ -7930,7 +8046,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "level": "N1",
       "id": "N1-0194",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791359476213
     },
     "GM-N1-4919": {
       "level": "N1",
@@ -7942,7 +8059,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "id": "GM-N1-4919",
       "isBookmarked": false,
-      "firstWrongDate": 1792683534154
+      "firstWrongDate": 1792683534154,
+      "lastModified": 1792683534154
     },
     "GM-N3-2627": {
       "typeCode": "grammar",
@@ -7954,7 +8072,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "wrongChoice": "かけた",
       "count": 1,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791956614337
     },
     "GM-N3-0001": {
       "firstWrongDate": 1791955453991,
@@ -7966,7 +8085,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "typeName": "문법 (文法)",
       "isMastered": false,
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1791955453991
     },
     "N1-0447": {
       "lastWrongDate": 1791778189024,
@@ -7978,7 +8098,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "ぜつきょう",
       "firstWrongDate": 1791778189024,
       "level": "N1",
-      "id": "N1-0447"
+      "id": "N1-0447",
+      "lastModified": 1791778189024
     },
     "GM-N1-4323": {
       "lastWrongDate": 1792118903113,
@@ -7990,7 +8111,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "wrongChoice": "ねばなりません",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792118903113
     },
     "GM-N1-4665": {
       "isBookmarked": false,
@@ -8002,7 +8124,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4665",
       "firstWrongDate": 1792148195345,
       "lastWrongDate": 1792148195345,
-      "wrongChoice": "なりに"
+      "wrongChoice": "なりに",
+      "lastModified": 1792148195345
     },
     "N1-0191": {
       "isMastered": false,
@@ -8014,7 +8137,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeCode": "context_defined",
       "typeName": "문맥 규정",
-      "lastWrongDate": 1791359404487
+      "lastWrongDate": 1791359404487,
+      "lastModified": 1791359404487
     },
     "GM-N1-4289": {
       "count": 1,
@@ -8026,7 +8150,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "firstWrongDate": 1792116470363,
       "wrongChoice": "たばかりなので",
-      "lastWrongDate": 1792116470363
+      "lastWrongDate": 1792116470363,
+      "lastModified": 1792116470363
     },
     "N1-0248": {
       "isBookmarked": false,
@@ -8038,7 +8163,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "wrongChoice": "ぼんやり",
       "level": "N1",
-      "lastWrongDate": 1791431539601
+      "lastWrongDate": 1791431539601,
+      "lastModified": 1791431539601
     },
     "N1-0541": {
       "isMastered": true,
@@ -8050,7 +8176,9 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "lastWrongDate": 1791257715893,
       "wrongChoice": "さどす",
-      "count": 3
+      "count": 3,
+      "lastModified": 1791257715893,
+      "masteredDate": 1791257715893
     },
     "N1-0441": {
       "isMastered": false,
@@ -8062,7 +8190,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0441",
       "isBookmarked": false,
       "wrongChoice": "はいほ",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791776676745
     },
     "N1-0369": {
       "typeCode": "context_defined",
@@ -8074,7 +8203,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0369",
       "level": "N1",
       "wrongChoice": "回復(かいふく)が確実(かくじつ)な",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791439604550
     },
     "N1-0245": {
       "isBookmarked": false,
@@ -8086,7 +8216,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791431003918,
       "lastWrongDate": 1791431003918,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791431003918
     },
     "GM-N1-4421": {
       "lastWrongDate": 1791977600074,
@@ -8098,7 +8229,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791977600074,
       "isBookmarked": false,
-      "id": "GM-N1-4421"
+      "id": "GM-N1-4421",
+      "lastModified": 1791977600074
     },
     "N1-1773": {
       "wrongChoice": "会議(かいぎ)には[有数(ゆうすう)]の三人(さんにん)だけが参加(さんか)した。",
@@ -8110,7 +8242,9 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791260768976,
       "id": "N1-1773",
       "level": "N1",
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1791260768976,
+      "masteredDate": 1791260768976
     },
     "N1-0342": {
       "level": "N1",
@@ -8122,7 +8256,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "手元(てもと)",
       "count": 1,
       "id": "N1-0342",
-      "firstWrongDate": 1791437353653
+      "firstWrongDate": 1791437353653,
+      "lastModified": 1791437353653
     },
     "N1-0044": {
       "typeName": "문맥 규정",
@@ -8134,7 +8269,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "isMastered": false,
       "firstWrongDate": 1791341297399,
-      "lastWrongDate": 1791341297399
+      "lastWrongDate": 1791341297399,
+      "lastModified": 1791341297399
     },
     "N1-0088": {
       "count": 1,
@@ -8146,7 +8282,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "level": "N1",
       "lastWrongDate": 1791349164537,
-      "firstWrongDate": 1791349164537
+      "firstWrongDate": 1791349164537,
+      "lastModified": 1791349164537
     },
     "GM-N4-0021": {
       "lastWrongDate": 1791955871004,
@@ -8158,7 +8295,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N4-0021",
       "wrongChoice": "たばかりです",
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791955871004
     },
     "N5-0002": {
       "count": 1,
@@ -8170,7 +8308,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "lastWrongDate": 1790771052130,
       "level": "N5",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1790771052130
     },
     "N1-0092": {
       "count": 1,
@@ -8182,7 +8321,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "isBookmarked": false,
       "typeCode": "context_defined",
-      "firstWrongDate": 1791351524627
+      "firstWrongDate": 1791351524627,
+      "lastModified": 1791351524627
     },
     "GM-N1-3939": {
       "lastWrongDate": 1791958341273,
@@ -8194,7 +8334,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "id": "GM-N1-3939",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791958341273
     },
     "N1-0231": {
       "id": "N1-0231",
@@ -8206,7 +8347,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "isMastered": false,
       "lastWrongDate": 1791429386667,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791429386667
     },
     "GM-N1-4772": {
       "typeName": "문법 (文法)",
@@ -8218,7 +8360,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1792405119235,
       "lastWrongDate": 1792405119235,
       "wrongChoice": "おかげでまたやり",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792405119235
     },
     "GM-N1-4617": {
       "lastWrongDate": 1792130090040,
@@ -8230,7 +8373,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "isMastered": false,
       "count": 1,
-      "firstWrongDate": 1792130090040
+      "firstWrongDate": 1792130090040,
+      "lastModified": 1792130090040
     },
     "N1-0118": {
       "count": 1,
@@ -8242,7 +8386,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "typeCode": "context_defined",
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791352638560
     },
     "N5-0004": {
       "isBookmarked": false,
@@ -8254,7 +8399,9 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": true,
       "wrongChoice": "おもい",
       "id": "N5-0004",
-      "firstWrongDate": 1790771056521
+      "firstWrongDate": 1790771056521,
+      "lastModified": 1790771056521,
+      "masteredDate": 1790771056521
     },
     "N1-1683": {
       "wrongChoice": "彼(かれ)は結婚(けっこん)して、新(あたら)しい[一家(いっか)]を建(た)てた。",
@@ -8266,7 +8413,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "용법",
       "isMastered": false,
-      "typeCode": "usage"
+      "typeCode": "usage",
+      "lastModified": 1791260482493
     },
     "N1-0252": {
       "firstWrongDate": 1791431913359,
@@ -8278,7 +8426,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "lastWrongDate": 1791431913359,
       "count": 1,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791431913359
     },
     "N1-0409": {
       "firstWrongDate": 1791444148006,
@@ -8290,7 +8439,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "typeName": "문맥 규정",
       "isBookmarked": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791444148006
     },
     "N1-1507": {
       "count": 1,
@@ -8302,7 +8452,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791356468221,
       "typeName": "용법",
       "typeCode": "usage",
-      "wrongChoice": "料理(りょうり)に塩(しお)を少(すこ)し[秘(ひ)める]と、おいしくなります。"
+      "wrongChoice": "料理(りょうり)に塩(しお)を少(すこ)し[秘(ひ)める]と、おいしくなります。",
+      "lastModified": 1791356468221
     },
     "N1-0937": {
       "count": 1,
@@ -8314,7 +8465,9 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "lastWrongDate": 1790834892446,
       "firstWrongDate": 1790834892446,
-      "id": "N1-0937"
+      "id": "N1-0937",
+      "lastModified": 1790834892446,
+      "masteredDate": 1790834892446
     },
     "N1-0412": {
       "wrongChoice": "流動的(りゅうどうてき)だ",
@@ -8326,7 +8479,9 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "N1-0412",
       "lastWrongDate": 1791444284607,
-      "firstWrongDate": 1791444284607
+      "firstWrongDate": 1791444284607,
+      "lastModified": 1791444284607,
+      "masteredDate": 1791444284607
     },
     "N1-1241": {
       "isBookmarked": false,
@@ -8338,7 +8493,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791865298819,
       "wrongChoice": "熱(ねつ)が出(で)たので[進学塾(しんがくじゅく)]で診察(しんさつ)を受(う)けた。",
       "isMastered": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791865298819
     },
     "N1-0884": {
       "isMastered": true,
@@ -8350,7 +8506,9 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791257787096,
       "level": "N1",
       "wrongChoice": "おこだる",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791257787096,
+      "masteredDate": 1791257787096
     },
     "N1-0493": {
       "id": "N1-0493",
@@ -8362,7 +8520,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "kanji_reading",
       "wrongChoice": "かいだく",
       "level": "N1",
-      "firstWrongDate": 1790845363457
+      "firstWrongDate": 1790845363457,
+      "lastModified": 1790845363457,
+      "masteredDate": 1790845363457
     },
     "N1-0038": {
       "typeName": "문맥 규정",
@@ -8374,7 +8534,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791340781763,
       "level": "N1",
       "wrongChoice": "静(せい)",
-      "firstWrongDate": 1791340781763
+      "firstWrongDate": 1791340781763,
+      "lastModified": 1791340781763
     },
     "GM-N1-4896": {
       "lastWrongDate": 1792675227157,
@@ -8386,7 +8547,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "firstWrongDate": 1792675227157,
       "level": "N1",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792675227157
     },
     "N1-0269": {
       "typeCode": "context_defined",
@@ -8398,7 +8560,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791432765224,
       "wrongChoice": "ぐっすり",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791432765224
     },
     "N1-1572": {
       "id": "N1-1572",
@@ -8410,7 +8573,9 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": true,
       "typeCode": "usage",
       "typeName": "용법",
-      "count": 1
+      "count": 1,
+      "lastModified": 1790835374876,
+      "masteredDate": 1790835374876
     },
     "N1-0056": {
       "isMastered": false,
@@ -8422,7 +8587,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "lastWrongDate": 1791348181363,
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791348181363
     },
     "N1-1120": {
       "id": "N1-1120",
@@ -8434,7 +8600,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeCode": "paraphrase",
       "isBookmarked": false,
-      "typeName": "유의 표현"
+      "typeName": "유의 표현",
+      "lastModified": 1791357018301
     },
     "GM-N1-4848": {
       "id": "GM-N1-4848",
@@ -8446,7 +8613,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792409553387
     },
     "GM-N1-0969": {
       "lastWrongDate": 1792034179853,
@@ -8458,7 +8626,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "wrongChoice": "によると",
       "count": 1,
-      "firstWrongDate": 1792034179853
+      "firstWrongDate": 1792034179853,
+      "lastModified": 1792034179853
     },
     "GM-N1-4930": {
       "lastWrongDate": 1792835937814,
@@ -8470,7 +8639,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "GM-N1-4930",
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792835937814
     },
     "N1-1669": {
       "level": "N1",
@@ -8482,7 +8652,9 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 2,
       "firstWrongDate": 1791258494221,
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1791258614848,
+      "masteredDate": 1791258614848
     },
     "GM-N1-4678": {
       "level": "N1",
@@ -8494,7 +8666,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "lastWrongDate": 1792223271036,
       "wrongChoice": "にもまして",
-      "id": "GM-N1-4678"
+      "id": "GM-N1-4678",
+      "lastModified": 1792223271036
     },
     "N1-0462": {
       "count": 1,
@@ -8506,7 +8679,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "한자 읽기",
       "isBookmarked": false,
-      "typeCode": "kanji_reading"
+      "typeCode": "kanji_reading",
+      "lastModified": 1791782056033
     },
     "GM-N1-3923": {
       "isBookmarked": false,
@@ -8518,7 +8692,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "を受",
       "level": "N1",
-      "id": "GM-N1-3923"
+      "id": "GM-N1-3923",
+      "lastModified": 1792036284363
     },
     "GM-N1-4842": {
       "typeName": "문법 (文法)",
@@ -8530,7 +8705,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792408781329,
       "isBookmarked": false,
       "firstWrongDate": 1792408781329,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792408781329
     },
     "N1-0416": {
       "count": 1,
@@ -8542,7 +8718,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791444407283,
       "lastWrongDate": 1791444407283,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791444407283
     },
     "N1-0188": {
       "id": "N1-0188",
@@ -8554,7 +8731,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "isBookmarked": false,
       "firstWrongDate": 1791355952209,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791355952209
     },
     "N1-0087": {
       "lastWrongDate": 1791262459766,
@@ -8566,7 +8744,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791262459766,
       "typeCode": "context_defined",
       "count": 1,
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791262459766
     },
     "N1-0202": {
       "isBookmarked": false,
@@ -8578,7 +8757,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791427533652,
       "count": 1,
       "level": "N1",
-      "id": "N1-0202"
+      "id": "N1-0202",
+      "lastModified": 1791427533652
     },
     "GM-N1-4836": {
       "typeName": "문법 (文法)",
@@ -8590,7 +8770,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "はおろか",
       "isMastered": false,
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792408034762
     },
     "GM-N5-0010": {
       "firstWrongDate": 1791955593491,
@@ -8602,7 +8783,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "id": "GM-N5-0010",
-      "lastWrongDate": 1791955593491
+      "lastWrongDate": 1791955593491,
+      "lastModified": 1791955593491
     },
     "GM-N1-4450": {
       "id": "GM-N1-4450",
@@ -8614,7 +8796,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "lastWrongDate": 1792120918245,
       "count": 1,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792120918245
     },
     "N1-0247": {
       "level": "N1",
@@ -8626,7 +8809,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "id": "N1-0247",
       "count": 2,
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1790845469583,
+      "masteredDate": 1790845469583
     },
     "GM-N1-4884": {
       "level": "N1",
@@ -8638,7 +8823,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "id": "GM-N1-4884",
-      "firstWrongDate": 1792577035525
+      "firstWrongDate": 1792577035525,
+      "lastModified": 1792577035525
     },
     "GM-N1-4705": {
       "typeName": "문법 (文法)",
@@ -8650,7 +8836,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1792399992941,
       "level": "N1",
       "wrongChoice": "にともない",
-      "id": "GM-N1-4705"
+      "id": "GM-N1-4705",
+      "lastModified": 1792399992941
     },
     "GM-N1-4632": {
       "lastWrongDate": 1792142477934,
@@ -8662,7 +8849,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "isMastered": false,
       "wrongChoice": "に向(む)けて",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792142477934
     },
     "N1-0067": {
       "count": 1,
@@ -8674,7 +8862,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "守(まも)る",
       "lastWrongDate": 1791348715412,
       "level": "N1",
-      "firstWrongDate": 1791348715412
+      "firstWrongDate": 1791348715412,
+      "lastModified": 1791348715412
     },
     "GM-N1-4642": {
       "id": "GM-N1-4642",
@@ -8686,7 +8875,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792143646503
     },
     "N1-0520": {
       "wrongChoice": "こはむ",
@@ -8698,7 +8888,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "kanji_reading",
       "count": 1,
       "typeName": "한자 읽기",
-      "firstWrongDate": 1791259552700
+      "firstWrongDate": 1791259552700,
+      "lastModified": 1791259552700,
+      "masteredDate": 1791259552700
     },
     "N1-1524": {
       "isBookmarked": false,
@@ -8710,7 +8902,9 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "wrongChoice": "朝日(あさひ)を見(み)ようと、空(そら)を仰(あお)いで[うなだれた]。",
       "typeName": "용법",
-      "lastWrongDate": 1791261197464
+      "lastWrongDate": 1791261197464,
+      "lastModified": 1791261197464,
+      "masteredDate": 1791261197464
     },
     "N1-0375": {
       "wrongChoice": "騒(さわ)がしい",
@@ -8722,7 +8916,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "N1-0375",
       "firstWrongDate": 1791440127610,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791440127610
     },
     "N1-1910": {
       "typeCode": "usage",
@@ -8734,7 +8929,9 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791260673036,
       "isMastered": true,
       "count": 1,
-      "firstWrongDate": 1791260673036
+      "firstWrongDate": 1791260673036,
+      "lastModified": 1791260673036,
+      "masteredDate": 1791260673036
     },
     "GM-N1-3865": {
       "count": 1,
@@ -8746,7 +8943,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "level": "N1",
-      "wrongChoice": "ようだったら"
+      "wrongChoice": "ようだったら",
+      "lastModified": 1792035566052
     },
     "N1-0137": {
       "firstWrongDate": 1791353539262,
@@ -8758,7 +8956,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0137",
       "isBookmarked": false,
       "wrongChoice": "退職(たいしょく)",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791353539262
     },
     "N1-0450": {
       "level": "N1",
@@ -8770,7 +8969,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1791779713229,
       "typeName": "한자 읽기",
-      "id": "N1-0450"
+      "id": "N1-0450",
+      "lastModified": 1791779713229
     },
     "GM-N1-4963": {
       "lastWrongDate": 1793000052787,
@@ -8782,7 +8982,9 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1793000052787,
       "isBookmarked": false,
       "id": "GM-N1-4963",
-      "count": 1
+      "count": 1,
+      "lastModified": 1793000052787,
+      "masteredDate": 1793000052787
     },
     "N1-0142": {
       "typeCode": "context_defined",
@@ -8794,7 +8996,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791353892576,
       "isBookmarked": false,
       "wrongChoice": "引(ひ)き起(お)こす",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791353892576
     },
     "GM-N1-4837": {
       "firstWrongDate": 1792408133901,
@@ -8806,7 +9009,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "isBookmarked": false,
       "typeName": "문법 (文法)",
-      "count": 1
+      "count": 1,
+      "lastModified": 1792408133901
     },
     "N1-0274": {
       "isBookmarked": false,
@@ -8818,7 +9022,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "N1-0274",
       "lastWrongDate": 1791432888844,
-      "firstWrongDate": 1791432888844
+      "firstWrongDate": 1791432888844,
+      "lastModified": 1791432888844
     },
     "GM-N1-4851": {
       "typeName": "문법 (文法)",
@@ -8830,7 +9035,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "GM-N1-4851",
       "isMastered": false,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792409949613
     },
     "N1-0012": {
       "lastWrongDate": 1791262738024,
@@ -8842,7 +9048,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "id": "N1-0012",
       "count": 1,
-      "firstWrongDate": 1791262738024
+      "firstWrongDate": 1791262738024,
+      "lastModified": 1791262738024
     },
     "N1-0121": {
       "level": "N1",
@@ -8854,7 +9061,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0121",
       "lastWrongDate": 1791352789934,
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791352789934
     },
     "N5-0012": {
       "wrongChoice": "のる",
@@ -8866,7 +9074,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790832666702,
       "count": 1,
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1790832666702
     },
     "N1-0216": {
       "typeCode": "context_defined",
@@ -8878,7 +9087,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "借(か)りる",
       "firstWrongDate": 1791428184744,
       "isBookmarked": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791428184744
     },
     "N1-0113": {
       "isMastered": false,
@@ -8890,7 +9100,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "typeName": "문맥 규정",
       "lastWrongDate": 1791352460325,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791352460325
     },
     "N1-0361": {
       "level": "N1",
@@ -8902,7 +9113,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeName": "문맥 규정",
       "firstWrongDate": 1791439118199,
-      "id": "N1-0361"
+      "id": "N1-0361",
+      "lastModified": 1791439118199
     },
     "N1-1254": {
       "lastWrongDate": 1791879454252,
@@ -8914,7 +9126,9 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "typeCode": "usage",
       "typeName": "용법",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791879454252,
+      "masteredDate": 1791879454252
     },
     "N1-0168": {
       "typeCode": "context_defined",
@@ -8926,7 +9140,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1791355128612,
       "isBookmarked": false,
-      "id": "N1-0168"
+      "id": "N1-0168",
+      "lastModified": 1791355128612
     },
     "N1-0319": {
       "wrongChoice": "強烈(きょうれつ)だ",
@@ -8938,7 +9153,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791435836427,
       "id": "N1-0319",
       "typeCode": "context_defined",
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791435836427
     },
     "GM-N1-4729": {
       "level": "N1",
@@ -8950,7 +9166,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792401040144,
       "firstWrongDate": 1792401040144,
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792401040144
     },
     "GM-N1-3867": {
       "count": 1,
@@ -8962,7 +9179,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "wrongChoice": "みたいだよ"
+      "wrongChoice": "みたいだよ",
+      "lastModified": 1792035838691
     },
     "GM-N1-4700": {
       "lastWrongDate": 1792301344522,
@@ -8974,7 +9192,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1792301344522,
       "id": "GM-N1-4700",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792301344522
     },
     "N1-0448": {
       "id": "N1-0448",
@@ -8986,7 +9205,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791779696129,
       "level": "N1",
       "firstWrongDate": 1791779696129,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791779696129
     },
     "GM-N1-4770": {
       "firstWrongDate": 1792404949234,
@@ -8998,7 +9218,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "ではないか",
       "isMastered": false,
       "typeName": "문법 (文法)",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792404949234
     },
     "GM-N1-0963": {
       "isMastered": false,
@@ -9010,7 +9231,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-0963",
       "wrongChoice": "ことになっている",
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792031430226
     },
     "N1-1527": {
       "isBookmarked": false,
@@ -9022,7 +9244,9 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-1527",
       "wrongChoice": "[軌道(きどう)]が宇宙(うちゅう)の様子(ようす)を観測(かんそく)している。",
       "level": "N1",
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1791261268266,
+      "masteredDate": 1791261268266
     },
     "GM-N1-4539": {
       "typeName": "문법 (文法)",
@@ -9034,7 +9258,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "ばそれまで",
       "level": "N1",
       "id": "GM-N1-4539",
-      "firstWrongDate": 1792126858803
+      "firstWrongDate": 1792126858803,
+      "lastModified": 1792126858803
     },
     "GM-N1-4695": {
       "level": "N1",
@@ -9046,7 +9271,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
       "count": 1,
-      "lastWrongDate": 1792227073844
+      "lastWrongDate": 1792227073844,
+      "lastModified": 1792227073844
     },
     "GM-N1-4950": {
       "firstWrongDate": 1792990351191,
@@ -9058,7 +9284,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4950",
       "wrongChoice": "を機(き)に",
       "typeName": "문법 (文法)",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792990351191
     },
     "N1-0432": {
       "lastWrongDate": 1791449401845,
@@ -9070,7 +9297,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "firstWrongDate": 1791449401845,
       "count": 1,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791449401845
     },
     "GM-N1-0957": {
       "count": 1,
@@ -9082,7 +9310,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1792031238456,
       "isMastered": false,
       "level": "N1",
-      "lastWrongDate": 1792031238456
+      "lastWrongDate": 1792031238456,
+      "lastModified": 1792031238456
     },
     "N1-0109": {
       "level": "N1",
@@ -9094,7 +9323,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "id": "N1-0109",
-      "wrongChoice": "持(も)ち帰(かえ)る"
+      "wrongChoice": "持(も)ち帰(かえ)る",
+      "lastModified": 1791352285814
     },
     "N1-0039": {
       "wrongChoice": "支出(ししゅつ)",
@@ -9106,7 +9336,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1791340802726,
       "lastWrongDate": 1791340802726,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791340802726
     },
     "N1-0014": {
       "typeCode": "context_defined",
@@ -9118,7 +9349,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "wrongChoice": "バランス",
       "lastWrongDate": 1791262907139,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791262907139
     },
     "N1-0235": {
       "count": 1,
@@ -9130,7 +9362,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeCode": "context_defined",
       "id": "N1-0235",
-      "firstWrongDate": 1791430404852
+      "firstWrongDate": 1791430404852,
+      "lastModified": 1791430404852
     },
     "GM-N1-4738": {
       "typeCode": "grammar",
@@ -9142,7 +9375,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "にもまして",
       "isMastered": false,
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792403189737
     },
     "GM-N1-4970": {
       "lastWrongDate": 1793002044787,
@@ -9154,7 +9388,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4970",
       "typeName": "문법 (文法)",
       "isBookmarked": false,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1793002044787
     },
     "N1-1260": {
       "isMastered": false,
@@ -9166,7 +9401,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-1260",
       "level": "N1",
       "isBookmarked": false,
-      "lastWrongDate": 1791885118448
+      "lastWrongDate": 1791885118448,
+      "lastModified": 1791885118448
     },
     "N1-0388": {
       "level": "N1",
@@ -9178,7 +9414,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "isMastered": false,
       "wrongChoice": "敏感(びんかん)だ",
-      "firstWrongDate": 1791443055220
+      "firstWrongDate": 1791443055220,
+      "lastModified": 1791443055220
     },
     "GM-N1-4560": {
       "count": 1,
@@ -9190,7 +9427,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "id": "GM-N1-4560"
+      "id": "GM-N1-4560",
+      "lastModified": 1792128084542
     },
     "GM-N1-4895": {
       "count": 1,
@@ -9202,7 +9440,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792674299460,
       "typeCode": "grammar",
       "isMastered": false,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792674299460
     },
     "N1-1227": {
       "count": 1,
@@ -9214,7 +9453,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "isBookmarked": false,
       "level": "N1",
-      "firstWrongDate": 1791782785356
+      "firstWrongDate": 1791782785356,
+      "lastModified": 1791782785356
     },
     "N1-1242": {
       "typeName": "용법",
@@ -9226,7 +9466,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791865324906,
       "id": "N1-1242",
       "isMastered": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791865324906
     },
     "N1-0312": {
       "level": "N1",
@@ -9238,7 +9479,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "N1-0312",
       "firstWrongDate": 1791435559880,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791435559880
     },
     "N1-0251": {
       "typeName": "문맥 규정",
@@ -9250,7 +9492,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "id": "N1-0251",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791431856787
     },
     "GM-N1-4952": {
       "lastWrongDate": 1792990386455,
@@ -9262,7 +9505,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "id": "GM-N1-4952"
+      "id": "GM-N1-4952",
+      "lastModified": 1792990386455
     },
     "N1-1226": {
       "firstWrongDate": 1791782759491,
@@ -9274,7 +9518,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791782759491,
       "typeCode": "usage",
       "typeName": "용법",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791782759491
     },
     "N1-0124": {
       "isMastered": false,
@@ -9286,7 +9531,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "count": 1,
       "id": "N1-0124",
-      "wrongChoice": "不十分(ふじゅうぶん)だ"
+      "wrongChoice": "不十分(ふじゅうぶん)だ",
+      "lastModified": 1791352945978
     },
     "GM-N1-4688": {
       "id": "GM-N1-4688",
@@ -9298,7 +9544,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "count": 1,
       "firstWrongDate": 1792226541160,
-      "lastWrongDate": 1792226541160
+      "lastWrongDate": 1792226541160,
+      "lastModified": 1792226541160
     },
     "GM-N1-4659": {
       "firstWrongDate": 1792146872496,
@@ -9310,7 +9557,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4659",
       "level": "N1",
       "wrongChoice": "ようが",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792146872496
     },
     "GM-N1-4725": {
       "typeCode": "grammar",
@@ -9322,7 +9570,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "lastWrongDate": 1792400924081,
       "count": 1,
-      "id": "GM-N1-4725"
+      "id": "GM-N1-4725",
+      "lastModified": 1792400924081
     },
     "GM-N1-4193": {
       "id": "GM-N1-4193",
@@ -9334,7 +9583,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "lastWrongDate": 1792038407428,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792038407428
     },
     "GM-N1-4906": {
       "wrongChoice": "はおろか",
@@ -9346,7 +9596,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1792676650386,
       "isMastered": false,
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792676650386
     },
     "N1-1250": {
       "firstWrongDate": 1791874255154,
@@ -9358,7 +9609,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "용법",
       "typeCode": "usage",
       "lastWrongDate": 1791874255154,
-      "wrongChoice": "母(はは)は庭(にわ)で[生(い)け花(ばな)]を育(そだ)てている。"
+      "wrongChoice": "母(はは)は庭(にわ)で[生(い)け花(ばな)]を育(そだ)てている。",
+      "lastModified": 1791874255154
     },
     "N1-0799": {
       "isBookmarked": false,
@@ -9370,7 +9622,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "kanji_reading",
       "firstWrongDate": 1791355601006,
       "level": "N1",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791355601006
     },
     "GM-N1-3935": {
       "id": "GM-N1-3935",
@@ -9382,7 +9635,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1791957912756,
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791957912756
     },
     "GM-N1-4782": {
       "count": 1,
@@ -9394,7 +9648,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "level": "N1",
-      "id": "GM-N1-4782"
+      "id": "GM-N1-4782",
+      "lastModified": 1792405281845
     },
     "GM-N1-3134": {
       "typeName": "문법 (文法)",
@@ -9406,7 +9661,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "level": "N1",
       "wrongChoice": "てあるから",
-      "lastWrongDate": 1792034748592
+      "lastWrongDate": 1792034748592,
+      "lastModified": 1792034748592
     },
     "GM-N1-3936": {
       "lastWrongDate": 1791957936817,
@@ -9418,7 +9674,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "id": "GM-N1-3936",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791957936817
     },
     "N1-0402": {
       "firstWrongDate": 1791443738963,
@@ -9430,7 +9687,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "typeCode": "context_defined",
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791443738963,
+      "masteredDate": 1791443738963
     },
     "N1-0449": {
       "isMastered": false,
@@ -9442,7 +9701,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "한자 읽기",
       "count": 1,
       "lastWrongDate": 1791779705943,
-      "id": "N1-0449"
+      "id": "N1-0449",
+      "lastModified": 1791779705943
     },
     "N1-0208": {
       "count": 1,
@@ -9454,7 +9714,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791427830416,
       "isMastered": false,
       "lastWrongDate": 1791427830416,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791427830416
     },
     "N1-1533": {
       "id": "N1-1533",
@@ -9466,7 +9727,9 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790833927525,
       "lastWrongDate": 1790833927525,
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1790833927525,
+      "masteredDate": 1790833927525
     },
     "N1-0104": {
       "level": "N1",
@@ -9478,7 +9741,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "wrongChoice": "行(い)き詰(づ)まる",
-      "lastWrongDate": 1791352087210
+      "lastWrongDate": 1791352087210,
+      "lastModified": 1791352087210
     },
     "GM-N4-0017": {
       "isMastered": false,
@@ -9490,7 +9754,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791955798660,
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
-      "wrongChoice": "かねて"
+      "wrongChoice": "かねて",
+      "lastModified": 1791955798660
     },
     "N1-0356": {
       "typeCode": "context_defined",
@@ -9502,7 +9767,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791357058797,
       "isBookmarked": false,
       "count": 1,
-      "wrongChoice": "片(かた)づける"
+      "wrongChoice": "片(かた)づける",
+      "lastModified": 1791357058797
     },
     "GM-N1-4910": {
       "isBookmarked": false,
@@ -9514,7 +9780,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792677262411,
       "id": "GM-N1-4910",
       "level": "N1",
-      "wrongChoice": "をよそに"
+      "wrongChoice": "をよそに",
+      "lastModified": 1792677262411
     },
     "N1-0190": {
       "typeCode": "context_defined",
@@ -9526,7 +9793,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791358861953,
       "id": "N1-0190",
       "isMastered": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791358861953
     },
     "N1-0051": {
       "firstWrongDate": 1791341520858,
@@ -9538,7 +9806,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0051",
       "lastWrongDate": 1791341520858,
       "level": "N1",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791341520858
     },
     "GM-N1-4834": {
       "isBookmarked": false,
@@ -9550,7 +9819,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4834",
       "count": 1,
       "wrongChoice": "ようがやせまいが",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792407821768
     },
     "N1-0024": {
       "wrongChoice": "中(なか)",
@@ -9562,7 +9832,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791340431144,
       "level": "N1",
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791340431144
     },
     "N1-0433": {
       "firstWrongDate": 1791449482548,
@@ -9574,7 +9845,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0433",
       "level": "N1",
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791449482548
     },
     "GM-N4-1124": {
       "lastWrongDate": 1791957482240,
@@ -9586,7 +9858,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "id": "GM-N4-1124",
       "isBookmarked": false,
-      "firstWrongDate": 1791957482240
+      "firstWrongDate": 1791957482240,
+      "lastModified": 1791957482240
     },
     "N1-0303": {
       "firstWrongDate": 1791434940440,
@@ -9598,7 +9871,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791434940440,
       "isBookmarked": false,
       "typeCode": "context_defined",
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791434940440
     },
     "N1-0224": {
       "wrongChoice": "配達員(はいたついん)",
@@ -9610,7 +9884,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "id": "N1-0224",
       "level": "N1",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791428919223
     },
     "GM-N1-4676": {
       "count": 1,
@@ -9622,7 +9897,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "level": "N1",
       "id": "GM-N1-4676",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792223198068
     },
     "N5-0001": {
       "level": "N5",
@@ -9634,7 +9910,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "count": 1,
       "isMastered": true,
-      "lastWrongDate": 1790771048899
+      "lastWrongDate": 1790771048899,
+      "lastModified": 1790771048899,
+      "masteredDate": 1790771048899
     },
     "N1-1236": {
       "isMastered": false,
@@ -9646,7 +9924,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "용법",
       "isBookmarked": false,
       "wrongChoice": "この水(みず)は透明(とうめい)で[潔(いさぎよ)い]から、そのまま飲(の)める。",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791864347838
     },
     "N1-0391": {
       "firstWrongDate": 1791443381858,
@@ -9658,7 +9937,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "活気(かっき)",
       "id": "N1-0391",
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791443381858
     },
     "GM-N1-4737": {
       "id": "GM-N1-4737",
@@ -9670,7 +9950,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "wrongChoice": "を受(う)けて",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792401820358
     },
     "N1-1247": {
       "lastWrongDate": 1791874205613,
@@ -9682,7 +9963,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "医師(いし)が一人(ひとり)で患者(かんじゃ)の体(からだ)を[審議(しんぎ)した]。",
       "level": "N1",
       "typeName": "용법",
-      "typeCode": "usage"
+      "typeCode": "usage",
+      "lastModified": 1791874205613
     },
     "SN-N2-S03-Q1": {
       "isMastered": false,
@@ -9694,7 +9976,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791860097052,
       "id": "SN-N2-S03-Q1",
       "isBookmarked": false,
-      "firstWrongDate": 1791860097052
+      "firstWrongDate": 1791860097052,
+      "lastModified": 1791860097052
     },
     "N1-1039": {
       "count": 1,
@@ -9706,7 +9989,9 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "N1-1039",
       "firstWrongDate": 1790844878041,
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1790844878041,
+      "masteredDate": 1790844878041
     },
     "N1-0421": {
       "isMastered": false,
@@ -9718,7 +10003,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "大(おお)げさだ",
       "id": "N1-0421",
       "level": "N1",
-      "lastWrongDate": 1791444555372
+      "lastWrongDate": 1791444555372,
+      "lastModified": 1791444555372
     },
     "N1-1251": {
       "typeName": "용법",
@@ -9730,7 +10016,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "N1-1251",
       "level": "N1",
-      "lastWrongDate": 1791875374155
+      "lastWrongDate": 1791875374155,
+      "lastModified": 1791875374155
     },
     "N1-1252": {
       "level": "N1",
@@ -9742,7 +10029,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "isBookmarked": false,
       "isMastered": false,
-      "typeName": "용법"
+      "typeName": "용법",
+      "lastModified": 1791875404681
     },
     "N1-0654": {
       "count": 1,
@@ -9754,7 +10042,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "typeName": "한자 읽기",
       "typeCode": "kanji_reading",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791259845947
     },
     "GM-N1-4656": {
       "isMastered": false,
@@ -9766,7 +10055,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792145976944
     },
     "N1-0850": {
       "isMastered": true,
@@ -9778,7 +10068,9 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "firstWrongDate": 1790835818488,
       "wrongChoice": "とくき",
-      "lastWrongDate": 1790835872656
+      "lastWrongDate": 1790835872656,
+      "lastModified": 1790835872656,
+      "masteredDate": 1790835872656
     },
     "GM-N1-4999": {
       "isBookmarked": false,
@@ -9790,7 +10082,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1793010713906
     },
     "N1-1711": {
       "isMastered": false,
@@ -9802,7 +10095,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "typeName": "용법",
       "wrongChoice": "この荷物(にもつ)は[くまなく]十(じゅっ)キロもある。",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791356751497
     },
     "N1-0439": {
       "typeCode": "context_defined",
@@ -9814,7 +10108,9 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0439",
       "firstWrongDate": 1791776610869,
       "isMastered": true,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791776610869,
+      "masteredDate": 1791776610869
     },
     "N1-0404": {
       "count": 1,
@@ -9826,7 +10122,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "実力不足(じつりょくふそく)",
       "isMastered": false,
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791444001919
     },
     "N1-0058": {
       "level": "N1",
@@ -9838,7 +10135,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "isMastered": false,
       "firstWrongDate": 1791348416049,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791348416049
     },
     "N1-0122": {
       "isMastered": false,
@@ -9850,7 +10148,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791352863546,
       "id": "N1-0122",
       "wrongChoice": "次々(つぎつぎ)に",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791352863546
     },
     "GM-N1-4831": {
       "lastWrongDate": 1792407546674,
@@ -9862,7 +10161,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
       "level": "N1",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792407546674
     },
     "N1-1228": {
       "isBookmarked": false,
@@ -9874,7 +10174,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "typeName": "용법",
       "isMastered": true,
-      "firstWrongDate": 1791788647982
+      "firstWrongDate": 1791788647982,
+      "lastModified": 1791788647982,
+      "masteredDate": 1791788647982
     },
     "N1-0177": {
       "lastWrongDate": 1791355531165,
@@ -9886,7 +10188,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "isBookmarked": false,
       "firstWrongDate": 1791355531165,
-      "wrongChoice": "形式(けいしき)"
+      "wrongChoice": "形式(けいしき)",
+      "lastModified": 1791355531165
     },
     "N1-0063": {
       "isMastered": false,
@@ -9898,7 +10201,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "isBookmarked": false,
       "typeCode": "context_defined",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791348539918
     },
     "GM-N5-0139": {
       "level": "N5",
@@ -9910,7 +10214,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N5-0139",
       "firstWrongDate": 1791966368469,
       "isMastered": false,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791966368469
     },
     "N5-0010": {
       "id": "N5-0010",
@@ -9922,7 +10227,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790832637126,
       "isMastered": false,
       "wrongChoice": "かさ",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1790832637126
     },
     "N1-0033": {
       "typeCode": "context_defined",
@@ -9934,7 +10240,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0033",
       "isMastered": false,
       "count": 1,
-      "wrongChoice": "翻訳(ほんやく)"
+      "wrongChoice": "翻訳(ほんやく)",
+      "lastModified": 1791340663833
     },
     "GM-N1-4769": {
       "isMastered": false,
@@ -9946,7 +10253,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792404891915,
       "count": 1,
       "firstWrongDate": 1792404891915,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792404891915
     },
     "N1-1288": {
       "id": "N1-1288",
@@ -9958,7 +10266,9 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791258167892,
       "firstWrongDate": 1790844572844,
       "isMastered": true,
-      "count": 3
+      "count": 3,
+      "lastModified": 1791258167892,
+      "masteredDate": 1791258167892
     },
     "N1-0481": {
       "isMastered": false,
@@ -9970,7 +10280,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "한자 읽기",
       "wrongChoice": "ゆうしょ",
       "count": 1,
-      "id": "N1-0481"
+      "id": "N1-0481",
+      "lastModified": 1791782694745
     },
     "N1-1790": {
       "wrongChoice": "この道(みち)は海(うみ)まで[ひたむきに]続(つづ)いている。",
@@ -9982,7 +10293,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "용법",
       "typeCode": "usage",
       "lastWrongDate": 1791258765118,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791258765118,
+      "masteredDate": 1791258765118
     },
     "GM-N1-4484": {
       "level": "N1",
@@ -9994,7 +10307,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792032883408
     },
     "N1-1248": {
       "wrongChoice": "[建築士(けんちくし)]を使(つか)って、丈夫(じょうぶ)な壁(かべ)を作(つく)りました。",
@@ -10006,7 +10320,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "N1-1248",
       "typeName": "용법",
-      "typeCode": "usage"
+      "typeCode": "usage",
+      "lastModified": 1791874228132
     },
     "GM-N1-5001": {
       "isBookmarked": false,
@@ -10018,7 +10333,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
-      "firstWrongDate": 1793017140792
+      "firstWrongDate": 1793017140792,
+      "lastModified": 1793017140792
     },
     "N1-0477": {
       "wrongChoice": "いきとおり",
@@ -10030,7 +10346,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "한자 읽기",
       "count": 1,
       "id": "N1-0477",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791782657395
     },
     "N1-1938": {
       "level": "N1",
@@ -10042,7 +10359,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "isBookmarked": false,
       "id": "N1-1938",
-      "lastWrongDate": 1791356528238
+      "lastWrongDate": 1791356528238,
+      "lastModified": 1791356528238
     },
     "GM-N4-1115": {
       "isMastered": false,
@@ -10054,7 +10372,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N4-1115",
       "lastWrongDate": 1791957144272,
       "firstWrongDate": 1791957144272,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791957144272
     },
     "N1-1385": {
       "count": 1,
@@ -10066,7 +10385,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "舞台(ぶたい)で[浮世絵(うきよえ)]を演(えん)じました。",
       "id": "N1-1385",
       "typeName": "용법",
-      "typeCode": "usage"
+      "typeCode": "usage",
+      "lastModified": 1791356115760
     },
     "GM-N1-4835": {
       "typeName": "문법 (文法)",
@@ -10078,7 +10398,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792407910435,
       "firstWrongDate": 1792407910435,
       "level": "N1",
-      "wrongChoice": "ものがあります"
+      "wrongChoice": "ものがあります",
+      "lastModified": 1792407910435
     },
     "GM-N1-4813": {
       "firstWrongDate": 1792406746056,
@@ -10090,7 +10411,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "typeCode": "grammar",
       "typeName": "문법 (文法)",
-      "count": 1
+      "count": 1,
+      "lastModified": 1792406746056
     },
     "N1-0464": {
       "firstWrongDate": 1790835806021,
@@ -10102,7 +10424,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "kanji_reading",
       "count": 1,
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1790835806021,
+      "masteredDate": 1790835806021
     },
     "N1-1207": {
       "firstWrongDate": 1791356429561,
@@ -10114,7 +10438,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "paraphrase",
       "level": "N1",
       "id": "N1-1207",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791356429561
     },
     "GM-N1-4810": {
       "count": 1,
@@ -10126,7 +10451,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "lastWrongDate": 1792406538766,
       "level": "N1",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792406538766
     },
     "N1-0196": {
       "count": 1,
@@ -10138,7 +10464,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "isBookmarked": false,
       "firstWrongDate": 1791427324020,
-      "lastWrongDate": 1791427324020
+      "lastWrongDate": 1791427324020,
+      "lastModified": 1791427324020
     },
     "GM-N1-4926": {
       "typeName": "문법 (文法)",
@@ -10150,7 +10477,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4926",
       "isBookmarked": false,
       "isMastered": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792683846746
     },
     "N1-0469": {
       "typeCode": "kanji_reading",
@@ -10162,7 +10490,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1791356939913,
       "wrongChoice": "にしひ",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791356939913
     },
     "GM-N1-4843": {
       "id": "GM-N1-4843",
@@ -10174,7 +10503,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "そうにない",
       "isBookmarked": false,
       "count": 1,
-      "firstWrongDate": 1792409030445
+      "firstWrongDate": 1792409030445,
+      "lastModified": 1792409030445
     },
     "GM-N1-4657": {
       "count": 1,
@@ -10186,7 +10516,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "wrongChoice": "にともない",
       "id": "GM-N1-4657",
-      "lastWrongDate": 1792146342520
+      "lastWrongDate": 1792146342520,
+      "lastModified": 1792146342520
     },
     "GM-N1-4236": {
       "level": "N1",
@@ -10198,7 +10529,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "GM-N1-4236",
       "lastWrongDate": 1792038771233,
-      "firstWrongDate": 1792038771233
+      "firstWrongDate": 1792038771233,
+      "lastModified": 1792038771233
     },
     "N1-0031": {
       "count": 1,
@@ -10210,7 +10542,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791340608849,
       "firstWrongDate": 1791340608849,
       "level": "N1",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791340608849
     },
     "GM-N1-4736": {
       "level": "N1",
@@ -10222,7 +10555,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "lastWrongDate": 1792401305621,
       "count": 1,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792401305621
     },
     "N1-0159": {
       "typeName": "문맥 규정",
@@ -10234,7 +10568,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "完成(かんせい)",
       "isMastered": false,
       "isBookmarked": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791354708617
     },
     "N1-0222": {
       "id": "N1-0222",
@@ -10246,7 +10581,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "wrongChoice": "片付(かたづ)く",
       "count": 1,
-      "lastWrongDate": 1791428620218
+      "lastWrongDate": 1791428620218,
+      "lastModified": 1791428620218
     },
     "GM-N2-3937": {
       "wrongChoice": "てこそ",
@@ -10258,7 +10594,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "count": 1,
       "lastWrongDate": 1791958131308,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791958131308
     },
     "N1-0360": {
       "lastWrongDate": 1791439039485,
@@ -10270,7 +10607,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "context_defined",
       "id": "N1-0360",
       "typeName": "문맥 규정",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791439039485
     },
     "GM-N1-4928": {
       "level": "N1",
@@ -10282,7 +10620,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "をもって",
       "id": "GM-N1-4928",
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792835817529
     },
     "N1-0474": {
       "isMastered": false,
@@ -10294,7 +10633,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "kanji_reading",
       "firstWrongDate": 1791782636309,
       "lastWrongDate": 1791782636309,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791782636309
     },
     "N1-0152": {
       "count": 1,
@@ -10306,7 +10646,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791354387155,
       "typeCode": "context_defined",
       "isMastered": false,
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791354387155
     },
     "GM-N5-0170": {
       "id": "GM-N5-0170",
@@ -10318,7 +10659,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791970927318,
       "isMastered": false,
       "wrongChoice": "じゃなかったです",
-      "level": "N5"
+      "level": "N5",
+      "lastModified": 1791970927318
     },
     "GM-N1-4169": {
       "lastWrongDate": 1792038244659,
@@ -10330,7 +10672,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "にしたら",
       "typeName": "문법 (文法)",
       "level": "N1",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792038244659
     },
     "GM-N1-4681": {
       "typeCode": "grammar",
@@ -10342,7 +10685,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792223350242,
       "isMastered": false,
       "count": 1,
-      "firstWrongDate": 1792223350242
+      "firstWrongDate": 1792223350242,
+      "lastModified": 1792223350242
     },
     "GM-N1-4704": {
       "isMastered": false,
@@ -10354,7 +10698,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "typeCode": "grammar",
       "level": "N1",
-      "wrongChoice": "にもまして"
+      "wrongChoice": "にもまして",
+      "lastModified": 1792399970280
     },
     "GM-N1-0968": {
       "id": "GM-N1-0968",
@@ -10366,7 +10711,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "firstWrongDate": 1792033781649,
-      "lastWrongDate": 1792033781649
+      "lastWrongDate": 1792033781649,
+      "lastModified": 1792033781649
     },
     "GM-N1-4637": {
       "lastWrongDate": 1792142714072,
@@ -10378,7 +10724,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "wrongChoice": "に即(そく)して",
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792142714072
     },
     "N1-0246": {
       "firstWrongDate": 1791431473480,
@@ -10390,7 +10737,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문맥 규정",
       "wrongChoice": "ルール",
       "typeCode": "context_defined",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791431473480
     },
     "N1-0182": {
       "count": 1,
@@ -10402,7 +10750,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "バランス",
       "isMastered": false,
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791355802840
     },
     "SN-N2-S01-Q1": {
       "count": 1,
@@ -10414,7 +10763,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "firstWrongDate": 1791777249417,
       "level": "N1",
-      "wrongChoice": ""
+      "wrongChoice": "",
+      "lastModified": 1791777249417
     },
     "GM-N4-0052": {
       "id": "GM-N4-0052",
@@ -10426,7 +10776,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "문법 (文法)",
       "isMastered": false,
       "firstWrongDate": 1791956269744,
-      "lastWrongDate": 1791956269744
+      "lastWrongDate": 1791956269744,
+      "lastModified": 1791956269744
     },
     "N1-0339": {
       "typeCode": "context_defined",
@@ -10438,7 +10789,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0339",
       "firstWrongDate": 1791437262763,
       "isMastered": false,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791437262763
     },
     "GM-N4-0039": {
       "level": "N4",
@@ -10450,7 +10802,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "というより",
       "typeCode": "grammar",
       "isMastered": false,
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1791956109345
     },
     "GM-N1-4248": {
       "typeCode": "grammar",
@@ -10462,7 +10815,8 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "てしかるべき",
       "id": "GM-N1-4248",
       "count": 1,
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1792038913259
     },
     "N1-0444": {
       "typeCode": "kanji_reading",
@@ -10474,7 +10828,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0444",
       "wrongChoice": "しゅつひ",
       "firstWrongDate": 1791776708506,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791776708506
     },
     "N1-1263": {
       "isBookmarked": false,
@@ -10486,7 +10841,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "isMastered": false,
       "lastWrongDate": 1791885332639,
-      "firstWrongDate": 1791885332639
+      "firstWrongDate": 1791885332639,
+      "lastModified": 1791885332639
     },
     "GM-N1-4709": {
       "count": 1,
@@ -10498,7 +10854,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "wrongChoice": "ごときがここまで",
       "firstWrongDate": 1792400301657,
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1792400301657
     },
     "GM-N1-4982": {
       "isBookmarked": false,
@@ -10510,7 +10867,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "wrongChoice": "ほどのことではないです",
-      "id": "GM-N1-4982"
+      "id": "GM-N1-4982",
+      "lastModified": 1793005883628
     },
     "N1-1616": {
       "isMastered": true,
@@ -10522,7 +10880,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeName": "용법",
       "firstWrongDate": 1790845119593,
       "typeCode": "usage",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1790845119593,
+      "masteredDate": 1790845119593
     },
     "GM-N1-4853": {
       "isBookmarked": false,
@@ -10534,7 +10894,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "firstWrongDate": 1792410236659,
       "level": "N1",
-      "id": "GM-N1-4853"
+      "id": "GM-N1-4853",
+      "lastModified": 1792410236659
     },
     "N1-0021": {
       "typeName": "문맥 규정",
@@ -10546,7 +10907,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791340364915,
       "count": 1,
       "level": "N1",
-      "firstWrongDate": 1791340364915
+      "firstWrongDate": 1791340364915,
+      "lastModified": 1791340364915
     },
     "N1-0971": {
       "typeCode": "kanji_reading",
@@ -10558,7 +10920,9 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1790834146364,
       "count": 2,
       "id": "N1-0971",
-      "lastWrongDate": 1791258537581
+      "lastWrongDate": 1791258537581,
+      "lastModified": 1791258537581,
+      "masteredDate": 1791258537581
     },
     "GM-N1-4638": {
       "firstWrongDate": 1792142762032,
@@ -10570,7 +10934,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "GM-N1-4638",
       "isMastered": false,
       "typeName": "문법 (文法)",
-      "typeCode": "grammar"
+      "typeCode": "grammar",
+      "lastModified": 1792142762032
     },
     "GM-N5-0054": {
       "typeCode": "grammar",
@@ -10582,7 +10947,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791956303139,
       "id": "GM-N5-0054",
       "wrongChoice": "ません",
-      "count": 1
+      "count": 1,
+      "lastModified": 1791956303139
     },
     "N1-0065": {
       "level": "N1",
@@ -10594,7 +10960,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "lastWrongDate": 1791348654746,
       "wrongChoice": "材料(ざいりょう)",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791348654746
     },
     "N1-2020": {
       "level": "N1",
@@ -10606,7 +10973,9 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "usage",
       "count": 2,
       "lastWrongDate": 1791259072771,
-      "firstWrongDate": 1790835172062
+      "firstWrongDate": 1790835172062,
+      "lastModified": 1791259072771,
+      "masteredDate": 1791259072771
     },
     "GM-N4-0047": {
       "lastWrongDate": 1791956220995,
@@ -10618,7 +10987,8 @@ window.JLPT_INITIAL_SYNC = {
       "typeCode": "grammar",
       "firstWrongDate": 1791956220995,
       "id": "GM-N4-0047",
-      "isMastered": false
+      "isMastered": false,
+      "lastModified": 1791956220995
     },
     "N1-0281": {
       "id": "N1-0281",
@@ -10630,7 +11000,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "wrongChoice": "たちまち",
       "lastWrongDate": 1791433100037,
-      "firstWrongDate": 1791433100037
+      "firstWrongDate": 1791433100037,
+      "lastModified": 1791433100037
     },
     "GM-N1-5013": {
       "isBookmarked": false,
@@ -10642,7 +11013,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "count": 1,
       "firstWrongDate": 1793020737032,
-      "id": "GM-N1-5013"
+      "id": "GM-N1-5013",
+      "lastModified": 1793020737032
     },
     "N1-0287": {
       "count": 1,
@@ -10654,7 +11026,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeCode": "context_defined",
       "firstWrongDate": 1791433324771,
-      "typeName": "문맥 규정"
+      "typeName": "문맥 규정",
+      "lastModified": 1791433324771
     },
     "N1-0423": {
       "count": 1,
@@ -10666,7 +11039,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문맥 규정",
       "typeCode": "context_defined",
-      "isBookmarked": false
+      "isBookmarked": false,
+      "lastModified": 1791449125440
     },
     "N1-0045": {
       "firstWrongDate": 1791341361885,
@@ -10678,7 +11052,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "typeName": "문맥 규정",
       "isBookmarked": false,
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791341361885
     },
     "N1-1954": {
       "typeCode": "usage",
@@ -10690,7 +11065,9 @@ window.JLPT_INITIAL_SYNC = {
       "wrongChoice": "材料(ざいりょう)を[目安(めやす)]に載(の)せて、正確(せいかく)に百(ひゃく)グラム量(はか)った。",
       "level": "N1",
       "isBookmarked": false,
-      "count": 1
+      "count": 1,
+      "lastModified": 1791257699645,
+      "masteredDate": 1791257699645
     },
     "N1-0384": {
       "lastWrongDate": 1791442762027,
@@ -10702,7 +11079,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0384",
       "isBookmarked": false,
       "firstWrongDate": 1791442762027,
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791442762027
     },
     "N1-0102": {
       "level": "N1",
@@ -10714,7 +11092,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "lastWrongDate": 1791351866791,
       "count": 1,
-      "id": "N1-0102"
+      "id": "N1-0102",
+      "lastModified": 1791351866791
     },
     "N1-1233": {
       "lastWrongDate": 1791860319596,
@@ -10726,7 +11105,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "typeName": "용법",
       "typeCode": "usage",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1791860319596
     },
     "N1-0057": {
       "typeCode": "context_defined",
@@ -10738,7 +11118,8 @@ window.JLPT_INITIAL_SYNC = {
       "firstWrongDate": 1791348377914,
       "id": "N1-0057",
       "count": 1,
-      "lastWrongDate": 1791348377914
+      "lastWrongDate": 1791348377914,
+      "lastModified": 1791348377914
     },
     "GM-N1-4702": {
       "typeName": "문법 (文法)",
@@ -10750,7 +11131,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "level": "N1",
       "isBookmarked": false,
-      "wrongChoice": "ともなると"
+      "wrongChoice": "ともなると",
+      "lastModified": 1792309101506
     },
     "N1-1135": {
       "typeCode": "paraphrase",
@@ -10762,7 +11144,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "wrongChoice": "少(すこ)しだけ",
-      "lastWrongDate": 1791356502386
+      "lastWrongDate": 1791356502386,
+      "lastModified": 1791356502386
     },
     "N1-1204": {
       "level": "N1",
@@ -10774,7 +11157,9 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "firstWrongDate": 1791260843488,
       "isBookmarked": false,
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1791260843488,
+      "masteredDate": 1791260843488
     },
     "GM-N1-4636": {
       "id": "GM-N1-4636",
@@ -10786,7 +11171,8 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1792142654303,
       "firstWrongDate": 1792142654303,
       "wrongChoice": "に即(そく)した",
-      "level": "N1"
+      "level": "N1",
+      "lastModified": 1792142654303
     },
     "N1-0176": {
       "level": "N1",
@@ -10798,7 +11184,8 @@ window.JLPT_INITIAL_SYNC = {
       "id": "N1-0176",
       "isMastered": false,
       "count": 1,
-      "firstWrongDate": 1791355445359
+      "firstWrongDate": 1791355445359,
+      "lastModified": 1791355445359
     },
     "GM-N1-0964": {
       "firstWrongDate": 1792033619975,
@@ -10810,7 +11197,8 @@ window.JLPT_INITIAL_SYNC = {
       "isMastered": false,
       "wrongChoice": "にしてみれば",
       "typeName": "문법 (文法)",
-      "count": 1
+      "count": 1,
+      "lastModified": 1792033619975
     },
     "N1-0011": {
       "isMastered": true,
@@ -10822,7 +11210,9 @@ window.JLPT_INITIAL_SYNC = {
       "lastWrongDate": 1791258704796,
       "level": "N1",
       "isBookmarked": false,
-      "id": "N1-0011"
+      "id": "N1-0011",
+      "lastModified": 1791258704796,
+      "masteredDate": 1791258704796
     },
     "N1-0430": {
       "wrongChoice": "出発(しゅっぱつ)する",
@@ -10834,7 +11224,9 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "id": "N1-0430",
       "lastWrongDate": 1791449353644,
-      "isMastered": true
+      "isMastered": true,
+      "lastModified": 1791449353644,
+      "masteredDate": 1791449353644
     },
     "GM-N1-4939": {
       "isMastered": false,
@@ -10846,7 +11238,8 @@ window.JLPT_INITIAL_SYNC = {
       "isBookmarked": false,
       "count": 1,
       "id": "GM-N1-4939",
-      "firstWrongDate": 1792988430818
+      "firstWrongDate": 1792988430818,
+      "lastModified": 1792988430818
     },
     "N1-0305": {
       "id": "N1-0305",
@@ -10858,7 +11251,8 @@ window.JLPT_INITIAL_SYNC = {
       "level": "N1",
       "isBookmarked": false,
       "typeName": "문맥 규정",
-      "typeCode": "context_defined"
+      "typeCode": "context_defined",
+      "lastModified": 1791435135977
     },
     "GM-N1-4808": {
       "isBookmarked": false,
@@ -10870,7 +11264,8 @@ window.JLPT_INITIAL_SYNC = {
       "count": 1,
       "id": "GM-N1-4808",
       "typeCode": "grammar",
-      "typeName": "문법 (文法)"
+      "typeName": "문법 (文法)",
+      "lastModified": 1792406446229
     }
   },
   "userName": "김찬수",

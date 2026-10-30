@@ -1455,6 +1455,16 @@
     if (!wrongQuestions || wrongQuestions.length === 0) return;
 
     try {
+      if (window.app && typeof window.app.recordMockMistakes === 'function') {
+        window.app.recordMockMistakes(wrongQuestions);
+        if (window.app.showToast) {
+          window.app.showToast(`🎉 모의고사 오답 ${wrongQuestions.length}문항이 오답노트 및 Anki 복습 덱에 등록되었습니다!`);
+        } else {
+          alert(`오답 ${wrongQuestions.length}문항이 오답노트에 자동 등록되었습니다!`);
+        }
+        return;
+      }
+
       let mistakes = {};
       const saved = localStorage.getItem(STORAGE_KEYS.MISTAKES);
       if (saved) mistakes = JSON.parse(saved);
@@ -1463,10 +1473,9 @@
       const savedSrs = localStorage.getItem(STORAGE_KEYS.SRS);
       if (savedSrs) srs = JSON.parse(savedSrs);
 
-      let newlyAdded = 0;
-
+      const now = Date.now();
       wrongQuestions.forEach(q => {
-        const userChoiceText = q.userSelected !== null ? q.options[q.userSelected].text : '미응답';
+        const userChoiceText = q.userSelected !== null && q.options && q.options[q.userSelected] ? q.options[q.userSelected].text : '미응답';
 
         if (!mistakes[q.id]) {
           mistakes[q.id] = {
@@ -1483,17 +1492,18 @@
             ansKo: q.ansKo,
             expl: q.expl,
             count: 1,
-            firstWrongDate: Date.now(),
-            lastWrongDate: Date.now(),
+            firstWrongDate: now,
+            lastWrongDate: now,
+            lastModified: now,
             wrongChoice: userChoiceText,
             isMastered: false,
             isBookmarked: false,
             source: '모의고사'
           };
-          newlyAdded++;
         } else {
           mistakes[q.id].count = (mistakes[q.id].count || 1) + 1;
-          mistakes[q.id].lastWrongDate = Date.now();
+          mistakes[q.id].lastWrongDate = now;
+          mistakes[q.id].lastModified = now;
           mistakes[q.id].wrongChoice = userChoiceText;
           mistakes[q.id].isMastered = false;
         }
@@ -1506,20 +1516,26 @@
             repetitions: 0,
             interval: 1,
             easeFactor: 2.5,
-            dueDate: Date.now() + 86400000,
+            dueDate: now + 86400000,
+            lastReviewed: now,
             state: 'learning',
             lapses: 1
           };
         } else {
           srs[q.id].repetitions = 0;
           srs[q.id].interval = 1;
-          srs[q.id].dueDate = Date.now() + 86400000;
+          srs[q.id].dueDate = now + 86400000;
+          srs[q.id].lastReviewed = now;
           srs[q.id].lapses = (srs[q.id].lapses || 0) + 1;
         }
       });
 
       localStorage.setItem(STORAGE_KEYS.MISTAKES, JSON.stringify(mistakes));
       localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
+
+      if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.scheduleCloudUpload) {
+        window.JLPT_FIREBASE.scheduleCloudUpload();
+      }
 
       // Trigger app badges
       if (window.app && typeof window.app.showToast === 'function') {

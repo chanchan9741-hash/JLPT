@@ -149,19 +149,24 @@ window.JLPT_FIREBASE = (function () {
             const cloudMistakes = cloudData.mistakes || {};
             const localMistakesKeys = Object.keys(localMistakes);
             const cloudMistakesKeys = Object.keys(cloudMistakes);
-            const hasMissingMistakesInCloud = localMistakesKeys.some(id => !cloudMistakes[id]);
-            const hasMissingSrsInCloud = Object.keys(localPayload.srs || {}).some(id => !cloudData.srs || !cloudData.srs[id]);
+            const localDeleted = (window.app && typeof window.app.getDeletedMistakes === 'function')
+              ? window.app.getDeletedMistakes()
+              : JSON.parse(localStorage.getItem('jlpt_deleted_mistakes_v1') || '{}');
+            const cloudDeleted = cloudData.deletedMistakes || {};
+
+            // A mistake is missing in cloud ONLY if it's truly active and not marked deleted anywhere
+            const hasMissingMistakesInCloud = localMistakesKeys.some(id => !cloudMistakes[id] && !cloudDeleted[id] && !localDeleted[id]);
+            const hasMissingSrsInCloud = Object.keys(localPayload.srs || {}).some(id => (!cloudData.srs || !cloudData.srs[id]) && !cloudDeleted[id] && !localDeleted[id]);
+            const hasUnsyncedTombstones = Object.keys(localDeleted).some(id => !cloudDeleted[id]);
             const localHistCount = Object.keys(localPayload.history || {}).length;
             const cloudHistCount = Object.keys(cloudData.history || {}).length;
-            const localMistakesCount = localMistakesKeys.length;
-            const cloudMistakesCount = cloudMistakesKeys.length;
             const now = new Date();
             const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
             const localTodaySolved = localPayload.dailyStats && localPayload.dailyStats[todayStr] ? (localPayload.dailyStats[todayStr].solved || 0) : 0;
             const cloudTodaySolved = cloudData.dailyStats && cloudData.dailyStats[todayStr] ? (cloudData.dailyStats[todayStr].solved || 0) : 0;
 
-            if (window.__HAS_UNSAVED_LOCAL_CHANGES__ || hasMissingMistakesInCloud || hasMissingSrsInCloud || localMistakesCount > cloudMistakesCount || localHistCount > cloudHistCount || localTodaySolved > cloudTodaySolved) {
-              console.log('[Firebase] Local data has newer/missing records than cloud. Auto-uploading merged data to cloud...');
+            if (window.__HAS_UNSAVED_LOCAL_CHANGES__ || hasMissingMistakesInCloud || hasMissingSrsInCloud || hasUnsyncedTombstones || localHistCount > cloudHistCount || localTodaySolved > cloudTodaySolved) {
+              console.log('[Firebase] Local data has newer/missing records or tombstones. Auto-uploading merged data to cloud...');
               scheduleCloudUpload(800);
             }
           }
@@ -258,7 +263,10 @@ window.JLPT_FIREBASE = (function () {
       for (const id in (mistakes || {})) {
         const m = mistakes[id];
         if (id.startsWith('NH-') || m.typeCode === 'external' || m.source === 'nihonez' || !id.match(/^(N[1-5]-|R-|G-)/i)) {
-          cloudMistakes[id] = m;
+          cloudMistakes[id] = {
+            ...m,
+            lastModified: m.lastModified || m.masteredDate || m.lastWrongDate || Date.now()
+          };
         } else {
           cloudMistakes[id] = {
             id: m.id,
@@ -270,14 +278,21 @@ window.JLPT_FIREBASE = (function () {
             lastWrongDate: m.lastWrongDate || Date.now(),
             wrongChoice: m.wrongChoice || '',
             isMastered: !!m.isMastered,
-            isBookmarked: !!m.isBookmarked
+            isBookmarked: !!m.isBookmarked,
+            lastModified: m.lastModified || m.masteredDate || m.lastWrongDate || Date.now(),
+            masteredDate: m.masteredDate || null
           };
         }
       }
 
+      const deletedMistakes = (window.app && typeof window.app.getDeletedMistakes === 'function')
+        ? window.app.getDeletedMistakes()
+        : JSON.parse(localStorage.getItem('jlpt_deleted_mistakes_v1') || '{}');
+
       // Sanitize payload with JSON parse/stringify to strip any undefined values that Firestore SDK rejects
       const sanitizedDoc = JSON.parse(JSON.stringify({
         mistakes: cloudMistakes,
+        deletedMistakes,
         history,
         bookmarks,
         srs,
@@ -289,10 +304,11 @@ window.JLPT_FIREBASE = (function () {
         userName: currentUser.displayName || ''
       }));
 
+      // Full document set (without { merge: true }) so deleted mistake keys are actually removed from Firestore map fields!
       await docRef.set({
         ...sanitizedDoc,
         lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-      }, { merge: true });
+      });
 
       window.__HAS_UNSAVED_LOCAL_CHANGES__ = false;
 

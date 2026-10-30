@@ -89,7 +89,8 @@
     HISTORY: 'jlpt_history_v1',
     BOOKMARKS: 'jlpt_bookmarks_v1',
     SRS: 'jlpt_srs_v1',
-    DAILY_STATS: 'jlpt_daily_stats_v1'
+    DAILY_STATS: 'jlpt_daily_stats_v1',
+    DELETED_MISTAKES: 'jlpt_deleted_mistakes_v1'
   };
 
   // --- Global Application State ---
@@ -477,9 +478,15 @@
         localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(srs));
       }
 
-      // Always merge preloaded initial sync data (from PC / sync_init.js)
+      // Carefully merge preloaded initial sync data (from PC / sync_init.js) without overwriting local mastery or deleted items
       if (window.JLPT_INITIAL_SYNC) {
         let changed = false;
+        let deletedMistakes = {};
+        try {
+          const savedDel = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
+          if (savedDel) deletedMistakes = JSON.parse(savedDel);
+        } catch (e) {}
+
         if (window.JLPT_INITIAL_SYNC.history) {
           for (const [id, h] of Object.entries(window.JLPT_INITIAL_SYNC.history)) {
             if (!history[id] || (h.solved || 0) > (history[id].solved || 0)) {
@@ -490,9 +497,22 @@
         }
         if (window.JLPT_INITIAL_SYNC.mistakes) {
           for (const [id, m] of Object.entries(window.JLPT_INITIAL_SYNC.mistakes)) {
-            if (!mistakes[id] || (m.count || 1) >= (mistakes[id].count || 1)) {
+            if (deletedMistakes[id]) continue; // Never resurrect deleted items from static seed
+            if (!mistakes[id]) {
               mistakes[id] = { ...m };
               changed = true;
+            } else {
+              const localCount = mistakes[id].count || 1;
+              const remoteCount = m.count || 1;
+              const localTime = mistakes[id].lastModified || mistakes[id].masteredDate || mistakes[id].lastWrongDate || 0;
+              const remoteTime = m.lastModified || m.masteredDate || m.lastWrongDate || 0;
+
+              // Only update if remote has strictly higher count or strictly newer modification
+              if (remoteCount > localCount || remoteTime > localTime) {
+                const isMastered = mistakes[id].isMastered || m.isMastered;
+                mistakes[id] = { ...mistakes[id], ...m, isMastered };
+                changed = true;
+              }
             }
           }
         }
@@ -514,6 +534,7 @@
         }
         if (window.JLPT_INITIAL_SYNC.srs) {
           for (const [id, s] of Object.entries(window.JLPT_INITIAL_SYNC.srs)) {
+            if (deletedMistakes[id]) continue;
             if (!srs[id] || (s.repetitions || 0) > (srs[id].repetitions || 0) || (s.dueDate || 0) > (srs[id].dueDate || 0) || (s.lastReviewed || 0) > (srs[id].lastReviewed || 0) || ((srs[id].dueDate || 0) <= Date.now() && (s.dueDate || 0) > Date.now())) {
               srs[id] = { ...s };
               changed = true;
@@ -1273,19 +1294,22 @@
     // Auto-update Mistake Notebook & Anki SRS
     if (!isCorrect) {
       sound.playWrong();
+      const now = Date.now();
       if (!mistakes[q.id]) {
         mistakes[q.id] = {
           ...q,
           count: 1,
-          firstWrongDate: Date.now(),
-          lastWrongDate: Date.now(),
+          firstWrongDate: now,
+          lastWrongDate: now,
+          lastModified: now,
           wrongChoice: selectedOpt.copy,
           isMastered: false,
           isBookmarked: bookmarks.has(q.id)
         };
       } else {
         mistakes[q.id].count++;
-        mistakes[q.id].lastWrongDate = Date.now();
+        mistakes[q.id].lastWrongDate = now;
+        mistakes[q.id].lastModified = now;
         mistakes[q.id].wrongChoice = selectedOpt.copy;
         mistakes[q.id].isMastered = false;
       }
@@ -1316,8 +1340,10 @@
       sound.playCorrect();
       // If this was an existing mistake, celebrate mastery!
       if (mistakes[q.id] && !mistakes[q.id].isMastered) {
+        const now = Date.now();
         mistakes[q.id].isMastered = true;
-        mistakes[q.id].masteredDate = Date.now();
+        mistakes[q.id].masteredDate = now;
+        mistakes[q.id].lastModified = now;
         saveMistakes();
         if (state.mode === 'srs-drill' && q.isRequeued) {
           showToast('🎉 재도전 성공! 오답을 완전히 극복했습니다.');
@@ -1587,11 +1613,33 @@
       });
     });
 
+  function recordMistakeDeletion(id) {
+    if (!id) return;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
+      const del = saved ? JSON.parse(saved) : {};
+      del[id] = Date.now();
+      localStorage.setItem(STORAGE_KEYS.DELETED_MISTAKES, JSON.stringify(del));
+    } catch (e) {}
+  }
+
+  function getDeletedMistakes() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
     listContainer.querySelectorAll('.btn-mc-master').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = e.target.closest('button').dataset.id;
         if (mistakes[id]) {
+          const now = Date.now();
           mistakes[id].isMastered = !mistakes[id].isMastered;
+          mistakes[id].lastModified = now;
+          if (mistakes[id].isMastered) mistakes[id].masteredDate = now;
           saveMistakes();
           renderMistakesList();
         }
@@ -1615,8 +1663,11 @@
       btn.addEventListener('click', (e) => {
         const id = e.target.closest('button').dataset.id;
         if (confirm('이 문제를 오답노트에서 삭제하시겠습니까?')) {
+          recordMistakeDeletion(id);
           delete mistakes[id];
+          if (srs[id]) delete srs[id];
           saveMistakes();
+          saveSrs();
           renderMistakesList();
         }
       });
@@ -3658,9 +3709,14 @@
     document.getElementById('btn-clear-mastered').addEventListener('click', () => {
       if (confirm('정복 완료(마스터)된 오답들을 오답노트에서 모두 삭제하시겠습니까?')) {
         for (const [id, m] of Object.entries(mistakes)) {
-          if (m.isMastered) delete mistakes[id];
+          if (m.isMastered) {
+            recordMistakeDeletion(id);
+            delete mistakes[id];
+            if (srs[id]) delete srs[id];
+          }
         }
         saveMistakes();
+        saveSrs();
         renderMistakesList();
         showToast('정복 완료된 오답들이 정리되었습니다.');
       }
@@ -4401,6 +4457,29 @@
     if (!cloudData) return;
     let changed = false;
 
+    // Load local deleted mistakes (tombstones)
+    let deletedMistakes = getDeletedMistakes();
+
+    // 1. Process cloud deleted mistakes (tombstones)
+    if (cloudData.deletedMistakes && typeof cloudData.deletedMistakes === 'object') {
+      for (const [delId, delTime] of Object.entries(cloudData.deletedMistakes)) {
+        if (!deletedMistakes[delId] || delTime > deletedMistakes[delId]) {
+          deletedMistakes[delId] = delTime;
+        }
+        if (mistakes[delId]) {
+          const modTime = mistakes[delId].lastModified || mistakes[delId].masteredDate || mistakes[delId].lastWrongDate || 0;
+          if (delTime >= modTime) {
+            delete mistakes[delId];
+            if (srs[delId]) delete srs[delId];
+            changed = true;
+          }
+        }
+      }
+      try {
+        localStorage.setItem(STORAGE_KEYS.DELETED_MISTAKES, JSON.stringify(deletedMistakes));
+      } catch (e) {}
+    }
+
     if (cloudData.history) {
       for (const [id, h] of Object.entries(cloudData.history)) {
         if (!history[id]) {
@@ -4426,6 +4505,11 @@
 
     if (cloudData.mistakes) {
       for (const [id, m] of Object.entries(cloudData.mistakes)) {
+        // Skip if deleted locally more recently than cloud modification
+        const delTime = deletedMistakes[id] || 0;
+        const cloudModTime = m.lastModified || m.masteredDate || m.lastWrongDate || 0;
+        if (delTime > cloudModTime) continue;
+
         const hydrated = hydrateMistake(m);
         if (!mistakes[id]) {
           mistakes[id] = hydrated;
@@ -4433,7 +4517,10 @@
         } else {
           const cloudCount = hydrated.count || 1;
           const localCount = mistakes[id].count || 1;
-          if (cloudCount > localCount || (hydrated.lastWrongDate || 0) > (mistakes[id].lastWrongDate || 0) || (hydrated.isMastered && !mistakes[id].isMastered)) {
+          const localModTime = mistakes[id].lastModified || mistakes[id].masteredDate || mistakes[id].lastWrongDate || 0;
+
+          // If cloud has newer modification (new wrong answer, mastered, unmastered) or higher count
+          if (cloudModTime > localModTime || cloudCount > localCount || (hydrated.isMastered && !mistakes[id].isMastered)) {
             mistakes[id] = { ...mistakes[id], ...hydrated };
             changed = true;
           }
@@ -4515,6 +4602,7 @@
 
   function recordGrammarMistake(mistakeObj) {
     if (!mistakeObj || !mistakeObj.id) return;
+    mistakeObj.lastModified = Date.now();
     mistakes[mistakeObj.id] = mistakeObj;
     saveMistakes();
     updateMistakeBadge();
@@ -4522,6 +4610,83 @@
     if (window.JLPT_FIREBASE && window.JLPT_FIREBASE.scheduleCloudUpload) {
       window.JLPT_FIREBASE.scheduleCloudUpload();
     }
+  }
+
+  function recordMockMistakes(wrongQuestions) {
+    if (!Array.isArray(wrongQuestions) || wrongQuestions.length === 0) return 0;
+    let addedCount = 0;
+    const now = Date.now();
+
+    wrongQuestions.forEach(q => {
+      const userChoiceText = (q.userSelected !== null && q.userSelected !== undefined && q.options && q.options[q.userSelected]) 
+        ? (q.options[q.userSelected].text || q.options[q.userSelected].copy || '') 
+        : '미응답';
+
+      if (!mistakes[q.id]) {
+        mistakes[q.id] = {
+          id: q.id,
+          level: q.level || 'N1',
+          typeCode: q.section || 'grammar',
+          typeName: q.sectionName || '모의시험',
+          instruction: q.instruction || '',
+          qPlain: q.qPlain || '',
+          qRuby: q.qRuby || q.qPlain || '',
+          qTrans: q.qTrans || '',
+          options: (q.options || []).map(o => ({
+            marker: o.marker || '',
+            copy: o.text || o.copy || '',
+            copyNoRuby: o.text || o.copy || '',
+            trans: o.trans || '',
+            isCorrect: !!o.isCorrect
+          })),
+          ansJa: q.ansJa || '',
+          ansKo: q.ansKo || '',
+          expl: q.expl || { main: '' },
+          count: 1,
+          firstWrongDate: now,
+          lastWrongDate: now,
+          lastModified: now,
+          wrongChoice: userChoiceText,
+          isMastered: false,
+          isBookmarked: bookmarks.has(q.id),
+          source: '모의고사'
+        };
+        addedCount++;
+      } else {
+        mistakes[q.id].count = (mistakes[q.id].count || 1) + 1;
+        mistakes[q.id].lastWrongDate = now;
+        mistakes[q.id].lastModified = now;
+        mistakes[q.id].wrongChoice = userChoiceText;
+        mistakes[q.id].isMastered = false;
+      }
+
+      // SRS enrollment
+      if (!srs[q.id]) {
+        srs[q.id] = {
+          id: q.id,
+          level: q.level || 'N1',
+          repetitions: 0,
+          interval: 1,
+          easeFactor: 2.5,
+          dueDate: now + 86400000,
+          lastReviewed: now,
+          state: 'learning',
+          lapses: 1
+        };
+      } else {
+        srs[q.id].repetitions = 0;
+        srs[q.id].interval = 1;
+        srs[q.id].dueDate = now + 86400000;
+        srs[q.id].lastReviewed = now;
+        srs[q.id].lapses = (srs[q.id].lapses || 0) + 1;
+      }
+    });
+
+    saveMistakes();
+    saveSrs();
+    updateMistakeBadge();
+    updateAnkiBadge();
+    return addedCount;
   }
 
 
@@ -4887,19 +5052,25 @@
     playCorrectSound: () => sound.playCorrect(),
     playWrongSound: () => sound.playWrong(),
     showToast,
+    recordMockMistakes,
+    recordMistakeDeletion,
+    getDeletedMistakes,
     recordReadingMistake: (item) => {
+      const now = Date.now();
       if (!mistakes[item.id]) {
         mistakes[item.id] = {
           ...item,
           count: 1,
-          firstWrongDate: Date.now(),
-          lastWrongDate: Date.now(),
+          firstWrongDate: now,
+          lastWrongDate: now,
+          lastModified: now,
           isMastered: false,
           isBookmarked: false
         };
       } else {
         mistakes[item.id].count++;
-        mistakes[item.id].lastWrongDate = Date.now();
+        mistakes[item.id].lastWrongDate = now;
+        mistakes[item.id].lastModified = now;
         mistakes[item.id].isMastered = false;
       }
       saveMistakes();
