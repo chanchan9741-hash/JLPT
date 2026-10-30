@@ -669,6 +669,25 @@
     if (window.JLPT_FIREBASE) window.JLPT_FIREBASE.scheduleCloudUpload();
   }
 
+  function recordMistakeDeletion(id) {
+    if (!id) return;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
+      const del = saved ? JSON.parse(saved) : {};
+      del[id] = Date.now();
+      localStorage.setItem(STORAGE_KEYS.DELETED_MISTAKES, JSON.stringify(del));
+    } catch (e) {}
+  }
+
+  function getDeletedMistakes() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
   function saveHistory() {
     localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
     renderStats();
@@ -1612,25 +1631,6 @@
         }
       });
     });
-
-  function recordMistakeDeletion(id) {
-    if (!id) return;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
-      const del = saved ? JSON.parse(saved) : {};
-      del[id] = Date.now();
-      localStorage.setItem(STORAGE_KEYS.DELETED_MISTAKES, JSON.stringify(del));
-    } catch (e) {}
-  }
-
-  function getDeletedMistakes() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEYS.DELETED_MISTAKES);
-      return saved ? JSON.parse(saved) : {};
-    } catch (e) {
-      return {};
-    }
-  }
 
     listContainer.querySelectorAll('.btn-mc-master').forEach(btn => {
       btn.addEventListener('click', (e) => {
