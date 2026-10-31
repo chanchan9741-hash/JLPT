@@ -7,92 +7,10 @@ const os = require('os');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
-const https = require('https');
-
 const PORT = process.env.PORT || 3000;
 const BASE_DIR = __dirname;
 const SYNC_DATA_FILE = path.join(BASE_DIR, 'jlpt_sync_data.json');
 const MISTAKES_MD_FILE = path.join(BASE_DIR, '오답노트_자동동기화.md');
-
-function syncToFirestoreRest(syncData) {
-  try {
-    const apiKey = 'AIzaSyBhsJfgGAdHu6bONlbbC2s3Lw-EIEczb4Y';
-    const uid = 'yvsVIEAKHXMuhJnSbsYpVHt7vK82';
-
-    // Slim down built-in mistakes to avoid Firestore INDEX_ENTRIES_COUNT_LIMIT_EXCEEDED (40,000 limit)
-    const slimMistakes = {};
-    for (const id in (syncData.mistakes || {})) {
-      const m = syncData.mistakes[id];
-      if (id.startsWith('NH-') || m.typeCode === 'external' || m.source === 'nihonez' || !id.match(/^(N[1-5]-|R-|G-)/i)) {
-        slimMistakes[id] = m;
-      } else {
-        slimMistakes[id] = {
-          id: m.id,
-          level: m.level || 'N1',
-          typeCode: m.typeCode || 'grammar',
-          typeName: m.typeName || '',
-          count: m.count || 1,
-          firstWrongDate: m.firstWrongDate || Date.now(),
-          lastWrongDate: m.lastWrongDate || Date.now(),
-          wrongChoice: m.wrongChoice || '',
-          isMastered: !!m.isMastered,
-          isBookmarked: !!m.isBookmarked
-        };
-      }
-    }
-
-    function wrapValue(val) {
-      if (val === null || val === undefined) return { nullValue: null };
-      if (typeof val === 'boolean') return { booleanValue: val };
-      if (typeof val === 'number') {
-        if (Number.isInteger(val)) return { integerValue: val.toString() };
-        return { doubleValue: val };
-      }
-      if (typeof val === 'string') return { stringValue: val };
-      if (Array.isArray(val)) return { arrayValue: { values: val.map(wrapValue) } };
-      if (typeof val === 'object') {
-        const fields = {};
-        for (const k in val) {
-          if (val[k] !== undefined) fields[k] = wrapValue(val[k]);
-        }
-        return { mapValue: { fields } };
-      }
-      return { stringValue: String(val) };
-    }
-
-    const payloadFields = {
-      mistakes: wrapValue(slimMistakes),
-      history: wrapValue(syncData.history || {}),
-      srs: wrapValue(syncData.srs || {}),
-      dailyStats: wrapValue(syncData.dailyStats || {}),
-      lastUpdatedClient: wrapValue(Date.now())
-    };
-
-    const patchUrl = `https://firestore.googleapis.com/v1/projects/oval-precept-462304-v7/databases/(default)/documents/users/${uid}/data/jlpt?updateMask.fieldPaths=mistakes&updateMask.fieldPaths=history&updateMask.fieldPaths=srs&updateMask.fieldPaths=dailyStats&updateMask.fieldPaths=lastUpdatedClient&key=${apiKey}`;
-    const body = JSON.stringify({ fields: payloadFields });
-
-    const req = https.request(patchUrl, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body)
-      }
-    }, res => {
-      if (res.statusCode === 200) {
-        console.log('[Firestore] Background REST sync succeeded from server!');
-      } else {
-        console.warn('[Firestore] Background REST sync response code:', res.statusCode);
-      }
-    });
-    req.on('error', e => console.warn('[Firestore] Background REST sync network error:', e.message));
-    req.write(body);
-    req.end();
-  } catch (err) {
-    console.warn('[Firestore] Error in syncToFirestoreRest:', err.message);
-  }
-}
-
 
 function getLocalIp() {
   const ifaces = os.networkInterfaces();
@@ -719,8 +637,6 @@ const server = http.createServer((req, res) => {
           fs.writeFileSync(path.join(BASE_DIR, 'data', 'sync_init.js'), `// Initial sync data\nwindow.JLPT_INITIAL_SYNC = ${JSON.stringify(payload, null, 2)};\n`, 'utf-8');
         } catch (e) {}
 
-        // Trigger background Firestore sync
-        syncToFirestoreRest(payload);
 
         console.log(`[Google Drive Sync] Successfully updated at ${new Date().toLocaleTimeString()}!`);
 
@@ -869,8 +785,6 @@ const server = http.createServer((req, res) => {
           fs.writeFileSync(path.join(BASE_DIR, 'data', 'sync_init.js'), `// Initial sync data\nwindow.JLPT_INITIAL_SYNC = ${JSON.stringify(syncData, null, 2)};\n`, 'utf-8');
         } catch (e) {}
 
-        // Trigger background Firestore sync
-        syncToFirestoreRest(syncData);
 
         // Generate reports
         const mdContent = generateMistakesMarkdown(syncData.mistakes || {}, syncData.history || {}, syncData.dailyStats || {});
