@@ -34,13 +34,14 @@ function autoSyncMistakesToDrive() {
     
     const doc = JSON.parse(response.getContentText());
     const data = unwrapFirestore(doc);
+    const mistakesMap = data.mistakes || (data.mistakesJson ? JSON.parse(data.mistakesJson) : {});
     
-    if (!data.mistakes || Object.keys(data.mistakes).length === 0) {
+    if (!mistakesMap || Object.keys(mistakesMap).length === 0) {
       Logger.log('오답노트에 기록된 문제가 없습니다.');
       return;
     }
 
-    const mistakesList = Object.values(data.mistakes);
+    const mistakesList = Object.values(mistakesMap);
     Logger.log(`총 ${mistakesList.length}개의 오답을 클라우드에서 가져왔습니다.`);
 
     // 1) 마크다운(.md) 문서 생성
