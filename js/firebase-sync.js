@@ -93,20 +93,40 @@ window.JLPT_FIREBASE = (function () {
    * to keep payload compact while preserving 100% of external question content.
    */
   function buildCompactMistakes(mistakes) {
+    const staticReadingQIds = new Set();
+    const staticPassageIds = new Set();
+    if (Array.isArray(window.JLPT_READING_DATA)) {
+      window.JLPT_READING_DATA.forEach(p => {
+        if (!p) return;
+        if (p.id) staticPassageIds.add(p.id);
+        (p.questions || []).forEach(q => {
+          if (q && q.qId) staticReadingQIds.add(q.qId);
+        });
+      });
+    }
+
     const cloudMistakes = {};
     for (const id in (mistakes || {})) {
       const m = mistakes[id];
       if (!m) continue;
-      const isBuiltIn = id.match(/^(N[1-5]-|GM-|SN-|R-|G-)/i) &&
+      const isStaticReading = staticReadingQIds.has(id);
+      const isBuiltIn = isStaticReading || (
+        id.match(/^(N[1-5]-|GM-|SN-|R-|G-)/i) &&
         !id.startsWith('NH-') &&
         m.typeCode !== 'external' &&
-        m.source !== 'nihonez';
+        m.source !== 'nihonez'
+      );
 
       if (!isBuiltIn) {
         const copyObj = {
           ...m,
           lastModified: m.lastModified || m.masteredDate || m.lastWrongDate || Date.now()
         };
+        if (copyObj.passageId && staticPassageIds.has(copyObj.passageId)) {
+          delete copyObj.passagePlain;
+          delete copyObj.passageRuby;
+          delete copyObj.passageTrans;
+        }
         if (copyObj.qRuby && copyObj.qPlain && copyObj.qRuby === copyObj.qPlain) {
           delete copyObj.qRuby;
         }
@@ -127,6 +147,7 @@ window.JLPT_FIREBASE = (function () {
           level: m.level || 'N1',
           typeCode: m.typeCode || 'grammar',
           typeName: m.typeName || '',
+          passageId: m.passageId || undefined,
           count: m.count || 1,
           firstWrongDate: m.firstWrongDate || Date.now(),
           lastWrongDate: m.lastWrongDate || Date.now(),
@@ -194,6 +215,8 @@ window.JLPT_FIREBASE = (function () {
         dailyStats: bundle.dailyStats || {},
         grammarHistory: bundle.grammarHistory || {},
         grammarBookmarks: bundle.grammarBookmarks || [],
+        customReadings: bundle.customReadings || [],
+        readingAnswers: bundle.readingAnswers || {},
         lastUpdatedClient: rawDoc.lastUpdatedClient || 0,
         userEmail: rawDoc.userEmail || '',
         userName: rawDoc.userName || ''
@@ -230,6 +253,8 @@ window.JLPT_FIREBASE = (function () {
       dailyStats: safeJsonParse(rawDoc.dailyStatsJson, rawDoc.dailyStats || {}),
       grammarHistory: safeJsonParse(rawDoc.grammarHistoryJson, rawDoc.grammarHistory || {}),
       grammarBookmarks: safeJsonParse(rawDoc.grammarBookmarksJson, rawDoc.grammarBookmarks || []),
+      customReadings: safeJsonParse(rawDoc.customReadingsJson, rawDoc.customReadings || []),
+      readingAnswers: safeJsonParse(rawDoc.readingAnswersJson, rawDoc.readingAnswers || {}),
       lastUpdatedClient: rawDoc.lastUpdatedClient || 0,
       userEmail: rawDoc.userEmail || '',
       userName: rawDoc.userName || ''
@@ -374,6 +399,9 @@ window.JLPT_FIREBASE = (function () {
         if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
           window.grammarApp.mergeGrammarData(cloudData);
         }
+        if (window.readingApp && typeof window.readingApp.mergeReadingData === 'function') {
+          window.readingApp.mergeReadingData(cloudData);
+        }
 
         // Automatic two-way sync: If local has more data, unsaved mistakes, or legacy v1 doc needs json_v2 upgrade
         try {
@@ -466,6 +494,8 @@ window.JLPT_FIREBASE = (function () {
       let dailyStats = (payload && payload.dailyStats) ? payload.dailyStats : null;
       let grammarHistory = (payload && payload.grammarHistory) ? payload.grammarHistory : null;
       let grammarBookmarks = (payload && payload.grammarBookmarks) ? payload.grammarBookmarks : null;
+      let customReadings = (payload && payload.customReadings) ? payload.customReadings : null;
+      let readingAnswers = (payload && payload.readingAnswers) ? payload.readingAnswers : null;
 
       if (!mistakes) {
         mistakes = JSON.parse(localStorage.getItem('jlpt_mistakes_v1') || localStorage.getItem('jlpt_mistakes_v2') || '{}');
@@ -487,6 +517,12 @@ window.JLPT_FIREBASE = (function () {
       }
       if (!grammarBookmarks) {
         grammarBookmarks = JSON.parse(localStorage.getItem('jlpt_grammar_bookmarks_v1') || '[]');
+      }
+      if (!customReadings) {
+        customReadings = JSON.parse(localStorage.getItem('jlpt_custom_readings_v1') || '[]');
+      }
+      if (!readingAnswers) {
+        readingAnswers = JSON.parse(localStorage.getItem('jlpt_reading_answers_v1') || '{}');
       }
 
       // If local data is empty, check window.JLPT_INITIAL_SYNC
@@ -520,6 +556,8 @@ window.JLPT_FIREBASE = (function () {
       const dailyStatsJson = JSON.stringify(dailyStats || {});
       const grammarHistoryJson = JSON.stringify(grammarHistory || {});
       const grammarBookmarksJson = JSON.stringify(grammarBookmarks || []);
+      const customReadingsJson = JSON.stringify(customReadings || []);
+      const readingAnswersJson = JSON.stringify(readingAnswers || {});
 
       const totalMistakesCount = Object.keys(cloudMistakes).length;
       const activeMistakesCount = Object.values(cloudMistakes).filter(m => !m.isMastered).length;
@@ -540,7 +578,9 @@ window.JLPT_FIREBASE = (function () {
         getUtf8ByteLength(srsJson) +
         getUtf8ByteLength(dailyStatsJson) +
         getUtf8ByteLength(grammarHistoryJson) +
-        getUtf8ByteLength(grammarBookmarksJson) + 2048;
+        getUtf8ByteLength(grammarBookmarksJson) +
+        getUtf8ByteLength(customReadingsJson) +
+        getUtf8ByteLength(readingAnswersJson) + 2048;
 
       if (estimatedTotalBytes > MAX_SINGLE_DOC_BYTES) {
         // Universal UTF-8 byte-capped multi-document split (each doc strictly <= 650 KB < 1 MiB limit!)
@@ -552,7 +592,9 @@ window.JLPT_FIREBASE = (function () {
           srs: srs || {},
           dailyStats: dailyStats || {},
           grammarHistory: grammarHistory || {},
-          grammarBookmarks: grammarBookmarks || []
+          grammarBookmarks: grammarBookmarks || [],
+          customReadings: customReadings || [],
+          readingAnswers: readingAnswers || {}
         });
         const bundleChunks = splitStringByMaxUtf8Bytes(fullBundleStr, 650000);
 
@@ -588,6 +630,8 @@ window.JLPT_FIREBASE = (function () {
           dailyStatsJson,
           grammarHistoryJson,
           grammarBookmarksJson,
+          customReadingsJson,
+          readingAnswersJson,
           counts: countsMeta,
           lastUpdatedClient: Date.now(),
           userEmail: currentUser.email || '',
@@ -641,6 +685,9 @@ window.JLPT_FIREBASE = (function () {
         }
         if (window.grammarApp && typeof window.grammarApp.mergeGrammarData === 'function') {
           window.grammarApp.mergeGrammarData(cloudData);
+        }
+        if (window.readingApp && typeof window.readingApp.mergeReadingData === 'function') {
+          window.readingApp.mergeReadingData(cloudData);
         }
         await uploadCurrentDataToCloud();
         if (!lastSyncError && window.showToast) window.showToast('✅ 클라우드 대시보드 동기화 완료!');

@@ -34,12 +34,25 @@
   let cachedPassagePanelHtml = null;
   let cachedQuizPanelHtml = null;
 
-  function formatRuby(text) {
+  function formatRuby(text, activeBlankNum = null) {
     if (!text) return '';
-    if (text.includes('<ruby>') || text.includes('<rt>')) {
-      return text;
+    let html = String(text);
+    if (!html.includes('<ruby>') && !html.includes('<rt>')) {
+      html = html
+        .replace(/([\u4E00-\u9FAF\u3400-\u4DBF々ヶ]+)[(（]([\u3040-\u309F\u30A0-\u30FFー]+)[)）]/g, (match, kanji, ruby) => '<ruby>' + kanji + '<rt>' + ruby + '</rt></ruby>')
+        .replace(/([\u4E00-\u9FAF\u3400-\u4DBF々ヶ]+)\[([\u3040-\u309F\u30A0-\u30FFー]+)\]/g, (match, kanji, ruby) => '<ruby>' + kanji + '<rt>' + ruby + '</rt></ruby>');
     }
-    return text.replace(/([\u4E00-\u9FAF\u3400-\u4DBF々ヶ]+)[(（]([\u3040-\u309F\u30A0-\u30FF]+)[)）]/g, (match, kanji, ruby) => '<ruby>' + kanji + '<rt>' + ruby + '</rt></ruby>');
+    html = html.replace(/\[\s*(\d{1,3})\s*\]|（\s*(\d{1,3})\s*）/g, (match, d1, d2) => {
+      const num = d1 || d2;
+      const isActive = activeBlankNum && String(activeBlankNum) === String(num);
+      return `<span class="reading-blank-slot${isActive ? ' active-blank' : ''}" data-blank-num="${num}">[ ${num} ]</span>`;
+    });
+    return html;
+  }
+
+  function isNihonezPassage(p) {
+    if (!p) return false;
+    return Boolean((p.id && p.id.startsWith('NH-')) || (p.source && /nihonez/i.test(p.source)));
   }
 
   // All passages combined (default + custom)
@@ -52,7 +65,9 @@
     } catch (e) {
       console.warn('Failed to load custom readings:', e);
     }
-    return [...defaults, ...customs];
+    const seen = new Set(defaults.map(p => p.id));
+    const uniqueCustoms = (Array.isArray(customs) ? customs : []).filter(p => p && (!p.id || !seen.has(p.id)));
+    return [...defaults, ...uniqueCustoms];
   }
 
   function loadState() {
@@ -93,7 +108,9 @@
     filteredPassages = all.filter(p => {
       let matchType = rState.type === 'ALL';
       if (!matchType) {
-        if (rState.type === p.typeCode) {
+        if (rState.type === 'nihonez') {
+          matchType = isNihonezPassage(p);
+        } else if (rState.type === p.typeCode) {
           matchType = true;
         } else if ((rState.type === 'integrated' || rState.type === 'comparison') && (p.typeCode === 'integrated' || p.typeCode === 'comparison')) {
           matchType = true;
@@ -110,6 +127,11 @@
       rState.currentPassageIndex = Math.max(0, filteredPassages.length - 1);
     }
     rState.currentSubQIndex = 0;
+
+    // Sync filter chip active UI
+    document.querySelectorAll('#reading-type-filter .chip-sm').forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.rType === rState.type);
+    });
 
     updateHeaderBadges();
     populatePassageSelect();
@@ -142,7 +164,9 @@
     filteredPassages.forEach((p, idx) => {
       const opt = document.createElement('option');
       opt.value = idx;
-      opt.textContent = `[${p.typeName}] ${p.title} (${p.questions.length}문항)`;
+      const nhTag = isNihonezPassage(p) ? '🔥 ' : '';
+      const qCount = Array.isArray(p.questions) ? p.questions.length : 1;
+      opt.textContent = `${nhTag}[${p.typeName}] ${p.title} (${qCount}문항)`;
       if (idx === rState.currentPassageIndex) opt.selected = true;
       select.appendChild(opt);
     });
@@ -185,21 +209,43 @@
     const badgeLevel = document.getElementById('r-badge-level');
     const badgeType = document.getElementById('r-badge-type');
     const badgeTime = document.getElementById('r-badge-time');
+    const badgeSource = document.getElementById('r-badge-source');
     const titleEl = document.getElementById('r-passage-title');
 
-    if (badgeLevel) badgeLevel.textContent = 'N1';
+    const charLen = passage.wordCount || passage.charCount || (passage.passagePlain ? passage.passagePlain.length : 300);
+    const estMin = passage.estimatedMinutes || passage.recommendedMinutes || Math.max(2, Math.round(charLen / 110));
+
+    if (badgeLevel) badgeLevel.textContent = passage.level || 'N1';
     if (badgeType) badgeType.textContent = passage.typeName;
     if (badgeTime) {
-      badgeTime.textContent = `약 ${passage.wordCount || 300}자 · 예상 ${passage.estimatedMinutes || 4}분`;
+      badgeTime.textContent = `약 ${charLen}자 · 예상 ${estMin}분`;
+    }
+    if (badgeSource) {
+      if (passage.source) {
+        badgeSource.textContent = passage.source;
+        badgeSource.classList.remove('hidden');
+      } else {
+        badgeSource.classList.add('hidden');
+      }
     }
     if (titleEl) titleEl.textContent = passage.title;
+
+    const questions = passage.questions || [];
+    if (rState.currentSubQIndex >= questions.length) rState.currentSubQIndex = 0;
+    if (rState.currentSubQIndex < 0) rState.currentSubQIndex = Math.max(0, questions.length - 1);
+    const activeSubQ = questions[rState.currentSubQIndex];
+    let activeBlankNum = null;
+    if (activeSubQ && activeSubQ.instruction) {
+      const bm = activeSubQ.instruction.match(/\[\s*(\d{1,3})\s*\]|（\s*(\d{1,3})\s*）/);
+      if (bm) activeBlankNum = bm[1] || bm[2];
+    }
 
     // 2. Passage Body Text
     const bodyEl = document.getElementById('r-passage-body');
     if (bodyEl) {
       bodyEl.className = `passage-body-wrapper font-size-${rState.fontSize} ${rState.furigana ? '' : 'hide-ruby'}`;
       // Use Ruby text if available and enabled, otherwise plain text
-      bodyEl.innerHTML = formatRuby(passage.passageRuby || passage.passagePlain);
+      bodyEl.innerHTML = formatRuby(passage.passageRuby || passage.passagePlain, activeBlankNum);
     }
 
     // 3. Translation Box
@@ -215,16 +261,17 @@
     const vocabContent = document.getElementById('r-vocab-content');
     if (vocabCard && vocabContent) {
       let vHtml = '';
-      if (passage.vocabList && passage.vocabList.length > 0) {
+      const vList = passage.vocabList || passage.vocabNotes || [];
+      if (vList.length > 0) {
         vHtml += '<div class="vocab-chips-grid">';
-        passage.vocabList.forEach(v => {
+        vList.forEach(v => {
           vHtml += `
             <div class="vocab-chip">
               <div class="vocab-word-row">
                 <span class="vocab-word">${escapeHtml(v.word)}</span>
-                <span class="vocab-reading">(${escapeHtml(v.reading)})</span>
+                <span class="vocab-reading">(${escapeHtml(v.reading || '')})</span>
               </div>
-              <span class="vocab-mean">${escapeHtml(v.mean)}</span>
+              <span class="vocab-mean">${escapeHtml(v.mean || v.meaning || '')}</span>
             </div>
           `;
         });
@@ -236,7 +283,7 @@
         passage.grammarNotes.forEach(g => {
           vHtml += `
             <div class="grammar-note-item">
-              <span class="grammar-pattern">✦ ${escapeHtml(g.pattern)}</span>: ${escapeHtml(g.mean)}
+              <span class="grammar-pattern">✦ ${escapeHtml(g.pattern)}</span>: ${escapeHtml(g.mean || g.meaning || '')}
             </div>
           `;
         });
@@ -387,15 +434,20 @@
 
     // If wrong, automatically record in Global Mistake Notebook & Anki!
     if (!isCorrect && window.app) {
+      const correctOpt = q.options.find(o => o.isCorrect);
+      const mainExpl = q.expl?.main || q.expl?.summary || '';
       const mistakeItem = {
         id: q.qId,
-        level: passage.level,
+        level: passage.level || 'N1',
         typeCode: `reading_${passage.typeCode}`,
-        typeName: `독해 - ${passage.typeName}`,
-        instruction: `[지문: ${passage.title}] ${q.instruction}`,
-        qPlain: `【지문 요약】\n${passage.passagePlain.slice(0, 180)}...\n\n【문제】\n${q.instruction}`,
-        qRuby: `【지문】\n${passage.title}\n\n【문제】\n${q.instruction}`,
-        qTrans: `【해석】\n${passage.passageTrans ? passage.passageTrans.slice(0, 150) + '...' : ''}\n\n【질문】\n${q.instructionTrans || ''}`,
+        typeName: passage.typeName && passage.typeName.startsWith('독해') ? passage.typeName : `독해 - ${passage.typeName}`,
+        isReadingQuestion: true,
+        passageId: passage.id,
+        passageTitle: passage.title,
+        instruction: `[독해 지문] ${passage.title}`,
+        qPlain: q.instruction,
+        qRuby: q.instructionRuby || q.instruction,
+        qTrans: q.instructionTrans || '',
         options: q.options.map(o => ({
           marker: o.marker,
           copy: o.text,
@@ -403,12 +455,14 @@
           trans: o.trans,
           isCorrect: o.isCorrect
         })),
-        ansJa: q.ansJa || `${q.options.find(o => o.isCorrect)?.marker} ${q.options.find(o => o.isCorrect)?.text}`,
-        ansKo: q.ansKo || `${q.options.find(o => o.isCorrect)?.trans}`,
+        ansJa: q.ansJa || `${correctOpt?.marker || ''} ${correctOpt?.text || ''}`.trim(),
+        ansKo: q.ansKo || `${correctOpt?.trans || ''}`,
+        evidenceText: q.evidenceText || '',
         expl: {
-          main: `[정답 근거] ${q.evidenceText || ''}\n\n${q.expl?.main || ''}`,
+          main: mainExpl,
           choices: q.expl?.choices || []
         },
+        wrongChoice: selectedOpt.text,
         userAnswer: selectedOpt.marker,
         userAnswerText: selectedOpt.text
       };
@@ -461,14 +515,15 @@
     // Main Point
     const mainText = document.getElementById('r-expl-main');
     if (mainText) {
-      mainText.textContent = q.expl?.main || '해설이 준비되어 있지 않습니다.';
+      const fallbackParts = [q.expl?.summary, q.expl?.whyCorrect, q.expl?.whyWrong].filter(Boolean);
+      mainText.textContent = q.expl?.main || fallbackParts.join('\n\n') || '해설이 준비되어 있지 않습니다.';
     }
 
     // Choice Breakdown
     const choicesList = document.getElementById('r-choice-notes');
     if (choicesList) {
       let cHtml = '';
-      if (q.expl && q.expl.choices) {
+      if (q.expl && Array.isArray(q.expl.choices) && q.expl.choices.length > 0) {
         q.expl.choices.forEach(c => {
           cHtml += `
             <div class="choice-note-item">
@@ -966,9 +1021,48 @@
     switchMobileView(rState.mobileView || 'both');
   }
 
+  function openPassageById(passageId, subQId) {
+    if (!passageId && !subQId) return false;
+    const all = getAllPassages();
+    const targetPassage = all.find(p =>
+      (passageId && p.id === passageId) ||
+      (subQId && Array.isArray(p.questions) && p.questions.some(q => q.qId === subQId))
+    );
+    if (!targetPassage) return false;
+
+    if (window.app && typeof window.app.switchTab === 'function') {
+      window.app.switchTab('reading');
+    }
+
+    let pIdx = filteredPassages.findIndex(p => p.id === targetPassage.id);
+    if (pIdx === -1) {
+      rState.type = 'ALL';
+      applyFilters();
+      pIdx = filteredPassages.findIndex(p => p.id === targetPassage.id);
+    }
+    if (pIdx === -1) return false;
+
+    rState.currentPassageIndex = pIdx;
+    let qIdx = 0;
+    if (subQId && Array.isArray(targetPassage.questions)) {
+      const foundQIdx = targetPassage.questions.findIndex(q => q.qId === subQId);
+      if (foundQIdx !== -1) qIdx = foundQIdx;
+    }
+    rState.currentSubQIndex = qIdx;
+
+    populatePassageSelect();
+    renderCurrentPassage();
+    saveState();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return true;
+  }
+
   // Public API
   window.readingApp = {
     init,
+    formatRuby,
+    getAllPassages,
+    openPassageById,
     render: () => {
       applyFilters();
       renderCurrentPassage();
@@ -980,10 +1074,59 @@
         const saved = localStorage.getItem(STORAGE_KEYS.CUSTOM_READINGS);
         if (saved) customs.push(...JSON.parse(saved));
       } catch (e) {}
-      customs.push(...(Array.isArray(passages) ? passages : [passages]));
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_READINGS, JSON.stringify(customs));
+      const incoming = Array.isArray(passages) ? passages : [passages];
+      const byId = new Map(customs.map(p => [p.id, p]));
+      incoming.forEach(p => {
+        if (!p || !p.id) return;
+        byId.set(p.id, p);
+      });
+      const merged = Array.from(byId.values());
+      localStorage.setItem(STORAGE_KEYS.CUSTOM_READINGS, JSON.stringify(merged));
       applyFilters();
       renderCurrentPassage();
+    },
+    getReadingSyncData: () => {
+      let customReadings = [];
+      try {
+        customReadings = JSON.parse(localStorage.getItem(STORAGE_KEYS.CUSTOM_READINGS) || '[]');
+      } catch (e) {}
+      return {
+        customReadings,
+        readingAnswers: userAnswers
+      };
+    },
+    mergeReadingData: (cloudData) => {
+      if (!cloudData) return;
+      let changed = false;
+      if (Array.isArray(cloudData.customReadings) && cloudData.customReadings.length > 0) {
+        let customs = [];
+        try {
+          customs = JSON.parse(localStorage.getItem(STORAGE_KEYS.CUSTOM_READINGS) || '[]');
+        } catch (e) {}
+        const byId = new Map(customs.map(p => [p.id, p]));
+        cloudData.customReadings.forEach(p => {
+          if (p && p.id && !byId.has(p.id)) {
+            byId.set(p.id, p);
+            changed = true;
+          }
+        });
+        if (changed) {
+          localStorage.setItem(STORAGE_KEYS.CUSTOM_READINGS, JSON.stringify(Array.from(byId.values())));
+        }
+      }
+      if (cloudData.readingAnswers && typeof cloudData.readingAnswers === 'object') {
+        for (const [qId, ans] of Object.entries(cloudData.readingAnswers)) {
+          if (!userAnswers[qId] || (ans.answeredAt || 0) > (userAnswers[qId].answeredAt || 0)) {
+            userAnswers[qId] = { ...ans };
+            changed = true;
+          }
+        }
+      }
+      if (changed) {
+        saveState();
+        applyFilters();
+        renderCurrentPassage();
+      }
     }
   };
 

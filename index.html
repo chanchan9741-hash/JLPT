@@ -24,10 +24,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css?v=4.1">
-  <link rel="stylesheet" href="css/reading.css?v=3.9">
-  <link rel="stylesheet" href="css/grammar.css?v=3.9">
-  <link rel="stylesheet" href="css/mock.css?v=4.1">
+  <link rel="stylesheet" href="css/style.css?v=5.3">
+  <link rel="stylesheet" href="css/reading.css?v=5.3">
+  <link rel="stylesheet" href="css/grammar.css?v=5.3">
+  <link rel="stylesheet" href="css/mock.css?v=5.3">
 </head>
 <body>
   <div class="app-layout">
@@ -239,6 +239,23 @@
             </div>
           </div>
 
+          <!-- Reading Passage Box (Shown when solving reading comprehension mistakes in Quiz Drill) -->
+          <div class="mistake-passage-panel hidden" id="quiz-passage-panel">
+            <div class="mistake-passage-header">
+              <div class="mistake-passage-title-wrap">
+                <span class="mistake-passage-pill">📖 독해 지문</span>
+                <span class="mistake-passage-title" id="quiz-passage-title"></span>
+                <span class="mistake-passage-source" id="quiz-passage-source"></span>
+              </div>
+              <div class="mistake-passage-actions">
+                <button type="button" class="btn btn-secondary btn-xs" id="btn-quiz-passage-trans">🇰🇷 지문 번역 보기</button>
+                <button type="button" class="btn btn-ghost btn-xs" id="btn-quiz-open-reading">📖 독해 탭에서 열기 ↗</button>
+              </div>
+            </div>
+            <div class="mistake-passage-body" id="quiz-passage-body"></div>
+            <div class="mistake-passage-trans hidden" id="quiz-passage-trans"></div>
+          </div>
+
           <!-- Main Question Box -->
           <div class="question-card">
             <div class="question-text" id="q-text" title="지문을 길게 누르면 한글 뜻이 표시됩니다">
@@ -439,6 +456,7 @@
             <!-- Type Filter Chips -->
             <div class="reading-type-chips" id="reading-type-filter">
               <button class="chip-sm active" data-r-type="ALL">전체 유형</button>
+              <button class="chip-sm chip-nihonez" data-r-type="nihonez">🔥 Nihonez 오답 지문</button>
               <button class="chip-sm" data-r-type="grammar_text">글의 문법 (文法)</button>
               <button class="chip-sm" data-r-type="short">단문 독해 (短文)</button>
               <button class="chip-sm" data-r-type="medium">중문 독해 (中文)</button>
@@ -485,6 +503,7 @@
                   <span class="badge badge-level" id="r-badge-level">N1</span>
                   <span class="badge badge-type" id="r-badge-type">단문 독해</span>
                   <span class="badge passage-wordcount" id="r-badge-time">약 300자 · 예상 4분</span>
+                  <span class="badge passage-source-badge hidden" id="r-badge-source"></span>
                 </div>
                 <h3 class="passage-title" id="r-passage-title">지문 제목</h3>
               </div>
@@ -649,6 +668,12 @@
                   <option value="N5">N5</option>
                 </select>
 
+                <select class="select-input" id="select-anki-category">
+                  <option value="ALL">📚 전체 영역 (어휘·문법·독해)</option>
+                  <option value="reading">📖 독해·글의문법 오답만</option>
+                  <option value="non_reading">✍️ 문자·어휘·문법 오답만</option>
+                </select>
+
                 <select class="select-input" id="select-anki-source">
                   <option value="due">🔥 오늘 복습할 오답 (Due)</option>
                   <option value="frequent">🎯 자주 틀린 순 반복 (오답 빈도 가중치)</option>
@@ -699,6 +724,22 @@
                       </div>
                     </div>
 
+                    <div class="mistake-passage-panel hidden" id="anki-passage-panel">
+                      <div class="mistake-passage-header">
+                        <div class="mistake-passage-title-wrap">
+                          <span class="mistake-passage-pill">📖 독해 지문</span>
+                          <span class="mistake-passage-title" id="anki-passage-title"></span>
+                          <span class="mistake-passage-source" id="anki-passage-source"></span>
+                        </div>
+                        <div class="mistake-passage-actions">
+                          <button type="button" class="btn btn-secondary btn-xs" id="btn-anki-passage-trans">🇰🇷 지문 번역 보기</button>
+                          <button type="button" class="btn btn-ghost btn-xs" id="btn-anki-open-reading">📖 독해 탭에서 열기 ↗</button>
+                        </div>
+                      </div>
+                      <div class="mistake-passage-body" id="anki-passage-body"></div>
+                      <div class="mistake-passage-trans hidden" id="anki-passage-trans"></div>
+                    </div>
+
                     <div class="anki-question-body">
                       <div class="anki-instruction" id="anki-instruction">빈칸에 들어갈 가장 알맞은 표현을 고르세요.</div>
                       <div class="anki-question-text" id="anki-question-text"></div>
@@ -723,6 +764,14 @@
                         <div class="cs-label">정답 완성 문장</div>
                         <div class="cs-ja" id="anki-cs-ja"></div>
                         <div class="cs-ko" id="anki-cs-ko"></div>
+                      </div>
+
+                      <div class="anki-evidence-box hidden" id="anki-evidence-box">
+                        <div class="anki-evidence-title">🎯 지문 속 정답 근거</div>
+                        <div class="anki-evidence-text" id="anki-evidence-text"></div>
+                      </div>
+
+                      <div class="anki-placeholder-keep" style="display:none;">
                       </div>
 
                       <div class="anki-back-expl-content">
@@ -826,7 +875,17 @@
                 </select>
 
                 <select class="select-input" id="select-mistake-type">
-                  <option value="ALL">전체 문제 유형</option>
+                  <option value="ALL" selected>전체 문제 유형</option>
+                  <option value="READING_ALL">📖 독해 전체 (독해 + 글의 문법)</option>
+                  <option value="독해 - 글의 문법">📖 독해 - 글의 문법 (問題7)</option>
+                  <option value="독해 - 단문 독해">📖 독해 - 단문 독해 (問題8)</option>
+                  <option value="독해 - 중문 독해">📖 독해 - 중문 독해 (問題9)</option>
+                  <option value="독해 - 장문 독해">📖 독해 - 장문 독해 (問題10)</option>
+                  <option value="독해 - 통합 이해">📖 독해 - 통합 이해 (問題11)</option>
+                  <option value="독해 - 주장 이해">📖 독해 - 주장 이해 (問題12)</option>
+                  <option value="독해 - 정보 검색">📖 독해 - 정보 검색 (問題13)</option>
+                  <option value="GRAMMAR_ALL">📘 문법 오답</option>
+                  <option value="EXTERNAL_ALL">📥 Nihonez 기타 오답 (어휘·문법)</option>
                   <option value="문맥 규정">문맥 규정</option>
                   <option value="한자 읽기">한자 읽기</option>
                   <option value="표기">표기</option>
@@ -1325,7 +1384,7 @@
   <script src="data/n3.js?v=2.4"></script>
   <script src="data/n4.js?v=2.4"></script>
   <script src="data/n5.js?v=2.4"></script>
-  <script src="data/reading.js?v=3.9"></script>
+  <script src="data/reading.js?v=5.3"></script>
   <script src="data/grammar.js?v=3.9"></script>
 
   <!-- Firebase Credentials & Cloud Sync SDK -->
@@ -1343,14 +1402,14 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  <script src="js/firebase-sync.js?v=5.1"></script>
+  <script src="js/firebase-sync.js?v=5.3"></script>
 
   <!-- Main App Script -->
-  <script src="data/sync_init.js?v=5.1"></script>
-  <script src="js/app.js?v=5.1"></script>
-  <script src="js/reading.js?v=5.1"></script>
-  <script src="js/grammar.js?v=5.1"></script>
-  <script src="js/mock.js?v=5.1"></script>
+  <script src="data/sync_init.js?v=5.3"></script>
+  <script src="js/app.js?v=5.3"></script>
+  <script src="js/reading.js?v=5.3"></script>
+  <script src="js/grammar.js?v=5.3"></script>
+  <script src="js/mock.js?v=5.3"></script>
 
 
   <!-- Question Picker Modal (문제 선택 및 바로가기 창) -->
@@ -1512,7 +1571,7 @@
           </p>
 
           <div style="margin-bottom:1.25rem;">
-            <a href="javascript:(function(){try { var l = []; var n = Date.now(); var dL = 'N1'; var bT = document.body ? document.body.innerText : ''; var u = window.location.href; var m = u.match(/n([1-5])/i) || bT.match(/JLPT\s*N([1-5])/i) || document.title.match(/N([1-5])/i); if (m) dL = 'N' + m[1].toUpperCase(); if (window.testResults && typeof window.testResults === 'object') { var tR = window.testResults; for (var qId in tR) { if (!tR.hasOwnProperty(qId)) continue; var r = tR[qId]; if (r && !r.is_correct) { var qEl = document.getElementById('question-' + qId) || document.getElementById('q-' + qId); var qText = ''; var opts = []; var wC = ''; var cC = ''; if (qEl) { var qCEl = qEl.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); qText = qCEl ? qCEl.innerText.trim() : ''; var cEls = Array.from(qEl.querySelectorAll('.answer-choice, .choice-item, li')); cEls.forEach(function (cEl, ci) { var cTxt = cEl.innerText.replace(/^[①②③④\(\)\d\.\s]+/, '').trim(); var isCorr = (r.correct_answer && parseInt(r.correct_answer, 10) === (ci + 1)) || cEl.classList.contains('correct-answer'); var isUser = (r.user_answer && parseInt(r.user_answer, 10) === (ci + 1)) || cEl.classList.contains('checked-answer'); if (isCorr) cC = cTxt; if (isUser && !isCorr) wC = cTxt; opts.push({ marker: ['①', '②', '③', '④'][ci] || ('(' + (ci + 1) + ')'), copy: cTxt, copyNoRuby: cTxt, trans: '', isCorrect: isCorr }); }); } if (!qText) qText = 'Nihonez 문제 #' + qId; var exTxt = r.explaination || (r.explanation ? (r.explanation.main || r.explanation) : '') || ''; var trTxt = r.listening_script_translation || ''; l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: 'external', typeName: 'Nihonez 오답', instruction: '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qText, qRuby: qText, qTrans: trTxt, options: opts.length > 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qText, ansKo: trTxt, expl: { main: exTxt || 'Nihonez 오답 복습' }, source: 'nihonez' }); } } } if (l.length === 0) { var wrongEls = Array.from(document.querySelectorAll('.question-container.answer-wrong, .question-container.incorrect, .answer-wrong, .test-question.wrong, .question-card.wrong')); if (wrongEls.length === 0) { var allC = Array.from(document.querySelectorAll('.question-container, .test-question, [id^=question-]')); wrongEls = allC.filter(function (el) { return el.querySelector('.checked-answer:not(.correct-answer), .answer-choice.wrong, .wrong-answer, .user-answer-wrong, .text-danger'); }); } wrongEls.forEach(function (el, idx) { var qTE = el.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); var qP = qTE ? qTE.innerText.trim() : (el.innerText.split('\n')[0] || ('문제 ' + (idx + 1))); if (!qP || qP.length < 2) return; var oEls = Array.from(el.querySelectorAll('.answer-choice, .choice-item, .option, li')); var opts = []; var wC = ''; var cC = ''; oEls.forEach(function (optEl, oi) { var mk = ['①', '②', '③', '④'][oi] || ('(' + (oi + 1) + ')'); var oTxt = optEl.innerText.replace(/^[①②③④\(\)\d\.\s]+/, '').trim(); var isCorr = optEl.classList.contains('correct') || optEl.classList.contains('correct-answer') || optEl.classList.contains('is-correct'); var isChk = optEl.classList.contains('checked') || optEl.classList.contains('checked-answer') || optEl.classList.contains('selected') || !!optEl.querySelector('input:checked'); if (isCorr) cC = oTxt; if (isChk && !isCorr) wC = oTxt; opts.push({ marker: mk, copy: oTxt, copyNoRuby: oTxt, trans: '', isCorrect: isCorr }); }); var exEl = el.querySelector('.explanation, .explanation-content, .expl-text, .solution'); var exT = exEl ? exEl.innerText.trim() : ''; var trEl = el.querySelector('.passage-translation, .question-translation, .translation, .trans-ko'); var trT = trEl ? trEl.innerText.trim() : ''; var qId = el.id ? el.id.replace('question-', '') : (n + '-' + (idx + 1)); l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: 'external', typeName: 'Nihonez 오답', instruction: '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qP, qRuby: qP, qTrans: trT, options: opts.length > 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qP, ansKo: trT, expl: { main: exT || 'Nihonez 오답 복습' }, source: 'nihonez' }); }); } if (l.length === 0 && document.querySelector('.attempt-card, [data-review-category]')) { alert('📌 현재 페이지는 오답 목록 요약 대시보드입니다.\n\n각 시험 카드의 [Review wrong answers] 또는 [View full results]를 눌러 오답 상세 화면이 열리면 이 북마크를 다시 클릭해 주세요!'); return; } if (l.length === 0) { alert('⚠️ 현재 화면에서 틀린 문제를 찾지 못했습니다.\n\n시험 제출 후 결과 화면(채점 결과/오답 풀이)에서 클릭해 주세요.'); return; } var jS = JSON.stringify(l); if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(jS); } try { fetch('http://localhost:3000/api/import-mistakes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: l }) }).catch(function () {}); } catch (e) {} var tU = 'https://chanchan9741-hash.github.io/JLPT/index.html#import-mistakes=' + encodeURIComponent(jS); var win = window.open(tU, 'jlpt_master_tab'); if (win) { win.focus(); } else { alert('🎉 ' + l.length + '개의 오답을 추출하여 클립보드에 복사했습니다!\n\nJLPT Master 탭으로 이동하세요.'); } } catch (err) { alert('북마클릿 실행 오류: ' + err.message); }})();" class="bookmarklet-btn" id="link-bookmarklet" draggable="true" title="이 버튼을 브라우저 북마크(즐겨찾기) 바로 드래그하세요">
+            <a href="javascript:(function(){try { var l = []; var n = Date.now(); var dL = 'N1'; var bT = document.body ? document.body.innerText : ''; var u = window.location.href; var m = u.match(/n([1-5])/i) || bT.match(/JLPT\s*N([1-5])/i) || document.title.match(/N([1-5])/i); if (m) dL = 'N' + m[1].toUpperCase(); var cleanOpt = function(s){ return String(s || '').replace(/^(?:[①②③④⑤]|[\(\[]?[1-4][\)\]\.\:\s])\s*/, '').trim(); }; var isQuestNode = function(el){ if (!el || !el.tagName) return false; if (el.id &amp;&amp; /^(question-|q-)/i.test(el.id)) return true; var cls = String(el.className || ''); return /(question-container|question-card|test-question|question-item|quiz-question)/i.test(cls); }; var extractNodeText = function(el){ if (!el) return ''; var clone = el.cloneNode(true); Array.from(clone.querySelectorAll('.explanation, .explanation-content, .answer-choice, .choice-item, .question-container, [id^=&quot;question-&quot;], script, style, button, audio')).forEach(function(x){ x.remove(); }); Array.from(clone.querySelectorAll('u')).forEach(function(uEl){ uEl.textContent = '&lt;u&gt;' + uEl.textContent + '&lt;/u&gt;'; }); Array.from(clone.querySelectorAll('tr')).forEach(function(tr){ var cells = Array.from(tr.querySelectorAll('th, td')).map(function(c){ return c.innerText.trim(); }).filter(Boolean); if (cells.length &gt; 1) tr.textContent = cells.join(' | ') + '\n'; }); return (clone.innerText || '').replace(/\n{3,}/g, '\n\n').trim(); }; var isValidPassageText = function(txt, qTxt){ if (!txt || txt.length &lt; 50) return false; if (txt === qTxt) return false; if (/^問題\s*\d+[^\n]*$/.test(txt)) return false; return /[\u3040-\u30FF\u4E00-\u9FAF]/.test(txt); }; var findPass = function(qEl, r, qTxt){ var pTxt = ''; var pTit = ''; if (r) { var candR = r.passage || r.reading_passage || r.group_passage || r.context_text || r.context || r.parent_content || r.mondai_text || ''; if (candR) pTxt = String(candR).replace(/&lt;[^&gt;]+&gt;/g, function(tag){ return /^&lt;\/?u&gt;$/i.test(tag) ? tag : ' '; }).trim(); var candT = r.passage_title || r.mondai_title || r.section_title || ''; if (candT) pTit = String(candT).trim(); } if (!isValidPassageText(pTxt, qTxt)) pTxt = ''; if (!pTxt &amp;&amp; qEl) { var prev = qEl.previousElementSibling; var steps = 0; while (prev &amp;&amp; steps &lt; 15) { if (!isQuestNode(prev)) { var subP = prev.querySelector ? prev.querySelector('.reading-passage, .passage-content, .passage-box, .mondai-passage, .group-passage, [class*=&quot;passage&quot;]:not([class*=&quot;title&quot;]), [class*=&quot;reading-text&quot;]') : null; var cand = extractNodeText(subP || prev); if (isValidPassageText(cand, qTxt)) { pTxt = cand; break; } } prev = prev.previousElementSibling; steps++; } var anc = qEl.parentElement; var depth = 0; while (!pTxt &amp;&amp; anc &amp;&amp; anc !== document.body &amp;&amp; depth &lt; 5) { var qCountInAnc = anc.querySelectorAll('.question-container, [id^=&quot;question-&quot;]').length; if (qCountInAnc &gt; 15) break; var explicitEls = Array.from(anc.querySelectorAll('.reading-passage, .passage-content, .passage-box, .mondai-passage, .question-passage, .group-passage, .passage, [class*=&quot;passage-text&quot;], [class*=&quot;reading-text&quot;], [class*=&quot;context&quot;]')).filter(function(x){ return !x.closest('.question-container, [id^=&quot;question-&quot;]'); }); for (var ei = 0; ei &lt; explicitEls.length; ei++) { var eTxt = extractNodeText(explicitEls[ei]); if (isValidPassageText(eTxt, qTxt)) { pTxt = eTxt; break; } } if (!pTxt) { var kids = Array.from(anc.children || []); for (var ki = 0; ki &lt; kids.length; ki++) { var kid = kids[ki]; if (kid === qEl || kid.contains(qEl)) break; if (isQuestNode(kid)) continue; var kTxt = extractNodeText(kid); if (isValidPassageText(kTxt, qTxt)) { pTxt = kTxt; break; } } } if (!pTit) { var gtEl = anc.querySelector('.mondai-title, .passage-title, .section-title, h2, h3'); if (gtEl &amp;&amp; !gtEl.closest('.question-container, [id^=&quot;question-&quot;]') &amp;&amp; gtEl.innerText.trim().length &lt; 80) { pTit = gtEl.innerText.trim(); } } anc = anc.parentElement; depth++; } } return { text: pTxt, title: pTit }; }; if (window.testResults &amp;&amp; typeof window.testResults === 'object') { var tR = window.testResults; for (var qId in tR) { if (!tR.hasOwnProperty(qId)) continue; var r = tR[qId]; if (r &amp;&amp; !r.is_correct) { var qEl = document.getElementById('question-' + qId) || document.getElementById('q-' + qId); var qText = ''; var opts = []; var wC = ''; var cC = ''; if (qEl) { var qCEl = qEl.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); qText = qCEl ? qCEl.innerText.trim() : ''; var cEls = Array.from(qEl.querySelectorAll('.answer-choice, .choice-item, li')); cEls.forEach(function (cEl, ci) { var cTxt = cleanOpt(cEl.innerText); var isCorr = (r.correct_answer &amp;&amp; parseInt(r.correct_answer, 10) === (ci + 1)) || cEl.classList.contains('correct-answer'); var isUser = (r.user_answer &amp;&amp; parseInt(r.user_answer, 10) === (ci + 1)) || cEl.classList.contains('checked-answer'); if (isCorr) cC = cTxt; if (isUser &amp;&amp; !isCorr) wC = cTxt; opts.push({ marker: ['①', '②', '③', '④'][ci] || ('(' + (ci + 1) + ')'), copy: cTxt, copyNoRuby: cTxt, trans: '', isCorrect: isCorr }); }); } if (!qText) qText = 'Nihonez 문제 #' + qId; var passInfo = findPass(qEl, r, qText); var isListening = Boolean((r &amp;&amp; (r.audio || r.audio_url || r.listening_script)) || (qEl &amp;&amp; qEl.querySelector('audio'))); var exTxt = r.explaination || (r.explanation ? (r.explanation.main || r.explanation) : '') || ''; var trTxt = r.listening_script_translation || ''; l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: passInfo.text ? 'reading_short' : 'external', typeName: passInfo.text ? '독해 - Nihonez 기출' : (isListening ? 'Nihonez 청해 오답' : 'Nihonez 오답'), isReadingQuestion: Boolean(passInfo.text), passagePlain: passInfo.text || '', passageTitle: passInfo.title || '', instruction: passInfo.text ? '다음 지문을 읽고 물음에 답하세요.' : '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qText, qRuby: qText, qTrans: trTxt, options: opts.length &gt; 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qText, ansKo: trTxt, expl: { main: exTxt || 'Nihonez 오답 복습' }, source: 'nihonez' }); } } } if (l.length === 0) { var wrongEls = Array.from(document.querySelectorAll('.question-container.answer-wrong, .question-container.incorrect, .answer-wrong, .test-question.wrong, .question-card.wrong')); if (wrongEls.length === 0) { var allC = Array.from(document.querySelectorAll('.question-container, .test-question, [id^=question-]')); wrongEls = allC.filter(function (el) { return el.querySelector('.checked-answer:not(.correct-answer), .answer-choice.wrong, .wrong-answer, .user-answer-wrong, .text-danger'); }); } wrongEls.forEach(function (el, idx) { var qTE = el.querySelector('.question-content, .question-text, .passage-text, .question, h3, h4'); var qP = qTE ? qTE.innerText.trim() : (el.innerText.split('\n')[0] || ('문제 ' + (idx + 1))); if (!qP || qP.length &lt; 1) return; var oEls = Array.from(el.querySelectorAll('.answer-choice, .choice-item, .option, li')); var opts = []; var wC = ''; var cC = ''; oEls.forEach(function (optEl, oi) { var mk = ['①', '②', '③', '④'][oi] || ('(' + (oi + 1) + ')'); var oTxt = cleanOpt(optEl.innerText); var isCorr = optEl.classList.contains('correct') || optEl.classList.contains('correct-answer') || optEl.classList.contains('is-correct'); var isChk = optEl.classList.contains('checked') || optEl.classList.contains('checked-answer') || optEl.classList.contains('selected') || !!optEl.querySelector('input:checked'); if (isCorr) cC = oTxt; if (isChk &amp;&amp; !isCorr) wC = oTxt; opts.push({ marker: mk, copy: oTxt, copyNoRuby: oTxt, trans: '', isCorrect: isCorr }); }); var passInfo = findPass(el, null, qP); var isListening = Boolean(el.querySelector('audio')); var exEl = el.querySelector('.explanation, .explanation-content, .expl-text, .solution'); var exT = exEl ? exEl.innerText.trim() : ''; var trEl = el.querySelector('.passage-translation, .question-translation, .translation, .trans-ko'); var trT = trEl ? trEl.innerText.trim() : ''; var qId = el.id ? el.id.replace('question-', '') : (n + '-' + (idx + 1)); l.push({ id: 'NH-' + dL + '-' + qId, level: dL, typeCode: passInfo.text ? 'reading_short' : 'external', typeName: passInfo.text ? '독해 - Nihonez 기출' : (isListening ? 'Nihonez 청해 오답' : 'Nihonez 오답'), isReadingQuestion: Boolean(passInfo.text), passagePlain: passInfo.text || '', passageTitle: passInfo.title || '', instruction: passInfo.text ? '다음 지문을 읽고 물음에 답하세요.' : '빈칸에 들어갈 가장 알맞은 표현을 고르세요.', qPlain: qP, qRuby: qP, qTrans: trT, options: opts.length &gt; 0 ? opts : [ { marker: '①', copy: cC || '정답', isCorrect: true }, { marker: '②', copy: wC || '오답', isCorrect: false } ], wrongChoice: wC, ansJa: cC || qP, ansKo: trT, expl: { main: exT || 'Nihonez 오답 복습' }, source: 'nihonez' }); }); } if (l.length === 0 &amp;&amp; document.querySelector('.attempt-card, [data-review-category]')) { alert('📌 현재 페이지는 오답 목록 요약 대시보드입니다.\n\n각 시험 카드의 [Review wrong answers] 또는 [View full results]를 눌러 오답 상세 화면이 열리면 이 북마크를 다시 클릭해 주세요!'); return; } if (l.length === 0) { alert('⚠️ 현재 화면에서 틀린 문제를 찾지 못했습니다.\n\n시험 제출 후 결과 화면(채점 결과/오답 풀이)에서 클릭해 주세요.'); return; } var jS = JSON.stringify(l); if (navigator.clipboard &amp;&amp; navigator.clipboard.writeText) { navigator.clipboard.writeText(jS); } try { fetch('http://localhost:3000/api/import-mistakes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: l }) }).catch(function () {}); } catch (e) {} var tU = 'https://chanchan9741-hash.github.io/JLPT/index.html#import-mistakes=' + encodeURIComponent(jS); var win = window.open(tU, 'jlpt_master_tab'); if (win) { win.focus(); } else { alert('🎉 ' + l.length + '개의 오답을 추출하여 클립보드에 복사했습니다!\n\nJLPT Master 탭으로 이동하세요.'); } } catch (err) { alert('북마클릿 실행 오류: ' + err.message); }})();" class="bookmarklet-btn" id="link-bookmarklet" draggable="true" title="이 버튼을 브라우저 북마크(즐겨찾기) 바로 드래그하세요">
               <span>🔗 JLPT 오답 자동등록 (북마크바로 드래그)</span>
             </a>
           </div>

@@ -710,12 +710,58 @@ const server = http.createServer((req, res) => {
           const ansJa = item.ansJa || (correctOpt ? correctOpt.copy : '') || qPlain;
           const ansKo = item.ansKo || item.qTrans || item.translation || '';
 
+          if (!Array.isArray(syncData.customReadings)) syncData.customReadings = [];
+          const rawPassagePlain = String(item.passagePlain || item.passage || item.reading_passage || item.context || '').trim();
+          let passageId = item.passageId || existing.passageId || '';
+          let isReadingQuestion = Boolean(item.isReadingQuestion || rawPassagePlain.length >= 45 || String(item.typeCode || '').startsWith('reading_'));
+          if (rawPassagePlain.length >= 45) {
+            let matchedP = syncData.customReadings.find(cp => cp && cp.passagePlain && cp.passagePlain.trim() === rawPassagePlain);
+            const isM7 = /^\[?\s*\d{2}\s*\]?$/.test(qPlain) || /\[\s*\d{2}\s*\]/.test(rawPassagePlain);
+            const pCode = isM7 ? 'grammar_text' : (rawPassagePlain.length >= 750 ? 'long' : (rawPassagePlain.length >= 380 ? 'medium' : 'short'));
+            const pName = isM7 ? '글의 문법' : (pCode === 'long' ? '장문 독해' : (pCode === 'medium' ? '중문 독해' : '단문 독해'));
+            const subQ = {
+              qId: id,
+              qNum: matchedP ? (matchedP.questions.length + 1) : 1,
+              instruction: isM7 && /^\d{2}$/.test(qPlain) ? `[ ${qPlain} ] に入る最もよいものを一つ選んでください。` : qPlain,
+              instructionTrans: item.qTrans || item.translation || '',
+              options: options.map((o, oi) => ({ marker: o.marker || ['①','②','③','④'][oi], text: o.copy || o.text || '', trans: o.trans || '', isCorrect: !!o.isCorrect })),
+              ansJa,
+              ansKo,
+              evidenceText: item.evidenceText || '',
+              expl: item.expl && item.expl.main ? item.expl : { main: (typeof item.expl === 'string' ? item.expl : (item.explanation || 'Nihonez 독해 오답')) }
+            };
+            if (!matchedP) {
+              passageId = passageId || `NH-CUSTOM-${now}-${idx + 1}`;
+              syncData.customReadings.push({
+                id: passageId,
+                level,
+                typeCode: pCode,
+                typeName: pName,
+                title: item.passageTitle || `[기출 오답] ${rawPassagePlain.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').slice(0, 24)}…`,
+                source: `Nihonez 원클릭 연동 (${today})`,
+                wordCount: rawPassagePlain.length,
+                estimatedMinutes: Math.max(2, Math.round(rawPassagePlain.length / 110)),
+                passagePlain: rawPassagePlain,
+                passageRuby: item.passageRuby || rawPassagePlain,
+                passageTrans: item.passageTrans || '',
+                vocabList: [],
+                grammarNotes: [],
+                questions: [subQ]
+              });
+            } else {
+              passageId = matchedP.id;
+              if (!matchedP.questions.some(q => q.qId === id)) matchedP.questions.push(subQ);
+            }
+          }
           const mistakeObj = {
             id,
             level,
-            typeCode: item.typeCode || 'external',
-            typeName: item.typeName || 'Nihonez 오답',
-            instruction: item.instruction || '빈칸에 들어갈 가장 알맞은 표현을 고르세요.',
+            typeCode: isReadingQuestion ? (String(item.typeCode || '').startsWith('reading_') ? item.typeCode : 'reading_short') : (item.typeCode || 'external'),
+            typeName: isReadingQuestion ? (String(item.typeName || '').startsWith('독해') ? item.typeName : '독해 - 기출 독해') : (item.typeName || 'Nihonez 오답'),
+            isReadingQuestion,
+            passageId,
+            passageTitle: item.passageTitle || existing.passageTitle || '',
+            instruction: isReadingQuestion ? '다음 지문을 읽고 물음에 답하세요.' : (item.instruction || '빈칸에 들어갈 가장 알맞은 표현을 고르세요.'),
             qPlain,
             qRuby: item.qRuby || qPlain,
             qTrans: item.qTrans || item.translation || '',
@@ -726,6 +772,7 @@ const server = http.createServer((req, res) => {
             count: prevCount + 1,
             firstWrongDate: existing.firstWrongDate || now,
             lastWrongDate: now,
+            lastModified: now,
             wrongChoice: item.wrongChoice || existing.wrongChoice || '',
             isMastered: false,
             isBookmarked: existing.isBookmarked || false,
