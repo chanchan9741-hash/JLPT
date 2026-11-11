@@ -516,7 +516,12 @@
     const mainText = document.getElementById('r-expl-main');
     if (mainText) {
       const fallbackParts = [q.expl?.summary, q.expl?.whyCorrect, q.expl?.whyWrong].filter(Boolean);
-      mainText.textContent = q.expl?.main || fallbackParts.join('\n\n') || '해설이 준비되어 있지 않습니다.';
+      const rawExpl = q.expl?.main || fallbackParts.join('\n\n') || '해설이 준비되어 있지 않습니다.';
+      if (typeof window.formatExplanation === 'function') {
+        mainText.innerHTML = window.formatExplanation(rawExpl);
+      } else {
+        mainText.textContent = rawExpl;
+      }
     }
 
     // Choice Breakdown

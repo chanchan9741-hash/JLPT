@@ -518,6 +518,20 @@
                 const isMastered = mistakes[id].isMastered || m.isMastered;
                 mistakes[id] = { ...mistakes[id], ...m, count: Math.max(localCount, remoteCount), isMastered };
                 changed = true;
+              } else if ((m.explVersion || 0) > (mistakes[id].explVersion || 0)) {
+                mistakes[id] = {
+                  ...mistakes[id],
+                  qPlain: m.qPlain || mistakes[id].qPlain,
+                  qRuby: m.qRuby || mistakes[id].qRuby,
+                  qTrans: m.qTrans !== undefined ? m.qTrans : mistakes[id].qTrans,
+                  options: m.options || mistakes[id].options,
+                  wrongChoice: m.wrongChoice !== undefined ? m.wrongChoice : mistakes[id].wrongChoice,
+                  ansJa: m.ansJa || mistakes[id].ansJa,
+                  ansKo: m.ansKo !== undefined ? m.ansKo : mistakes[id].ansKo,
+                  expl: m.expl || mistakes[id].expl,
+                  explVersion: m.explVersion
+                };
+                changed = true;
               }
             }
           }
@@ -3382,7 +3396,7 @@
     }
 
     const explMain = document.getElementById('anki-expl-main');
-    if (explMain) explMain.textContent = q.expl?.main || '정답과 해설을 확인하세요.';
+    if (explMain) explMain.innerHTML = formatExplanation(q.expl?.main || '정답과 해설을 확인하세요.');
 
     const choiceNotes = document.getElementById('anki-choice-notes');
     if (choiceNotes) {
@@ -3734,47 +3748,92 @@
     if (!str) return '';
     let s = escapeHtml(str);
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    s = s.replace(/\*([^\*]+?)\*/g, '<em>$1</em>');
+    s = s.replace(/__(.+?)__/g, '<strong><u>$1</u></strong>');
+    s = s.replace(/\*([^\*\n]+?)\*/g, '<em>$1</em>');
     s = s.replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px;">$1</code>');
     return s;
   }
 
   function formatWrongChoicesSection(text) {
-    const rawItems = text.split(/(?=(?:^|\s)[1-4]\.\s)/g).map(s => s.trim()).filter(Boolean);
+    const normalized = String(text || '')
+      .replace(/\s+(?=[①②③④⑤])/g, '\n')
+      .replace(/\s+(?=[1-4]\.\s)/g, '\n');
+    const rawItems = normalized
+      .split(/(?=(?:^|\n)\s*(?:[1-4][\.\)]\s*|[①②③④⑤]\s*))/g)
+      .map(s => s.trim())
+      .filter(Boolean);
+
     if (rawItems.length > 1) {
       let out = '<div class="expl-wrong-list">';
       rawItems.forEach(item => {
         let formatted = renderMarkdownSafe(item);
-        formatted = formatted.replace(/❌\s*(?:-&gt;|-&gt;|→)?/g, '<span class="expl-x-mark">❌</span> <span class="expl-arrow">→</span>');
+        formatted = formatted
+          .replace(/\s*❌\s*Incorrect Usage\s*/gi, '<br><span class="expl-x-mark">❌ 오답 이유:</span> ')
+          .replace(/\s*❌\s*(?:-&gt;|→)?\s*/g, ' <span class="expl-x-mark">❌</span> ')
+          .replace(/\s*→\s*/g, '<br><span class="expl-arrow">→</span> ')
+          .replace(/\n/g, '<br>');
         out += `<div class="expl-wrong-item">${formatted}</div>`;
       });
       out += '</div>';
       return out;
     }
-    return renderMarkdownSafe(text).replace(/\n/g, '<br>');
+    return renderMarkdownSafe(normalized)
+      .replace(/\s*❌\s*Incorrect Usage\s*/gi, '<br><span class="expl-x-mark">❌ 오답 이유:</span> ')
+      .replace(/\s*→\s*/g, '<br><span class="expl-arrow">→</span> ')
+      .replace(/\n/g, '<br>');
+  }
+
+  function normalizeExplanationText(rawText) {
+    let t = String(rawText || '').trim();
+    // Convert unbolded standalone section headers at line starts into **Header**
+    t = t.replace(
+      /(?:^|\n)\s*(Correct Answer|Answer\s*\(★\s*Position\)|Word Translation|Question Translation|Correct Sentence Translation|Reconstructed Sentence|Correct Order|Chunk-by-Chunk Breakdown|Explanation|Why This Order Works|Why Other Options Are Incorrect|Other Options|💡?\s*Test-Taking Tip|Grammar\/Vocabulary Note|Usage Note|정답(?:\s*\(★\s*위치\))?|핵심\s*어휘(?:\s*노트)?|문제\s*(?:해석|번역)|문장\s*해석|올바른\s*배열\s*순서|선택지별\s*(?:의미\s*)?분석|상세\s*해설|핵심\s*문법\s*포인트|오답\s*분석|(?:💡\s*)?출제\s*팁)\s*(?=\n)/gi,
+      '\n**$1**\n'
+    );
+    // Translate common English boilerplate if present in newly imported items
+    t = t.replace(/\bAnswer\s*(\d+)\s*is\s*correct\.?/gi, '정답은 $1번입니다.');
+    t = t.replace(/\bAnswer\s*(\d+)\s*:/gi, '정답 $1번:');
+    return t;
   }
 
   window.formatExplanation = formatExplanation;
   function formatExplanation(rawText) {
     if (!rawText) return '정답과 해설을 확인하고 복습하세요.';
-    const text = String(rawText).trim();
+    const text = normalizeExplanationText(rawText);
 
     const sectionConfigs = [
-      { key: 'correct answer', label: '🎯 정답 및 의미', type: 'correct' },
-      { key: 'question translation', label: '📖 지문 전체 해석', type: 'trans' },
+      { key: 'correct answer', label: '🎯 정답 및 핵심 의미', type: 'correct' },
+      { key: 'answer (★ position)', label: '🎯 정답 (★ 위치)', type: 'correct' },
+      { key: 'word translation', label: '📘 핵심 어휘 뜻', type: 'correct' },
+      { key: 'question translation', label: '📖 문장 해석', type: 'trans' },
+      { key: 'correct sentence translation', label: '📖 정답 문장 해석', type: 'trans' },
+      { key: 'reconstructed sentence', label: '📖 완성 문장 및 해석', type: 'trans' },
+      { key: 'correct order', label: '🔢 올바른 배열 순서', type: 'correct' },
+      { key: 'chunk-by-chunk breakdown', label: '🧩 선택지별 분석', type: 'expl' },
       { key: 'explanation', label: '💡 핵심 문법 및 상세 해설', type: 'expl' },
+      { key: 'why this order works', label: '💡 배열 원리 및 해설', type: 'expl' },
       { key: 'why other options are incorrect', label: '🔍 오답 선지 상세 분석', type: 'wrong-choices' },
+      { key: 'other options', label: '🔍 오답 선지 상세 분석', type: 'wrong-choices' },
       { key: 'test-taking tip', label: '⚡ 실전 출제 팁', type: 'tip' },
-      { key: 'grammar/vocabulary note', label: '📝 핵심 문법 · 어휘 메모', type: 'note' },
-      { key: '정답', label: '🎯 정답 및 의미', type: 'correct' },
-      { key: '문제 해석', label: '📖 지문 전체 해석', type: 'trans' },
-      { key: '문제 번역', label: '📖 지문 전체 해석', type: 'trans' },
+      { key: 'grammar/vocabulary note', label: '📝 핵심 문법 · 어휘 노트', type: 'note' },
+      { key: 'usage note', label: '📝 용법 노트', type: 'note' },
+      { key: '정답', label: '🎯 정답 및 핵심 의미', type: 'correct' },
+      { key: '정답 (★ 위치)', label: '🎯 정답 (★ 위치)', type: 'correct' },
+      { key: '핵심 어휘', label: '📘 핵심 어휘 뜻', type: 'correct' },
+      { key: '문제 해석', label: '📖 문장 해석', type: 'trans' },
+      { key: '문제 번역', label: '📖 문장 해석', type: 'trans' },
+      { key: '문장 해석', label: '📖 문장 해석', type: 'trans' },
+      { key: '올바른 배열 순서', label: '🔢 올바른 배열 순서', type: 'correct' },
+      { key: '선택지별 분석', label: '🧩 선택지별 분석', type: 'expl' },
+      { key: '선택지별 의미 분석', label: '🧩 선택지별 분석', type: 'expl' },
       { key: '상세 해설', label: '💡 핵심 문법 및 상세 해설', type: 'expl' },
+      { key: '핵심 문법 포인트', label: '💡 핵심 문법 포인트', type: 'tip' },
       { key: '오답 분석', label: '🔍 오답 선지 상세 분석', type: 'wrong-choices' },
-      { key: '출제 팁', label: '⚡ 실전 출제 팁', type: 'tip' }
+      { key: '출제 팁', label: '⚡ 실전 출제 팁', type: 'tip' },
+      { key: '핵심 어휘 노트', label: '📝 핵심 어휘 노트', type: 'note' }
     ];
 
-    const sectionRegex = /\*\*(Correct Answer|Question Translation|Explanation|Why Other Options Are Incorrect|💡?\s*Test-Taking Tip|Grammar\/Vocabulary Note|정답|문제\s*(?:해석|번역)|상세\s*해설|오답\s*분석|출제\s*팁)\*\*/gi;
+    const sectionRegex = /\*\*(Correct Answer|Answer\s*\(★\s*Position\)|Word Translation|Question Translation|Correct Sentence Translation|Reconstructed Sentence|Correct Order|Chunk-by-Chunk Breakdown|Explanation|Why This Order Works|Why Other Options Are Incorrect|Other Options|💡?\s*Test-Taking Tip|Grammar\/Vocabulary Note|Usage Note|정답(?:\s*\(★\s*위치\))?|(?:📝\s*)?핵심\s*어휘(?:\s*노트)?|문제\s*(?:해석|번역)|문장\s*해석|올바른\s*배열\s*순서|선택지별\s*(?:의미\s*)?분석|상세\s*해설|(?:💡\s*)?핵심\s*문법\s*포인트|오답\s*분석|(?:💡\s*)?출제\s*팁)\*\*/gi;
 
     if (sectionRegex.test(text)) {
       sectionRegex.lastIndex = 0;
@@ -3782,13 +3841,13 @@
       if (parts.length > 1) {
         let html = '<div class="formatted-expl-container">';
         if (parts[0] && parts[0].trim()) {
-          html += `<div class="expl-block expl-block-intro"><div class="expl-block-body">${renderMarkdownSafe(parts[0].trim())}</div></div>`;
+          html += `<div class="expl-block expl-block-intro"><div class="expl-block-body">${renderMarkdownSafe(parts[0].trim()).replace(/\n/g, '<br>')}</div></div>`;
         }
 
         for (let i = 1; i < parts.length; i += 2) {
           const rawKey = (parts[i] || '').trim();
           let body = (parts[i + 1] || '').trim();
-          const cleanKey = rawKey.replace(/^💡\s*/, '').toLowerCase();
+          const cleanKey = rawKey.replace(/^[💡📝]\s*/, '').replace(/\s+/g, ' ').toLowerCase();
           const conf = sectionConfigs.find(c => c.key === cleanKey) || {
             label: rawKey,
             type: 'expl'
@@ -3799,7 +3858,7 @@
             bodyHtml = formatWrongChoicesSection(body);
           } else if (conf.type === 'expl') {
             let s = renderMarkdownSafe(body);
-            s = s.replace(/(\s|^)([1-4]\)|[①②③④])/g, '<br><br><strong>$2</strong>');
+            s = s.replace(/(^|\n)\s*([1-4][\.\)]|[①②③④⑤]|•|-)\s*/g, '$1<strong>$2</strong> ');
             bodyHtml = s.replace(/\n/g, '<br>');
           } else {
             bodyHtml = renderMarkdownSafe(body).replace(/\n/g, '<br>');
@@ -3817,7 +3876,11 @@
       }
     }
 
-    return `<div class="formatted-expl-simple">${renderMarkdownSafe(text).replace(/\n/g, '<br>')}</div>`;
+    const simpleFormatted = renderMarkdownSafe(text)
+      .replace(/\s+(?=[①②③④⑤]\s)/g, '<br>')
+      .replace(/\s*→\s*/g, '<br><span class="expl-arrow">→</span> ')
+      .replace(/\n/g, '<br>');
+    return `<div class="formatted-expl-simple">${simpleFormatted}</div>`;
   }
 
 
@@ -4923,7 +4986,34 @@
 
           // If cloud has newer modification (new wrong answer, mastered, unmastered) or higher count
           if (cloudModTime > localModTime || cloudCount > localCount || (hydrated.isMastered && !mistakes[id].isMastered)) {
-            mistakes[id] = { ...mistakes[id], ...hydrated };
+            const keepExpl = (mistakes[id].explVersion || 0) > (hydrated.explVersion || 0);
+            mistakes[id] = {
+              ...mistakes[id],
+              ...hydrated,
+              ...(keepExpl ? {
+                qPlain: mistakes[id].qPlain,
+                qRuby: mistakes[id].qRuby,
+                qTrans: mistakes[id].qTrans,
+                options: mistakes[id].options,
+                ansJa: mistakes[id].ansJa,
+                ansKo: mistakes[id].ansKo,
+                expl: mistakes[id].expl,
+                explVersion: mistakes[id].explVersion
+              } : {})
+            };
+            changed = true;
+          } else if ((hydrated.explVersion || 0) > (mistakes[id].explVersion || 0)) {
+            mistakes[id] = {
+              ...mistakes[id],
+              qPlain: hydrated.qPlain || mistakes[id].qPlain,
+              qRuby: hydrated.qRuby || mistakes[id].qRuby,
+              qTrans: hydrated.qTrans !== undefined ? hydrated.qTrans : mistakes[id].qTrans,
+              options: hydrated.options || mistakes[id].options,
+              ansJa: hydrated.ansJa || mistakes[id].ansJa,
+              ansKo: hydrated.ansKo !== undefined ? hydrated.ansKo : mistakes[id].ansKo,
+              expl: hydrated.expl || mistakes[id].expl,
+              explVersion: hydrated.explVersion
+            };
             changed = true;
           }
         }
